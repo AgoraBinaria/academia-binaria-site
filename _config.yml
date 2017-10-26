@@ -4,7 +4,7 @@
 
 # Site
 title: Academia Binaria
-subtitle: Formación en enspañol para programadores
+subtitle: Formación en español para programadores
 description: Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript
 author: Alberto Basalo
 language: es
@@ -24,7 +24,7 @@ tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: :lang
+i18n_dir: :languages
 skip_render:
 
 # Writing
