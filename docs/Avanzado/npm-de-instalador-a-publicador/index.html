@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>npm: de instalador a publicador | Academia Binaria</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Seguro que estás harto de repetir la mítica instrucción npm install paquete-x Pero, ¿has pensado en publicar tus propios módulos?. Es muy recomendable crear soluciones distribuidas y muy fácil publica">
+<meta name="keywords" content="NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm: de instalador a publicador">
+<meta property="og:url" content="http://academia-binaria.com/Avanzado/npm-de-instalador-a-publicador/index.html">
+<meta property="og:site_name" content="Academia Binaria">
+<meta property="og:description" content="Seguro que estás harto de repetir la mítica instrucción npm install paquete-x Pero, ¿has pensado en publicar tus propios módulos?. Es muy recomendable crear soluciones distribuidas y muy fácil publica">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2016-04-19T05:01:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm: de instalador a publicador">
+<meta name="twitter:description" content="Seguro que estás harto de repetir la mítica instrucción npm install paquete-x Pero, ¿has pensado en publicar tus propios módulos?. Es muy recomendable crear soluciones distribuidas y muy fácil publica">
+  
+    <link rel="alternate" href="/atom.xml" title="Academia Binaria" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Academia Binaria</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Formación en enspañol para programadores</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://academia-binaria.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-npm-de-instalador-a-publicador" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Avanzado/npm-de-instalador-a-publicador/" class="article-date">
+  <time datetime="2016-04-18T14:07:46.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Avanzado/">Avanzado</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      npm: de instalador a publicador
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Seguro que estás harto de repetir la mítica instrucción <code>npm install paquete-x</code> Pero, ¿has pensado en <strong>publicar tus propios módulos</strong>?. Es muy recomendable crear soluciones distribuidas y muy fácil publicarlas en <a href="https://www.npmjs.com/" target="_blank" rel="external"><em>npm</em></a>. </p>
+<p>Sigue este proceso y te convertirás en un creador de paquetes para <em>npm</em> : </p>
+<h2 id="Programa"><a href="#Programa" class="headerlink" title="Programa"></a>Programa</h2><p>Todo empieza por tener una necesidad y resolverla <strong>encapsulando su código en un módulo.</strong> Por supuesto que ese módulo puede requerir paquetes externos. Y por supuesto que tu código puede, y debe, escribirse en varios módulos. </p>
+<p>Antes de continuar vamos a fijar un par de conceptos:</p>
+<p><strong>- módulo:</strong> Fichero <em>.js</em> que exporta un funcionalidad y oculta su implementación.</p>
+<p><strong>- paquete:</strong> Uno o más módulos, con sus dependientes de otros paquetes que proponen una solución reutilizable.</p>
+<p>Conocidos los ingredientes, la receta es sencilla:</p>
+<ol>
+<li>Debes crear un proyecto para el paquete que vas a publicar. </li>
+<li>Has de subir el código a un repositorio público. </li>
+<li>Y debes rellenar convenientemente el <code>package.json</code> de tu proyecto.</li>
+</ol>
+<p>Este es un ejemplo que he creado y <a href="https://github.com/AgoraBinaria/ab-ftp" target="_blank" rel="external">publicado en github</a> que te puede servir de base. </p>
+<p>Presta especial atención al <strong>nombrado</strong> de tu proyecto porque ha de ser único en el repositorio de npm. Para reducir riesgos de colisiones de nombre te recomiendo que utilices un <em>prefijo</em> con tus iniciales o las de tu empresa.</p>
+<p>No te olvides de incluir un juego de <strong>pruebas y documentación</strong> necesaria para sus uso.</p>
+<h2 id="Publica"><a href="#Publica" class="headerlink" title="Publica"></a>Publica</h2><p>Puedes descargar librerías y herramienta desde el repositorio de <em>npm</em> de forma anónima. De hecho, eso es lo más corriente. Pero, como era de esperar, tienes que <strong>registrarte para poder publicar</strong> contenido. El <a href="https://www.npmjs.com/signup" target="_blank" rel="external">proceso de registro</a> vía web es sencillo y grátis. </p>
+<p>Una vez verificado puedes hacer login en la web. Pero también en la terminal de tu ordenador: <code>npm login</code> te pedirá el nombre de usuario y contraseña. A partir de es momento estás identificado y puedes usar las herramientas de autor:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure>
+<p>Puedes encontrar <a href="https://docs.npmjs.com/cli/publish" target="_blank" rel="external">más información</a> acerca de este mega comando en la documentación de <em>npmjs</em>. Pero siguiendo la máxima de cuanto menos, mejor, la herramienta hará con sus valores por defecto un publicación y actualización limpias.</p>
+<p>La clave está en que tu fichero de configuración <code>package.json</code> sea correcto y lo más completo posible. Escribe un completo <code>readme.md</code> que se convertirá en portada de tu paquete en el repositorio de npm. Mira en mi ejemplo cómo <a href="https://github.com/AgoraBinaria/ab-ftp" target="_blank" rel="external">el contenido subido a github</a> se transforma y se ve en la <a href="https://www.npmjs.com/package/ab-ftp" target="_blank" rel="external">página de información de npm.</a></p>
+<p>Comprueba en un directorio vacío que <code>npm install nombre-de-tu-paquete</code> descarga todo lo necesario… y tómate un café mientras ves crecer la hierba y las estadísticas de descargas.</p>
+<h2 id="Actualiza"><a href="#Actualiza" class="headerlink" title="Actualiza"></a>Actualiza</h2><p>Con el tiempo mejorarás y corregirás tu solución. Te recomiendo que sigas el patrón de <a href="http://semver.org/" target="_blank" rel="external">nombrado de versiones semántico</a>: </p>
+<p><strong>x.y.z = 1.2.3 = ruptura.mejora.parche</strong> </p>
+<p>Es bueno que etiquetes tu repositorio con estas mismas versiones para que, una vez desplegadas, se encuentre con facilidad en <em>github</em>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git tag 0.1.2</div><div class="line">git push --tags</div></pre></td></tr></table></figure>
+<h2 id="Disfruta"><a href="#Disfruta" class="headerlink" title="Disfruta"></a>Disfruta</h2><p>Finalmente podrás utilizar ese código en todas tus aplicaciones. Sería fantástico que además otros lo encontrasen útil. Y mejor aún si te ayudan o al menos te proponen mejoras. Pero en cualquier caso <strong>siempre habrás ganado</strong>. El esfuerzo analítico que requiere se cobra con creces: dividiendo el problema, creando micro soluciones eficientes y reutilizando código siempre es rentable.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://academia-binaria.com/Avanzado/npm-de-instalador-a-publicador/" data-id="cj976gtxj0024q4jsi623amxp" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Introduccion/node-6-0-0-actualizacion-con-nvm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Node 6.0.0 actualización con nvm
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Opinion/soluciones-backend-2016/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Soluciones BackEnd 2016</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Avanzado/">Avanzado</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Introduccion/">Introducción</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Opinion/">Opinión</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular2/">Angular2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BackEnd/">BackEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrontEnd/">FrontEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular2/" style="font-size: 20px;">Angular2</a> <a href="/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tags/BackEnd/" style="font-size: 10px;">BackEnd</a> <a href="/tags/Bootstrap/" style="font-size: 12.5px;">Bootstrap</a> <a href="/tags/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/tags/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/tags/NodeJS/" style="font-size: 17.5px;">NodeJS</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">octubre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">marzo 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">septiembre 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">junio 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">mayo 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">abril 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">marzo 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">enero 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">agosto 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/uncategorized/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/Opinion/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el back</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Alberto Basalo<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hola Mundo Angular 2 | Academia Binaria</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Código asociado en GitHub: angular2/1-HolaMundo/  Qué lejanos aquellos tiempos dónde un Hola Mundo en AngularJS se hacía en 2 líneas de código. Ahora necesitaré miles de ficheros y media hora de expl">
+<meta name="keywords" content="Angular2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hola Mundo Angular 2">
+<meta property="og:url" content="http://academia-binaria.com/Introduccion/hola-mundo-en-angular-2/index.html">
+<meta property="og:site_name" content="Academia Binaria">
+<meta property="og:description" content="Código asociado en GitHub: angular2/1-HolaMundo/  Qué lejanos aquellos tiempos dónde un Hola Mundo en AngularJS se hacía en 2 líneas de código. Ahora necesitaré miles de ficheros y media hora de expl">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2016-10-31T11:36:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hola Mundo Angular 2">
+<meta name="twitter:description" content="Código asociado en GitHub: angular2/1-HolaMundo/  Qué lejanos aquellos tiempos dónde un Hola Mundo en AngularJS se hacía en 2 líneas de código. Ahora necesitaré miles de ficheros y media hora de expl">
+  
+    <link rel="alternate" href="/atom.xml" title="Academia Binaria" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Academia Binaria</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Formación en enspañol para programadores</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://academia-binaria.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hola-mundo-en-angular-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Introduccion/hola-mundo-en-angular-2/" class="article-date">
+  <time datetime="2016-05-18T14:10:18.000Z" itemprop="datePublished">2016-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Introduccion/">Introducción</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hola Mundo Angular 2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Código asociado en GitHub: <a href="https://github.com/AcademiaBinaria/angular2/tree/master/1-hola-mundo" target="_blank" rel="external">angular2/1-HolaMundo/</a></p>
+</blockquote>
+<p>Qué lejanos aquellos tiempos dónde un <a href="https://github.com/AcademiaBinaria/HolaAngularJS" target="_blank" rel="external">Hola Mundo en AngularJS</a> se hacía en 2 líneas de código. Ahora necesitaré miles de ficheros y media hora de explicación. Pero el resultado valdrá la pena. Estaremos en la pista de lanzamiento para crear <strong>aplicaciones de nivel empresarial con Angular 2.</strong></p>
+<p>Ya he explicado que Angular ha pasado <a href="http://academia-binaria.com/angular2-primeras-impresiones/" target="_blank" rel="external">de framework a plataforma</a>, y que ya no es para aficionados. Grandes desarrollos en equipo requieren <strong>herramientas y procedimientos</strong> a la altura. La primera opción que te recomiendo es <a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a>, un generador de aplicaciones trufado de buenas prácticas y procedimientos. Por raro que te parezca, cualquier otra opción es <em>aún</em> más compleja que la que te muestro.</p>
+<h2 id="Preparando-el-entorno"><a href="#Preparando-el-entorno" class="headerlink" title="Preparando el entorno"></a>Preparando el entorno</h2><p>Las herramientas que voy a usar requieren <a href="nodejs.org">NodeJS</a>. Te recomiendo que instales una de sus últimas versiones. Tras la instalación tendrás acceso a <a href="npmjs.com">npm</a> para poder instalar librerías y utilidades como Angular CLI.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g angular-cli</div></pre></td></tr></table></figure>
+<p>A partir de ahora en tu linea de comandos podrás usar el programa <code>ng</code> seguido de algún comando como <code>new generate serve lint test e2e build</code>. Usaremos algunos en esta demo.</p>
+<h2 id="Creando-aplicaciones-y-componentes"><a href="#Creando-aplicaciones-y-componentes" class="headerlink" title="Creando aplicaciones y componentes"></a>Creando aplicaciones y componentes</h2><p>Escoge un directorio en un disco con espacio libre. No es broma, hasta 300 mb o más para empezar. Tranquilo, en distribución la cosa pinta mucho mejor y Angular es muy ligero. Ahora teclea:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng new hola-angular-2</div></pre></td></tr></table></figure>
+<p>Unos segundos o minutos más tarde… podrás abrir la recién creada carpeta, yo lo hago con <a href="https://code.visualstudio.com/" target="_blank" rel="external">VSCode</a>, y explorar el contenido de sus 3 directorios y miles de ficheros!!!</p>
+<p>Después del susto, tranquilidad de nuevo. La mayoría son dependencias de terceros productos, herramientas necesarias para ejecutar aplicación o para alguno de sus procesos de <em>test, lint o distribución</em>. Centrémonos en el directorio <code>src</code> dónde están los fuentes, el código que tendríamos que haber creado nosotros.</p>
+<p>De un primer vistazo puede que sólo reconozcas al viejo <code>index.html</code>. No te agobies, por ahora es suficiente. Contendrá algo como esto:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>HolaAngular2<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">type</span>=<span class="string">"image/x-icon"</span> <span class="attr">href</span>=<span class="string">"favicon.ico"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--Componente raíz de la aplicación--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-root</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">app-root</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>De lo que es Angular 2 lo único interesante es el componente <code>&lt;app-root&gt;Loading...&lt;/app-root&gt;</code>. Todo, incluida la aplicación principal, debe ser definido y declarado como un componente. De hecho definiremos las aplicaciones Angular2 como árboles de componentes. Y tdodo árbol debe tener una raíz. Mientras Angular no entre en fucionamiento, el susario verá el mensaje de <em>Loading…</em> después la magia de Angular2 lo sustituirá por el contenido del componente <code>app-root</code> predefinido por el generador. </p>
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><p>Sin entrar en debates de <a href="https://www.youtube.com/watch?v=OpS2R7rbpRg" target="_blank" rel="external">qué lenguaje usar para programar en Angular2</a> te resumo mi posición: </p>
+<p>1.- TypeScript te permite anotar tu <strong>JavaScript con tipos</strong>. Esto tiene dos ventajas: <em>intellisense</em> mientras codificas y chequeo de tipos cuando compilas.<br>2.- TypeScript es la <strong>única opción automatizada a día de hoy</strong> con Angular CLI.</p>
+<p>Por lo demás no hay porqué alarmarse. <a href="https://www.typescriptlang.org/" target="_blank" rel="external">TypeScript</a> es un <em>superset de JavaScript ES6</em> con unas mejoras evidentes que no tardarás en dominar. Eso si, tienes que aprender <a href="http://es6-features.org/" target="_blank" rel="external">JavaScript ES2015 o ES6</a>.</p>
+<p>Sabiendo esto, entra sin miedo en cualquier fichero de extensión <code>.ts</code> y verás que es muy parecido a cualquier <code>.js</code> de la nueva versión. Por ejemplo en el citado <code>main.ts</code> aparecerá algo así:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// importaciones de dependencias TypeScript al estilo ES6</span></div><div class="line"><span class="comment">// primero los básicos para compatibilidad con navegadores</span></div><div class="line"><span class="keyword">import</span> <span class="string">'./polyfills.ts'</span>;</div><div class="line"><span class="comment">// luego cosas de Angular</span></div><div class="line"><span class="keyword">import</span> &#123; platformBrowserDynamic &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser-dynamic'</span>;</div><div class="line"><span class="keyword">import</span> &#123; enableProdMode &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="comment">// después nuestro código, empezando por la configuración</span></div><div class="line"><span class="keyword">import</span> &#123; environment &#125; <span class="keyword">from</span> <span class="string">'./environments/environment'</span>;</div><div class="line"><span class="comment">// y por último la aplicación a leída desde el módulo raíz, llamado app por convenio.</span></div><div class="line"><span class="keyword">import</span> &#123; AppModule &#125; <span class="keyword">from</span> <span class="string">'./app/'</span>;</div><div class="line"></div><div class="line"><span class="comment">// condiciones para ejecutar en modo desarrollo o producción</span></div><div class="line"><span class="keyword">if</span> (environment.production) &#123;</div><div class="line">  enableProdMode();</div><div class="line">&#125;</div><div class="line"><span class="comment">// arranque de la aplicación invocando al módulo raíz</span></div><div class="line">platformBrowserDynamic().bootstrapModule(AppModule);</div></pre></td></tr></table></figure>
+<p>Centrándonos en el código que habremos de mantener fíjate en la línea <code>import { AppModule } from &#39;./app/&#39;;</code>. Le indica a <em>WebPack</em> que importe el contenido de la carpeta <code>./app/</code>. Para ello buscará en dicho directorio un archivo <code>index.ts</code>. Ese fichero sirve de índice y contiene las instrucciones para exportar el código interesante del resto de la carpeta. En nuestro caso son el módulo y el componente raíz. </p>
+<h2 id="El-modulo-raiz"><a href="#El-modulo-raiz" class="headerlink" title="El módulo raíz"></a>El módulo raíz</h2><p>Las aplicaciones Angular2 están pensadas para crecer. Para ello es fundamental cierto grado de modularidad. EL viejo <code>angular.module</code> ha vuelto en la versión 2. Mira dentro del fichero <code>app.module.ts</code> y verás código similar a este:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// objetos con utilidades comunes del framework</span></div><div class="line"><span class="keyword">import</span> &#123; BrowserModule &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;</div><div class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; FormsModule &#125; <span class="keyword">from</span> <span class="string">'@angular/forms'</span>;</div><div class="line"><span class="keyword">import</span> &#123; HttpModule &#125; <span class="keyword">from</span> <span class="string">'@angular/http'</span>;</div><div class="line"><span class="comment">// importación del componente raíz, definido en esta misma carpeta</span></div><div class="line"><span class="keyword">import</span> &#123; AppComponent &#125; <span class="keyword">from</span> <span class="string">'./app.component'</span>;</div><div class="line"><span class="comment">// decorador con metadata que define un módulo</span></div><div class="line">@NgModule(&#123;</div><div class="line">  declarations: [</div><div class="line">    AppComponent</div><div class="line">  ], <span class="comment">// cosas declaradas en este módulo</span></div><div class="line">  imports: [</div><div class="line">    BrowserModule,</div><div class="line">    FormsModule,</div><div class="line">    HttpModule</div><div class="line">  ], <span class="comment">// otros módulos que necesitamos para que este funcione</span></div><div class="line">  providers: [] , <span class="comment">// inyección de servicios comunes para la aplicación</span></div><div class="line">  bootstrap: [AppComponent] <span class="comment">// componente raíz para el arranque</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// los módulos son clases contendoras </span></div><div class="line"><span class="comment">// habitualmente con poco o ningún código</span></div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppModule</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+<p>Un módulo no es más que una clase contenedora. Cada módulo puede incluir múltiples componentes y servicios. Normalmente un módulo dependerá de otros. El módulo raíz declara un componente especial para el arranque de la aplicación: <em>El componente raíz</em></p>
+<h2 id="El-componente-raiz"><a href="#El-componente-raiz" class="headerlink" title="El componente raíz"></a>El componente raíz</h2><p>Buceando a mayor profundidad nos encontramos con el resto del contenido de la carpeta <code>./app/</code>. Son archivos con nombres tipo <code>app.component.*</code> y se usan para definir un componente.</p>
+<p>Los <strong>componentes son los bloques de construcción de Angular 2</strong> que representan regiones de la pantalla. Las aplicaciones se definen como árboles de componentes. Nuestra aplicación es un árbol que tiene una raíz, habitualmente llamado <code>app</code> y que es común a cualquier desarrollo.</p>
+<p>Cada componente a su vez está formado por tres partes:</p>
+<ol>
+<li><strong>La vista</strong>: es el código que se renderizará para los usuarios. Esta plantilla estará en un fichero de extensión <code>.html</code>.</li>
+<li><strong>La clase controladora</strong>: En ES6 usaremos clases para declarar los controladores que exponen datos y funcionalidad a la vista.</li>
+<li><strong>Metadata</strong>: Se declara como un decorador, una función especial de TypeScript, que recibe un objeto de configuración. Esto acompaña al controlador en un fichero de extensión <code>.ts</code></li>
+</ol>
+<p>Empecemos por este último fichero, el <code>app.component.ts</code>.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="comment">// Función decoradora que registra un componente</span></div><div class="line">@Component(&#123;</div><div class="line">  selector: <span class="string">'app-root'</span>, <span class="comment">// elemento html consumidor</span></div><div class="line">  templateUrl: <span class="string">'./app.component.html'</span>, <span class="comment">// ruta relativa a la vista</span></div><div class="line">  styleUrls: [<span class="string">'./app.component.css'</span>] <span class="comment">// potencialmente múltiples hojas de estilo</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// clase que representa un controlador </span></div><div class="line"><span class="comment">// con su modelo de datos (title ) y métodos de acción (aún no tiene)</span></div><div class="line"><span class="comment">// Esta clase es todo lo que se exporta en este fichero</span></div><div class="line"><span class="comment">// y esto se importará en app.module.ts para ser incorporado el módulo raíz</span></div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppComponent</span> </span>&#123;</div><div class="line">  <span class="comment">// las propiedades de la clase representan el modelo de datos</span></div><div class="line">  <span class="comment">// son accesibles desde la vista</span></div><div class="line">  title = <span class="string">'app works!'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Seguro que la parte más novedosa es <code>@Component({...})</code>. Es el equivalente a los antiguos Objetos de Definición de Directivas. Lo que hace es asociar al controlador una plantilla HTML <code>app.component.html</code> y un selector para ser invocado desde otra vista <code>&lt;app-root&gt;&lt;/app-root&gt;</code>. El resto por ahora puedes obviarlo.</p>
+<p>Y hablando de la plantilla, echemos un vistazo a <code>app.component.html</code>. Contendrá algo así:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--Interpolación de variables definidas en el modelo del componente--&gt;</span></div><div class="line">  &#123;&#123; title &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Estas son cosas que te resultarán muy familiares como la interpolación <code>Hola Mundo Angular 2</code> que permite mostrar el famoso <em>app works!</em>, nueva versión del <em>hola mundo</em>. Ya está, el resto ya es sólo usar este componente en el <code>index.html</code>,<br>Recuerda:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--Componente raíz de la aplicación--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">app-root</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">app-root</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Angular2-en-accion"><a href="#Angular2-en-accion" class="headerlink" title="Angular2 en acción"></a>Angular2 en acción</h2><p>Para lanzar y probar tu aplicación necesitas otro comando de Angular-CLI. Este comando se ocupa entre otras cosas de todo el proceso necesario para <strong>transformar el código TypeScript en JavaScript</strong> reconocible por el navegador. También crea un mini servidor estático y además refresca el navegador a cada cambio los fuentes. Un salvavidas para un recién llegado a Angular 2. Teclea en tu terminal:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng serve</div></pre></td></tr></table></figure>
+<p>Si todo ha ido bien, no siempre ocurre con estas versiones tan verdes, podrás disfrutar de <strong>tu primera aplicación con Angular 2</strong> en <a href="http://localhost:4200" target="_blank" rel="external">http://localhost:4200</a>  </p>
+<blockquote>
+<p><a href="https://youtu.be/Y7izsxhPpQY" target="_blank" rel="external">Este vídeo</a> emitido con la colaboración de DesarrolloWeb.com contiene una explicación mas extensa del proceso de trabajo con Angular 2 CLI.</p>
+</blockquote>
+<div class="flex-video"><br>    <iframe src="https://www.youtube.com/embed/Y7izsxhPpQY"></iframe><br></div>   
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://academia-binaria.com/Introduccion/hola-mundo-en-angular-2/" data-id="cj976gtxm0028q4jsl055gt6t" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular2/">Angular2</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Introduccion/componentes-los-bloques-de-construccion-de-angular-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Componentes, los bloques de construcción de Angular2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Introduccion/angular2-primeras-impresiones/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Angular2, la evolución de la plataforma</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Avanzado/">Avanzado</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Introduccion/">Introducción</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Opinion/">Opinión</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular2/">Angular2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BackEnd/">BackEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrontEnd/">FrontEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular2/" style="font-size: 20px;">Angular2</a> <a href="/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tags/BackEnd/" style="font-size: 10px;">BackEnd</a> <a href="/tags/Bootstrap/" style="font-size: 12.5px;">Bootstrap</a> <a href="/tags/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/tags/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/tags/NodeJS/" style="font-size: 17.5px;">NodeJS</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">octubre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">marzo 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">septiembre 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">junio 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">mayo 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">abril 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">marzo 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">enero 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">agosto 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/uncategorized/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/Opinion/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el back</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Alberto Basalo<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

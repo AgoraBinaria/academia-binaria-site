@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>DataBinding el flujo de datos de Angular2 | Academia Binaria</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Código asociado en angular2/3-databinding/   El doble binding o enlace vista controlador en ambos sentidos es una de las claves del éxito de AngularJS. Usando la célebre directiva ng-model enganchamo">
+<meta name="keywords" content="Angular2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DataBinding el flujo de datos de Angular2">
+<meta property="og:url" content="http://academia-binaria.com/Introduccion/databinding-el-flujo-de-datos-de-angular2/index.html">
+<meta property="og:site_name" content="Academia Binaria">
+<meta property="og:description" content="Código asociado en angular2/3-databinding/   El doble binding o enlace vista controlador en ambos sentidos es una de las claves del éxito de AngularJS. Usando la célebre directiva ng-model enganchamo">
+<meta property="og:locale" content="es">
+<meta property="og:image" content="http://academia-binaria.com/images/ng2-Flujo-de-datos.jpg">
+<meta property="og:updated_time" content="2016-11-10T13:56:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DataBinding el flujo de datos de Angular2">
+<meta name="twitter:description" content="Código asociado en angular2/3-databinding/   El doble binding o enlace vista controlador en ambos sentidos es una de las claves del éxito de AngularJS. Usando la célebre directiva ng-model enganchamo">
+<meta name="twitter:image" content="http://academia-binaria.com/images/ng2-Flujo-de-datos.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Academia Binaria" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Academia Binaria</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Formación en enspañol para programadores</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://academia-binaria.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-databinding-el-flujo-de-datos-de-angular2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Introduccion/databinding-el-flujo-de-datos-de-angular2/" class="article-date">
+  <time datetime="2016-05-25T15:26:32.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Introduccion/">Introducción</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DataBinding el flujo de datos de Angular2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Código asociado en <a href="https://github.com/AcademiaBinaria/angular2/tree/master/3-databinding" target="_blank" rel="external">angular2/3-databinding/</a> </p>
+</blockquote>
+<p>El <em>doble binding</em> o enlace vista controlador en ambos sentidos es una de las claves del éxito de AngularJS. Usando la célebre directiva <code>ng-model</code> enganchamos <strong>una propiedad del modelo con un control de la vista</strong>. De manera <em>automágica</em> Angular se suscribe a cambios en el DOM y observa el estado del modelo manteniéndolos en sincronía. </p>
+<p>Pero esto tiene un coste en rendimiento que Angular2 supera con un patrón distinto para el control del <strong>flujo de datos</strong> entre la vista y el modelo. Este nuevo paradigma ofrece soluciones para distintos escenarios:</p>
+<p><img src="/images/ng2-Flujo-de-datos.jpg" alt="Flujo de datos"></p>
+<h2 id="Solo-lectura-modelo-hacia-la-vista"><a href="#Solo-lectura-modelo-hacia-la-vista" class="headerlink" title="Sólo lectura: modelo hacia la vista"></a>Sólo lectura: modelo hacia la vista</h2><h3 id="1-Interpolacion"><a href="#1-Interpolacion" class="headerlink" title="1- Interpolación"></a>1- Interpolación</h3><p>En este primer caso todo nos resultará muy familiar. En efecto la sintáxis de interpolación es la mismoa que en AngularJS 1.x. eso si, en este caso y por defecto, los datos son de sólo lectura y Angular no se preocupa de actualizar la variable.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Hola &#123;&#123;nombreDelProgramador&#125;&#125; bienvenido a Angular2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Fecha de nacimiento: &#123;&#123;fechaDeNacimiento | date&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="2-Enlace-a-propiedades"><a href="#2-Enlace-a-propiedades" class="headerlink" title="2- Enlace a propiedades"></a>2- Enlace a propiedades</h3><p>Es la comunicación básica hacia la vista, hacia el usuario. En este caso cualquier atributo de un elemento HTML puede enlazarse al valor de una propiedad encerrándola entre corchetes y asignándole una expresión. <code>[propiedad]=&quot;expresion&quot;</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Hola <span class="tag">&lt;<span class="name">input</span> [<span class="attr">value</span>]=<span class="string">"nombreDelProgramador"</span> <span class="attr">readonly</span> &gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span> bienvenido a Angular2<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">href</span>]=<span class="string">"url-academia-binaria"</span>&gt;</span>Academia Binaria<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">hidden</span>]=<span class="string">"usuarioAutenticado"</span>&gt;</span>Identifícate<span class="tag">&lt;/<span class="name">div</span>&gt;</span>     </div><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">hidden</span>]=<span class="string">"!usuarioAutenticado"</span>&gt;</span>Hola &#123;&#123;nombreUsuario&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Solo-escritura-de-la-vista-hacia-el-modelo"><a href="#Solo-escritura-de-la-vista-hacia-el-modelo" class="headerlink" title="Sólo escritura: de la vista hacia el modelo"></a>Sólo escritura: de la vista hacia el modelo</h2><h3 id="1-Eventos"><a href="#1-Eventos" class="headerlink" title="1- Eventos"></a>1- Eventos</h3><p>La comunicación desde la vista hacia el modelo se realiza mediante eventos. Es una buena práctica llamar a funciones del componente de forma declarativa en la vista.<br>La sintaxis requiere que se nombre el evento entre paréntesis y se le asigne una expresión como valor. <code>(evento)=&quot;expresion&quot;</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> (<span class="attr">keyup</span>)=<span class="string">"onKey($event)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> #<span class="attr">nombre</span></span></div><div class="line"><span class="tag"> (<span class="attr">keyup.enter</span>)=<span class="string">"propiedad=nombre.value"</span></span></div><div class="line"><span class="tag"> (<span class="attr">blur</span>)=<span class="string">"propiedad=nombre.value"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">lanzarCohete()</span>&gt;</span>Lanzar cohete<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="Lectura-y-escritura-bidireccional"><a href="#Lectura-y-escritura-bidireccional" class="headerlink" title="Lectura y escritura: bidireccional"></a>Lectura y escritura: bidireccional</h2><h3 id="1-Enlace-doble"><a href="#1-Enlace-doble" class="headerlink" title="1- Enlace doble."></a>1- Enlace doble.</h3><p>Este es el caso más común en la edición de formularios. Y es el equivalente al viejo y glorioso <em>doble binding</em>. Es la combinación de los dos anteriores y eso se refleja en la sintaxis. Recordad <code>[]</code> para leer propiedades y <code>()</code> para enviar datos en respuesta a eventos: el resultado es la llamada <em>banana in a box</em> <code>[()]</code>. En este caso se completa con la directiva ngModel y la propiedad enlazada. <code>[(ngModel)]=&quot;propiedad&quot;</code><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>  [(<span class="attr">ngModel</span>)]=<span class="string">"nombreDelProgramador"</span> &gt;</span></div><div class="line">Hola &#123;&#123;nombreDelProgramador&#125;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Resumen"><a href="#Resumen" class="headerlink" title="Resumen"></a>Resumen</h2><p>Este es un ejemplo recopilatorio de las capacidades de Angular2 en cuanto a la sintaxis declarativa en las plantillas HTML de los componentes. Recordad este <em>mantra</em> que revisaremos durante la composición de componentes en aplicaciones complejas:</p>
+<blockquote>
+<p>Los datos fluyen hacia las propiedades de los componentes hijos. Los eventos brotan desde los hijos hacia los padres. Sólo usamos enlace doble en los formularios que así lo requieran.</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--Interpolación de variables definidas en el modelo del componente--&gt;</span></div><div class="line">  &#123;&#123;title&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>¿Cómo te llamas?<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--Enlace doble (lectura y escritura) entre la vista y el modelo--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> [(<span class="attr">ngModel</span>)]=<span class="string">"aprendiz"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Bienvenido a Angular 2 &#123;&#123; aprendiz &#125;&#125; <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="comment">&lt;!--Expresiones--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Soy capaz de multiplicar por &#123;&#123;1 * 2&#125;&#125; tus habilidades <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--Eventos--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">"visible=true"</span>&gt;</span>Saludar<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--Propiedades--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span> [<span class="attr">hidden</span>]=<span class="string">"!visible"</span>&gt;</span>Hola Mundo!!!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>En estos ejemplos se han visto propiedades y eventos estándar. Pero todo lo dicho es aplicable a las <strong>propiedades y eventos</strong> especialmente creados para tus componentes.</p>
+<p>El objetivo, conseguido, es aumentar el <strong>rendimiento</strong>. Y un efecto colateral es la <strong>simplificación del API</strong> de AngularJS. Desaparecen casi todas las directivas estructurales. Especialmente las famosas <code>ng-click ng-blur</code> y demás directivas asociadas a eventos. Tampoco se necesitan más las directivas de <code>ng-show</code> y <code>ng-hide</code>.</p>
+<p>Las únicas directivas estructurales que permanecen son <code>*ngIf</code> <code>*ngSwitch</code> y <code>*ngFor</code>. Pero esas merecen tratamiento aparte.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://academia-binaria.com/Introduccion/databinding-el-flujo-de-datos-de-angular2/" data-id="cj976gtxx002iq4jsb51d1ph0" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Angular2/">Angular2</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Introduccion/angular2-di-inyeccion-de-dependencias/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Angular2 DI: Inyección de dependencias
+        
+      </div>
+    </a>
+  
+  
+    <a href="/Introduccion/componentes-los-bloques-de-construccion-de-angular-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Componentes, los bloques de construcción de Angular2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Catégories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Avanzado/">Avanzado</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Introduccion/">Introducción</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Opinion/">Opinión</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Angular2/">Angular2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BackEnd/">BackEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FrontEnd/">FrontEnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Angular2/" style="font-size: 20px;">Angular2</a> <a href="/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tags/BackEnd/" style="font-size: 10px;">BackEnd</a> <a href="/tags/Bootstrap/" style="font-size: 12.5px;">Bootstrap</a> <a href="/tags/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/tags/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/tags/NodeJS/" style="font-size: 17.5px;">NodeJS</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">octubre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">marzo 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">septiembre 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">junio 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">mayo 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">abril 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">marzo 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">enero 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">agosto 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/uncategorized/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/Opinion/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el back</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+          </li>
+        
+          <li>
+            <a href="/Introduccion/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Alberto Basalo<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
