@@ -12,8 +12,8 @@ timezone: Europe/Madrid
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://academia-binaria.com
-root: /
+url: http://agorabinaria.com/academia-binaria-site/
+root: /academia-binaria-site/
 permalink: :category/:title/
 permalink_defaults:
 
