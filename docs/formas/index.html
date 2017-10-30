@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Alberto Basalo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="7 formas de incluir Bootstrap en nuestro proyecto"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Academia Binaria"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>7 formas de incluir Bootstrap en nuestro proyecto - Academia Binaria</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Academia Binaria">
+            <img src="/images/logo-academia-binaria-white.png" class="dib h3" alt="Academia Binaria">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Inicio">
+                    Inicio
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archivos">
+                    Archivos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/cursos.html" 
+                    title="Cursos">
+                    Cursos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contacto.html" 
+                    title="Contacto">
+                    Contacto
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">7 formas de incluir Bootstrap en nuestro proyecto</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">12-11-2015</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Main Post Content -->
+                    <h3 id="1-Descargando-los-archivos"><a href="#1-Descargando-los-archivos" class="headerlink" title="1- Descargando los archivos"></a>1- Descargando los archivos</h3><p>Haz clic en el botón <strong>“Download Bootstrap”</strong> y se descargará una carpeta comprimida, al descomprimirla te encontrarás las versiones compiladas y minificadas de Bootstrap así como los iconos que utiliza:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">bootstrap/</div><div class="line">├── css/</div><div class="line">│   ├── bootstrap.css</div><div class="line">│   ├── bootstrap.css.map</div><div class="line">│   ├── bootstrap.min.css</div><div class="line">│   ├── bootstrap.min.css.map</div><div class="line">│   ├── bootstrap-theme.css</div><div class="line">│   ├── bootstrap-theme.css.map</div><div class="line">│   ├── bootstrap-theme.min.css</div><div class="line">│   └── bootstrap-theme.min.css.map</div><div class="line">├── js/</div><div class="line">│   ├── bootstrap.js</div><div class="line">│   └── bootstrap.min.js</div><div class="line">└── fonts/</div><div class="line">    ├── glyphicons-halflings-regular.eot</div><div class="line">    ├── glyphicons-halflings-regular.svg</div><div class="line">    ├── glyphicons-halflings-regular.ttf</div><div class="line">    ├── glyphicons-halflings-regular.woff</div><div class="line">    └── glyphicons-halflings-regular.woff2</div></pre></td></tr></table></figure>
+<h3 id="2-Para-usuarios-de-GitHub"><a href="#2-Para-usuarios-de-GitHub" class="headerlink" title="2- Para usuarios de GitHub"></a>2- Para usuarios de GitHub</h3><p>Bootstrap es un proyecto en código abierto así que puedes <strong>clonar</strong> o hacer <strong>fork</strong> desde <a href="https://github.com/twbs/bootstrap" target="_blank" rel="external">GitHub</a></p>
+<h3 id="3-Codigo-fuente-original"><a href="#3-Codigo-fuente-original" class="headerlink" title="3- Código fuente original"></a>3- Código fuente original</h3><p>Lo obtienes al hacer clic en el botón <strong>“Download source”</strong>. Lo que obtienes son los archivos <strong>LESS</strong> y <strong>Javascript</strong> originales. Esta opción requiere <strong>Grunt</strong> y <strong>Node.js</strong> y se estructura dentro de la siguiente manera:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">bootstrap/</div><div class="line">├── less/</div><div class="line">├── js/</div><div class="line">├── fonts/</div><div class="line">├── dist/</div><div class="line">│   ├── css/</div><div class="line">│   ├── js/</div><div class="line">│   └── fonts/</div><div class="line">└── docs/</div><div class="line">    └── examples/</div></pre></td></tr></table></figure>
+<h3 id="4-Fans-de-Bower"><a href="#4-Fans-de-Bower" class="headerlink" title="4- Fans de Bower"></a>4- Fans de Bower</h3><p>Si tenemos <strong>Git</strong> y <strong>Bower</strong> instalado simplemente debes teclear en tu terminal:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bower install bootstrap</div></pre></td></tr></table></figure>
+<p>Y el pajarito hará todo el trabajo.</p>
+<h3 id="5-NPM-Install"><a href="#5-NPM-Install" class="headerlink" title="5- NPM Install"></a>5- NPM Install</h3><p>Tan fácil como con Bower solo que esta vez debes teclear en tu terminal:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install bootstrap</div></pre></td></tr></table></figure>
+<h3 id="6-Version-en-SASS"><a href="#6-Version-en-SASS" class="headerlink" title="6- Versión en SASS"></a>6- Versión en SASS</h3><p>A pesar de que <strong>Bootstrap 3 fue escrito en LESS</strong> (aspecto que cambiará en la versión 4, que será en SASS), existe una versión para SASS que puedes descargar en el botón <strong>“Download SASS”</strong> para facilitar su inclusión en proyectos en <strong>Rails</strong>, <strong>Compass</strong> o solo <strong>SASS</strong>.</p>
+<h3 id="7-CDN"><a href="#7-CDN" class="headerlink" title="7- CDN"></a>7- CDN</h3><p>Por último, si no quieres descargarte nada puedes utilizar los links del proveedor de <strong>CDN</strong> y referenciarlos en tu HTML:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- CSS --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Tema opcional --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- JavaScript --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Esta es la manera más fácil pero no podrás trabajar sin conexión a internet.</p>
+
+                    
+                    <!-- Tags -->
+                    
+                        <div class="tags-container">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Bootstrap/">#Bootstrap</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="sidebar fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <h1 class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/alberto-basalo-author.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Alberto Basalo">
+        </div>
+        <p class="about-text dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            ALBERTO BASALO
+        </p>
+    </article>
+</h1>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Artículos recientes</h3>
+    
+        <p>
+            <a href="/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el b</a>
+        </p>
+    
+        <p>
+            <a href="/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var contentElement = document.querySelector('.content');
+        var sidebar = document.querySelector('.sidebar');
+        var change = false;
+
+        changePosition = function (position, top, right) {
+            sidebar.style.setProperty('position', position);
+            sidebar.style.setProperty('top', top);
+            sidebar.style.setProperty('right', '150px');
+        }
+
+        changeSidebarPosition = function () {
+            if (change) {
+                changePosition('fixed', '0');
+            } else {
+                changePosition('unset', 'none');
+            }
+        }
+
+        window.addEventListener('scroll', function(event) {
+            if (contentElement.getBoundingClientRect().top <= 0) {
+                if (!change) {
+                    change = true;
+                    changeSidebarPosition();
+                }
+            }
+            if (contentElement.getBoundingClientRect().top >= 0) {
+                if (change) {
+                    change = false
+                    changeSidebarPosition();
+                }
+            }
+        });
+    }); 
+</script>
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:info@agorabinaria.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2017 Ágora Binaria. Av Primera C10, Edif Abanca Innova. CP: 15190, A Coruña
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

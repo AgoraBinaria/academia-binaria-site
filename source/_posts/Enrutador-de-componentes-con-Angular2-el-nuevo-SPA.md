@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: enrutado-con-angular2-el-nuevo-spa
 id: 15
-updated: '2016-12-07 18:23:02'
-date: 2016-06-02 08:52:04
+updated: 2016/12/07 18:23:02
+date: 2016/06/02 08:52:04
 ---
 
 > Código asociado en [angular2/6-routing/](https://github.com/AcademiaBinaria/angular2/tree/master/6-routing)

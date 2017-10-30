@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: introduccion-a-bootstrap
 id: 5
-updated: '2015-11-12 15:56:16'
-date: 2015-11-05 17:44:55
+updated: 2015/11/12 15:56:16
+date: 2015/11/05 17:44:55
 ---
 
 Bootstrap es un conjunto de archivos **HTML**, **CSS** y **Javascript** bien definidos y exhaustivamente testados que componen una sólida estructura sobre la cual construir tu proyecto web o aplicación.

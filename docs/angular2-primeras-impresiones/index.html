@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Alberto Basalo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Angular2, la evolución de la plataforma"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Academia Binaria"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Angular2, la evolución de la plataforma - Academia Binaria</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Academia Binaria">
+            <img src="/images/logo-academia-binaria-white.png" class="dib h3" alt="Academia Binaria">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Inicio">
+                    Inicio
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archivos">
+                    Archivos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/cursos.html" 
+                    title="Cursos">
+                    Cursos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contacto.html" 
+                    title="Contacto">
+                    Contacto
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Angular2, la evolución de la plataforma</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">06-05-2016</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Main Post Content -->
+                    <p>Coincidiendo con la <strong>ngConf 2016</strong> acaba de presentarse la esperada <em>Release Candidate</em> de <strong><a href="https://angular.io/" target="_blank" rel="external">Angular 2</a></strong>. Nunca antes una versión de una herramienta para desarrolladores había causado tal expectación. Hace ya 18 meses que se había anunciado como una evolución rupturista con respecto a <strong>AngularJS 1</strong>. Y ahora esa ruptura se ha materializado. </p>
+<p>Los programadores somos muy conscientes de que <strong>lo único estable es el cambio</strong>. Asumimos, por experiencia, que los cambios en una tecnología son evoluciones graduales constantes. Pero esto no es así en <strong>Angular2</strong>, y lo sabemos desde su anuncio hace año y medio. Desde ese momento todos fuimos advertidos de que estábamos ante otra cosa. Algo nuevo que sólo comparte paternidad y nombre con la anterior versión.</p>
+<h2 id="Un-poco-de-historia"><a href="#Un-poco-de-historia" class="headerlink" title="Un poco de historia"></a>Un poco de historia</h2><p>En septiembre de 2011 me tropecé con AngularJS buscando una alternativa a <em>Backbone</em> y <em>KnockOut</em>. Yo venía del mundo encorsetado del desarrollo para multinacionales basado en tecnologías <em>serias</em> como .Net y Java. Necesitaba un cambio, una apertura… pero con ciertas garantías. </p>
+<p>En esos tiempos el desarrollo web vivía su eclosión de la mano del HTML5. Era un mundo de <em>startups</em> (ahí estaba yo), de <em>earlyadopters</em> y de picaflores tecnológicos. Buscábamos <strong>tecnologías simples, universales y de bajo coste</strong>. Muy en la línea con el método empresarial <em>lean</em>. Pero el riesgo de escoger el framework perdedor era enorme, y cada pocos meses aparecían o desaparecían candidatos. </p>
+<p>Angular superó a sus contendientes por dos razones: una fue (rellena aquí con el argumentario técnico que más te satisfaga) y la otra fue <strong>Google</strong>. Un padrino así abre muchas puertas y da el punto de valor suficiente para alejarte de Oracle o Microsoft sin temor.</p>
+<p>En enero de 2013 abandoné mi sueño de convertirme en el nuevo Zuckerberg. Volví al viejo sector servicios fundando una empresa de consultoría. Aprovechando los conocimientos y métodos ágiles aprendidos por el camino <em>startup</em>, ofrecimos desarrollos <em>low cost</em> para pequeñas empresas. Para complementar los servicios empecé a impartir cursos sobre estas tecnologías a otros desarrolladores. Al principio sólo acudían <em>freelances</em> y pequeñas consultoras.</p>
+<p>En marzo de 2015 tuve los primeros contactos con <strong>grandes empresas</strong> tanto a nivel docente como consultor. Volví a un mundo familiar pero con una tecnología distinta. AngularJS había crecido de manera exponencial en número de desarrolladores. Pero ahora estaba jugando en las grandes ligas.</p>
+<p>Y de repente aparecieron los problemas.</p>
+<h3 id="Dos-problemas"><a href="#Dos-problemas" class="headerlink" title="Dos problemas"></a>Dos problemas</h3><h4 id="El-lenguaje"><a href="#El-lenguaje" class="headerlink" title="El lenguaje"></a>El lenguaje</h4><p>JavaScript es dinámico, asíncrono y nada modular. Ideal para espíritus libres, pero una amenaza para equipos estrictos. Y necesitas control si vas a migrar grandes aplicaciones de negocio, ERPs , banca, servicios de administración pública. </p>
+<p>Tampoco se emocionaban los arquitectos de software con las <strong>herramientas</strong>. Como siempre todo empezó de manera sencilla: ficheros y editores de texto. Luego llegó la minificación, la combinación, el pre y pos procesado, las anotaciones, la documentación, las pruebas… Cada mes era mayor el arsenal de micro herramientas que había que orquestar.</p>
+<h4 id="La-escalabilidad"><a href="#La-escalabilidad" class="headerlink" title="La escalabilidad"></a>La escalabilidad</h4><p>Las aplicaciones empresariales son pesadas en lógica y datos. La falta de un cargador dinámico decente hacía muy difícil reducir el tiempo antes del primer impacto. Una vez lanzadas las aplicaciones iban razonablemente bien.<br>Hasta que alguien creaba informes editables. Con miles de datos de los que preocuparse la técnica del <strong>doble binding</strong> saturaba los <em>watchers</em>. </p>
+<p>AngularJS moría de éxito. </p>
+<h3 id="Dos-soluciones"><a href="#Dos-soluciones" class="headerlink" title="Dos soluciones"></a>Dos soluciones</h3><h4 id="El-lenguaje-TypeScript"><a href="#El-lenguaje-TypeScript" class="headerlink" title="El lenguaje: TypeScript"></a>El lenguaje: TypeScript</h4><p>La lenta evolución de JavaScript parece haber salido de su hibernación. En el último año disfrutamos ya de las mejoras de <strong>ES6 (ES2015)</strong> y empezamos a probar <strong>ES7 (2016)</strong>. Pero no es suficiente.</p>
+<p>Para grandes desarrollos, con miles de líneas de código, toda ayuda es poca. <strong>TypeScript</strong> asume todas las mejoras y propuestas del más avanzado JS estándar y además aporta <strong>tipos</strong>. Esa es la principal razón de su elección como lenguaje de cabecera en AngularJS2.</p>
+<p>Al rededor de esa piedra angular crece el ecosistema de <strong>herramientas</strong>. Principalmente <a href="https://code.visualstudio.com/" target="_blank" rel="external">VSCode</a> que lo aprovecha ofreciendo <em>intellisense</em> y <em>refactoring</em> a la altura de los grandes.</p>
+<p>La oferta se completa con <em>Interfaces</em>, <em>Generics</em> y otras novedades que harán las delicias de los programadores orientados a objetos. </p>
+<p>Cabe señalar que TypeScript no es ni mucho menos obligatorio. <strong>Se puede desarrollar en ES5 y ES6</strong> sin problemas. Pero la idea, los ejemplos, la documentación y los blogueros haremos que tu vida sea más fácil si escoges TypeScript.</p>
+<h4 id="La-plataforma-renderizacion-observables-componentes-carga-dinamica-SEO-apps-herramientas…"><a href="#La-plataforma-renderizacion-observables-componentes-carga-dinamica-SEO-apps-herramientas…" class="headerlink" title="La plataforma: renderización, observables, componentes, carga dinámica, SEO, apps, herramientas…"></a>La plataforma: renderización, observables, componentes, carga dinámica, SEO, apps, herramientas…</h4><p>El <strong>doble binding</strong> era el plato estrella de AngularJS, pero salía caro. Así que se replanteó una solución que no requiriese un <em>pull</em> constante preguntando el estado de un montón de variables. Las respuesta vino de la mano de otra colaboración con los de Redmond: <a href="http://reactivex.io/" target="_blank" rel="external">ReactiveX</a>. Este cambio será el primero al que te enfrentes si vienes de las conocidas versiones 1.</p>
+<p>El mismo <strong>patrón observable</strong> se aplicó también a las comunicaciones HTTP. Nuestra aplicación es ahora un conjunto de <em>streams</em> que emiten eventos. Solo tenemos que suscribirnos y observar el estado cambiante de nuestro modelo. Resultado, aplicaciones hasta <strong>cinco veces más rápidas</strong>.</p>
+<p>Los principios de encapsulación, modularidad y reutilización ya estaban en el ADN de AngularJS. Pero no era fácil implementarlos con las viejas directivas. Desde la versión 1.5 disponemos de <strong>componentes</strong>. Esta versión puente trae una simplificación y una guía sobre como estructurar aplicaciones. En AngularJS 2 van más allá, y tal como habían amenazado, matan al controlador y coronan al componente como nuevo rey del <em>front end</em>.</p>
+<p>La <strong>inyección de dependencias</strong> fue uno de los grandes aciertos iniciales de AngularJS 1. Pero con el tiempo se convirtió en una rémora para crear grandes SPAs, pues requería disponer de toda la lógica, todo tu código, desde el primer segundo. Este problema se ha resuelto, aunque de forma demasiado tediosa. Hay margen de mejora en la actual implementación y espero que se vaya simplificando.</p>
+<p>Uno de los pocos puntos débiles de AngularJS, y otros frameworks <em>client side</em>, era la dificultad para la indexación <strong>SEO on site</strong>. La solución normalmente pasaba por algún tipo de <em>prerenderizado</em> más o menos engorroso. Con la aparición de <a href="https://universal.angular.io/" target="_blank" rel="external">Angular Universal</a>, podemos ejecutar <strong>Angular en el servidor</strong>. Esto abre las puertas al SEO y a la reducción de la espera en la primera visita.</p>
+<p>Las aplicaciones híbridas han sido la solución <em>low cost</em> para que cualquier empresa accediese a los elitistas mercados de aplicaciones para móviles. Pero la solución no era perfecta. Con el <a href="https://mobile.angular.io/" target="_blank" rel="external">Angular Mobile Tookit</a> se ofrecen <strong>aplicaciones progresivas</strong> que compiten en rendimiento y funcionalidad con las nativas.</p>
+<p>Poner en marcha y depurar una aplicación moderna de gran tamaño requiere herramientas a la altura. La oferta en este caso es total: </p>
+<ul>
+<li><a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a> una herramienta en línea de comandos para generar aplicaciones preconfiguradas</li>
+<li><a href="https://augury.angular.io/" target="_blank" rel="external">Augury</a> para depurar y visualizar en el navegador el estado del programa</li>
+<li><a href="">Protractor</a> para los tests e2e</li>
+<li><a href="https://angular.io/styleguide" target="_blank" rel="external">Guías de estilo</a> y analizadores de código… </li>
+</ul>
+<h4 id="Una-alternativa"><a href="#Una-alternativa" class="headerlink" title="Una alternativa"></a>Una alternativa</h4><p><a href="https://facebook.github.io/react/" target="_blank" rel="external">React</a>, la propuesta de Facebook para el desarrollo web, es una herramienta formidable. Rápido en ejecución, más cercano al estándar JS y mucho menos exigente en cuanto a herramientas. </p>
+<p>Parte con la enorme desventaja numérica que supone el más de un millón de programadores que ya conocen AngularJS y el ecosistema de librerías, componentes y material docente que ha surgido a su alrededor.</p>
+<p>Será por esto último que aún no ha enganchado en la gran empresa. Por tanto aún no tira de ofertas de trabajo ni genera el ruido de la apuesta de Google. Eso sí, merece mucho la pena conocerlo, e incluso incorporarlo en algún caso junto a Angular 2.   </p>
+<h2 id="Angular-2-no-es-plataforma-para-aficionados"><a href="#Angular-2-no-es-plataforma-para-aficionados" class="headerlink" title="Angular 2 no es plataforma para aficionados"></a>Angular 2 no es plataforma para aficionados</h2><p>El resumen es que AngularJS 1.x ha mutado <strong>de framework a plataforma</strong> en Angular 2. En este sentido estará cada vez más orientada a grandes desarrollos empresariales, y a salir definitivamente del navegador y ocupar servidores, escritorios y teléfonos. </p>
+<p>Seguro que requiere un gran esfuerzo de aprendizaje por su novedades radicales. Seguro que por el camino habrá giros por su bisoñez y amplitud. Pero seguro que estamos ante la <strong>plataforma de desarrollo empresarial</strong> con mejor futuro. De momento.</p>
+<blockquote>
+<p>En <a href="https://docs.google.com/presentation/d/1VyMGTwiM7HmNMdSCXrrYpHIej-Y8ZwZKCan7KMqvdCA/edit?usp=sharing" target="_blank" rel="external">esta presentación</a> tienes un resumen rápido de mis impresiones acerca de Angular2, y de cómo empezar a programar aplicaciones universales.</p>
+</blockquote>
+
+                    
+                    <!-- Tags -->
+                    
+                        <div class="tags-container">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Angular2/">#Angular2</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="sidebar fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <h1 class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/alberto-basalo-author.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Alberto Basalo">
+        </div>
+        <p class="about-text dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            ALBERTO BASALO
+        </p>
+    </article>
+</h1>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Artículos recientes</h3>
+    
+        <p>
+            <a href="/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el b</a>
+        </p>
+    
+        <p>
+            <a href="/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var contentElement = document.querySelector('.content');
+        var sidebar = document.querySelector('.sidebar');
+        var change = false;
+
+        changePosition = function (position, top, right) {
+            sidebar.style.setProperty('position', position);
+            sidebar.style.setProperty('top', top);
+            sidebar.style.setProperty('right', '150px');
+        }
+
+        changeSidebarPosition = function () {
+            if (change) {
+                changePosition('fixed', '0');
+            } else {
+                changePosition('unset', 'none');
+            }
+        }
+
+        window.addEventListener('scroll', function(event) {
+            if (contentElement.getBoundingClientRect().top <= 0) {
+                if (!change) {
+                    change = true;
+                    changeSidebarPosition();
+                }
+            }
+            if (contentElement.getBoundingClientRect().top >= 0) {
+                if (change) {
+                    change = false
+                    changeSidebarPosition();
+                }
+            }
+        });
+    }); 
+</script>
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:info@agorabinaria.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2017 Ágora Binaria. Av Primera C10, Edif Abanca Innova. CP: 15190, A Coruña
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

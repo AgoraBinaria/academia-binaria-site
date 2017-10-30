@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Alberto Basalo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Angular2 DI: Inyección de dependencias"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Academia Binaria"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Angular2 DI: Inyección de dependencias - Academia Binaria</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Academia Binaria">
+            <img src="/images/logo-academia-binaria-white.png" class="dib h3" alt="Academia Binaria">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Inicio">
+                    Inicio
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archivos">
+                    Archivos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/cursos.html" 
+                    title="Cursos">
+                    Cursos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contacto.html" 
+                    title="Contacto">
+                    Contacto
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Angular2 DI: Inyección de dependencias</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">30-05-2016</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Main Post Content -->
+                    <blockquote>
+<p>Código asociado en <a href="https://github.com/AcademiaBinaria/angular2/tree/master/4-injection" target="_blank" rel="external">angular2/4-injection/</a></p>
+</blockquote>
+<p>AngularJS2 tiene vocación de <em>framework</em> para grandes aplicaciones de negocio. Los grandes desarrollos requieren <strong>modularidad en el código</strong>. En AngularJS se resuelve mediante la Inyección de Dependencias, siguiendo el conocido patrón <em><a href="https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias" target="_blank" rel="external">Dependency Injection</a></em>. </p>
+<p>Los cambios en la versión 2 son sobre todo sintácticos, pero también conceptuales. Se mantiene el mismo objetivo, permitir hacer <strong>aplicaciones de negocio con HTML y JavaScript</strong> de manera controlable.</p>
+<h2 id="Modulos-componentes-y-servicios"><a href="#Modulos-componentes-y-servicios" class="headerlink" title="Módulos, componentes y servicios"></a>Módulos, componentes y servicios</h2><p>En AngularJS 1 teníamos muy presente el concepto de <strong>módulo</strong>. Rara era la aplicación que no comenzase con el mítico <code>angular.module(&#39;miAplicacion&#39;)</code>. Dada la carencia de un sistema modular nativo en <em>JavaScript</em>, AngularJS nos proveía de uno propio. </p>
+<p>Hoy en día se nos sugiere que usemos las versiones avanzadas de <em>JS</em>, o mejor aún <em>TypeScript</em>. Estos lenguajes nos ofrecen las instrucciones <code>export</code> e <code>import</code> que permiten definir <strong>módulos estancos en ficheros</strong> independientes. Nunca más el engorroso envolvimiento <em>IIFE</em> <code>(function () { … }())</code>.</p>
+<p>A partir de ahí es el programador el que selectivamente <strong>exporta funcionalidad que importará para ser consumida</strong> mas tarde. De este modo, Angular se desentiende de la creación de módulos de código y se centra en la comunicación entre los objetos que componen la aplicación.</p>
+<h3 id="Componentes"><a href="#Componentes" class="headerlink" title="Componentes"></a>Componentes</h3><p>Son los bloques de construcción agrupables en compuestos que forman la interfaz visual de una aplicación. Encapsulan <strong>la vista, los datos y la lógica</strong> para interactuar con el usuario. </p>
+<p>Ni la vista ni la lógica deben crecer y realizar tareas que no sean de su exclusiva capa de responsabilidad. Esas tareas debe ser delegadas en otros objetos. </p>
+<blockquote>
+<p>Modelo de composición de componentes visuales para crear vistas complejas. La comunicación o <a href="../databinding-el-flujo-de-datos-de-angular2/">Data Flow</a> se realiza de manera declarativa. Enviando datos a las propiedades de los hijos y esperando eventos con respuestas.</p>
+</blockquote>
+<p><img src="/images/ng2-Component-DataFlow.jpg" alt="Composición mediante componentes"></p>
+<h3 id="Servicios"><a href="#Servicios" class="headerlink" title="Servicios"></a>Servicios</h3><p>Los servicios serán <strong>objetos especializados y reutilizables</strong> por otros servicios y componentes. En su definición debes aplicar los mismos principios de arquitectura de software que ya conoces y aplicas en <em>lenguajes clásicos tipo Java o C#.net</em>.</p>
+<p>La sintaxis de la comunicación involucra varios bloques en ambos lados del canal: </p>
+<ul>
+<li>la definición del servicio decorado como <code>@Injectable()</code> en el proveedor, </li>
+<li>la exportación en el proveedor y la importación en el consumidor, </li>
+<li>el registro en el array <code>providers:[]</code> del componente consumidor (o mejor del módulo) conumidor y </li>
+<li>el consumo en el constructor del componente o servicio consumidor.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; MovimientosService, Movimiento &#125; <span class="keyword">from</span> <span class="string">'../shared/'</span>;</div><div class="line">@Component(&#123;</div><div class="line">  selector: <span class="string">'movimiento'</span>,</div><div class="line">  templateUrl: <span class="string">'movimiento.component.html'</span>,</div><div class="line">  providers: [MovimientosService] </div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MovimientoComponent</span> </span>&#123;</div><div class="line">  movimiento: Movimiento</div><div class="line">  <span class="keyword">constructor</span>(public movimientosService: MovimientosService) &#123; &#125;</div><div class="line">  guardarMovimiento() &#123;</div><div class="line">    <span class="keyword">this</span>.movimientosService.guardarMovimiento(<span class="keyword">this</span>.movimiento)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="/images/ng2-DI-component-service.jpg" alt="Inyección de servicios en componentes "></p>
+<h3 id="Directivas"><a href="#Directivas" class="headerlink" title="Directivas"></a>Directivas</h3><p>Las directivas eran el ADN de AngularJS1. Ahora han mutado en <strong>componentes reutilizables</strong> como elementos en las vistas de otros componentes de rango superior. Pero la idea es la misma, desglosar las plantillas de HTML en bloques con un propósito único. </p>
+<p>La sintaxis de las directivas es similar: </p>
+<ul>
+<li>la definición del servicio decorado como <code>@Injectable()</code> en el componente hijo, </li>
+<li>la exportación del hijo y la importación en el padre, </li>
+<li>el registro en el array <code>directives:[]</code> del componente padre (o del módulo padre) y </li>
+<li>el consumo declarativo en la plantilla de la vista padre.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; MovimientoComponent &#125; <span class="keyword">from</span> <span class="string">'./movimiento'</span>;</div><div class="line">@Component(&#123;</div><div class="line">  selector: <span class="string">'injection-app'</span>,</div><div class="line">  template: <span class="string">'&lt;h1&gt;</span></div><div class="line"><span class="string">              &#123;&#123;titulo&#125;&#125;</span></div><div class="line"><span class="string">            &lt;/h1&gt;</span></div><div class="line"><span class="string">            &lt;movimiento&gt;&lt;/movimiento&gt;'</span>,</div><div class="line">  directives:[MovimientoComponent]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">InjectionAppComponent</span> </span>&#123;</div><div class="line">  titulo = <span class="string">'Inyectores listos!'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="/images/ng2-DI-component-directive.jpg" alt="Inyección de directivas en componentes"></p>
+<h2 id="Registro"><a href="#Registro" class="headerlink" title="Registro"></a>Registro</h2><p>La inyección de las dependencias <strong>funciona de manera jerárquica</strong> en AngularJS 2. Cuando un módulo registra una dependencia la pone a disposición de todos sus componentes hijos. Es más, si algún hijo la volviese a registrar se le proveería de otra instancia. </p>
+<p>Esta copia puede provocar efectos colaterales indeseados. Para <strong>compartir datos</strong> o ahorrar memoria se recomienda registrar las dependencias lo más arriba posible. Esto siempre sin sacrificar la modularidad o la escalabilidad de aplicaciones que requieran <em>lazy loading</em>.</p>
+<blockquote>
+<p>Atención a la copia de <em>routeService</em> que se registra por segunda vez. No importa que ya la haya registrado su padre. Otro registro implica otra instancia.</p>
+</blockquote>
+<p><img src="/images/ng2-Arbol-de-dependencias.jpg" alt="Jerarquía de dependencias en AngularJS"></p>
+<p>Para ciertos casos, AngularJS 2 permite modelos de inyección más avanzados. Mediante el uso de <strong>factorías y el registro de cadenas</strong> con los nombres de los servicios facilita la inyección a voluntad o la carga diferida.</p>
+<blockquote>
+<p>Algunas de estas posibilidades están siendo retocadas durante la actual <em>Release Candidate</em>, y se esperan cambios de cara a las próxima versión estable.</p>
+</blockquote>
+<p>El viejo principio de <em>divide y vencerás</em> se aplica rotundamente en las aplicaciones Angular 2. Si creas <strong>módulos reutilizables</strong> estarás sentando las bases para crear grandes aplicaciones de negocio con AngularJS.</p>
+
+                    
+                    <!-- Tags -->
+                    
+                        <div class="tags-container">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Angular2/">#Angular2</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="sidebar fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <h1 class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/alberto-basalo-author.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Alberto Basalo">
+        </div>
+        <p class="about-text dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            ALBERTO BASALO
+        </p>
+    </article>
+</h1>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Artículos recientes</h3>
+    
+        <p>
+            <a href="/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el b</a>
+        </p>
+    
+        <p>
+            <a href="/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var contentElement = document.querySelector('.content');
+        var sidebar = document.querySelector('.sidebar');
+        var change = false;
+
+        changePosition = function (position, top, right) {
+            sidebar.style.setProperty('position', position);
+            sidebar.style.setProperty('top', top);
+            sidebar.style.setProperty('right', '150px');
+        }
+
+        changeSidebarPosition = function () {
+            if (change) {
+                changePosition('fixed', '0');
+            } else {
+                changePosition('unset', 'none');
+            }
+        }
+
+        window.addEventListener('scroll', function(event) {
+            if (contentElement.getBoundingClientRect().top <= 0) {
+                if (!change) {
+                    change = true;
+                    changeSidebarPosition();
+                }
+            }
+            if (contentElement.getBoundingClientRect().top >= 0) {
+                if (change) {
+                    change = false
+                    changeSidebarPosition();
+                }
+            }
+        });
+    }); 
+</script>
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:info@agorabinaria.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2017 Ágora Binaria. Av Primera C10, Edif Abanca Innova. CP: 15190, A Coruña
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -6,8 +6,8 @@ categories:
 - Avanzado 
 permalink: ng-el-ecosistema-de-angularjs
 id: 2
-updated: '2015-08-20 14:45:59'
-date: 2015-08-15 10:55:14
+updated: 2015/08/20 14:45:59
+date: 2015/08/15 10:55:14
 ---
 
 Lista de componentes para ampliar AngularJS que te ayudarán a mejorar tus proyectos.

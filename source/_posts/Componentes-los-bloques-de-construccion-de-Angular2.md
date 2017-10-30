@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: componentes-los-bloques-de-construccion-de-angular-2
 id: 26
-updated: '2016-11-07 18:39:26'
-date: 2016-05-23 14:07:27
+updated: 2016/11/07 18:39:26
+date: 2016/05/23 14:07:27
 ---
 
 >Código asociado en GitHub: [angular2/2-modulos/](https://github.com/AcademiaBinaria/angular2/tree/master/2-modulos) 

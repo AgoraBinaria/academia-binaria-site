@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Alberto Basalo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Enrutador de componentes con Angular2 el nuevo SPA"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Academia Binaria"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Enrutador de componentes con Angular2 el nuevo SPA - Academia Binaria</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Academia Binaria">
+            <img src="/images/logo-academia-binaria-white.png" class="dib h3" alt="Academia Binaria">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Inicio">
+                    Inicio
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archivos">
+                    Archivos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/cursos.html" 
+                    title="Cursos">
+                    Cursos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contacto.html" 
+                    title="Contacto">
+                    Contacto
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Enrutador de componentes con Angular2 el nuevo SPA</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">02-06-2016</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Main Post Content -->
+                    <blockquote>
+<p>Código asociado en <a href="https://github.com/AcademiaBinaria/angular2/tree/master/6-routing" target="_blank" rel="external">angular2/6-routing/</a></p>
+</blockquote>
+<p>La capacidad de gestionar las <strong>rutas en el cliente</strong> es una de las grandes ventajas de <em>AngularJS</em>. En la versión 1 nos ofrecían una solución demasiado simple que obligaba a usar librerías de terceros como la famosa <a href="https://github.com/angular-ui/ui-router" target="_blank" rel="external">ui-router</a>. Hemos esperado años la promesa de un nuevo <em>enrutador</em> compatible con las versiones 1 y 2. El resultado es <strong>@angular/router</strong>.</p>
+<p>De todo <em>Angular2</em>, este es el componente que más ha cambiado durante la fase <em>Release Candidate</em>. Actualmente confiamos en que las pequeñas dudas se resuelvan definitivamente y podamos relajarnos creando modernos desarrollos <strong>SPA</strong>.</p>
+<h2 id="Modulo-de-enrutado-en-base-a-componentes"><a href="#Modulo-de-enrutado-en-base-a-componentes" class="headerlink" title="Módulo de enrutado en base a componentes"></a>Módulo de enrutado en base a componentes</h2><p>Las aplicaciones Angular2 son <a href="http://academia-binaria.com/componentes-los-bloques-de-construccion-de-angular-2/" target="_blank" rel="external">árboles de módulos</a>. Al menos el módulo raíz <code>AppModule</code> y cuantos módulos funcionales nos hagan falta. Utilizando <code>angular-cli</code> podemos crear módulos con la capacidad de enrutado generada en… un módulo específico.  </p>
+<p>A ver si desbrozamos algo este bosque de módulos.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng <span class="keyword">new</span> mi-aplicacion --routing <span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>Tanto para la raíz como para las ramas funcionales se creará un fichero. En la raíz será llamado <code>app-routing.module.ts</code> con un contenido como este: </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** Módulos de enrutado de Angular2 */</span></div><div class="line"><span class="keyword">import</span> &#123; RouterModule, Routes &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"></div><div class="line"><span class="comment">// Array con las rutas de este módulo. Ninguna funcional.</span></div><div class="line"><span class="keyword">const</span> routes: Routes = [</div><div class="line">  &#123; <span class="attr">path</span>: <span class="string">''</span>, <span class="attr">redirectTo</span>: <span class="string">''</span> &#125;,</div><div class="line">  &#123; <span class="attr">path</span>: <span class="string">'inicio'</span>, <span class="attr">redirectTo</span>: <span class="string">''</span> &#125;,</div><div class="line">  &#123; <span class="attr">path</span>: <span class="string">'**'</span>, <span class="attr">redirectTo</span>: <span class="string">''</span>, <span class="attr">pathMatch</span>: <span class="string">'full'</span> &#125;</div><div class="line">];</div><div class="line"></div><div class="line">@NgModule(&#123;</div><div class="line">  imports: [</div><div class="line">    RouterModule.forRoot(routes) <span class="comment">// configuración para el módulo raíz</span></div><div class="line">  ],</div><div class="line">  exports: [</div><div class="line">    RouterModule <span class="comment">// se importará desde el módulo padre</span></div><div class="line">  ]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppRoutingModule</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+<p>Este <strong>módulo</strong> de un único fichero sirve <strong>para definir las rutas de otro módulo padre</strong> asociado, <code>app.module.ts</code>, el cual quedará más o menos así:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// importación de módulo de enrutado asociado</span></div><div class="line"><span class="keyword">import</span> &#123; AppRoutingModule &#125; <span class="keyword">from</span> <span class="string">'./app-routing.module'</span>;</div><div class="line"><span class="comment">// importación de otros módulos de funcionalidad</span></div><div class="line"><span class="keyword">import</span> &#123; HomeModule &#125; <span class="keyword">from</span> <span class="string">'./home/home.module'</span>;</div><div class="line"><span class="comment">// decorador que define un módulo</span></div><div class="line">@NgModule(&#123;</div><div class="line">  declarations: [ AppComponent ], </div><div class="line">  imports: [</div><div class="line">    BrowserModule,</div><div class="line">    FormsModule,</div><div class="line">    HttpModule,</div><div class="line">    HomeModule, <span class="comment">// el módulo funcional para la 'página home'</span></div><div class="line">    AppRoutingModule <span class="comment">// el módulo de rutas ya configurado</span></div><div class="line">  ], </div><div class="line">  providers: [] </div><div class="line">  bootstrap: [ AppComponent ] </div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppModule</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+<h2 id="Modulos-funcionales"><a href="#Modulos-funcionales" class="headerlink" title="Módulos funcionales"></a>Módulos funcionales</h2><p>El módulo raíz es fundamental pero nada operativo. Toda el que sea de interés para los usuarios estará en módulos funcionales. En las aplicaciones SPA es una buena práctica crear <strong>un módulo por cada ruta</strong> principal. Incluida la página home. Por ejemplo usando el siguiente comando:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng generate <span class="built_in">module</span> home --routing <span class="literal">true</span></div></pre></td></tr></table></figure>
+<p>Aparece un fichero llamado <code>home-routing-module.ts</code>. Este módulo se debe configurar para que gestione sus propias rutas.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Routes, RouterModule &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</div><div class="line"><span class="comment">/** Componente enrutable */</span></div><div class="line"><span class="keyword">import</span> &#123; HomeComponent &#125; <span class="keyword">from</span> <span class="string">'./home.component'</span>;</div><div class="line"><span class="comment">/** Rutas asociadas a componentes */</span></div><div class="line"><span class="keyword">const</span> routes: Routes = [</div><div class="line">  &#123; <span class="attr">path</span>: <span class="string">''</span>, <span class="attr">component</span>: HomeComponent &#125;,</div><div class="line">];</div><div class="line"><span class="comment">/** array de componentes enrutables */</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> routableComponents = [</div><div class="line">  HomeComponent</div><div class="line">];</div><div class="line">@NgModule(&#123;</div><div class="line">  imports: [</div><div class="line">    RouterModule.forChild(routes) <span class="comment">// Para módulo funcional</span></div><div class="line">  ],</div><div class="line">  exports: [</div><div class="line">    RouterModule <span class="comment">// listo para importarlo en HomeModule</span></div><div class="line">  ]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeRoutingModule</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+<p>Se crean dos arrays relacionados. EL principal, <code>routes</code>, contendrá las <strong>rutas pareadas con sus componentes</strong> respectivos.<br>Los cuales también se exportan directamente en la variable <code>routableComponents</code>. Esto se hace por comodidad. Para no tener que volver a importarlos en la declaración del módulo padre, que quedará así:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; CommonModule &#125; <span class="keyword">from</span> <span class="string">'@angular/common'</span>;</div><div class="line"><span class="comment">/** Importación de las rutas y sus componentes */</span></div><div class="line"><span class="keyword">import</span> &#123; HomeRoutingModule, routableComponents &#125; <span class="keyword">from</span> <span class="string">'./home-routing.module'</span>;</div><div class="line">@NgModule(&#123;</div><div class="line">  imports: [</div><div class="line">    CommonModule,</div><div class="line">    HomeRoutingModule <span class="comment">// el módulo que sabe enrutar</span></div><div class="line">  ],</div><div class="line">  declarations: [</div><div class="line">    routableComponents <span class="comment">// los componentes de enrutado</span></div><div class="line">  ]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeModule</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+<h3 id="Carga-de-componentes-segun-la-ruta"><a href="#Carga-de-componentes-segun-la-ruta" class="headerlink" title="Carga de componentes según la ruta"></a>Carga de componentes según la ruta</h3><p>Todo este trabajo de configuración se materializa en las <strong>vistas</strong>. Necesitaremos un lugar dónde inyectar el <strong>componente de turno asociado a la ruta</strong> actual. Presentamos el <code>router-outlet</code>. Y para que la aplicación pueda llevarnos de un lugar a otro usaremos  la directiva <code>routerLink</code>. </p>
+<p>De forma que la plantilla raíz <code>app.component.html</code> quedará normalmente así:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--menú de navegación, sin href--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/']"</span>&gt;</span>Inicio<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/login']"</span>&gt;</span>Log In<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/contacto']"</span>&gt;</span>Contacto<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--Este componente nativo hace que el enrutador cargue una página dinámicamente--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="Rutas-hijas-y-con-parametros"><a href="#Rutas-hijas-y-con-parametros" class="headerlink" title="Rutas hijas y con parámetros"></a>Rutas hijas y con parámetros</h2><p>De poco vale un enrutador que sólo atienda a los casos sencillos. Las aplicaciones profesionales plantean mayores retos. </p>
+<h3 id="Rutas-hijas"><a href="#Rutas-hijas" class="headerlink" title="Rutas hijas"></a>Rutas hijas</h3><p>Un ejemplo son las <strong>rutas anidadas</strong>, aquí llamadas rutas hijas. Son aquellas en las que una parte de la visualización es común y otra depende de la ruta concreta.</p>
+<p>Veamos un ejemplo dónde se pretende dar de alta y mostrar una lista de elementos. La base de cualquier <em>CRUD</em>. Así quedaría el fichero <code>movimientos-routing.module.ts</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** Importación de los componentes enrutables */</span></div><div class="line"><span class="keyword">import</span> &#123; MovimientosComponent &#125; <span class="keyword">from</span> <span class="string">'./movimientos.component'</span>;</div><div class="line"><span class="keyword">import</span> &#123; ListaComponent &#125; <span class="keyword">from</span> <span class="string">'./lista/lista.component'</span>;</div><div class="line"><span class="keyword">import</span> &#123; NuevoComponent &#125; <span class="keyword">from</span> <span class="string">'./nuevo/nuevo.component'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> routes: Routes = [</div><div class="line">  &#123;</div><div class="line">    path: <span class="string">'movimientos'</span>,</div><div class="line">    component: MovimientosComponent,</div><div class="line">    children: [ <span class="comment">// rutas hijas, se verán dentro del componente padre</span></div><div class="line">      &#123;</div><div class="line">        path: <span class="string">'nuevo'</span>, <span class="comment">// la ruta real es movimientos/nuevo</span></div><div class="line">        component: NuevoComponent</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        path: <span class="string">'lista'</span>,</div><div class="line">        component: ListaComponent</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">];</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> routableComponents = [</div><div class="line">  NuevoComponent,</div><div class="line">  ListaComponent,</div><div class="line">  MovimientosComponent</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>Este mini-módulo es muy denso. Contrasta con la simplicidad del <code>movimientos.module.ts</code> que reduce su responsabilidad. Sólo tiene que importar los módulos adecuados.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; FormsModule &#125; <span class="keyword">from</span> <span class="string">'@angular/forms'</span>;</div><div class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; CommonModule &#125; <span class="keyword">from</span> <span class="string">'@angular/common'</span>;</div><div class="line"><span class="comment">/** Módulo de enrutado y componentes */</span></div><div class="line"><span class="keyword">import</span> &#123; MovimientosRoutingModule, routableComponents &#125; <span class="keyword">from</span> <span class="string">'./movimientos-routing.module'</span>;</div><div class="line"></div><div class="line">@NgModule(&#123;</div><div class="line">  imports: [</div><div class="line">    CommonModule,</div><div class="line">    FormsModule,</div><div class="line">    MovimientosRoutingModule</div><div class="line">  ], <span class="comment">// dependencias de otros módulos, especialmente el de enrutado</span></div><div class="line">  declarations: [</div><div class="line">    routableComponents</div><div class="line">  ], <span class="comment">// Los componentes vienen del fichero movimientos-routing.module.ts</span></div><div class="line">  exports: [</div><div class="line"></div><div class="line">  ], <span class="comment">// no necesita exportar nada</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Vemos que la idea es que los ficheros de definición de módulos funcionales <strong>deleguen toda la lógica</strong> posible a su propio módulo de enrutado.</p>
+<p>Mientras tanto en la vista… Habíamos dejado la <em>template</em> del componente raíz con un <code>router-outlet</code>. Será ahí dónde se cargue el <code>MovimientosComponent</code> cuando se active la ruta <em>‘/movimientos’</em>. Pero, ¿y las rutas hijas?, ¿qué se carga y dónde se carga cuando se activa la ruta <em>‘/movimientos/nuevo’</em> o la ruta <em>‘/movimientos/lista’</em> ?.</p>
+<p>Echemos un vistazo a <code>movimientos.component.html</code> para comprobar que dispone de su propio <code>router-outlet</code>. </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">a</span> <span class="attr">routerLink</span>=<span class="string">"/movimientos/nuevo"</span> &gt;</span>Nuevo Movimiento<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">a</span> <span class="attr">routerLink</span>=<span class="string">"/movimientos/lista"</span> &gt;</span>Lista de Movimientos<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Será en este elemento donde se inyecten los componentes asociados a las rutas hijas. Este <em>anidamiento</em> permite hacer aplicaciones modulares y acceder a vistas específicas con rutas específicas. </p>
+<h3 id="Rutas-con-parametros"><a href="#Rutas-con-parametros" class="headerlink" title="Rutas con parámetros"></a>Rutas con parámetros</h3><p>Hasta ahora usé rutas fijas para navegar. Lo más normal es que estas <strong>plantillas contengan segmentos variables</strong> llamados parámetros. Para incorporar parámetros a tu esquema de rutas tienes que actuar en tres fases:</p>
+<h4 id="1-Definir-la-parte-parametrica-de-la-plantilla-generadora-de-rutas"><a href="#1-Definir-la-parte-parametrica-de-la-plantilla-generadora-de-rutas" class="headerlink" title="1- Definir la parte paramétrica de la plantilla generadora de rutas"></a>1- Definir la parte paramétrica de la plantilla generadora de rutas</h4><p>El <em>path</em> del objeto ruta se convierte en una plantilla que admite distintos valores. Así queda ahora el módulo enrutador de movimientos:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> routes: Routes = [</div><div class="line">  &#123;</div><div class="line">    path: <span class="string">'movimientos'</span>,</div><div class="line">    component: MovimientosComponent,</div><div class="line">    children: [ <span class="comment">// rutas hijas, se verán dentro del componente padre</span></div><div class="line">      &#123;</div><div class="line">        path: <span class="string">'nuevo'</span>, <span class="comment">// la ruta real es movimientos/nuevo</span></div><div class="line">        component: NuevoComponent</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        path: <span class="string">'lista'</span>,</div><div class="line">        component: ListaComponent</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    path: <span class="string">'movimientos/:id'</span>, <span class="comment">// parámetro variable id    </span></div><div class="line">    component: EditorComponent</div><div class="line">  &#125;</div><div class="line">];</div></pre></td></tr></table></figure>
+<p>Los parámetros se prefijan con <code>:</code> y en cada ruta se pueden usar tantos como sea necesario. </p>
+<blockquote>
+<p>Obsérvese que en este caso la ruta ‘movimientos/:id’ es hermana, no hija, de la primera. Por tanto se mostrará en el <code>router-outlet</code> del componente raíz. Se ha hecho así para mostrar distintas maneras de trabajar en el ‘router’.</p>
+</blockquote>
+<h4 id="2-Montar-los-enlaces-asignando-valores-a-los-parametros"><a href="#2-Montar-los-enlaces-asignando-valores-a-los-parametros" class="headerlink" title="2- Montar los enlaces asignando valores a los parámetros"></a>2- Montar los enlaces asignando valores a los parámetros</h4><p>Esto se puede hacer en las plantillas HTML o en por código. Siempre usando el <strong>array de <code>routerLink</code></strong> sin necesidad de concatenar cadenas para para montar rutas. Este array en su segunda posición llevará un objeto que represente los valores de los parámetros. </p>
+<p>En un caso de navegación por código sencillo tendrá esta pinta:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// para ir a la ruta /movimientos/42</span></div><div class="line"><span class="keyword">this</span>.router.navigate([<span class="string">'movimientos'</span>, <span class="number">42</span>])</div></pre></td></tr></table></figure></p>
+<p>Usando desde la vista en igual de sencillo con la directiva <code>routerLink</code>, como en este ejemplo HTML:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> [<span class="attr">routerLink</span>]=<span class="string">"['/movimientos', 42 ]"</span>&gt;</span>42<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="3-Recuperar-los-valores-de-los-parametros-a-partir-de-las-rutas"><a href="#3-Recuperar-los-valores-de-los-parametros-a-partir-de-las-rutas" class="headerlink" title="3- Recuperar los valores de los parámetros a partir de las rutas"></a>3- Recuperar los valores de los parámetros a partir de las rutas</h4><p>La novedad más llamativa es la presencia de <code>OnInit</code>. Es un <em>hook</em>, o evento de la vida de un componente. Este evento se ejecuta al iniciarse el componente pero cuando ya la ruta se ha resuelto completamente.<br>En ese momento puedes usar <code>ActivatedRoute</code>, un servicio que entre otras cosas te dará acceso a un <em>observable</em> que emite los valores actuales de los parámetros.<br>Por ejemplo, esto sería el código del componente <code>editor.component.ts</code> que se activa con rutas como <em>‘/movimientos/42’</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="comment">/** Servicio para acceder a la ruta activa */</span></div><div class="line"><span class="keyword">import</span> &#123; ActivatedRoute &#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</div><div class="line"><span class="keyword">import</span> &#123; DatosService &#125; <span class="keyword">from</span> <span class="string">'./../datos.service'</span>;</div><div class="line">@Component(&#123;</div><div class="line">  selector: <span class="string">'app-editor'</span>,</div><div class="line">  templateUrl: <span class="string">'./editor.component.html'</span>,</div><div class="line">  styleUrls: [<span class="string">'./editor.component.css'</span>]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">EditorComponent</span> <span class="title">implements</span> <span class="title">OnInit</span> </span>&#123;</div><div class="line">  public movimiento;</div><div class="line">  <span class="keyword">constructor</span>(</div><div class="line">      private route: ActivatedRoute, </div><div class="line">      private datosService: DatosService) &#123; </div><div class="line">      <span class="comment">// constructor vacío. sólo se usa para reclamar dependencias         </span></div><div class="line">  &#125;</div><div class="line">  ngOnInit() &#123;</div><div class="line">    <span class="comment">// subscripción al observable params</span></div><div class="line">    <span class="keyword">this</span>.route.params</div><div class="line">      .subscribe(<span class="function"><span class="params">params</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">const</span> _id = params[<span class="string">'id'</span>].toString();</div><div class="line">        <span class="keyword">this</span>.movimiento = <span class="keyword">this</span>.datosService.getMovimientoBy_Id(_id);</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Hay una estrategia opcional que emplea <code>Observables</code> para mantener potenciales cambios de estado en los valores de los parámetros. Si te interesa busca información sobre <code>Router</code> .</p>
+</blockquote>
+<h3 id="Carga-diferida"><a href="#Carga-diferida" class="headerlink" title="Carga diferida"></a>Carga diferida</h3><p>Esta es la funcionalidad más esperada y que sigue siendo un <em>work in progress</em>. Cuando las aplicaciones AngularJS crecen en funcionalidad producen un <strong>impacto negativo en la primera vista</strong> de un usuario. Eso es debido a que <em>Angular</em> necesita disponer de todo tu código para montar el armazón de dependencias. Esto es así aunque el usuario no vaya a navegar mas que por un conjunto reducido de rutas.</p>
+<p>En aplicaciones de <em>intranet</em> o de uso muy intensivo esto no suele ser un gran problema. Esa espera inicial de unos pocos segundos se recupera durante el uso continuado de la aplicación. Pero ciertos desarrollos realmente grandes o, sobre todo, <strong>aplicaciones web públicas para usuarios ocasionales</strong> necesitaban un tratamiento especial.</p>
+<p>La solución es implementar un modelo de <em>lazy loading</em> o carga diferida. En este caso el navegador descarga el HTML y el código de la aplicación según el usuario navegue. </p>
+<p>En <em>Angular2</em> se incluye esta funcionalidad, pero a día de hoy aún no está disponible con <code>angular-cli</code>. Se puede <em>tunear WebPack</em> a mano para conseguirlo, pero, si no hay urgencia en salir a producción, no te lo recomiendo. Es preferible esperar un poco y usar el la solución definitiva que implemente la herramienta.</p>
+<p>En cuanto sea <em>usable</em> actualizaré este artículo y difundiré la buena nueva a los cuatro vientos. Como sabes aún estamos esperando la primera <em>Release Candidate</em> de <code>angular-cli</code> y habrá mejoras importantes. </p>
+<p>Mantente a la última recibiendo el <a href="http://academia-binaria.us4.list-manage.com/subscribe?u=c8ad2d2e7d02c26e32ce4cded&amp;id=b67e4d2339" target="_blank" rel="external">boletín de noticias de Academia Binaria</a> o siguiéndome en las <a href="https://twitter.com/albertobasalo" target="_blank" rel="external">redes sociales</a>. </p>
+
+                    
+                    <!-- Tags -->
+                    
+                        <div class="tags-container">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Angular2/">#Angular2</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="sidebar fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <h1 class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/alberto-basalo-author.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Alberto Basalo">
+        </div>
+        <p class="about-text dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            ALBERTO BASALO
+        </p>
+    </article>
+</h1>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Artículos recientes</h3>
+    
+        <p>
+            <a href="/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el b</a>
+        </p>
+    
+        <p>
+            <a href="/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var contentElement = document.querySelector('.content');
+        var sidebar = document.querySelector('.sidebar');
+        var change = false;
+
+        changePosition = function (position, top, right) {
+            sidebar.style.setProperty('position', position);
+            sidebar.style.setProperty('top', top);
+            sidebar.style.setProperty('right', '150px');
+        }
+
+        changeSidebarPosition = function () {
+            if (change) {
+                changePosition('fixed', '0');
+            } else {
+                changePosition('unset', 'none');
+            }
+        }
+
+        window.addEventListener('scroll', function(event) {
+            if (contentElement.getBoundingClientRect().top <= 0) {
+                if (!change) {
+                    change = true;
+                    changeSidebarPosition();
+                }
+            }
+            if (contentElement.getBoundingClientRect().top >= 0) {
+                if (change) {
+                    change = false
+                    changeSidebarPosition();
+                }
+            }
+        });
+    }); 
+</script>
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:info@agorabinaria.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2017 Ágora Binaria. Av Primera C10, Edif Abanca Innova. CP: 15190, A Coruña
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Alberto Basalo">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Componentes, los bloques de construcción de Angular2"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Academia Binaria"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>Componentes, los bloques de construcción de Angular2 - Academia Binaria</title>
+
+    <!-- Tachyons Core CSS -->
+    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<!-- Main Content -->
+<!-- Banner -->
+<!-- Banner -->
+<div class="w-100 bg-1 ph5-ns ph3 text-light">
+    
+    <nav class="db dt-l w-100 mw8 center border-box pv3">
+        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/" title="Academia Binaria">
+            <img src="/images/logo-academia-binaria-white.png" class="dib h3" alt="Academia Binaria">
+        </a>
+        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/" 
+                    title="Inicio">
+                    Inicio
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/archives" 
+                    title="Archivos">
+                    Archivos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/cursos.html" 
+                    title="Cursos">
+                    Cursos
+                </a>
+            
+                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
+                    href="/contacto.html" 
+                    title="Contacto">
+                    Contacto
+                </a>
+            
+        </div>
+    </nav>
+
+    <!-- Title -->
+    <div class="w-100 mw8 center vh-40 dt">
+        <div class="dtc v-mid white">
+            <h1 class="f1-l f2-m tc tc-m tl-ns">Componentes, los bloques de construcción de Angular2</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">23-05-2016</p>
+        </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="relative w-100 mw8 center white dn dn-m db-ns">
+        <i class="header-icon fa fa-file-text-o"></i>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
+    <div class="content">
+        <div class="mw8 center">
+            <div class="cf">
+                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
+                    <!-- Main Post Content -->
+                    <blockquote>
+<p>Código asociado en GitHub: <a href="https://github.com/AcademiaBinaria/angular2/tree/master/2-modulos" target="_blank" rel="external">angular2/2-modulos/</a> </p>
+</blockquote>
+<p>Los componentes son los bloques de construcción de la web moderna. En Angular 2 sustituyen al viejo par Vista-Controlador, el cual ya era opcional en las últimas versiones 1.x Ahora <strong>el componente es el rey</strong>.</p>
+<p>Las aplicaciones en Angular2 se desarrollan como <strong>árboles de componentes</strong>. Estos árboles pueden llegar a ser muy frondosos y conviene dirigir su crecimiento agrupándolos en <strong>módulos</strong> para no perderse. Yo procuro estructurarlo en niveles para una mejor comprensión. En cada nivel se crea un módulo y dentro de él se declaran los componentes.</p>
+<ul>
+<li>1- Nivel <strong>Raíz</strong>:<br>Toda aplicación parte de un componente raíz. Suele recibir el nombre de la aplicación desarrollada y el sufijo <code>App</code> o simplemente <code>App</code>. </li>
+<li>2- Nivel <strong>Troncal</strong>:<br>Generalmente dos o tres componentes troncales para la estructura de las páginas. Es común el patrón <em>Navegador-Contenedor</em>, con algún elemento auxiliar para ayudas, mensajes, menús complejos… </li>
+<li>3- Nivel de <strong>Ramas</strong>:<br>En este símil, las ramas equivalen a rutas o vistas de la aplicación. En un <em>SPA</em> cada ruta tiene una vista asociada que se carga dentro del componente troncal contenedor </li>
+<li>4- Nivel de <strong>Hojas</strong>:<br>Cada una de las vistas está a su vez formada por múltiples componentes de negocio a modo de hojas. </li>
+</ul>
+<p><img src="/images/ng2-Arbol-de-componentes.jpg" alt="Árbol de componentes en una aplicación Angular 2"></p>
+<blockquote>
+<p>Con la salvedad de que muchos de estos componentes los puedes reutilizar en distintas vistas.</p>
+</blockquote>
+<h2 id="Modulos"><a href="#Modulos" class="headerlink" title="Módulos"></a>Módulos</h2><p>Los árboles de componentes pueden ocultarnos fácilmente el bosque de nuestra aplicación. <strong>Los módulos son agrupaciones de componentes.</strong> Nos ayudan a mantener un orden y a encapsular funcionalidad para crear aplicaciones desacopladas con bloques re-utilizables.</p>
+<blockquote>
+<p>No confundir con los módulos de <em>JavaScript ES6</em> o de T<em>ypeScript</em>. En estos casos se les llama módulos a los ficheros de código que exportan funcionalidad. </p>
+</blockquote>
+<p>Podemos imaginar un módulo como una fábrica de funcionalidad.</p>
+<ol>
+<li><strong>Importa</strong> componentes que otros módulos exportan.</li>
+<li><strong>Declara</strong> los componentes que el mismo fabrica.  </li>
+<li><strong>Exporta</strong> algunos de estos componentes, para que los consuman otros módulos.</li>
+</ol>
+<h3 id="Anatomia-de-un-Componente"><a href="#Anatomia-de-un-Componente" class="headerlink" title="Anatomía de un Componente"></a>Anatomía de un Componente</h3><p>En el artículo de <a href="http://academia-binaria.com/hola-mundo-en-angular-2/" target="_blank" rel="external">bienvenida a Angular 2</a> teníamos una aplicación de un sólo módulo con un sólo componente. Y nos sirvió para ver su <strong>estructura</strong>: plantilla, decorador y clase.</p>
+<p><img src="/images/ng2Component--1-.jpg" alt="Estructura interna de un componente Angular 2"></p>
+<p>La <strong>plantilla</strong> en HTML y la <strong>clase</strong> en JS equivalen a las antiguas vistas y controladores. La <strong>metadata</strong> une ambos mundos y registra el componente para que interacciones con el resto del mundo Angular. </p>
+<blockquote>
+<p>La comunicación de datos entre la plantilla y el componente se realiza siguiendo un remozado workflow de propiedades y eventos. El nuevo <em>data-binding</em> de Angular2 merece estudio en detalle pues su sintaxis ha cambiado para poder estar a la altura del rendimiento exigido. </p>
+</blockquote>
+<h3 id="Generacion-de-modulos-y-componentes-con-angular-cli"><a href="#Generacion-de-modulos-y-componentes-con-angular-cli" class="headerlink" title="Generación de módulos y componentes con angular-cli"></a>Generación de módulos y componentes con angular-cli</h3><p>Sobre la base de ese ‘Hola Mundo’ vamos construir una mini aplicación muy sencilla para guardar movimientos económicos. El <em>To Do List</em> de los ingresos y gastos. </p>
+<p>Empezaré creando <strong>otro módulo con su componente para ser integrado</strong> en el componente raíz del módulo raíz. Por ahora será un componente de negocio vacío: el componente <code>movimientos</code>. Puedes escribir a mano cada nuevo módulo o componente, pero si usas <a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a> lo tendrás generado con un sólo comando:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ng g m movimientos</div><div class="line">``` </div><div class="line"></div><div class="line">Verás que se ha creado una carpeta llamada `movimientos` con una estructura que pronto te será muy familiar. Para empezar un archivo para el nuevo módulo, el `movimientos-module.ts`. Después una serie de ficheros para crear su componente principal. Un fichero `movimientos-component.ts` para la clase controladora y el decorador con la *metadata*, y otro fichero `movimientos-component.html` para la plantilla.</div><div class="line"></div><div class="line">Reproduzco ahora su contenido básico. Primero la plantilla HTML</div><div class="line"></div><div class="line">```html</div><div class="line">&lt;p&gt;</div><div class="line">  movimientos works!</div><div class="line">&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>Y ahora la definición del componente en <em>TypeScript</em>. El cual no sabe en qué módulo acabará.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component, OnInit &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="comment">// decoración con metadata para el componente</span></div><div class="line">@Component(&#123;</div><div class="line">  selector: <span class="string">'app-movimientos'</span>, <span class="comment">// ojo al prefijo, por defecto app</span></div><div class="line">  templateUrl: <span class="string">'./movimientos.component.html'</span>, <span class="comment">// podrían ser inline</span></div><div class="line">  styleUrls: [<span class="string">'./movimientos.component.css'</span>] <span class="comment">// podrían ser inline</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MovimientosComponent</span> <span class="title">implements</span> <span class="title">OnInit</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123; &#125;</div><div class="line">  ngOnInit() &#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Para que este componente sea conocido ha de estar al menos declarado y exportado en algún módulo. En este caso aparece en el fichero <code>movimientos-module.ts</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"><span class="keyword">import</span> &#123; CommonModule &#125; <span class="keyword">from</span> <span class="string">'@angular/common'</span>;</div><div class="line"><span class="comment">/** Importa un componente que declara y que luego exporta */</span></div><div class="line"><span class="keyword">import</span> &#123; MovimientosComponent &#125; <span class="keyword">from</span> <span class="string">'./movimientos.component'</span>;</div><div class="line"></div><div class="line">@NgModule(&#123;</div><div class="line">  imports: [</div><div class="line">    CommonModule</div><div class="line">  ],<span class="comment">// dependencias de otros módulos</span></div><div class="line">  declarations: [</div><div class="line">    MovimientosComponent</div><div class="line">  ],<span class="comment">// Componente que el módulo mismo declara</span></div><div class="line">  exports: [</div><div class="line">    MovimientosComponent</div><div class="line">  ] <span class="comment">// exporta los componentes importables desde otros módulos</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">MovimientosModule</span> </span>&#123; &#125;</div></pre></td></tr></table></figure>
+<h3 id="Consumo-desde-un-componente-padre"><a href="#Consumo-desde-un-componente-padre" class="headerlink" title="Consumo desde un componente padre"></a>Consumo desde un componente padre</h3><p>El componente <code>movimientos</code> está creado pero nadie lo usa. Para darle utilidad hay que consumirlo. Vamos tocar los ficheros ‘app.module.ts’ y ‘app.component.html’ Son siempre estos tres sencillos pasos:</p>
+<ul>
+<li><p>1- Importar el módulo que lo exporta</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1 importación del código del módulo funcional</span></div><div class="line"><span class="keyword">import</span> &#123; MovimientosModule &#125; <span class="keyword">from</span> <span class="string">'./movimientos/movimientos.module'</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>2- Registro en el array de importaciones del módulo raíz</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">imports:[..., MovimientosModule] <span class="comment">// 2 registro del modulo importado con todo lo que exporta</span></div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+<li><p>3- Uso del componente como un elemento html en la plantilla del padre</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--enlace con propiedades del componente--&gt;</span></div><div class="line">  &#123;&#123;title&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 3 los componentes personalizados se usan como elementos estándar en html--&gt;</span></div><div class="line"><span class="comment">&lt;!--componente movimientos--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">app-movimientos</span>&gt;</span><span class="tag">&lt;/<span class="name">app-movimientos</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Esta manera de encapsular componentes unos dentro de otros permite crear <strong>grandes aplicaciones de tamaño empresarial</strong> sin sacrificar la limpieza del código. Cada componente debe diseñarse de forma que resuelva un problema de negocio concreto, por tanto manejable. Y si puede ser <strong>reutilizable</strong> mucho mejor.</p>
+<p>La agrupación de componentes en módulos ayuda a mantener la aplicación organizada.</p>
+
+                    
+                    <!-- Tags -->
+                    
+                        <div class="tags-container">
+                            <div class="tags-sub-container">
+                                <a class="fw3 ph1 dib" href="/tags/Angular2/">#Angular2</a>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Comments -->
+                    
+
+
+
+                </div>
+                <div class="sidebar fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
+                    
+                    <hr class="dn-l mw4 black-50 mt5" />
+                    
+                    <!-- Widget 1: About -->
+                    <h1 class="mt5 mt0-l">
+    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
+        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
+            <img src="/images/alberto-basalo-author.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Alberto Basalo">
+        </div>
+        <p class="about-text dtc db-l v-mid lh-copy measure center f6 black-50 tj">
+            ALBERTO BASALO
+        </p>
+    </article>
+</h1>
+
+                    <hr class="dn-l mw4 black-50 mt5" />
+
+                    <!-- Widget 3: Recent Posts -->
+                    <div class="mt5 tc tl-l">
+    <h3>Artículos recientes</h3>
+    
+        <p>
+            <a href="/hello-world/">Hello World</a>
+        </p>
+    
+        <p>
+            <a href="/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el b</a>
+        </p>
+    
+        <p>
+            <a href="/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
+        </p>
+    
+        <p>
+            <a href="/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
+        </p>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var contentElement = document.querySelector('.content');
+        var sidebar = document.querySelector('.sidebar');
+        var change = false;
+
+        changePosition = function (position, top, right) {
+            sidebar.style.setProperty('position', position);
+            sidebar.style.setProperty('top', top);
+            sidebar.style.setProperty('right', '150px');
+        }
+
+        changeSidebarPosition = function () {
+            if (change) {
+                changePosition('fixed', '0');
+            } else {
+                changePosition('unset', 'none');
+            }
+        }
+
+        window.addEventListener('scroll', function(event) {
+            if (contentElement.getBoundingClientRect().top <= 0) {
+                if (!change) {
+                    change = true;
+                    changeSidebarPosition();
+                }
+            }
+            if (contentElement.getBoundingClientRect().top >= 0) {
+                if (change) {
+                    change = false
+                    changeSidebarPosition();
+                }
+            }
+        });
+    }); 
+</script>
+
+<!-- Footer -->
+<div class="bg-1 ph2 ph5-ns pv5">
+        <div class="mv8">
+            <div class="center tc">
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="mailto:info@agorabinaria.com" target="_blank">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                
+                    <div class="dib mh3">
+                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </div>
+                
+            </div>
+            <div class="f6 f5-ns center tc white pt5 fw3">
+                © 2017 Ágora Binaria. Av Primera C10, Edif Abanca Innova. CP: 15190, A Coruña
+            </div>
+        </div>
+    </div>
+
+<!-- After Footer -->
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

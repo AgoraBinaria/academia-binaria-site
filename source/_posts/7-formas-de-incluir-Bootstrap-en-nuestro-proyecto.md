@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: formas
 id: 6
-updated: '2015-11-12 16:55:15'
-date: 2015-11-12 15:40:12
+updated: 2015/11/12 16:55:15
+date: 2015/11/12 15:40:12
 ---
 
 ### 1- Descargando los archivos

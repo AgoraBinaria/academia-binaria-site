@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: hola-mundo-en-angular-2
 id: 12
-updated: '2016-10-31 12:36:28'
-date: 2016-05-18 16:10:18
+updated: 2016/10/31 12:36:28
+date: 2016/05/18 16:10:18
 ---
 
 >Código asociado en GitHub: [angular2/1-HolaMundo/](https://github.com/AcademiaBinaria/angular2/tree/master/1-hola-mundo)

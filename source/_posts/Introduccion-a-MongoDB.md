@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: introduccion-a-mongodb
 id: 3
-updated: '2015-08-25 06:26:25'
-date: 2015-08-15 11:00:54
+updated: 2015/08/25 06:26:25
+date: 2015/08/15 11:00:54
 ---
 
 ## ¿Qué es MongoDB?

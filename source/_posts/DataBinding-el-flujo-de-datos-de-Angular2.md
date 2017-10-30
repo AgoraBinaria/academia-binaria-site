@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: databinding-el-flujo-de-datos-de-angular2
 id: 13
-updated: '2016-11-10 14:56:46'
-date: 2016-05-25 17:26:32
+updated: 2016/11/10 14:56:46
+date: 2016/05/25 17:26:32
 ---
 
 > Código asociado en [angular2/3-databinding/](https://github.com/AcademiaBinaria/angular2/tree/master/3-databinding) 

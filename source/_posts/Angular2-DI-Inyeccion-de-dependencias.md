@@ -6,8 +6,8 @@ categories:
 - Introducción 
 permalink: angular2-di-inyeccion-de-dependencias
 id: 14
-updated: '2016-11-10 14:52:13'
-date: 2016-05-30 11:09:09
+updated: 2016/11/10 14:52:13
+date: 2016/05/30 11:09:09
 ---
 
 >Código asociado en [angular2/4-injection/](https://github.com/AcademiaBinaria/angular2/tree/master/4-injection)
