@@ -12,10 +12,10 @@ timezone: Europe/Madrid
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-#url: http://agorabinaria.com/academia-binaria-site/
-#root: /academia-binaria-site/
-url: http://localhost
+url: http://agorabinaria.com/academia-binaria-site/
 root: /
+#url: http://localhost
+#root: /
 permalink: :title/
 permalink_defaults:
 
