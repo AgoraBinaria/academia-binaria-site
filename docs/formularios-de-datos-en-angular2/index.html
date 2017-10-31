@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang=es>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Formularios de datos en Angular2 | Academia Binaria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formualrios. En Angular 2 y con l">
+<meta name="keywords" content="Angular2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Formularios de datos en Angular2">
+<meta property="og:url" content="http://agora-binaria.com/academia-binaria-site/formularios-de-datos-en-angular2/index.html">
+<meta property="og:site_name" content="Academia Binaria">
+<meta property="og:description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formualrios. En Angular 2 y con l">
+<meta property="og:locale" content="es">
+<meta property="og:image" content="http://agora-binaria.com/css/images/angular.jpg">
+<meta property="og:updated_time" content="2016-06-22T16:05:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Formularios de datos en Angular2">
+<meta name="twitter:description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formualrios. En Angular 2 y con l">
+<meta name="twitter:image" content="http://agora-binaria.com/css/images/angular.jpg">
+    
+
+    
+        <link rel="alternate" href="/" title="Academia Binaria" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/academia-binaria-site/css/images/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/academia-binaria-site/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/academia-binaria-site/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/academia-binaria-site/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/academia-binaria-site/css/style.css">
+
+    <script src="/academia-binaria-site/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/academia-binaria-site/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/academia-binaria-site/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-66674029-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/academia-binaria-site/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Academia Binaria</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/.">Inicio</a>
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/archives">Archivos</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/c6ea942080cef8be6ff80ca095e718b8" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="escribe..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Páginas',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/academia-binaria-site/',
+        CONTENT_URL: '/academia-binaria-site/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/academia-binaria-site/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/.">Inicio</a></td>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/archives">Archivos</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/c6ea942080cef8be6ff80ca095e718b8?s=128" />
+            <h2 id="name">Alberto Basalo</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>A Coruña, Spain</span>
+            <a id="follow" target="_blank" href="https://twitter.com/albertobasalo">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AcademiaBinaria" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/albertobasalo" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-formularios-de-datos-en-angular2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Formularios de datos en Angular2
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/academia-binaria-site/formularios-de-datos-en-angular2/">
+            <time datetime="2016-06-22T14:32:34.000Z" itemprop="datePublished">22-06-2016</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/academia-binaria-site/tag/Angular2/">Angular2</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al <em>double binding</em>. Otra cosa que no fue nunca simple es la <strong>validación de controles en los formualrios</strong>. En Angular 2 y con la última versión RC3 la cosa mejora, pero es aún un <em>Work in progress.</em></p>
+<h3 id="Dependencias"><a href="#Dependencias" class="headerlink" title="Dependencias"></a>Dependencias</h3><p>Con el lío de versiones de los últimos días, conviene que os muestre con qué he hecho mi prueba.<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">"dependencies": &#123;</div><div class="line">    "@angular/common": "2.0.0-rc.3",</div><div class="line">    "@angular/compiler": "2.0.0-rc.3",</div><div class="line">    "@angular/core": "2.0.0-rc.3",</div><div class="line">    "@angular/forms": "^0.1.1",</div><div class="line">    "@angular/http": "2.0.0-rc.3",</div><div class="line">    "@angular/platform-browser": "2.0.0-rc.3",</div><div class="line">    "@angular/platform-browser-dynamic": "2.0.0-rc.3",</div><div class="line">    "@angular/router": "3.0.0-alpha.7",</div><div class="line">    "es6-shim": "^0.35.0",</div><div class="line">    "reflect-metadata": "0.1.3",</div><div class="line">    "rxjs": "5.0.0-beta.6",</div><div class="line">    "systemjs": "0.19.26",</div><div class="line">    "zone.js": "^0.6.12"</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>Como veis están actualizadas a la <code>RC.3</code> y <code>forms 0.1.1</code>.</p>
+<blockquote>
+<p>Si usas <strong>SystemJS</strong>, acuérdate de incluir <code>@angular/forms</code> en el fichero <code>system-config.json</code></p>
+</blockquote>
+<p>En el <code>main.ts</code> debemos registrar los <em>providers</em> que permiten la convivencia de la actual versión de <em>forms</em> y la anterior (de la semana pasada) ya obsoleta.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; disableDeprecatedForms, provideForms &#125; <span class="keyword">from</span> <span class="string">'@angular/forms'</span>;</div><div class="line">bootstrap(CashFlowAppComponent,[</div><div class="line">  disableDeprecatedForms(),</div><div class="line">  provideForms()</div><div class="line">]);</div></pre></td></tr></table></figure>
+<h3 id="Plantillas-html-para-hacer-formularios"><a href="#Plantillas-html-para-hacer-formularios" class="headerlink" title="Plantillas html para hacer formularios"></a>Plantillas html para hacer formularios</h3><p>Vamos a tratar de mantener el <strong>html limpio</strong> hasta dónde sea posible. En un futuro espero que incluso sea prescindible y que se pueda generar de forma automática a partir de datos de configuración.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> [<span class="attr">formGroup</span>]=<span class="string">"formularioMovimiento"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Tipo:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">formControlName</span>=<span class="string">"tipo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> *<span class="attr">ngIf</span>=<span class="string">"formularioMovimiento.controls['tipo'].touched &amp;&amp; !formularioMovimiento.controls['tipo'].valid"</span>&gt;</span></div><div class="line">      Necesitamos el tipo de movimiento</div><div class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Categoría:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">formControlName</span>=<span class="string">"categoria"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Fecha:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"date"</span> <span class="attr">formControlName</span>=<span class="string">"fecha"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span>&gt;</span>Importe:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">formControlName</span>=<span class="string">"importe"</span>&gt;</span> <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> *<span class="attr">ngIf</span>=<span class="string">"formularioMovimiento.controls['importe'].touched &amp;&amp; !formularioMovimiento.controls['importe'].valid"</span>&gt;</span></div><div class="line">      Necesitamos el tipo de movimiento</div><div class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> </span></div><div class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">"submit"</span> </span></div><div class="line"><span class="tag">    [<span class="attr">disabled</span>]=<span class="string">"!formularioMovimiento.valid"</span></span></div><div class="line"><span class="tag">    (<span class="attr">click</span>)=<span class="string">"guardarMovimiento()"</span> &gt;</span>Guardar</div><div class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Se incluyen la lógica para mostrar mensajes de validación y activación del botón de guardado. He optado por no usar la definción de variables en la plantilla mediante <code>#</code>.</p>
+<h3 id="Logica-y-datos-en-el-componente"><a href="#Logica-y-datos-en-el-componente" class="headerlink" title="Lógica y datos en el componente"></a>Lógica y datos en el componente</h3><p>Trataremos de llevar la <strong>lógica de generación y validación de datos</strong> al componente y programarlo en TypeScript. Puede ser por mi pasado <em>backender</em> pero me encuentro más cómodo cuanto más lejos de un lenguaje de marcas.</p>
+<p>Para empezar necesitamos registrar las herramientas. El proveedor <code>FormBuilder</code> nos ayuda a definir los controles asociados al formulario y sus validaciones.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; REACTIVE_FORM_DIRECTIVES, FormBuilder, FormGroup, Validators  &#125; <span class="keyword">from</span> <span class="string">'@angular/forms'</span>;</div><div class="line">@Component(&#123;</div><div class="line">  directives: [REACTIVE_FORM_DIRECTIVES],</div><div class="line">  providers:[FormBuilder]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>En el evento <code>OnInit</code> construimos la estructura de soporte al formulario. Se puede hacer mucho más compleja, mediante la inclusión de grupos de controles anidados.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ngOnInit() &#123;</div><div class="line">    <span class="keyword">this</span>.formularioMovimiento = <span class="keyword">this</span>.formBuilder.group(&#123;</div><div class="line">      tipo: [<span class="string">''</span>,Validators.required],</div><div class="line">      categoria: [],</div><div class="line">      fecha: [],</div><div class="line">      importe:[<span class="string">''</span>,Validators.required]</div><div class="line">    &#125;);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>Antes de enviar datos a un serviciop se pueden hacer validaciones y ttransformacipnes previas. El acceso a los valores del formulario se hace través de su propiedad <code>.value</code>. Con esto ya realizaremos los envíos a los servicios…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">guardarMovimiento() &#123;       </div><div class="line"> <span class="keyword">this</span>.miServicio.Guardar(<span class="keyword">this</span>.formularioMovimiento.value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Validacion"><a href="#Validacion" class="headerlink" title="Validación"></a>Validación</h3><p>La validación temprana es el objetivo fundamental de un desarrollo de formularios. Es buena para el usuario y buena para el sistema. Angular2 facilita la implementación de las validaciones estándar y permite la creación de las tuyas propias.</p>
+<p>Lo veremos en próximas entregas. Sígueme en <a href="https://twitter.com/albertobasalo" target="_blank" rel="external">mi cuenta de twitter</a> o suscríbete a la <a href="http://academia-binaria.us4.list-manage.com/subscribe?u=c8ad2d2e7d02c26e32ce4cded&amp;id=b67e4d2339" target="_blank" rel="external">revista mensual de Academia Binaria</a> y serás el primero en ser informado.</p>
+<p><em>Keep coding, keep learning.</em></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://agora-binaria.com/academia-binaria-site/formularios-de-datos-en-angular2/" data-id="cj9fkhotf000ra8d3h1acbasm" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://agora-binaria.com/academia-binaria-site/formularios-de-datos-en-angular2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://agora-binaria.com/academia-binaria-site/formularios-de-datos-en-angular2/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    Código de ejemplo curso de Angular2
+                
+            </div>
+        </a>
+    
+    
+        <a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">Comunicaciones http observables con Angular2</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/css/images/typescript.jpg)" alt="TypeScript, programa en el front igual que en el back" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Opinion/">Opinión</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/" class="title">TypeScript, programa en el front igual que en el back</a></p>
+                            <p class="item-date"><time datetime="2017-03-14T18:02:11.000Z" itemprop="datePublished">14-03-2017</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/css/images/angular.jpg)" alt="Código de ejemplo curso de Angular2" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" class="title">Código de ejemplo curso de Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-09-21T06:37:13.000Z" itemprop="datePublished">21-09-2016</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/formularios-de-datos-en-angular2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/css/images/angular.jpg)" alt="Formularios de datos en Angular2" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/formularios-de-datos-en-angular2/" class="title">Formularios de datos en Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-06-22T14:32:34.000Z" itemprop="datePublished">22-06-2016</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/css/images/angular.jpg)" alt="Comunicaciones http observables con Angular2" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/" class="title">Comunicaciones http observables con Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-06-16T09:47:28.000Z" itemprop="datePublished">16-06-2016</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/enrutado-con-angular2-el-nuevo-spa/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/enrutado-con-angular2-el-nuevo-spa/" class="title">Enrutador de componentes con Angular2 el nuevo SPA</a></p>
+                            <p class="item-date"><time datetime="2016-06-02T06:52:04.000Z" itemprop="datePublished">02-06-2016</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Avanzado/">Avanzado</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Opinion/">Opinión</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2017/03/">marzo 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/09/">septiembre 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/06/">junio 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/05/">mayo 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/04/">abril 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/03/">marzo 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/01/">enero 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2015/11/">noviembre 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2015/08/">agosto 2015</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/Angular2/">Angular2</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/BackEnd/">BackEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/FrontEnd/">FrontEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/MongoDB/">MongoDB</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/NodeJS/">NodeJS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tag/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/academia-binaria-site/tag/Angular2/" style="font-size: 20px;">Angular2</a> <a href="/academia-binaria-site/tag/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/academia-binaria-site/tag/BackEnd/" style="font-size: 10px;">BackEnd</a> <a href="/academia-binaria-site/tag/Bootstrap/" style="font-size: 12.5px;">Bootstrap</a> <a href="/academia-binaria-site/tag/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/academia-binaria-site/tag/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/academia-binaria-site/tag/NodeJS/" style="font-size: 17.5px;">NodeJS</a> <a href="/academia-binaria-site/tag/TypeScript/" style="font-size: 10px;">TypeScript</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Alberto Basalo<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://agora-binaria.com/academia-binaria-site/formularios-de-datos-en-angular2/';
+        
+        this.page.identifier = 'formularios-de-datos-en-angular2';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'academiabinaria' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+    
+        <script src="/academia-binaria-site/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/academia-binaria-site/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/academia-binaria-site/js/main.js"></script>
+
+    </div>
+</body>
+</html>
