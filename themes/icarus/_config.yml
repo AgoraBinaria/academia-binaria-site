@@ -1,10 +1,10 @@
 # Menus
 menu:
-  Home: .
-  Archives: archives
-  Categories: categories
-  Tags: tags
-  About: about
+  Inicio: .
+  Archivos: archives
+  #Categories: categories
+  #Tags: tags
+  #About: about
 
 # Customize
 customize:
@@ -29,7 +29,6 @@ customize:
         github: https://github.com/AcademiaBinaria
         twitter: https://twitter.com/albertobasalo
         facebook: /
-        dribbble: /
         rss: /
     social_link_tooltip: true # enable the social link tooltip, options: true, false
 

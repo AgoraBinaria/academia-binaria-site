@@ -8,6 +8,7 @@ permalink: codigo-de-ejemplo-curso-de-angular2
 id: 22
 updated: '2016-10-10 08:10:33'
 date: 2016-09-21 08:37:13
+thumbnail: /css/images/angular.jpg
 ---
 
 Enlace a los repositorios con el código de ejemplo para los cursos de **Angular2** :

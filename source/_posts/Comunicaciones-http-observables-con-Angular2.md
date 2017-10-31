@@ -8,6 +8,7 @@ permalink: comunicaciones-http-observables-con-angular2
 id: 17
 updated: '2017-02-16 17:44:21'
 date: 2016-06-16 11:47:28
+thumbnail: /css/images/angular.jpg
 ---
 
 En AngularJS, y en otros frameworks del lado cliente, la idea de fue simple desde el principio: dame **plantillas estáticas y datos dinámicos**. Las comunicaciones *http* son las arterias vitales de transporte de esos datos dinámicos. Y en Angular 2 se han revisado por completo, llevando las comunicaciones asíncronas al siguiente nivel.
