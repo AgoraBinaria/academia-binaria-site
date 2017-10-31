@@ -1,7 +1,7 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
-  "private": true,
+  "name": "academia-binaria.com",
+  "version": "1.0.0",
+  "private": false,
   "hexo": {
     "version": "3.4.0"
   },
