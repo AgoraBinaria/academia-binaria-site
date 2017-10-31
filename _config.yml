@@ -12,10 +12,8 @@ timezone: Europe/Madrid
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://agorabinaria.com/academia-binaria-site
+url: http://agora-binaria.com/academia-binaria-site
 root: /academia-binaria-site/
-#url: http://localhost
-#root: /
 permalink: :title/
 permalink_defaults:
 
@@ -74,12 +72,9 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: anodyne
+theme: icarus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
-
-# Disqus
-disqus_shortname: academiabinaria

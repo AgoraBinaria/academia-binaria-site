@@ -1,295 +1,556 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html lang=es>
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--Description-->
     
-        <meta name="description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="Alberto Basalo">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="TypeScript, programa en el front igual que en el back"/>
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript" />
+    <title>TypeScript, programa en el front igual que en el back | Academia Binaria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Hasta hace bien poco había dos mundos en la programación casi enfrentados: el desarrollo back end y el front end. El primero era el de los programadores de verdad, con lenguajes serios y patrones de d">
+<meta name="keywords" content="TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript, programa en el front igual que en el back">
+<meta property="og:url" content="http://agora-binaria.com/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/index.html">
+<meta property="og:site_name" content="Academia Binaria">
+<meta property="og:description" content="Hasta hace bien poco había dos mundos en la programación casi enfrentados: el desarrollo back end y el front end. El primero era el de los programadores de verdad, con lenguajes serios y patrones de d">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2017-03-14T18:10:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript, programa en el front igual que en el back">
+<meta name="twitter:description" content="Hasta hace bien poco había dos mundos en la programación casi enfrentados: el desarrollo back end y el front end. El primero era el de los programadores de verdad, con lenguajes serios y patrones de d">
     
 
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Academia Binaria"/>
-
-    <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <link rel="alternate" href="/" title="Academia Binaria" type="application/atom+xml" />
     
 
-    <!--Page Cover-->
     
 
-    <meta name="twitter:card" content="summary" />
-    
+    <link rel="stylesheet" href="/academia-binaria-site/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/academia-binaria-site/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/academia-binaria-site/libs/source-code-pro/styles.css">
 
-    <!-- Title -->
-    
-    <title>TypeScript, programa en el front igual que en el back - Academia Binaria</title>
-
-    <!-- Tachyons Core CSS -->
-    <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
-
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="/academia-binaria-site/css/style.css">
 
-    <!-- Google Analytics -->
+    <script src="/academia-binaria-site/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/academia-binaria-site/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/academia-binaria-site/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
     
 
 
 </head>
 
-
 <body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/academia-binaria-site/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Academia Binaria</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/.">Home</a>
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/archives">Archivo</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/academia-binaria-site/css/images/avatar.jpg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-<!-- Main Content -->
-<!-- Banner -->
-<!-- Banner -->
-<div class="w-100 bg-1 ph5-ns ph3 text-light">
-    
-    <nav class="db dt-l w-100 mw8 center border-box pv3">
-        <a class="db dtc-l v-mid link dim w-100 w-25-l tc tl-l mb2 mb0-l white" href="/academia-binaria-site/" title="Academia Binaria">
-            <img src="/academia-binaria-site/images/logo-academia-binaria-white.png" class="dib h3" alt="Academia Binaria">
-        </a>
-        <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/academia-binaria-site/" 
-                    title="Inicio">
-                    Inicio
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/academia-binaria-site/archives" 
-                    title="Archivos">
-                    Archivos
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/academia-binaria-site/cursos.html" 
-                    title="Cursos">
-                    Cursos
-                </a>
-            
-                <a class="link dim f6 f5-l dib mr3 mr4-l white" 
-                    href="/academia-binaria-site/contacto.html" 
-                    title="Contacto">
-                    Contacto
-                </a>
-            
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
-    </nav>
-
-    <!-- Title -->
-    <div class="w-100 mw8 center vh-40 dt">
-        <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">TypeScript, programa en el front igual que en el back</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">14-03-2017</p>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
-    </div>
-
-    <!-- Icon -->
-    <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-file-text-o"></i>
     </div>
 </div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/academia-binaria-site/',
+        CONTENT_URL: '/academia-binaria-site/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/academia-binaria-site/js/insight.js"></script>
 
-<!-- Content -->
-<div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
-    <div class="content">
-        <div class="mw8 center">
-            <div class="cf">
-                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
-                    <!-- Main Post Content -->
-                    <p>Hasta hace bien poco había dos mundos en la programación casi enfrentados: el desarrollo <em>back end y el front end</em>. El primero era el de los programadores de verdad, con <strong>lenguajes serios y patrones de diseño</strong>. El último era el universo de los diseñadores, con lenguajes de segundo nivel y <strong>micro scripts o código espagueti</strong> descontrolado.</p>
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/archives">Archivo</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/academia-binaria-site/css/images/avatar.jpg" />
+            <h2 id="name">Alberto Basalo</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Harbin, China</span>
+            <a id="follow" target="_blank" href="https://github.com/ppoffice/">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-typescript-programa-en-el-front-igual-que-en-el-back" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            TypeScript, programa en el front igual que en el back
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/">
+            <time datetime="2017-03-14T18:02:11.000Z" itemprop="datePublished">14-03-2017</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/academia-binaria-site/categories/Opinion/">Opinión</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/academia-binaria-site/tags/TypeScript/">TypeScript</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Hasta hace bien poco había dos mundos en la programación casi enfrentados: el desarrollo <em>back end y el front end</em>. El primero era el de los programadores de verdad, con <strong>lenguajes serios y patrones de diseño</strong>. El último era el universo de los diseñadores, con lenguajes de segundo nivel y <strong>micro scripts o código espagueti</strong> descontrolado.</p>
 <p>Pero la llegada de los frameworks <em>MVC</em> en el cliente, llevó <strong>grandes cantidades de código al navegador</strong> y el desarrollo front end ya nunca sería lo mismo. Primero se portaron los patrones, después las buenas prácticas, más tarde las herramientas y así hasta haber eliminado las fronteras entre <em>back y front</em>.</p>
 <p>Pero quedaba algo pendiente, el leguaje. En el lado del servidor había multitud de opciones, siendo <em>Java</em> y <em>C#</em> las más aceptadas por la empresa, administración y banca. Pero al otro lado del cable seguía, con algunos retoques, el viejo <em>JavaScript</em>.</p>
 <p>Y entonces eclosionó <em>TypeScript</em>. Un proyecto maduro creado por el equipo de desarrollo de Microsoft y que lleva a <em>JavaScript</em> al siguiente nivel. Con <strong>tipos estáticos</strong> (de ahí su nombre) propicia que las herramientas de desarrollo mejoren la productividad y experiencia de los programadores. Y como consecuencia <strong>suaviza la rampa de entrada al <em>front</em> para los desarrolladores <em>back</em></strong>.</p>
 <p>Ya no queda excusas para programar en el cliente igual de bien que en el servidor. Prueba el <em>TypeScript</em> si dominas y te gusta la POO, serás un <em>full stack</em> cuestión de horas.</p>
 
-                    
-                    <!-- Tags -->
-                    
-                        <div class="tags-container">
-                            <div class="tags-sub-container">
-                                <a class="fw3 ph1 dib" href="/academia-binaria-site/tags/TypeScript/">#TypeScript</a>
-                            </div>
-                        </div>
-                    
-
-                    <!-- Comments -->
-                    
-
-
-
-                </div>
-                <div class="sidebar fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
-                    
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 1: About -->
-                    <h1 class="mt5 mt0-l">
-    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l mv3">
-        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
-            <img src="/academia-binaria-site/images/alberto-basalo-author.jpg" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Alberto Basalo">
+        
         </div>
-        <p class="about-text dtc db-l v-mid lh-copy measure center f6 black-50 tj">
-            ALBERTO BASALO
-        </p>
-    </article>
-</h1>
+        <footer class="article-footer">
+            <div class="share-container">
 
-                    <hr class="dn-l mw4 black-50 mt5" />
 
-                    <!-- Widget 3: Recent Posts -->
-                    <div class="mt5 tc tl-l">
-    <h3>Artículos recientes</h3>
-    
-        <p>
-            <a href="/academia-binaria-site/hello-world/">Hello World</a>
-        </p>
-    
-        <p>
-            <a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/">TypeScript, programa en el front igual que en el b</a>
-        </p>
-    
-        <p>
-            <a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/">Código de ejemplo curso de Angular2</a>
-        </p>
-    
-        <p>
-            <a href="/academia-binaria-site/formularios-de-datos-en-angular2/">Formularios de datos en Angular2</a>
-        </p>
-    
-        <p>
-            <a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/">Comunicaciones http observables con Angular2</a>
-        </p>
-    
+
 </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+    <a data-url="http://agora-binaria.com/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/" data-id="cj9feho4q001fxnvmqntjs4ge" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-        var contentElement = document.querySelector('.content');
-        var sidebar = document.querySelector('.sidebar');
-        var change = false;
-
-        changePosition = function (position, top, right) {
-            sidebar.style.setProperty('position', position);
-            sidebar.style.setProperty('top', top);
-            sidebar.style.setProperty('right', '150px');
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
         }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
 
-        changeSidebarPosition = function () {
-            if (change) {
-                changePosition('fixed', '0');
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
             } else {
-                changePosition('unset', 'none');
-            }
-        }
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
 
-        window.addEventListener('scroll', function(event) {
-            if (contentElement.getBoundingClientRect().top <= 0) {
-                if (!change) {
-                    change = true;
-                    changeSidebarPosition();
-                }
+              box = $(html);
+
+              $('body').append(box);
             }
-            if (contentElement.getBoundingClientRect().top >= 0) {
-                if (change) {
-                    change = false
-                    changeSidebarPosition();
-                }
-            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
         });
-    }); 
+    })(jQuery);
 </script>
 
-<!-- Footer -->
-<div class="bg-1 ph2 ph5-ns pv5">
-        <div class="mv8">
-            <div class="center tc">
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/academia-binaria-site/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
                 
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://twitter.com/?lang=en" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://www.facebook.com/" target="_blank">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://github.com/klugjo/hexo-theme-anodyne" target="_blank">
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="https://plus.google.com/" target="_blank">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="mailto:info@agorabinaria.com" target="_blank">
-                            <i class="fa fa-envelope"></i>
-                        </a>
-                    </div>
-                
-                    <div class="dib mh3">
-                        <a class="f3 f2-ns white dim" href="/#" target="_blank">
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </div>
+                    Hello World
                 
             </div>
-            <div class="f6 f5-ns center tc white pt5 fw3">
-                © 2017 Ágora Binaria. Av Primera C10, Edif Abanca Innova. CP: 15190, A Coruña
-            </div>
+        </a>
+    
+    
+        <a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">Código de ejemplo curso de Angular2</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/academia-binaria-site/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2017-10-31T09:17:59.047Z" itemprop="datePublished">31-10-2017</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Opinion/">Opinión</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/" class="title">TypeScript, programa en el front igual que en el back</a></p>
+                            <p class="item-date"><time datetime="2017-03-14T18:02:11.000Z" itemprop="datePublished">14-03-2017</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" class="title">Código de ejemplo curso de Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-09-21T06:37:13.000Z" itemprop="datePublished">21-09-2016</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/formularios-de-datos-en-angular2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/formularios-de-datos-en-angular2/" class="title">Formularios de datos en Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-06-22T14:32:34.000Z" itemprop="datePublished">22-06-2016</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/" class="title">Comunicaciones http observables con Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-06-16T09:47:28.000Z" itemprop="datePublished">16-06-2016</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
     </div>
 
-<!-- After Footer -->
-<!-- Disqus Comments -->
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Avanzado/">Avanzado</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Opinion/">Opinión</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2017/10/">octubre 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2017/03/">marzo 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/09/">septiembre 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/06/">junio 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/05/">mayo 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/04/">abril 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/03/">marzo 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/01/">enero 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2015/11/">noviembre 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2015/08/">agosto 2015</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/Angular2/">Angular2</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/BackEnd/">BackEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/FrontEnd/">FrontEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/MongoDB/">MongoDB</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/NodeJS/">NodeJS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/academia-binaria-site/tags/Angular2/" style="font-size: 20px;">Angular2</a> <a href="/academia-binaria-site/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/academia-binaria-site/tags/BackEnd/" style="font-size: 10px;">BackEnd</a> <a href="/academia-binaria-site/tags/Bootstrap/" style="font-size: 12.5px;">Bootstrap</a> <a href="/academia-binaria-site/tags/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/academia-binaria-site/tags/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/academia-binaria-site/tags/NodeJS/" style="font-size: 17.5px;">NodeJS</a> <a href="/academia-binaria-site/tags/TypeScript/" style="font-size: 10px;">TypeScript</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Alberto Basalo<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/academia-binaria-site/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/academia-binaria-site/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
 
 
 
+<!-- Custom Scripts -->
+<script src="/academia-binaria-site/js/main.js"></script>
+
+    </div>
 </body>
-
 </html>
