@@ -8,6 +8,7 @@ permalink: typescript-programa-en-el-front-igual-que-en-el-back
 id: 23
 updated: '2017-03-14 19:10:13'
 date: 2017-03-14 19:02:11
+thumbnail: /css/images/typescript.jpg
 ---
 
 Hasta hace bien poco había dos mundos en la programación casi enfrentados: el desarrollo *back end y el front end*. El primero era el de los programadores de verdad, con **lenguajes serios y patrones de diseño**. El último era el universo de los diseñadores, con lenguajes de segundo nivel y **micro scripts o código espagueti** descontrolado.
