@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang=es>
+<head>
+    <meta charset="utf-8">
+    
+    <title>npm: de instalador a publicador | Academia Binaria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Seguro que estás harto de repetir la mítica instrucción npm install paquete-x Pero, ¿has pensado en publicar tus propios módulos?. Es muy recomendable crear soluciones distribuidas y muy fácil publica">
+<meta name="keywords" content="NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm: de instalador a publicador">
+<meta property="og:url" content="http://agora-binaria.com/academia-binaria-site/npm-de-instalador-a-publicador/index.html">
+<meta property="og:site_name" content="Academia Binaria">
+<meta property="og:description" content="Seguro que estás harto de repetir la mítica instrucción npm install paquete-x Pero, ¿has pensado en publicar tus propios módulos?. Es muy recomendable crear soluciones distribuidas y muy fácil publica">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2016-04-19T05:01:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm: de instalador a publicador">
+<meta name="twitter:description" content="Seguro que estás harto de repetir la mítica instrucción npm install paquete-x Pero, ¿has pensado en publicar tus propios módulos?. Es muy recomendable crear soluciones distribuidas y muy fácil publica">
+    
+
+    
+        <link rel="alternate" href="/" title="Academia Binaria" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/academia-binaria-site/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/academia-binaria-site/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/academia-binaria-site/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/academia-binaria-site/css/style.css">
+
+    <script src="/academia-binaria-site/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/academia-binaria-site/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/academia-binaria-site/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/academia-binaria-site/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Academia Binaria</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/.">Home</a>
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/academia-binaria-site/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/c6ea942080cef8be6ff80ca095e718b8" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/academia-binaria-site/',
+        CONTENT_URL: '/academia-binaria-site/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/academia-binaria-site/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/academia-binaria-site/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/c6ea942080cef8be6ff80ca095e718b8?s=128" />
+            <h2 id="name">Alberto Basalo</h2>
+            <h3 id="title">Web Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>A Coruña, Spain</span>
+            <a id="follow" target="_blank" href="https://twitter.com/albertobasalo">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                8
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/AcademiaBinaria" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/albertobasalo" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/academia-binaria-site/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-npm-de-instalador-a-publicador" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            npm: de instalador a publicador
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/academia-binaria-site/npm-de-instalador-a-publicador/">
+            <time datetime="2016-04-18T14:07:46.000Z" itemprop="datePublished">18-04-2016</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/academia-binaria-site/categories/Avanzado/">Avanzado</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/academia-binaria-site/tags/NodeJS/">NodeJS</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Seguro que estás harto de repetir la mítica instrucción <code>npm install paquete-x</code> Pero, ¿has pensado en <strong>publicar tus propios módulos</strong>?. Es muy recomendable crear soluciones distribuidas y muy fácil publicarlas en <a href="https://www.npmjs.com/" target="_blank" rel="external"><em>npm</em></a>. </p>
+<p>Sigue este proceso y te convertirás en un creador de paquetes para <em>npm</em> : </p>
+<h2 id="Programa"><a href="#Programa" class="headerlink" title="Programa"></a>Programa</h2><p>Todo empieza por tener una necesidad y resolverla <strong>encapsulando su código en un módulo.</strong> Por supuesto que ese módulo puede requerir paquetes externos. Y por supuesto que tu código puede, y debe, escribirse en varios módulos. </p>
+<p>Antes de continuar vamos a fijar un par de conceptos:</p>
+<p><strong>- módulo:</strong> Fichero <em>.js</em> que exporta un funcionalidad y oculta su implementación.</p>
+<p><strong>- paquete:</strong> Uno o más módulos, con sus dependientes de otros paquetes que proponen una solución reutilizable.</p>
+<p>Conocidos los ingredientes, la receta es sencilla:</p>
+<ol>
+<li>Debes crear un proyecto para el paquete que vas a publicar. </li>
+<li>Has de subir el código a un repositorio público. </li>
+<li>Y debes rellenar convenientemente el <code>package.json</code> de tu proyecto.</li>
+</ol>
+<p>Este es un ejemplo que he creado y <a href="https://github.com/AgoraBinaria/ab-ftp" target="_blank" rel="external">publicado en github</a> que te puede servir de base. </p>
+<p>Presta especial atención al <strong>nombrado</strong> de tu proyecto porque ha de ser único en el repositorio de npm. Para reducir riesgos de colisiones de nombre te recomiendo que utilices un <em>prefijo</em> con tus iniciales o las de tu empresa.</p>
+<p>No te olvides de incluir un juego de <strong>pruebas y documentación</strong> necesaria para sus uso.</p>
+<h2 id="Publica"><a href="#Publica" class="headerlink" title="Publica"></a>Publica</h2><p>Puedes descargar librerías y herramienta desde el repositorio de <em>npm</em> de forma anónima. De hecho, eso es lo más corriente. Pero, como era de esperar, tienes que <strong>registrarte para poder publicar</strong> contenido. El <a href="https://www.npmjs.com/signup" target="_blank" rel="external">proceso de registro</a> vía web es sencillo y grátis. </p>
+<p>Una vez verificado puedes hacer login en la web. Pero también en la terminal de tu ordenador: <code>npm login</code> te pedirá el nombre de usuario y contraseña. A partir de es momento estás identificado y puedes usar las herramientas de autor:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure>
+<p>Puedes encontrar <a href="https://docs.npmjs.com/cli/publish" target="_blank" rel="external">más información</a> acerca de este mega comando en la documentación de <em>npmjs</em>. Pero siguiendo la máxima de cuanto menos, mejor, la herramienta hará con sus valores por defecto un publicación y actualización limpias.</p>
+<p>La clave está en que tu fichero de configuración <code>package.json</code> sea correcto y lo más completo posible. Escribe un completo <code>readme.md</code> que se convertirá en portada de tu paquete en el repositorio de npm. Mira en mi ejemplo cómo <a href="https://github.com/AgoraBinaria/ab-ftp" target="_blank" rel="external">el contenido subido a github</a> se transforma y se ve en la <a href="https://www.npmjs.com/package/ab-ftp" target="_blank" rel="external">página de información de npm.</a></p>
+<p>Comprueba en un directorio vacío que <code>npm install nombre-de-tu-paquete</code> descarga todo lo necesario… y tómate un café mientras ves crecer la hierba y las estadísticas de descargas.</p>
+<h2 id="Actualiza"><a href="#Actualiza" class="headerlink" title="Actualiza"></a>Actualiza</h2><p>Con el tiempo mejorarás y corregirás tu solución. Te recomiendo que sigas el patrón de <a href="http://semver.org/" target="_blank" rel="external">nombrado de versiones semántico</a>: </p>
+<p><strong>x.y.z = 1.2.3 = ruptura.mejora.parche</strong> </p>
+<p>Es bueno que etiquetes tu repositorio con estas mismas versiones para que, una vez desplegadas, se encuentre con facilidad en <em>github</em>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git tag 0.1.2</div><div class="line">git push --tags</div></pre></td></tr></table></figure>
+<h2 id="Disfruta"><a href="#Disfruta" class="headerlink" title="Disfruta"></a>Disfruta</h2><p>Finalmente podrás utilizar ese código en todas tus aplicaciones. Sería fantástico que además otros lo encontrasen útil. Y mejor aún si te ayudan o al menos te proponen mejoras. Pero en cualquier caso <strong>siempre habrás ganado</strong>. El esfuerzo analítico que requiere se cobra con creces: dividiendo el problema, creando micro soluciones eficientes y reutilizando código siempre es rentable.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://agora-binaria.com/academia-binaria-site/npm-de-instalador-a-publicador/" data-id="cj9feho4t001mxnvmrfutmays" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/academia-binaria-site/node-6-0-0-actualizacion-con-nvm/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    Node 6.0.0 actualización con nvm
+                
+            </div>
+        </a>
+    
+    
+        <a href="/academia-binaria-site/soluciones-backend-2016/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">Soluciones BackEnd 2016</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/academia-binaria-site/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2017-10-31T09:17:59.047Z" itemprop="datePublished">31-10-2017</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Opinion/">Opinión</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/typescript-programa-en-el-front-igual-que-en-el-back/" class="title">TypeScript, programa en el front igual que en el back</a></p>
+                            <p class="item-date"><time datetime="2017-03-14T18:02:11.000Z" itemprop="datePublished">14-03-2017</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/codigo-de-ejemplo-curso-de-angular2/" class="title">Código de ejemplo curso de Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-09-21T06:37:13.000Z" itemprop="datePublished">21-09-2016</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/formularios-de-datos-en-angular2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/formularios-de-datos-en-angular2/" class="title">Formularios de datos en Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-06-22T14:32:34.000Z" itemprop="datePublished">22-06-2016</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a></p>
+                            <p class="item-title"><a href="/academia-binaria-site/comunicaciones-http-observables-con-angular2/" class="title">Comunicaciones http observables con Angular2</a></p>
+                            <p class="item-date"><time datetime="2016-06-16T09:47:28.000Z" itemprop="datePublished">16-06-2016</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Avanzado/">Avanzado</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Introduccion/">Introducción</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/academia-binaria-site/categories/Opinion/">Opinión</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2017/10/">octubre 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2017/03/">marzo 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/09/">septiembre 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/06/">junio 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/05/">mayo 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/04/">abril 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/03/">marzo 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2016/01/">enero 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2015/11/">noviembre 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/academia-binaria-site/archives/2015/08/">agosto 2015</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/Angular2/">Angular2</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/BackEnd/">BackEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/FrontEnd/">FrontEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/MongoDB/">MongoDB</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/NodeJS/">NodeJS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/academia-binaria-site/tags/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/academia-binaria-site/tags/Angular2/" style="font-size: 20px;">Angular2</a> <a href="/academia-binaria-site/tags/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/academia-binaria-site/tags/BackEnd/" style="font-size: 10px;">BackEnd</a> <a href="/academia-binaria-site/tags/Bootstrap/" style="font-size: 12.5px;">Bootstrap</a> <a href="/academia-binaria-site/tags/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/academia-binaria-site/tags/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/academia-binaria-site/tags/NodeJS/" style="font-size: 17.5px;">NodeJS</a> <a href="/academia-binaria-site/tags/TypeScript/" style="font-size: 10px;">TypeScript</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Alberto Basalo<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/academia-binaria-site/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/academia-binaria-site/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/academia-binaria-site/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/academia-binaria-site/js/main.js"></script>
+
+    </div>
+</body>
+</html>
