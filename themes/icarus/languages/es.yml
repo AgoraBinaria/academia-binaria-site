@@ -29,9 +29,9 @@ profile:
     posts: 'Entradas'
     tags: 'Etiquetas'
 insight:
-    hint: 'Type something...'
+    hint: 'escribe...'
     posts: 'Entradas'
-    pages: 'Pages'
+    pages: 'Páginas'
     categories: 'Categorias'
     tags: 'Etiquetas'
     untitled: '(Untitled)'
