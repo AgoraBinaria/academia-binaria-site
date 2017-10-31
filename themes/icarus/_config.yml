@@ -15,7 +15,7 @@ customize:
         url: images/logo.png
     profile:
         enabled: true # Whether to show profile bar
-        avatar: css/images/avatar.png
+        avatar: css/images/avatar.jpg
         gravatar: albertobasalo@agorabinaria.com
         author: Alberto Basalo
         author_title: Web Developer & Designer
