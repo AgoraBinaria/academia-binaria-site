@@ -16,18 +16,18 @@ customize:
     profile:
         enabled: true # Whether to show profile bar
         avatar: css/images/avatar.png
-        gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
+        gravatar: albertobasalo@agorabinaria.com
         author: Alberto Basalo
         author_title: Web Developer & Designer
         location: A Coruña, Spain
-        follow: https://github.com/ppoffice/
+        follow: https://twitter.com/albertobasalo
     highlight: monokai
     sidebar: right # sidebar position, options: left, right or leave it empty
     thumbnail: true # enable posts thumbnail, options: true, false
     favicon: # path to favicon
     social_links:
-        github: http://github.com/ppoffice/hexo-theme-icarus
-        twitter: /
+        github: https://github.com/AcademiaBinaria
+        twitter: https://twitter.com/albertobasalo
         facebook: /
         dribbble: /
         rss: /
