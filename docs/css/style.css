@@ -139,6 +139,7 @@ code {
 }
 .outer {
   max-width: 1580px;
+  margin-top: 64px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -344,6 +345,10 @@ code {
   font-weight: bold;
 }
 #header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background: #fff;
   position: relative;
 }
