@@ -5,19 +5,19 @@
     
     <title>Formularios de datos en Angular2 | Academia Binaria</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formualrios. En Angular 2 y con l">
+    <meta name="description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formularios. En Angular 2 y con l">
 <meta name="keywords" content="Angular2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Formularios de datos en Angular2">
 <meta property="og:url" content="http://academia-binaria.com/formularios-de-datos-en-angular2/index.html">
 <meta property="og:site_name" content="Academia Binaria">
-<meta property="og:description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formualrios. En Angular 2 y con l">
+<meta property="og:description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formularios. En Angular 2 y con l">
 <meta property="og:locale" content="es">
 <meta property="og:image" content="http://academia-binaria.com/css/images/angular.jpg">
 <meta property="og:updated_time" content="2016-06-22T16:05:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Formularios de datos en Angular2">
-<meta name="twitter:description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formualrios. En Angular 2 y con l">
+<meta name="twitter:description" content="Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al double binding. Otra cosa que no fue nunca simple es la validación de controles en los formularios. En Angular 2 y con l">
 <meta name="twitter:image" content="http://academia-binaria.com/css/images/angular.jpg">
     
 
@@ -61,9 +61,10 @@ ga('send', 'pageview');
 
 </head>
 
-<body>
-    <div id="container">
-        <header id="header">
+
+    <body>
+        <div id="container">
+            <header id="header">
     <div id="header-main" class="header-inner">
         <div class="outer">
             <a href="/" id="logo">
@@ -71,8 +72,6 @@ ga('send', 'pageview');
                 <span class="site-title">Academia Binaria</span>
             </a>
             <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Inicio</a>
                 
                     <a class="main-nav-link" href="/archives">Archivos</a>
                 
@@ -131,8 +130,6 @@ ga('send', 'pageview');
         <table class="menu outer">
             <tr>
                 
-                    <td><a class="main-nav-link" href="/.">Inicio</a></td>
-                
                     <td><a class="main-nav-link" href="/archives">Archivos</a></td>
                 
                 <td>
@@ -147,9 +144,9 @@ ga('send', 'pageview');
     </div>
 </header>
 
-        <div class="outer">
-            
-                
+                <div class="outer">
+                    
+                        
 
 <aside id="profile">
     <div class="inner profile-inner">
@@ -207,8 +204,9 @@ ga('send', 'pageview');
     </div>
 </aside>
 
-            
-            <section id="main"><article id="post-formularios-de-datos-en-angular2" class="article article-type-post" itemscope itemprop="blogPost">
+                            
+                                <section id="main">
+                                    <article id="post-formularios-de-datos-en-angular2" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -251,7 +249,8 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al <em>double binding</em>. Otra cosa que no fue nunca simple es la <strong>validación de controles en los formualrios</strong>. En Angular 2 y con la última versión RC3 la cosa mejora, pero es aún un <em>Work in progress.</em></p>
+            <p>Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al <em>double binding</em>. Otra cosa que no fue nunca simple es la <strong>validación de controles en los formularios</strong>. En Angular 2 y con la última versión RC3 la cosa mejora, pero es aún un <em>Work in progress.</em></p>
+<a id="more"></a>
 <h3 id="Dependencias"><a href="#Dependencias" class="headerlink" title="Dependencias"></a>Dependencias</h3><p>Con el lío de versiones de los últimos días, conviene que os muestre con qué he hecho mi prueba.<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">"dependencies": &#123;</div><div class="line">    "@angular/common": "2.0.0-rc.3",</div><div class="line">    "@angular/compiler": "2.0.0-rc.3",</div><div class="line">    "@angular/core": "2.0.0-rc.3",</div><div class="line">    "@angular/forms": "^0.1.1",</div><div class="line">    "@angular/http": "2.0.0-rc.3",</div><div class="line">    "@angular/platform-browser": "2.0.0-rc.3",</div><div class="line">    "@angular/platform-browser-dynamic": "2.0.0-rc.3",</div><div class="line">    "@angular/router": "3.0.0-alpha.7",</div><div class="line">    "es6-shim": "^0.35.0",</div><div class="line">    "reflect-metadata": "0.1.3",</div><div class="line">    "rxjs": "5.0.0-beta.6",</div><div class="line">    "systemjs": "0.19.26",</div><div class="line">    "zone.js": "^0.6.12"</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
 <p>Como veis están actualizadas a la <code>RC.3</code> y <code>forms 0.1.1</code>.</p>
 <blockquote>
@@ -389,9 +388,10 @@ ga('send', 'pageview');
 </section>
     
 
-</section>
-            
-                
+
+                                </section>
+                                
+                                    
 <aside id="sidebar">
    
         
@@ -482,7 +482,7 @@ ga('send', 'pageview');
                             <a href="/enrutado-con-angular2-el-nuevo-spa/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(/css/images/angular.jpg)" alt="Enrutador de componentes con Angular2 el nuevo SPA" class="thumbnail-image"></span>
     
 </a>
 
@@ -511,24 +511,6 @@ ga('send', 'pageview');
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Archivos</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">marzo 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">septiembre 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">junio 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">mayo 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">abril 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">marzo 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">enero 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">agosto 2015</a><span class="archive-list-count">4</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">Etiquetas</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tag/Angular2/">Angular2</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tag/AngularJS/">AngularJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tag/BackEnd/">BackEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tag/Bootstrap/">Bootstrap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tag/FrontEnd/">FrontEnd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tag/MongoDB/">MongoDB</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tag/NodeJS/">NodeJS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tag/TypeScript/">TypeScript</a><span class="tag-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
         <h3 class="widget-title">Nube de etiquetas</h3>
         <div class="widget tagcloud">
             <a href="/tag/Angular2/" style="font-size: 20px;">Angular2</a> <a href="/tag/AngularJS/" style="font-size: 15px;">AngularJS</a> <a href="/tag/BackEnd/" style="font-size: 10px;">BackEnd</a> <a href="/tag/Bootstrap/" style="font-size: 12.5px;">Bootstrap</a> <a href="/tag/FrontEnd/" style="font-size: 10px;">FrontEnd</a> <a href="/tag/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/tag/NodeJS/" style="font-size: 17.5px;">NodeJS</a> <a href="/tag/TypeScript/" style="font-size: 10px;">TypeScript</a>
@@ -543,7 +525,11 @@ ga('send', 'pageview');
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io">Hexo</a>
+                        <a href="http://atlanticbootcamp.com">Atlantic Bootcamp</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://agorabinaria.com">Ágora Binaria</a>
                     </li>
                 
             </ul>
@@ -552,12 +538,21 @@ ga('send', 'pageview');
 
 
     
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">marzo 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">septiembre 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">junio 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">mayo 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">abril 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">marzo 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">enero 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">agosto 2015</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
 
-            
-        </div>
-        <footer id="footer">
+                                        
+                </div>
+                <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
             &copy; 2017 Alberto Basalo<br>
@@ -565,7 +560,7 @@ ga('send', 'pageview');
         </div>
     </div>
 </footer>
-        
+                    
     
     <script>
     var disqus_config = function () {
@@ -608,6 +603,7 @@ ga('send', 'pageview');
       <script src="//load.sumome.com/"
               data-sumo-site-id="24f3eb649e85fa1f7db20b7fa344f42f381f65f8f86f7028766c55d313e73eb5"
               async="async"></script>
-    </div>
-</body>
-</html>
+        </div>
+    </body>
+
+    </html>

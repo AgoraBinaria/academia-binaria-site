@@ -8,7 +8,7 @@
     <meta name="description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Academia Binaria">
-<meta property="og:url" content="http://academia-binaria.com/page/2/index.html">
+<meta property="og:url" content="http://academia-binaria.com/page/3/index.html">
 <meta property="og:site_name" content="Academia Binaria">
 <meta property="og:description" content="Artículos y tutoriales sobre Angular, NodeJs, MongoDB y todo lo relacionado con JavaScript y TypeScript">
 <meta property="og:locale" content="es">
@@ -203,7 +203,7 @@ ga('send', 'pageview');
                             
                                 <section id="main">
                                     
-    <article id="post-angular2-di-inyeccion-de-dependencias" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-node-6-0-0-actualizacion-con-nvm" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -211,7 +211,7 @@ ga('send', 'pageview');
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/angular2-di-inyeccion-de-dependencias/">Angular2 DI: Inyección de dependencias</a>
+            <a class="article-title" href="/node-6-0-0-actualizacion-con-nvm/">Node 6.0.0 actualización con nvm</a>
         </h1>
     
 
@@ -220,8 +220,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/angular2-di-inyeccion-de-dependencias/">
-            <time datetime="2016-05-30T09:09:09.000Z" itemprop="datePublished">30-05-2016</time>
+        <a href="/node-6-0-0-actualizacion-con-nvm/">
+            <time datetime="2016-05-05T07:39:40.000Z" itemprop="datePublished">05-05-2016</time>
         </a>
     </div>
 
@@ -235,7 +235,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tag/Angular2/">Angular2</a>
+        <a class="tag-link" href="/tag/NodeJS/">NodeJS</a>
     </div>
 
                     </div>
@@ -245,14 +245,24 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><blockquote>
-<p>Código asociado en <a href="https://github.com/AcademiaBinaria/angular2/tree/master/4-injection" target="_blank" rel="external">angular2/4-injection/</a></p>
-</blockquote>
-<p>AngularJS2 tiene vocación de <em>framework</em> para grandes aplicaciones de negocio. Los grandes desarrollos requieren <strong>modularidad en el código</strong>. En AngularJS se resuelve mediante la Inyección de Dependencias, siguiendo el conocido patrón <em><a href="https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias" target="_blank" rel="external">Dependency Injection</a></em>. </p>
-<p>Los cambios en la versión 2 son sobre todo sintácticos, pero también conceptuales. Se mantiene el mismo objetivo, permitir hacer <strong>aplicaciones de negocio con HTML y JavaScript</strong> de manera controlable.</p></p>
-            <p class="article-more-link">
-                <a href="/angular2-di-inyeccion-de-dependencias/#more">Read More</a>
-            </p>
+            
+            <p>Acabamos de recibir la buena noticia de la versión 6 de <strong>NodeJS</strong>. En este caso con mejoras de rendimiento e incorporación de sintaxis de <strong>ES6</strong>. ¿Cómo obtener esta nueva versión?. Y sobretodo,  ¿cómo manejar la convivencia de distintas versiones? La ayuda se llama <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a> </p>
+<p>Estos son los pasos que has de seguir para instalar la herramienta.</p>
+<p>Se recomienda desinstalar las versiones de <strong>node</strong> y <strong>npm</strong> instaladas previamente. No es obligatorio.</p>
+<h4 id="LINUX-amp-OS-X"><a href="#LINUX-amp-OS-X" class="headerlink" title="LINUX &amp; OS X"></a>LINUX &amp; OS X</h4><p>1- Comprobamos que tenemos instaladas las dependencias<br>1.1 - Dependencias <strong>Linux</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install build-essential</div></pre></td></tr></table></figure></p>
+<p>1.2 -Dependencias <strong>OSX</strong> (herramientas de linea de comandos para XCode)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div></pre></td></tr></table></figure></p>
+<p>2- Descargamos y ejecutamos el script de instalación</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash</div></pre></td></tr></table></figure>
+<p>3- Comprobamos que está instalado <strong>NVM</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">command -v nvm</div></pre></td></tr></table></figure></p>
+<p><em>debe devolver nvm</em></p>
+<p>4- Instalamos la versión de Node que deseamos<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm install 6.0.0</div></pre></td></tr></table></figure></p>
+<p>5- Elegimos la versión de Node instalada que deseamos usar</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nvm use 6.0.0</div></pre></td></tr></table></figure>
+<h4 id="WINDOWS"><a href="#WINDOWS" class="headerlink" title="WINDOWS"></a>WINDOWS</h4><p>Para <strong>Windows</strong> no existe una versión <em>nativa</em> de <strong>nvm</strong>, pero si hay dos opciones para gestionar las versiones de node instaladas.</p>
+<p>1- <strong>nvm-windows</strong><br>    <a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="external">https://github.com/coreybutler/nvm-windows</a><br>    Es un wrapper de npm para windows, el instalador se encuentra en la URL (<a href="https://github.com/coreybutler/nvm/releases" target="_blank" rel="external">https://github.com/coreybutler/nvm/releases</a>).</p>
+<p>Los <code>comandos</code> para instalar y la versión de Node son los mismos que en Linux y OSX.</p>
+<p>2- <strong>nodist</strong><br>Es un gestor de versiones parecido a NVM solo para Windows<br>    La URL del instalador (<a href="https://github.com/marcelklehr/nodist/releases/download/v0.7.2/NodistSetup-v0.7.2.exe" target="_blank" rel="external">https://github.com/marcelklehr/nodist/releases/download/v0.7.2/NodistSetup-v0.7.2.exe</a>).<br>    Los comandos se encuentran en la documentación. (<a href="https://github.com/marcelklehr/nodist" target="_blank" rel="external">https://github.com/marcelklehr/nodist</a>)</p>
+
         
         </div>
         <footer class="article-footer">
@@ -262,7 +272,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://academia-binaria.com/angular2-di-inyeccion-de-dependencias/" data-id="cj9idaznk0001ycd3p8ycqbba" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://academia-binaria.com/node-6-0-0-actualizacion-con-nvm/" data-id="cj9idaztg0015ycd3n04d7ler" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -330,7 +340,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://academia-binaria.com/angular2-di-inyeccion-de-dependencias/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/angular2-di-inyeccion-de-dependencias/">Comentarios</a>
+        <a href="http://academia-binaria.com/node-6-0-0-actualizacion-con-nvm/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/node-6-0-0-actualizacion-con-nvm/">Comentarios</a>
     
 
         </footer>
@@ -340,7 +350,7 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-databinding-el-flujo-de-datos-de-angular2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-npm-de-instalador-a-publicador" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -348,7 +358,7 @@ ga('send', 'pageview');
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/databinding-el-flujo-de-datos-de-angular2/">DataBinding el flujo de datos de Angular2</a>
+            <a class="article-title" href="/npm-de-instalador-a-publicador/">npm: de instalador a publicador</a>
         </h1>
     
 
@@ -357,8 +367,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/databinding-el-flujo-de-datos-de-angular2/">
-            <time datetime="2016-05-25T15:26:32.000Z" itemprop="datePublished">25-05-2016</time>
+        <a href="/npm-de-instalador-a-publicador/">
+            <time datetime="2016-04-18T14:07:46.000Z" itemprop="datePublished">18-04-2016</time>
         </a>
     </div>
 
@@ -366,13 +376,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Introduccion/">Introducción</a>
+        <a class="article-category-link" href="/categories/Avanzado/">Avanzado</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tag/Angular2/">Angular2</a>
+        <a class="tag-link" href="/tag/NodeJS/">NodeJS</a>
     </div>
 
                     </div>
@@ -382,15 +392,34 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><blockquote>
-<p>Código asociado en <a href="https://github.com/AcademiaBinaria/angular2/tree/master/3-databinding" target="_blank" rel="external">angular2/3-databinding/</a> </p>
-</blockquote>
-<p>El <em>doble binding</em> o enlace vista controlador en ambos sentidos es una de las claves del éxito de AngularJS. Usando la célebre directiva <code>ng-model</code> enganchamos <strong>una propiedad del modelo con un control de la vista</strong>. De manera <em>automágica</em> Angular se suscribe a cambios en el DOM y observa el estado del modelo manteniéndolos en sincronía. </p>
-<p>Pero esto tiene un coste en rendimiento que Angular2 supera con un patrón distinto para el control del <strong>flujo de datos</strong> entre la vista y el modelo. Este nuevo paradigma ofrece soluciones para distintos escenarios:</p>
-<p><img src="/images/ng2-Flujo-de-datos.jpg" alt="Flujo de datos"></p></p>
-            <p class="article-more-link">
-                <a href="/databinding-el-flujo-de-datos-de-angular2/#more">Read More</a>
-            </p>
+            
+            <p>Seguro que estás harto de repetir la mítica instrucción <code>npm install paquete-x</code> Pero, ¿has pensado en <strong>publicar tus propios módulos</strong>?. Es muy recomendable crear soluciones distribuidas y muy fácil publicarlas en <a href="https://www.npmjs.com/" target="_blank" rel="external"><em>npm</em></a>. </p>
+<p>Sigue este proceso y te convertirás en un creador de paquetes para <em>npm</em> : </p>
+<h2 id="Programa"><a href="#Programa" class="headerlink" title="Programa"></a>Programa</h2><p>Todo empieza por tener una necesidad y resolverla <strong>encapsulando su código en un módulo.</strong> Por supuesto que ese módulo puede requerir paquetes externos. Y por supuesto que tu código puede, y debe, escribirse en varios módulos. </p>
+<p>Antes de continuar vamos a fijar un par de conceptos:</p>
+<p><strong>- módulo:</strong> Fichero <em>.js</em> que exporta un funcionalidad y oculta su implementación.</p>
+<p><strong>- paquete:</strong> Uno o más módulos, con sus dependientes de otros paquetes que proponen una solución reutilizable.</p>
+<p>Conocidos los ingredientes, la receta es sencilla:</p>
+<ol>
+<li>Debes crear un proyecto para el paquete que vas a publicar. </li>
+<li>Has de subir el código a un repositorio público. </li>
+<li>Y debes rellenar convenientemente el <code>package.json</code> de tu proyecto.</li>
+</ol>
+<p>Este es un ejemplo que he creado y <a href="https://github.com/AgoraBinaria/ab-ftp" target="_blank" rel="external">publicado en github</a> que te puede servir de base. </p>
+<p>Presta especial atención al <strong>nombrado</strong> de tu proyecto porque ha de ser único en el repositorio de npm. Para reducir riesgos de colisiones de nombre te recomiendo que utilices un <em>prefijo</em> con tus iniciales o las de tu empresa.</p>
+<p>No te olvides de incluir un juego de <strong>pruebas y documentación</strong> necesaria para sus uso.</p>
+<h2 id="Publica"><a href="#Publica" class="headerlink" title="Publica"></a>Publica</h2><p>Puedes descargar librerías y herramienta desde el repositorio de <em>npm</em> de forma anónima. De hecho, eso es lo más corriente. Pero, como era de esperar, tienes que <strong>registrarte para poder publicar</strong> contenido. El <a href="https://www.npmjs.com/signup" target="_blank" rel="external">proceso de registro</a> vía web es sencillo y grátis. </p>
+<p>Una vez verificado puedes hacer login en la web. Pero también en la terminal de tu ordenador: <code>npm login</code> te pedirá el nombre de usuario y contraseña. A partir de es momento estás identificado y puedes usar las herramientas de autor:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure>
+<p>Puedes encontrar <a href="https://docs.npmjs.com/cli/publish" target="_blank" rel="external">más información</a> acerca de este mega comando en la documentación de <em>npmjs</em>. Pero siguiendo la máxima de cuanto menos, mejor, la herramienta hará con sus valores por defecto un publicación y actualización limpias.</p>
+<p>La clave está en que tu fichero de configuración <code>package.json</code> sea correcto y lo más completo posible. Escribe un completo <code>readme.md</code> que se convertirá en portada de tu paquete en el repositorio de npm. Mira en mi ejemplo cómo <a href="https://github.com/AgoraBinaria/ab-ftp" target="_blank" rel="external">el contenido subido a github</a> se transforma y se ve en la <a href="https://www.npmjs.com/package/ab-ftp" target="_blank" rel="external">página de información de npm.</a></p>
+<p>Comprueba en un directorio vacío que <code>npm install nombre-de-tu-paquete</code> descarga todo lo necesario… y tómate un café mientras ves crecer la hierba y las estadísticas de descargas.</p>
+<h2 id="Actualiza"><a href="#Actualiza" class="headerlink" title="Actualiza"></a>Actualiza</h2><p>Con el tiempo mejorarás y corregirás tu solución. Te recomiendo que sigas el patrón de <a href="http://semver.org/" target="_blank" rel="external">nombrado de versiones semántico</a>: </p>
+<p><strong>x.y.z = 1.2.3 = ruptura.mejora.parche</strong> </p>
+<p>Es bueno que etiquetes tu repositorio con estas mismas versiones para que, una vez desplegadas, se encuentre con facilidad en <em>github</em>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git tag 0.1.2</div><div class="line">git push --tags</div></pre></td></tr></table></figure>
+<h2 id="Disfruta"><a href="#Disfruta" class="headerlink" title="Disfruta"></a>Disfruta</h2><p>Finalmente podrás utilizar ese código en todas tus aplicaciones. Sería fantástico que además otros lo encontrasen útil. Y mejor aún si te ayudan o al menos te proponen mejoras. Pero en cualquier caso <strong>siempre habrás ganado</strong>. El esfuerzo analítico que requiere se cobra con creces: dividiendo el problema, creando micro soluciones eficientes y reutilizando código siempre es rentable.</p>
+
         
         </div>
         <footer class="article-footer">
@@ -400,7 +429,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://academia-binaria.com/databinding-el-flujo-de-datos-de-angular2/" data-id="cj9idazry000hycd30wq9xuyu" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://academia-binaria.com/npm-de-instalador-a-publicador/" data-id="cj9idazy90029ycd3gvs6hqz3" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -468,7 +497,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://academia-binaria.com/databinding-el-flujo-de-datos-de-angular2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/databinding-el-flujo-de-datos-de-angular2/">Comentarios</a>
+        <a href="http://academia-binaria.com/npm-de-instalador-a-publicador/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/npm-de-instalador-a-publicador/">Comentarios</a>
     
 
         </footer>
@@ -478,7 +507,7 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-componentes-los-bloques-de-construccion-de-angular-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-soluciones-backend-2016" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -486,7 +515,7 @@ ga('send', 'pageview');
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/componentes-los-bloques-de-construccion-de-angular-2/">Componentes, los bloques de construcción de Angular2</a>
+            <a class="article-title" href="/soluciones-backend-2016/">Soluciones BackEnd 2016</a>
         </h1>
     
 
@@ -495,8 +524,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/componentes-los-bloques-de-construccion-de-angular-2/">
-            <time datetime="2016-05-23T12:07:27.000Z" itemprop="datePublished">23-05-2016</time>
+        <a href="/soluciones-backend-2016/">
+            <time datetime="2016-03-21T10:50:58.000Z" itemprop="datePublished">21-03-2016</time>
         </a>
     </div>
 
@@ -504,13 +533,13 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Introduccion/">Introducción</a>
+        <a class="article-category-link" href="/categories/Opinion/">Opinión</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tag/Angular2/">Angular2</a>
+        <a class="tag-link" href="/tag/BackEnd/">BackEnd</a>, <a class="tag-link" href="/tag/MongoDB/">MongoDB</a>, <a class="tag-link" href="/tag/NodeJS/">NodeJS</a>
     </div>
 
                     </div>
@@ -520,24 +549,21 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><blockquote>
-<p>Código asociado en GitHub: <a href="https://github.com/AcademiaBinaria/angular2/tree/master/2-modulos" target="_blank" rel="external">angular2/2-modulos/</a> </p>
-</blockquote>
-<p>Los componentes son los bloques de construcción de la web moderna. En Angular 2 sustituyen al viejo par Vista-Controlador, el cual ya era opcional en las últimas versiones 1.x Ahora <strong>el componente es el rey</strong>.</p>
-<p>Las aplicaciones en Angular2 se desarrollan como <strong>árboles de componentes</strong>. Estos árboles pueden llegar a ser muy frondosos y conviene dirigir su crecimiento agrupándolos en <strong>módulos</strong> para no perderse. Yo procuro estructurarlo en niveles para una mejor comprensión. En cada nivel se crea un módulo y dentro de él se declaran los componentes.</p>
+            
+            <p>Las soluciones JavaScript para el servidor que marcan <strong>tendencia en el desarrollo back end</strong> durante este 2016. Continuación de la saga que iniciamos con <strong><a href="http://academia-binaria.com/soluciones-frontend-2016/">FrontEdge</a></strong>.</p>
 <ul>
-<li>1- Nivel <strong>Raíz</strong>:<br>Toda aplicación parte de un componente raíz. Suele recibir el nombre de la aplicación desarrollada y el sufijo <code>App</code> o simplemente <code>App</code>. </li>
-<li>2- Nivel <strong>Troncal</strong>:<br>Generalmente dos o tres componentes troncales para la estructura de las páginas. Es común el patrón <em>Navegador-Contenedor</em>, con algún elemento auxiliar para ayudas, mensajes, menús complejos… </li>
-<li>3- Nivel de <strong>Ramas</strong>:<br>En este símil, las ramas equivalen a rutas o vistas de la aplicación. En un <em>SPA</em> cada ruta tiene una vista asociada que se carga dentro del componente troncal contenedor </li>
-<li>4- Nivel de <strong>Hojas</strong>:<br>Cada una de las vistas está a su vez formada por múltiples componentes de negocio a modo de hojas. </li>
+<li><p>Mi apuesta de mercado sigue empezando por la base, el lenguaje JavaScript. En concreto su última y muy necesaria versión: el conocido <strong><a href="http://es6-features.org/#Constants" target="_blank" rel="external">ES6</a></strong>. En el lado del servidor destaco la disponibilidad de <a href="http://es6-features.org/#PromiseUsage" target="_blank" rel="external">Promesas</a> de forma nativa..</p>
+</li>
+<li><p>Las aplicaciones crecen y se controlan por su API.Así que este es el punto al que más atención debes prestarle. Por supuesto que <em>hay que cumplir con el estándar REST y hay que documentar</em> todo nuestro código. Pero para ser más productivo y mantener actualizado el sistema, te propongo que uses <strong><a href="http://raml.org/" target="_blank" rel="external">RAML</a></strong>. Un lenguaje para documentar APIs que con las herramientas adecuadas permite la generación de pruebas, esqueletos de aplicaciones e infraestructura. </p>
+</li>
+<li><p>El ya viejo conocido <strong><a href="https://nodejs.org/" target="_blank" rel="external">NodeJS</a></strong> se ha modernizado y a partir de la versión 4, especialmente en la 5, admite la mayor parte de la sintaxis ES6. Además ha mejorado su velocidad en un 25% gracias a la actualización del motor V8 que procesa internamente el JavaScript.</p>
+</li>
+<li><p>En la base de datos irrumpe con fuerza la nueva versión de <strong><a href="https://docs.mongodb.org/manual/release-notes/3.2/" target="_blank" rel="external">MongoDB 3.2</a></strong>, que incorpora grandes novedades como: sistema de almacenamiento más rápido, índices parciales, validación de esquema y el esperado <em>join</em> entre colecciones .</p>
+</li>
 </ul>
-<p><img src="/images/ng2-Arbol-de-componentes.jpg" alt="Árbol de componentes en una aplicación Angular 2"></p>
-<blockquote>
-<p>Con la salvedad de que muchos de estos componentes los puedes reutilizar en distintas vistas.</p>
-</blockquote></p>
-            <p class="article-more-link">
-                <a href="/componentes-los-bloques-de-construccion-de-angular-2/#more">Read More</a>
-            </p>
+<p>En <a href="https://docs.google.com/presentation/d/12gdsjxUgsN58uzxF4XO38cP2QSH6IR5WjEZBLGfCgUY/edit?usp=sharing" target="_blank" rel="external">esta presentación</a> tienes más información acerca de lo que llamo <strong>backEdge</strong> : tecnología utilizable, de última generación y con enorme potencial. </p>
+<p>En <a href="https://youtu.be/cfmJQjBfM-s" target="_blank" rel="external">este video</a> tienes la charla que di con o que llamo <strong>Desarrollo Web</strong> presentando las tendencias tecnológicas del 2016. </p>
+
         
         </div>
         <footer class="article-footer">
@@ -547,7 +573,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://academia-binaria.com/componentes-los-bloques-de-construccion-de-angular-2/" data-id="cj9idazqd0009ycd3h3dew4fc" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://academia-binaria.com/soluciones-backend-2016/" data-id="cj9idaztz001gycd3eqvq3vx4" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -615,7 +641,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://academia-binaria.com/componentes-los-bloques-de-construccion-de-angular-2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/componentes-los-bloques-de-construccion-de-angular-2/">Comentarios</a>
+        <a href="http://academia-binaria.com/soluciones-backend-2016/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/soluciones-backend-2016/">Comentarios</a>
     
 
         </footer>
@@ -625,7 +651,7 @@ ga('send', 'pageview');
 
 
 
-    <article id="post-hola-mundo-en-angular-2" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-soluciones-frontend-2016" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -633,7 +659,7 @@ ga('send', 'pageview');
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/hola-mundo-en-angular-2/">Hola Mundo Angular 2</a>
+            <a class="article-title" href="/soluciones-frontend-2016/">Soluciones FrontEnd 2016</a>
         </h1>
     
 
@@ -642,8 +668,154 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/hola-mundo-en-angular-2/">
-            <time datetime="2016-05-18T14:10:18.000Z" itemprop="datePublished">18-05-2016</time>
+        <a href="/soluciones-frontend-2016/">
+            <time datetime="2016-01-14T09:39:32.000Z" itemprop="datePublished">14-01-2016</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Opinion/">Opinión</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tag/AngularJS/">AngularJS</a>, <a class="tag-link" href="/tag/FrontEnd/">FrontEnd</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Inicio el año proponiendo una selección de tecnologías que serán <strong>tendencia en el desarrollo front end</strong> durante este 2016.</p>
+<ul>
+<li><p>Mi apuesta de mercado empieza por la base, el lenguaje JavaScript. En concreto su última y muy necesaria versión: el conocido <strong><a href="http://es6-features.org/#Constants" target="_blank" rel="external">ES6</a></strong>. Tras siete años desde la anterior gran revisión, el éxito y la popularidad de JS no podía esperar más. Y tu tampoco debes esperar más para conocerlo y usarlo.</p>
+</li>
+<li><p>Existe una creciente necesidad de dependencias externas en nuestra aplicaciones y sobre todo incorporar librerías provenientes de otros entornos y desarrolladas con variantes de JS. Para administrar todo ello propongo <strong><a href="http://jspm.io/" target="_blank" rel="external">JSPM</a></strong>, que se incorporará definitivamente a nuestro toolbox durante el 2016.</p>
+</li>
+<li><p>De entre las librerías y frameworks disponibles, AngularJS continuará siendo el rey. Este viejo conocido está creciendo en ya en grandes empresas, banca y administraciones públicas. Mientras esperamos la gloriosa venida de la versión 2.0, tenemos la oportunidad de  adecuar nuestro estilo de programación y desarrollar de manera mas limpia con la versión puente <strong><a href="https://www.angularjs.org/" target="_blank" rel="external">AngularJS1.5</a></strong></p>
+</li>
+<li><p>En la parte visual, el look &amp; feel propuesto por Google con Material Design es un éxito de aceptación para el desarrollo de aplicaciones empresariales. La librería <strong><a href="https://material.angularjs.org/latest/" target="_blank" rel="external">AngularMaterial</a></strong> es una implementación para Angular de dicha especificación gráfica. Moderno y con enorme potencial.</p>
+</li>
+</ul>
+<p>En <a href="https://docs.google.com/presentation/d/1ah0w0oW-urVn3rQbX5su2ZydFSyxyw4TIaeq2fCdR1Y/edit?usp=sharing" target="_blank" rel="external">esta presentación</a> tienes más información acerca de lo que llamo <strong>frontEdge</strong> : tecnología utilizable, de última generación y con enorme potencial. </p>
+<p><a href="https://docs.google.com/presentation/d/1ah0w0oW-urVn3rQbX5su2ZydFSyxyw4TIaeq2fCdR1Y/edit?usp=sharing" target="_blank" rel="external">Presentación frontEdge</a></p>
+<p>Si tienes tiempo, mira <a href="https://www.youtube.com/watch?v=vJZb_rs2vvU" target="_blank" rel="external">este vídeo</a> con una charla en la que comentamos estas y otras tecnologías para programadores.</p>
+<p><a href="https://www.youtube.com/watch?v=vJZb_rs2vvU" target="_blank" rel="external">video frontEdge</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://academia-binaria.com/soluciones-frontend-2016/" data-id="cj9idaztr001bycd31jsa5pn5" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://academia-binaria.com/soluciones-frontend-2016/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/soluciones-frontend-2016/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-formas" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/formas/">7 formas de incluir Bootstrap en nuestro proyecto</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/formas/">
+            <time datetime="2015-11-12T14:40:12.000Z" itemprop="datePublished">12-11-2015</time>
         </a>
     </div>
 
@@ -657,7 +829,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tag/Angular2/">Angular2</a>
+        <a class="tag-link" href="/tag/Bootstrap/">Bootstrap</a>
     </div>
 
                     </div>
@@ -667,14 +839,22 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><blockquote>
-<p>Código asociado en GitHub: <a href="https://github.com/AcademiaBinaria/angular2/tree/master/1-hola-mundo" target="_blank" rel="external">angular2/1-HolaMundo/</a></p>
-</blockquote>
-<p>Qué lejanos aquellos tiempos dónde un <a href="https://github.com/AcademiaBinaria/HolaAngularJS" target="_blank" rel="external">Hola Mundo en AngularJS</a> se hacía en 2 líneas de código. Ahora necesitaré miles de ficheros y media hora de explicación. Pero el resultado valdrá la pena. Estaremos en la pista de lanzamiento para crear <strong>aplicaciones de nivel empresarial con Angular 2.</strong></p>
-<p>Ya he explicado que Angular ha pasado <a href="http://academia-binaria.com/angular2-primeras-impresiones/">de framework a plataforma</a>, y que ya no es para aficionados. Grandes desarrollos en equipo requieren <strong>herramientas y procedimientos</strong> a la altura. La primera opción que te recomiendo es <a href="https://cli.angular.io/" target="_blank" rel="external">Angular CLI</a>, un generador de aplicaciones trufado de buenas prácticas y procedimientos. Por raro que te parezca, cualquier otra opción es <em>aún</em> más compleja que la que te muestro.</p></p>
-            <p class="article-more-link">
-                <a href="/hola-mundo-en-angular-2/#more">Read More</a>
-            </p>
+            
+            <h3 id="1-Descargando-los-archivos"><a href="#1-Descargando-los-archivos" class="headerlink" title="1- Descargando los archivos"></a>1- Descargando los archivos</h3><p>Haz clic en el botón <strong>“Download Bootstrap”</strong> y se descargará una carpeta comprimida, al descomprimirla te encontrarás las versiones compiladas y minificadas de Bootstrap así como los iconos que utiliza:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">bootstrap/</div><div class="line">├── css/</div><div class="line">│   ├── bootstrap.css</div><div class="line">│   ├── bootstrap.css.map</div><div class="line">│   ├── bootstrap.min.css</div><div class="line">│   ├── bootstrap.min.css.map</div><div class="line">│   ├── bootstrap-theme.css</div><div class="line">│   ├── bootstrap-theme.css.map</div><div class="line">│   ├── bootstrap-theme.min.css</div><div class="line">│   └── bootstrap-theme.min.css.map</div><div class="line">├── js/</div><div class="line">│   ├── bootstrap.js</div><div class="line">│   └── bootstrap.min.js</div><div class="line">└── fonts/</div><div class="line">    ├── glyphicons-halflings-regular.eot</div><div class="line">    ├── glyphicons-halflings-regular.svg</div><div class="line">    ├── glyphicons-halflings-regular.ttf</div><div class="line">    ├── glyphicons-halflings-regular.woff</div><div class="line">    └── glyphicons-halflings-regular.woff2</div></pre></td></tr></table></figure>
+<h3 id="2-Para-usuarios-de-GitHub"><a href="#2-Para-usuarios-de-GitHub" class="headerlink" title="2- Para usuarios de GitHub"></a>2- Para usuarios de GitHub</h3><p>Bootstrap es un proyecto en código abierto así que puedes <strong>clonar</strong> o hacer <strong>fork</strong> desde <a href="https://github.com/twbs/bootstrap" target="_blank" rel="external">GitHub</a></p>
+<h3 id="3-Codigo-fuente-original"><a href="#3-Codigo-fuente-original" class="headerlink" title="3- Código fuente original"></a>3- Código fuente original</h3><p>Lo obtienes al hacer clic en el botón <strong>“Download source”</strong>. Lo que obtienes son los archivos <strong>LESS</strong> y <strong>Javascript</strong> originales. Esta opción requiere <strong>Grunt</strong> y <strong>Node.js</strong> y se estructura dentro de la siguiente manera:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">bootstrap/</div><div class="line">├── less/</div><div class="line">├── js/</div><div class="line">├── fonts/</div><div class="line">├── dist/</div><div class="line">│   ├── css/</div><div class="line">│   ├── js/</div><div class="line">│   └── fonts/</div><div class="line">└── docs/</div><div class="line">    └── examples/</div></pre></td></tr></table></figure>
+<h3 id="4-Fans-de-Bower"><a href="#4-Fans-de-Bower" class="headerlink" title="4- Fans de Bower"></a>4- Fans de Bower</h3><p>Si tenemos <strong>Git</strong> y <strong>Bower</strong> instalado simplemente debes teclear en tu terminal:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bower install bootstrap</div></pre></td></tr></table></figure>
+<p>Y el pajarito hará todo el trabajo.</p>
+<h3 id="5-NPM-Install"><a href="#5-NPM-Install" class="headerlink" title="5- NPM Install"></a>5- NPM Install</h3><p>Tan fácil como con Bower solo que esta vez debes teclear en tu terminal:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install bootstrap</div></pre></td></tr></table></figure>
+<h3 id="6-Version-en-SASS"><a href="#6-Version-en-SASS" class="headerlink" title="6- Versión en SASS"></a>6- Versión en SASS</h3><p>A pesar de que <strong>Bootstrap 3 fue escrito en LESS</strong> (aspecto que cambiará en la versión 4, que será en SASS), existe una versión para SASS que puedes descargar en el botón <strong>“Download SASS”</strong> para facilitar su inclusión en proyectos en <strong>Rails</strong>, <strong>Compass</strong> o solo <strong>SASS</strong>.</p>
+<h3 id="7-CDN"><a href="#7-CDN" class="headerlink" title="7- CDN"></a>7- CDN</h3><p>Por último, si no quieres descargarte nada puedes utilizar los links del proveedor de <strong>CDN</strong> y referenciarlos en tu HTML:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- CSS --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Tema opcional --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"</span> <span class="attr">integrity</span>=<span class="string">"sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- JavaScript --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"</span> <span class="attr">integrity</span>=<span class="string">"sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Esta es la manera más fácil pero no podrás trabajar sin conexión a internet.</p>
+
         
         </div>
         <footer class="article-footer">
@@ -684,7 +864,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://academia-binaria.com/hola-mundo-en-angular-2/" data-id="cj9idazsj000sycd30ftdhxxq" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://academia-binaria.com/formas/" data-id="cj9idazo70003ycd3byz67fc2" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -752,141 +932,7 @@ ga('send', 'pageview');
 
             
     
-        <a href="http://academia-binaria.com/hola-mundo-en-angular-2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/hola-mundo-en-angular-2/">Comentarios</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-angular2-primeras-impresiones" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/angular2-primeras-impresiones/">Angular2, la evolución de la plataforma</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/angular2-primeras-impresiones/">
-            <time datetime="2016-05-06T13:57:50.000Z" itemprop="datePublished">06-05-2016</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Introduccion/">Introducción</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tag/Angular2/">Angular2</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>Coincidiendo con la <strong>ngConf 2016</strong> acaba de presentarse la esperada <em>Release Candidate</em> de <strong><a href="https://angular.io/" target="_blank" rel="external">Angular 2</a></strong>. Nunca antes una versión de una herramienta para desarrolladores había causado tal expectación. Hace ya 18 meses que se había anunciado como una evolución rupturista con respecto a <strong>AngularJS 1</strong>. Y ahora esa ruptura se ha materializado. </p>
-<p>Los programadores somos muy conscientes de que <strong>lo único estable es el cambio</strong>. Asumimos, por experiencia, que los cambios en una tecnología son evoluciones graduales constantes. Pero esto no es así en <strong>Angular2</strong>, y lo sabemos desde su anuncio hace año y medio. Desde ese momento todos fuimos advertidos de que estábamos ante otra cosa. Algo nuevo que sólo comparte paternidad y nombre con la anterior versión.</p></p>
-            <p class="article-more-link">
-                <a href="/angular2-primeras-impresiones/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://academia-binaria.com/angular2-primeras-impresiones/" data-id="cj9idazpp0007ycd319cfh34x" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://academia-binaria.com/angular2-primeras-impresiones/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/angular2-primeras-impresiones/">Comentarios</a>
+        <a href="http://academia-binaria.com/formas/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://academia-binaria.com/formas/">Comentarios</a>
     
 
         </footer>
@@ -897,7 +943,7 @@ ga('send', 'pageview');
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Siguiente  &raquo;</a>
+        <a class="extend prev" rel="prev" href="/page/2/">&laquo; Anterior</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Siguiente  &raquo;</a>
     </nav>
 
                                 </section>

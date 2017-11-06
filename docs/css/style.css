@@ -139,7 +139,6 @@ code {
 }
 .outer {
   max-width: 1580px;
-  margin-top: 64px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -180,7 +179,18 @@ code {
   position: relative;
 }
 #container > .outer {
+  margin-top: 64px;
   margin-bottom: 30px;
+}
+@media screen and (min-width: 560px) and (max-width: 799px) {
+  #container {
+    margin-top: 113px;
+  }
+}
+@media screen and (max-width: 559px) {
+  #container {
+    margin-top: 113px;
+  }
 }
 @media screen and (min-width: 1200px) {
   #main {
@@ -345,12 +355,12 @@ code {
   font-weight: bold;
 }
 #header {
+  background: #fff;
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
-  background: #fff;
-  position: relative;
+  left: 0;
+  z-index: 999;
 }
 #header a,
 #header a:visited {
