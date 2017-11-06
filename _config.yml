@@ -76,6 +76,7 @@ theme: icarus
 
 sitemap:
     path: sitemap.xml
+all_minifier: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
