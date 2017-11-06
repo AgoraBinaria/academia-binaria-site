@@ -16,6 +16,7 @@ Qué lejanos aquellos tiempos dónde un [Hola Mundo en AngularJS](https://github
 
 Ya he explicado que Angular ha pasado [de framework a plataforma](http://academia-binaria.com/angular2-primeras-impresiones/), y que ya no es para aficionados. Grandes desarrollos en equipo requieren **herramientas y procedimientos** a la altura. La primera opción que te recomiendo es [Angular CLI](https://cli.angular.io/), un generador de aplicaciones trufado de buenas prácticas y procedimientos. Por raro que te parezca, cualquier otra opción es *aún* más compleja que la que te muestro.
 
+<!-- more -->
 
 ## Preparando el entorno
 Las herramientas que voy a usar requieren [NodeJS](nodejs.org). Te recomiendo que instales una de sus últimas versiones. Tras la instalación tendrás acceso a [npm](npmjs.com) para poder instalar librerías y utilidades como Angular CLI.

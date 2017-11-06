@@ -18,6 +18,8 @@ Pero esto tiene un coste en rendimiento que Angular2 supera con un patrón disti
 
 ![Flujo de datos](/images/ng2-Flujo-de-datos.jpg)
 
+<!-- more -->
+
 ## Sólo lectura: modelo hacia la vista
 ### 1- Interpolación
 En este primer caso todo nos resultará muy familiar. En efecto la sintáxis de interpolación es la mismoa que en AngularJS 1.x. eso si, en este caso y por defecto, los datos son de sólo lectura y Angular no se preocupa de actualizar la variable.

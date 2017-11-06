@@ -8,6 +8,7 @@ permalink: enrutado-con-angular2-el-nuevo-spa
 id: 15
 updated: 2016/12/07 18:23:02
 date: 2016/06/02 08:52:04
+thumbnail: /css/images/angular.jpg
 ---
 
 > Código asociado en [angular2/6-routing/](https://github.com/AcademiaBinaria/angular2/tree/master/6-routing)
@@ -16,6 +17,7 @@ La capacidad de gestionar las **rutas en el cliente** es una de las grandes vent
 
 De todo *Angular2*, este es el componente que más ha cambiado durante la fase *Release Candidate*. Actualmente confiamos en que las pequeñas dudas se resuelvan definitivamente y podamos relajarnos creando modernos desarrollos **SPA**.
 
+<!-- more -->
 
 ## Módulo de enrutado en base a componentes
 

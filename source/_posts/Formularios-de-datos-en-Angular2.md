@@ -11,8 +11,10 @@ date: 2016-06-22 16:32:34
 thumbnail: /css/images/angular.jpg
 ---
 
-Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al *double binding*. Otra cosa que no fue nunca simple es la **validación de controles en los formualrios**. En Angular 2 y con la última versión RC3 la cosa mejora, pero es aún un *Work in progress.*
+Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al *double binding*. Otra cosa que no fue nunca simple es la **validación de controles en los formularios**. En Angular 2 y con la última versión RC3 la cosa mejora, pero es aún un *Work in progress.*
   
+<!-- more -->
+
 ### Dependencias
 Con el lío de versiones de los últimos días, conviene que os muestre con qué he hecho mi prueba.
 ```json

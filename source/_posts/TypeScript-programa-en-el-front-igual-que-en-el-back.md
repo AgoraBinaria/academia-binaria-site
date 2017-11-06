@@ -13,6 +13,8 @@ thumbnail: /css/images/typescript.jpg
 
 Hasta hace bien poco había dos mundos en la programación casi enfrentados: el desarrollo *back end y el front end*. El primero era el de los programadores de verdad, con **lenguajes serios y patrones de diseño**. El último era el universo de los diseñadores, con lenguajes de segundo nivel y **micro scripts o código espagueti** descontrolado.
 
+<!-- more -->
+
 Pero la llegada de los frameworks *MVC* en el cliente, llevó **grandes cantidades de código al navegador** y el desarrollo front end ya nunca sería lo mismo. Primero se portaron los patrones, después las buenas prácticas, más tarde las herramientas y así hasta haber eliminado las fronteras entre *back y front*.
 
 Pero quedaba algo pendiente, el leguaje. En el lado del servidor había multitud de opciones, siendo *Java* y *C#* las más aceptadas por la empresa, administración y banca. Pero al otro lado del cable seguía, con algunos retoques, el viejo *JavaScript*.

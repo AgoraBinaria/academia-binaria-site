@@ -16,6 +16,8 @@ AngularJS2 tiene vocación de *framework* para grandes aplicaciones de negocio. 
 
 Los cambios en la versión 2 son sobre todo sintácticos, pero también conceptuales. Se mantiene el mismo objetivo, permitir hacer **aplicaciones de negocio con HTML y JavaScript** de manera controlable.
 
+<!-- more -->
+
 ## Módulos, componentes y servicios
 En AngularJS 1 teníamos muy presente el concepto de **módulo**. Rara era la aplicación que no comenzase con el mítico `angular.module('miAplicacion')`. Dada la carencia de un sistema modular nativo en *JavaScript*, AngularJS nos proveía de uno propio. 
 

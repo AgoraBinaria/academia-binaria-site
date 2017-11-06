@@ -29,6 +29,8 @@ Cada una de las vistas está a su vez formada por múltiples componentes de nego
 
 >Con la salvedad de que muchos de estos componentes los puedes reutilizar en distintas vistas.
 
+<!-- more -->
+
 ## Módulos
 
 Los árboles de componentes pueden ocultarnos fácilmente el bosque de nuestra aplicación. **Los módulos son agrupaciones de componentes.** Nos ayudan a mantener un orden y a encapsular funcionalidad para crear aplicaciones desacopladas con bloques re-utilizables.

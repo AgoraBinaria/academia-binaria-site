@@ -1,6 +1,6 @@
 # Menus
 menu:
-  Inicio: .
+  #Inicio: .
   Archivos: archives
   #Categories: categories
   #Tags: tags
@@ -36,10 +36,9 @@ customize:
 widgets:
     - recent_posts
     - category
-    - archive
-    - tag
     - tagcloud
     - links
+    - archive
 
 # Search
 search:
@@ -93,4 +92,5 @@ miscellaneous:
         twitter_id:
         google_plus:
     links:
-        Hexo: http://hexo.io
+        Atlantic Bootcamp: http://atlanticbootcamp.com
+        Ágora Binaria: http://agorabinaria.com

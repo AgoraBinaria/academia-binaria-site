@@ -13,6 +13,8 @@ thumbnail: /css/images/angular.jpg
 
 Enlace a los repositorios con el código de ejemplo para los cursos de **Angular2** :
 
+<!-- more -->
+
 ### 2.0 cli
 [AcademiaBinaria/angular2](https://github.com/AcademiaBinaria/angular2)
 

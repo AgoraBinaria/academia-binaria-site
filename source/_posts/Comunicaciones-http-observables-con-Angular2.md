@@ -13,6 +13,7 @@ thumbnail: /css/images/angular.jpg
 
 En AngularJS, y en otros frameworks del lado cliente, la idea de fue simple desde el principio: dame **plantillas estáticas y datos dinámicos**. Las comunicaciones *http* son las arterias vitales de transporte de esos datos dinámicos. Y en Angular 2 se han revisado por completo, llevando las comunicaciones asíncronas al siguiente nivel.
 
+<!-- more -->
 
 ### La librería http y otras...
 Como cabe esperar Angular 2 dispone de su propio módulo de comunicaciones. En la librería `@angular/http` encontramos el nuevo servicio `http` que es el cliente usado para enviar y recibir datos.

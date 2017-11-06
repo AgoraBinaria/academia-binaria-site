@@ -14,6 +14,8 @@ Coincidiendo con la **ngConf 2016** acaba de presentarse la esperada *Release Ca
 
 Los programadores somos muy conscientes de que **lo único estable es el cambio**. Asumimos, por experiencia, que los cambios en una tecnología son evoluciones graduales constantes. Pero esto no es así en **Angular2**, y lo sabemos desde su anuncio hace año y medio. Desde ese momento todos fuimos advertidos de que estábamos ante otra cosa. Algo nuevo que sólo comparte paternidad y nombre con la anterior versión.
 
+<!-- more -->
+
 ## Un poco de historia
 
 En septiembre de 2011 me tropecé con AngularJS buscando una alternativa a *Backbone* y *KnockOut*. Yo venía del mundo encorsetado del desarrollo para multinacionales basado en tecnologías *serias* como .Net y Java. Necesitaba un cambio, una apertura... pero con ciertas garantías. 
