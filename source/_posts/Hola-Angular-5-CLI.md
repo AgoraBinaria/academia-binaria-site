@@ -47,7 +47,7 @@ Si todo va bien, en unos segundo podrás visitar [http://localhost:4000](http://
 
 Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow -p cf --minimal true --routing true`. 
 
-> En este tutorial crearemos una aplicación de gestión financiera básica llamada **cash-flow** Una excusa para aprender a programar en Angular, nada serio. El comando generador mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podría limitarse a un simple `ng new mi-aplicacion` pero a la alarga vendrá bien usar estas opciones.
+> En este tutorial crearemos una aplicación de gestión financiera básica llamada **cash-flow** Una excusa para aprender a programar en Angular, nada serio. El comando generador mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podría limitarse a un simple `ng new mi-aplicacion` pero a la larga vendrá bien usar estas opciones.
 
 | Comando  | Significado |
 | -------- | ----------- |
