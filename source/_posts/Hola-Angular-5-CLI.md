@@ -1,5 +1,6 @@
 ---
 title: Hola Angular5 CLI
+permalink: hola-angular_5-cli
 date: 2017-11-07 13:38:42
 tags:  
 - Angular
