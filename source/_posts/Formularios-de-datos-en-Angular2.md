@@ -6,7 +6,7 @@ categories:
 - Introducción 
 permalink: formularios-de-datos-en-angular2
 id: 21
-updated: '2016-06-22 18:05:58'
+updated: 2016-06-22 18:05:58
 date: 2016-06-22 16:32:34
 thumbnail: /css/images/angular.jpg
 ---
