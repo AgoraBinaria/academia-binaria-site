@@ -48,7 +48,7 @@ Si todo va bien, en unos segundo podrás visitar [http://localhost:4000](http://
 
 Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow -p cf --minimal true --routing true`. 
 
-> En este tutorial crearemos una aplicación de gestión financiera básica llamada **cash-flow** Una excusa para aprender a programar en Angular; nada serio. El comando generador mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new mi-aplicacion` pero a la larga vendrá bien usar estas opciones.
+> En este tutorial crearemos una aplicación de gestión financiera básica llamada **cash-flow** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga me vendrá bien usar estas opciones para la práctica que acompaña a este tutorial.
 
 | Comando  | Significado |
 | -------- | ----------- |
@@ -95,7 +95,7 @@ Abre el fichero `app.component.ts` y busca dentro de él una clase llamada `AppC
 
 Toda esta magia depende de una cadena de comandos que lanzan distintas herramientas previamente instaladas y configuradas por el CLI. Entre ellas cabe mencionar a [*WebPack*](https://webpack.github.io/), un coloso que afortunadamente viene instalado y preparado para funcionar de manera transparente.
 
-Esto es una lista no exhaustiva de lo que sucede.
+Esta es una lista no exhaustiva de lo que sucede.
 
 1. npm start
 2. ng serve
