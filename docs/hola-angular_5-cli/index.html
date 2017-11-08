@@ -14,7 +14,7 @@
 <meta property="og:description" content="Angular en su versión 5 es la plataforma perfecta para el desarrollo profesional de aplicaciones modernas. El CLI es la herramienta adecuada para generar aplicaciones Angular. Juntos son imbatibles e">
 <meta property="og:locale" content="es">
 <meta property="og:image" content="http://academia-binaria.com/css/images/angular-5_0_cli_1-5.jpg">
-<meta property="og:updated_time" content="2017-11-07T18:19:57.000Z">
+<meta property="og:updated_time" content="2017-11-08T08:47:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hola Angular5 CLI">
 <meta name="twitter:description" content="Angular en su versión 5 es la plataforma perfecta para el desarrollo profesional de aplicaciones modernas. El CLI es la herramienta adecuada para generar aplicaciones Angular. Juntos son imbatibles e">
@@ -252,20 +252,20 @@ ga('send', 'pageview');
             <p><img src="/images/tutorial-angular-5_0_cli_1-5.jpg" alt="Tutorial Angular5 0-CLI1.5"></p>
 <p><strong>Angular en su versión 5 es la plataforma perfecta para el desarrollo</strong> profesional de aplicaciones modernas. <strong>El CLI es la herramienta</strong> adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.</p>
 <a id="more"></a>
-<p>El comúnmente conocido como <strong>AngularCLI</strong> o <em>CLI a secas</em> es la herramienta de línea de comandos estándar para crear, depurar y publicar aplicaciones Angular. En su versión 1.5 es más potente y versátil que nunca. Además es muy sencillo dominar los aspectos básicos.</p>
+<p>El comúnmente conocido como <strong>AngularCLI</strong> o <em>CLI a secas</em> es la herramienta de línea de comandos estándar para <strong>crear, depurar y publicar aplicaciones Angular</strong>. En su versión 1.5 es más potente y versátil que nunca. Además es muy sencillo dominar los aspectos básicos.</p>
 <blockquote>
 <p>Código asociado a este artículo en <em>GitHub</em>: <a href="https://github.com/AcademiaBinaria/angular5/tree/master/0-hello/cash-flow" target="_blank" rel="external">AcademiaBinaria/angular5/0-hello</a> </p>
 </blockquote>
 <h1 id="1-Instalacion-de-Angular-CLI-1-5"><a href="#1-Instalacion-de-Angular-CLI-1-5" class="headerlink" title="1. Instalación de Angular CLI 1.5"></a>1. Instalación de Angular CLI 1.5</h1><p>Para empezar, como en casi cualquier desarrollo necesitarás disponer de <em>NodeJS</em> y su manejador de de paquetes <em>npm</em>. Tenerlos actualizados es un mandamiento básico para un desarrollador web.</p>
-<p>Empieza con una instalación global que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea, tanto general como para el primer comando que vas a usar.</p>
+<p>Empieza con una instalación global que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea. La ayuda está disponible tanto de modo general como para cada comando que vayas a usar.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm i -g @angular/cli@latest</div><div class="line">ng -v</div><div class="line">ng help</div><div class="line">ng help new</div></pre></td></tr></table></figure>
-<h1 id="2-Crear-y-ejecutar-una-aplicacion-Angular-5"><a href="#2-Crear-y-ejecutar-una-aplicacion-Angular-5" class="headerlink" title="2. Crear y ejecutar una aplicación Angular 5"></a>2. Crear y ejecutar una aplicación Angular 5</h1><p>Una vez instalado el CLI de manera global, puedes empezar a usarlo en tu directorio de trabajo. El primer comando será <code>ng new</code> que te va a <strong>generar toda una aplicación funcional</strong> y las configuraciones necesarias para depuración, pruebas y ejecución.</p>
+<h1 id="2-Crear-y-ejecutar-una-aplicacion-Angular-5"><a href="#2-Crear-y-ejecutar-una-aplicacion-Angular-5" class="headerlink" title="2. Crear y ejecutar una aplicación Angular 5"></a>2. Crear y ejecutar una aplicación Angular 5</h1><p>Una vez que hayas instalado el CLI de manera global ya puedes empezar a usarlo en tu directorio de trabajo. El primer comando será <code>ng new</code> que te va a <strong>generar toda una aplicación funcional</strong> y las configuraciones necesarias para su depuración, pruebas y ejecución.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ng new cash-flow -p cf --minimal true --routing true </div><div class="line">cd cash-flow</div><div class="line">npm start</div></pre></td></tr></table></figure>
-<p>Las líneas anteriores generan una <strong>aplicación mínima pero funcional</strong>. Una vez finalizada la instalación de todas las librerías necesarias puedes bajar a la carpeta recién creada y ejecutar el comando <em>npm</em> standard de arranque <code>npm start</code>.</p>
+<p> Una vez finalizada la instalación de todas las librerías necesarias puedes bajar a la carpeta recién creada y ejecutar el comando standard de<em>npm</em>  para el arranque de cualquier aplicación: <code>npm start</code>.</p>
 <p>Si todo va bien, en unos segundo podrás visitar <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> para ver en marcha la aplicación.</p>
 <p>Pero volvamos a la terminal y analicemos la primera línea. <code>ng new cash-flow -p cf --minimal true --routing true</code>. </p>
 <blockquote>
-<p>En este tutorial crearemos una aplicación de gestión financiera básica llamada <strong>cash-flow</strong> Una excusa para aprender a programar en Angular, nada serio. El comando generador mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podría limitarse a un simple <code>ng new mi-aplicacion</code> pero a la larga vendrá bien usar estas opciones.</p>
+<p>En este tutorial crearemos una aplicación de gestión financiera básica llamada <strong>cash-flow</strong> Una excusa para aprender a programar en Angular; nada serio. El comando generador mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple <code>ng new mi-aplicacion</code> pero a la larga vendrá bien usar estas opciones.</p>
 </blockquote>
 <table>
 <thead>
@@ -313,17 +313,17 @@ ga('send', 'pageview');
 </tr>
 </tbody>
 </table>
-<h1 id="3-Estructura-de-una-aplicacion-Angular"><a href="#3-Estructura-de-una-aplicacion-Angular" class="headerlink" title="3. Estructura de una aplicación Angular"></a>3. Estructura de una aplicación Angular</h1><p>Una vez generada y ejecutada, toca estudiar cómo es la estructura de la aplicación. Para ello revisa carpeta a carpeta. Las malas noticias son que hay <strong>una enorme cantidad de ficheros y carpetas</strong>, las buenas son que como verás, casi todo es <strong>configuración e infraestructura</strong>. </p>
+<h1 id="3-Estructura-de-una-aplicacion-Angular"><a href="#3-Estructura-de-una-aplicacion-Angular" class="headerlink" title="3. Estructura de una aplicación Angular"></a>3. Estructura de una aplicación Angular</h1><p>Una vez generada y comprobada la ejecución, toca estudiar cómo es la estructura de la aplicación. Para ello revisa carpeta a carpeta. Las malas noticias son que hay <strong>una enorme cantidad de ficheros y carpetas</strong>, las buenas son que como verás, casi todo es <strong>configuración e infraestructura</strong>. </p>
 <h2 id="3-1-Visual-Studio-Code"><a href="#3-1-Visual-Studio-Code" class="headerlink" title="3.1 Visual Studio Code"></a>3.1 Visual Studio Code</h2><p>Para ver y editar los ficheros te vale cualquier editor de código, pero yo uso y te recomiendo <a href="https://code.visualstudio.com/" target="_blank" rel="external">VSCode</a>. Es un gran editor, gratuito y multiplataforma. Viene con un terminal integrado y puedes mejorarlo instalando extensiones.</p>
-<p>Para empezar instala un paquete de extensiones ya configurado y preparado para el desarrollo de aplicaciones con <em>Angular</em>,  se llama <a href="https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials" target="_blank" rel="external">Angular Essentials</a>. Con eso y el <a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme" target="_blank" rel="external">Material Icon Theme</a> verás Angular en colores.</p>
-<h2 id="3-2-Carpetas-y-Ficheros-principales"><a href="#3-2-Carpetas-y-Ficheros-principales" class="headerlink" title="3.2 Carpetas y Ficheros principales"></a>3.2 Carpetas y Ficheros principales</h2><p>Volviendo a la estructura de ficheros y carpetas te encontrás con muchos ficheros de distintos tipos. Por ahora sólo tienes que familiarizarte con estos:</p>
+<p>Antes de empezar debes instalar un paquete de extensiones ya configurado y preparado para el desarrollo de aplicaciones con <em>Angular</em>,  se llama <a href="https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials" target="_blank" rel="external">Angular Essentials</a>. Con eso y el <a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme" target="_blank" rel="external">Material Icon Theme</a> verás Angular en colores.</p>
+<h2 id="3-2-Carpetas-y-Ficheros-principales"><a href="#3-2-Carpetas-y-Ficheros-principales" class="headerlink" title="3.2 Carpetas y Ficheros principales"></a>3.2 Carpetas y Ficheros principales</h2><p>Volviendo a la estructura de ficheros y carpetas te encontrás con muchos archivos de distintos tipos. Si eres completamente nuevo en Angular, te llamará la atención las extensiones <code>.ts</code>. Son para ficheros <a href="https://www.typescriptlang.org/" target="_blank" rel="external"><em>TypeScript</em></a>, una evolución del <em>JavaScript</em> con facilidades para el programador. Por ahora sólo tienes que familiarizarte con estos:</p>
 <ul>
-<li>.angular-cli.  <em>: configuración del CLI</em></li>
+<li>.angular-cli.json  <em>: configuración del propio CLI</em></li>
 <li>package.json <em>: dependencias de librerías y scripts</em></li>
 <li>src/ <em>: la carpeta donde están los archivos fuentes</em><ul>
-<li>index.html <em>: el fichero HTML índice</em></li>
+<li>index.html <em>: un fichero HTML índice estándar</em></li>
 <li>main.ts <em>: fichero TypeScript de arranque de la aplicación</em></li>
-<li>app/ <em>: la carpeta con le código específico de tu aplicación</em><ul>
+<li>app/ <em>: la carpeta con el código específico de tu aplicación</em><ul>
 <li>app.module.ts <em>: las aplicaciones son árboles de módulos, y este es su raíz</em></li>
 <li>app.component.ts <em>: las páginas son árboles de componentes, y este es su raíz</em></li>
 </ul>
@@ -332,24 +332,25 @@ ga('send', 'pageview');
 </li>
 </ul>
 <p>Echa un vistazo a estos ficheros, pronto los modificaremos para sentirnos programadores.</p>
-<h1 id="4-Edicion"><a href="#4-Edicion" class="headerlink" title="4. Edición"></a>4. Edición</h1><p>Angular CLI instala y configura un montón de herramientas que te harán la vida más fácil. Entre otras la capacidad de recargar la aplicación en caliente, según guardes tu trabajo como programador. En esta última versión 1.5 ha mejorado y es realmente rápido.</p>
-<p>Para probarlo sólo tienes que dejar arrancada la aplicación con el comando <code>npm start</code> cambiar un fichero y comprobar el resultado. Te propongo empezar como en cualquier otro lenguaje, por el famoso <em>hola mundo</em>.</p>
-<h2 id="4-1-Hola-Mundo"><a href="#4-1-Hola-Mundo" class="headerlink" title="4.1 Hola Mundo"></a>4.1 Hola Mundo</h2><p>Abre el fichero <code>app.component.ts</code> y busca dentro de la clase <code>AppComponent</code> la propiedad <code>title</code>. Asígnale el saludo de rigor <code>title = &#39;Hello World&#39;;</code>, guarda y comprueba cómo tu navegador se habrá actualizado automáticamente.</p>
-<p>Toda esta magia depende de una cadena de comandos que lanzan herramientas previamente instaladas y configuradas por el CLI.</p>
+<h1 id="4-Edicion"><a href="#4-Edicion" class="headerlink" title="4. Edición"></a>4. Edición</h1><p>Angular CLI instala y configura un conjunto de herramientas que te harán la vida más fácil. Entre otras, destaca la capacidad de <strong>recargar la aplicación en caliente</strong> en cuanta guardas tu trabajo como programador. En esta última versión, la 1.5, se ha mejorado el proceso y es realmente rápido.</p>
+<p>Para probarlo sólo tienes que dejar arrancada la aplicación con el comando <code>npm start</code>; <strong>cambiar un fichero de código y comprobar el resultado</strong> en el navegador. Te propongo empezar como en cualquier otro lenguaje; por el famoso <em>hola mundo</em>.</p>
+<h2 id="4-1-Hola-Mundo"><a href="#4-1-Hola-Mundo" class="headerlink" title="4.1 Hola Mundo"></a>4.1 Hola Mundo</h2><p>Abre el fichero <code>app.component.ts</code> y busca dentro de él una clase llamada <code>AppComponent</code>. Encontrarás que tiene una propiedad <code>title</code>. Asígnale el saludo de rigor: <code>title = &#39;Hello World&#39;;</code>. Guarda y comprueba cómo tu navegador se habrá actualizado automáticamente.</p>
+<p>Toda esta magia depende de una cadena de comandos que lanzan distintas herramientas previamente instaladas y configuradas por el CLI. Entre ellas cabe mencionar a <a href="https://webpack.github.io/" target="_blank" rel="external"><em>WebPack</em></a>, un coloso que afortunadamente viene instalado y preparado para funcionar de manera transparente.</p>
+<p>Esto es una lista no exhaustiva de lo que sucede.</p>
 <ol>
 <li>npm start</li>
-<li>ng serve<ol>
-<li>webpack server en <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></li>
-<li>vigilancia de cambios obre la carpeta src/</li>
+<li>ng serve</li>
+<li>webpack server en <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a><ol>
+<li>vigilancia de cambios sobre la carpeta src/</li>
 <li>livereload<ol>
-<li>recompilado de la aplicación</li>
+<li>compilado de la aplicación</li>
 <li>recarga del navegador</li>
 </ol>
 </li>
 </ol>
 </li>
 </ol>
-<p>Esto es sólo el principio, Angular CLI puede hacer mucho más por ti. Descúbrelo en su <a href="https://github.com/angular/angular-cli/wiki" target="_blank" rel="external">wiki</a> o sigue esta serie para usarlo y aprender a programar con Angular.</p>
+<p>Esto es sólo el principio, <em>Angular CLI</em> puede hacer mucho más por ti. Descúbrelo en su <a href="https://github.com/angular/angular-cli/wiki" target="_blank" rel="external">wiki</a> o sigue esta serie para usarlo mientras aprendes a programar con Angular5.</p>
 <blockquote>
 <p>Aprender, programar, disfrutar, repetir.</p>
 </blockquote>
