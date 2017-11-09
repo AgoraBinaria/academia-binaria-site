@@ -10,7 +10,7 @@ categories:
 - [Tutorial, Angular5] 
 thumbnail: /css/images/angular-5_1_Base.jpg
 ---
-![Tutorial Angular5 0-CLI1.5](/images/tutorial-angular-5_1_base.jpg)
+![Tutorial Angular5 1-Base](/images/tutorial-angular-5_1_base.jpg)
 
 Vamos a crear una **base sobre la que programar una aplicación Angular 5** profesional. Usaremos el *CLI* y *npm* para configurarla y darle una estructura sobre la que crecer. 
 La idea de árbol se usa en muchas analogías informáticas. La emplearemos en dos conceptos básicos en Angular: **los módulos y los componentes**.
