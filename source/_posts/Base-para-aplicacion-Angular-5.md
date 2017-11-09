@@ -1,6 +1,6 @@
 ---
 title: Base para una aplicación Angular 5
-date: 2017-11-08 17:00:09
+date: 2017-11-09 11:09:46
 tags:  
 - Angular
 - Angular5
@@ -124,8 +124,52 @@ imports: [AppRoutingModule, BrowserModule, ComponentsModule],
 ```
 
 # 3. Componentes
+Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. Los componentes son los bloques básicos de construcción de las páginas web en angular. Contienen una parte visual en html (la Vista) y una funcional en Typescript (el Controlador).
+
+La aplicación original que crea el CLI nos regla un primer componente de ejemplo ene le fichero `app.component.ts`. Según la configuración del CLI este componente se puede haber creado en un sólo fichero (es el caso escogido a efectos didácticos) o en dos o tres ficheros especializados (con la vista y los estilos en ficheros propios).
+
+## 3.1 Anatomía de un componente
+Los componentes, como el resto de artefactos en Angular, serán **clases TypeScript decoradas** con funciones específicas. En este caso la función es `@Component()` que recibe un objeto de definición de componente. Igual que en el caso de los módulos contiene las propiedades en las que configurar el componente.
+
+```typescript
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "cf-root",
+  template: ``,
+  styles: []
+})
+export class AppComponent {}
+```
+
+**Los componentes definen nuevas etiquetas HTML** para ser usados dentro de otros componentes, o excepcionalmente en este caso por ser el componente raíz en el página `index.html`. El nombre de la nueva etiqueta se conoce como *selector*. En este caso la propiedad `selector: "cf-root"` permite el uso de este componente dentro de otro con esta invocación `<cf-root></cf-root>`
+
+**La plantilla representa la parte visual** del componente. De forma simplificada, o cuando tiene poco contenido, puede escribirse directamente en la propiedad `template` del objeto decorador. Pero es más frecuente encontrar la plantilla en su propio fichero html y referenciarlo como una ruta relativa en la propiedad `templateUrl`.
+
+La propiedad **`styles` y su gemela `stylesUrl` permiten asignar estilos** CSS, SASS o LESS al componente. Estos estilos se incrustan durante la compilación en los nodos del DOM generado. Son exclusivos del componente y facilitan el desarrollo granular de aplicaciones.
+
+**En la clase del componente nos encontraremos la implementación de su funcionalidad**. Normalmente expondrá propiedades y métodos para ser consumidos e invocados de forma declarativa desde la vista.
+
+Una aplicación web en Angular se monta como un árbol de componetes. El componente raíz ya viene creado; ahora toca darle contenido mediante una estructura de página y las vistas funcionales.
+
+## 3.2 Generación de componentes
+Para crear nuevos componentes vamos a usar de nuevo el CLI con su comando `generate`. Pero ahora usaremos los planos para construir un `component`. La sintaxis completa del comando [`ng generate component`](https://github.com/angular/angular-cli/wiki/generate-component) permite crear componentes en diversas formas.
+
+Los siguientes comandos generan una estructura base para la página web que vamos a programar. Ejecútalos en una terminal y comprueba el resultado en el editor.
+
+```shell
 ng g c lib/components/nav 
 ng g c lib/components/main 
 ng g c lib/components/footer --export 
-## 3.1 Componentes privados
+```
+
+### 3.2.1 Componentes privados
+La clave del código limpio es exponer funcionalidad de manera expresiva pero ocultar la implementación. Esto es sencillo con los lenguajes de POO, pero en HTML no era nada fácil. Con la programación basada en componentes podemos crear pantallas complejas, reutilizables, que a su vez contengan y oculten la complejidad interna a sus consumidores.
+
+El siguiente comando crea uno de esos componentes, que es visible dentro del módulo que lo declara, pero no lo és fuera de él.
+
+```shell
 ng g c lib/components/nav/title --flat
+```
+
+>Work in progress To be continued ... ;-)
