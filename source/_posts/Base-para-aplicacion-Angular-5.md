@@ -22,7 +22,9 @@ Partimos de la aplicación tal cómo la dejamos en el [Hola Mundo en Angular](..
 >Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/1-base](https://github.com/AcademiaBinaria/angular5/tree/master/1-base/cash-flow) 
 
 # 1. Configuración
+
 El CLI viene con pilas incluidas, se puede usar desde el primer momento. Sólo quedan pequeñas mejoras que hacer. Por ejemplo ajustar el `package.json` y agregar librerías de terceros.
+
 
 ## 1.1 Package.json
 
@@ -73,9 +75,12 @@ Una cosa más, los cambios en los ficheros de configuración no se auto recargan
 
 
 # 2. Módulos
+
 Los módulos son **contenedores dónde almacenar los componentes y servicios** de una aplicación. En Angular cada programa se puede ver como un árbol de módulos jerárquico. A partir de un módulo raíz se enlazan otros módulos en un proceso llamado importación.
 
+
 ## 2.1 Definición mediante decoradores
+
 Antes de importar cualquier módulo hay que definirlo. En Angular los módulos de declaran como clases de TypeScript, habitualmente vacías, decoradas con una función especial. Es la función `@NgModule()` que recibe un objeto como único argumento. En las propiedades de ese objeto es dónde se configura el módulo. 
 
 Mira el módulo `AppModule` original que genera el CLI en el fichero `app.module.ts`.
@@ -91,11 +96,14 @@ export class AppModule {}
 ```
 
 ## 2.1 Importación de otros módulos
+
 El módulo `App` también se conoce como módulo raíz porque de él surgen las demás ramas que conforman una aplicación. La asignación de los nodos hijos se realiza en la propiedad `imports:[]`, que es un array de punteros a otros módulos.
 
 En la situación original el módulo principal depende un módulo para realizar el enrutado (el `AppRoutingModule` que se usarás más adelante) y de otro para la presentación en el navegador (el 'BrowserModule').
 
+
 ### 2.1.1 Dos mundos paralelos: imports de Angular e import de TypeScript
+
 Si es la primera vez que ves código TypeScript te llamarán la atención las primeras líneas de cada fichero. En el `app.module.ts` son algo así:
 
 ```typescript
@@ -109,11 +117,15 @@ Estas sentencias de importación son propias del lenguaje y nada tienen que ver 
 
 En general no tendrás que preocuparte de estas importaciones físicas, pues el *VSCode* y las extensiones esenciales se encargan de hacerlo automáticamente.  
 
+
 ## 2.2 Generación de módulos
+
 Hasta ahora los módulos involucrados son librerías de terceros o se crearon mágicamente con la aplicación. Es hora de que crees tu primer módulo. Para eso usaremos otro comando del cli, el `ng generate module`. En una ventana del terminal escribe:
+
 ```shell
 ng g m lib/components
 ```
+
 Esta es la sintaxis abreviada del comando [`ng generate`](https://github.com/angular/angular-cli/wiki/generate) el cual dispone de varios planos de construcción o *blueprints*. El que he usado aquí es el de `module` para la construcción de módulos.
 
 El resultado es la creación del fichero `lib/components/components.module.ts` con la declaración y decoración del módulo `ComponentsModule`.
@@ -126,7 +138,6 @@ Este módulo te servirá de contenedor para guardar componentes como veremos má
   exports: []
 })
 export class ComponentsModule {}
-
 ```
 
 Por ahora hay asegurar que este módulo se engancha al raíz. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
@@ -138,11 +149,14 @@ Por ahora hay asegurar que este módulo se engancha al raíz. Para ello comproba
 ```
 
 # 3. Componentes
+
 Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. **Los componentes son los bloques básicos de construcción de las páginas web en Angular**. Contienen una parte visual en html (la Vista) y una funcional en Typescript (el Controlador).
 
-La aplicación original que crea el CLI nos regala un primer componente de ejemplo en el fichero `app.component.ts`. Según la configuración del CLI este componente se puede haber sido creado en un sólo fichero (es el caso escogido a efectos didácticos) o en dos o tres ficheros especializados (con la vista y los estilos en ficheros propios).
+La aplicación original que crea el CLI nos regala un primer componente de ejemplo en el fichero `app.component.ts`. Según la configuración del CLI este componente puede haber sido creado en un sólo fichero (es el caso escogido a efectos didácticos) o en dos o tres ficheros especializados (con la vista y los estilos en ficheros propios).
+
 
 ## 3.1 Anatomía de un componente
+
 Los componentes, como el resto de artefactos en Angular, serán **clases TypeScript decoradas** con funciones específicas. En este caso la función es `@Component()` que recibe un objeto de definición de componente. Igual que en el caso de los módulos contiene las propiedades en las que configurar el componente.
 
 ```typescript
@@ -168,19 +182,22 @@ La propiedad **`styles` y su gemela `stylesUrl` permiten asignar estilos** CSS, 
 
 Una aplicación web en Angular se monta como un árbol de componentes. El componente raíz ya viene creado; ahora toca darle contenido mediante una estructura de página y las vistas funcionales.
 
+
 ## 3.2 Generación de componentes
-Para crear nuevos componentes vamos a usar de nuevo el CLI con su comando `generate`. Pero ahora usaremos los planos para construir un `component`. La sintaxis completa del comando [`ng generate component`](https://github.com/angular/angular-cli/wiki/generate-component) permite crear componentes en diversas formas.
 
-Vamos a crear componentes para tener una estructura base para la página web que vamos a programar. Uno para la barra de navegación, otro para el pie de página y otro intermedio para el contenido principal. 
+Para **crear nuevos componentes** vamos a usar de nuevo el CLI con su comando `generate`. Pero ahora con los planos para construir un `component`. La sintaxis completa del comando [`ng generate component`](https://github.com/angular/angular-cli/wiki/generate-component) permite crear componentes en diversas formas.
 
-Estos tres comandos generan los tres componentes. Ejecútalos en una terminal y comprueba el resultado en el editor.
+Casi todas las páginas tienen una estructura similar que de forma simplista queda en tres componentes. Uno para la barra de navegación, otro para el pie de página y otro intermedio para el contenido principal. 
+
+Ejecuta en una terminal estos comandos para que generen los componentes y comprueba el resultado en el editor.
 
 ```shell
 ng g c lib/components/nav 
 ng g c lib/components/main 
 ng g c lib/components/footer --export 
 ```
-Analicemos por ejemplo el componente del fichero `main.component.ts`. Su estructura es igual a la del componente raíz. La única diferencia es que el nombre del componente coincide con el nombre del selector: `cf-main` y `MainComponent`. Esto será lo normal, sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con us selector `root`
+
+Fíjate en el componente del fichero `main.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `cf-main` y `MainComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con us selector `root`.
 
 ```typescript
 @Component({
@@ -191,13 +208,20 @@ Analicemos por ejemplo el componente del fichero `main.component.ts`. Su estruct
 export class MainComponent {}
 ```
 
-### 3.2.1 Componentes privados
-La clave del código limpio es exponer funcionalidad de manera expresiva pero ocultar la implementación. Esto es sencillo con los lenguajes de POO, pero en HTML no era nada fácil. Con la programación basada en componentes podemos crear pantallas complejas, reutilizables, que a su vez contengan y oculten la complejidad interna a sus consumidores.
+## 3.3 Componentes públicos y privados
 
-El siguiente comando crea uno de esos componentes, que es visible dentro del módulo que lo declara, pero no lo és fuera de él.
+La clave del código limpio es **exponer funcionalidad de manera expresiva pero ocultar la implementación**. Esto es sencillo con los lenguajes de POO, pero en HTML no era nada fácil. Con la **programación basada en componentes** podemos crear pantallas complejas, reutilizables, que a su vez contengan y oculten la complejidad interna a sus consumidores.
+
+Los componentes no deciden por sí mismos su visibilidad. Cuando un componente es generado se declara en un módulo contenedor en su propiedad `declares:[]`. Eso lo hace visible y utilizable por cualquier otro componente del mismo módulo. Pero si quieres usarlo desde fuera tendrás que exportarlo. Eso se hace en la propiedad `exports:[]` del módulo en el que se crea. 
+
+>La exportación debe hacerse a mano o indicarse con el *flag* `--export` para que lo haga el cli.
+
+**Los componentes privados suelen ser sencillos**. A veces son creados para ser específicamente consumidos dentro de otros componentes. en esas situaciones interesa que sean privados y que generen poco ruido. El siguiente comando crea uno de esos componentes, que es visible dentro del módulo que lo declara, pero no lo és fuera de él. Y ademas no crea carpeta específica.
 
 ```shell
 ng g c lib/components/nav/title --flat
 ```
 
->Work in progress To be continued ... ;-)
+Con esto tendrás una base para una aplicación *Angular*. Sigue esta serie para añadirle funcionalidad mientras aprendes a programar con Angular5.
+
+> Aprender, programar, disfrutar, repetir.
