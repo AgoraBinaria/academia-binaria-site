@@ -105,6 +105,60 @@ Esta es una lista no exhaustiva de lo que sucede.
       1. compilado de la aplicación
       2. recarga del navegador
 
+
+# 5. Configuración
+
+El CLI viene con pilas incluidas, se puede usar desde el primer momento. Sólo quedan pequeñas mejoras que hacer. Por ejemplo ajustar el `package.json` y agregar librerías de terceros.
+
+
+## 5.1 Package.json
+
+El `package.json` es el fichero estándar de *npm* donde se almacenan las **dependencias de terceros**. Contiene las librerías que necesita la aplicación para ejecutarse, por ejemplo todas las de *Angular*. Y también las herramientas que necesita el programador, por ejemplo el propio *AngularCLI*;
+```json
+{
+  "dependencies": {
+      "@angular/core": "^5.0.0",
+  },
+  "devDependencies": {
+      "@angular/cli": "1.5.0",
+  }
+}
+```
+
+Otro uso del `package.json` es servir de **contenedor de scripts** para automatizar tareas de operaciones rutinarias. Por ejemplo, el comando estándar `npm start` ejecutará el contenido asignado en el fichero *json*, originalmente `ng serve`. Esto lanza el servidor de pruebas con sus opciones por defecto. 
+
+Pero el **comando [ng serve](https://github.com/angular/angular-cli/wiki/serve)** admite muchas configuraciones. Te propongo que uses esta para activar un modo de compilación más rápido y seguro, y para que se abra el navegador de forma automática en cuanto lances el servidor.
+```json
+{
+ "start": "ng serve --aot -o",
+}
+```
+
+## 5.2 Estilos y librerías de terceros
+Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos algún otro producto de terceros. Ya sean utilidades como *[Moment](https://momentjs.com/)*, librerías gráficas como *[chart.js](http://www.chartjs.org/)* o la aplicación de estilos y componentes visuales de *frameworks como Bootstrap o MaterialDesign*. Pero todos se instalan de igual forma. Descargándolos con *npm* y adjuntándolos en el `.angular-cli.json`. 
+
+>En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama *[milligram](https://milligram.io/)* y es apropiada para prototipos, pruebas o pequeños proyectos.
+
+Se descarga de manera estándar.
+```shell
+npm i milligram --save
+```
+
+Y se agrega a través del fichero `.angular-cli.json` a la colección de *styles* o de *scripts* si los tuviera.
+```json
+{
+  "styles": [
+      "../node_modules/milligram/dist/milligram.min.css",
+      "styles.css"
+      ],
+  "scripts": [],
+}
+```
+Estas colecciones de archivos los usa el *cli* a través de *webpack* para incluirlos minificados y concatenados en un fichero *bundle* sustituyendo a las clásicas etiquetas html. De esta forma el fichero `index.html` apenas tendrás que tocarlo. Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. 
+
+Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo *milligram*. 
+
+
 Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti. Descúbrelo en su [wiki](https://github.com/angular/angular-cli/wiki) o sigue esta serie para usarlo mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.

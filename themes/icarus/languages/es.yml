@@ -7,10 +7,10 @@ index:
     uncategorized: 'Sin categoría'
     tag: 'Etiqueta'
 nav:
-    next: 'Siguiente '
+    next: 'Siguiente'
     prev: 'Anterior'
-    older: 'Más viejo'
-    newer: 'Más nuevo'
+    older: 'Antiguo'
+    newer: 'Reciente'
 widget:
     recents: 'Recientes'
     archives: 'Archivos'
@@ -19,6 +19,7 @@ widget:
     tags: 'Etiquetas'
     tag_cloud: 'Nube de etiquetas'
 article:
+    more: 'Leer más'
     comments: 'Comentarios'
     share: 'Compartir'
     catalogue: 'Catálogo'
