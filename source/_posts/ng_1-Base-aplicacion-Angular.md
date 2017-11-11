@@ -18,7 +18,7 @@ La idea de árbol se usa en muchas analogías informáticas. La emplearemos en d
 
 <!-- more -->
 
-Partimos de la aplicación tal cómo la dejamos en el [Hola Mundo en Angular](../hola-angular_5-cli/). Al finalizar tendrás un esqueleto del que colgar módulos y componentes funcionales.
+Partimos de la aplicación tal cómo la dejamos en el [Hola Mundo en Angular](../hola-angular-cli/). Al finalizar tendrás un esqueleto del que colgar módulos y componentes funcionales.
 
 >Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/1-base](https://github.com/AcademiaBinaria/angular5/tree/master/1-base/cash-flow) 
 
