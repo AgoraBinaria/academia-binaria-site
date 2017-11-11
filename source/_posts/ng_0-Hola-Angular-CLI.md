@@ -1,6 +1,6 @@
 ---
-title: Hola Angular5 CLI
-permalink: hola-angular_5-cli
+title: Hola Angular CLI
+permalink: hola-angular-cli
 date: 2017-11-07 13:38:42
 updated: 2017-11-08 09:47:00
 tags:  
@@ -9,7 +9,7 @@ tags:
 - CLI
 - Tutorial
 categories:
-- [Tutorial, Angular5] 
+- [Tutorial, Angular] 
 thumbnail: /css/images/angular-5_0_cli_1-5.jpg
 ---
 ![Tutorial Angular5 0-CLI1.5](/images/tutorial-angular-5_0_cli_1-5.jpg)

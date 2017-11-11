@@ -1,5 +1,6 @@
 ---
-title: Base para una aplicación Angular 5
+title: Base para una aplicación Angular
+permalink: base-aplicacion-angular
 date: 2017-11-09 11:09:46
 tags:  
 - Angular
@@ -7,7 +8,7 @@ tags:
 - CLI
 - Tutorial
 categories:
-- [Tutorial, Angular5] 
+- [Tutorial, Angular] 
 thumbnail: /css/images/angular-5_1_Base.jpg
 ---
 ![Tutorial Angular5 1-Base](/images/tutorial-angular-5_1_base.jpg)
