@@ -137,26 +137,28 @@ Pero el **comando [ng serve](https://github.com/angular/angular-cli/wiki/serve)*
 ## 5.2 Estilos y librerías de terceros
 Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos algún otro producto de terceros. Ya sean utilidades como *[Moment](https://momentjs.com/)*, librerías gráficas como *[chart.js](http://www.chartjs.org/)* o la aplicación de estilos y componentes visuales de *frameworks como Bootstrap o MaterialDesign*. Pero todos se instalan de igual forma. Descargándolos con *npm* y adjuntándolos en el `.angular-cli.json`. 
 
->En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama *[milligram](https://milligram.io/)* y es apropiada para prototipos, pruebas o pequeños proyectos.
+>En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama *[milligram](https://milligram.io/)* y es apropiada para prototipos, pruebas o pequeños proyectos. También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y horas.
 
-Se descarga de manera estándar.
+Se descargan de manera estándar.
 ```shell
 npm i milligram --save
+npm install moment --save
 ```
 
-Y se agrega a través del fichero `.angular-cli.json` a la colección de *styles* o de *scripts* si los tuviera.
+Y se agrega a través del fichero `.angular-cli.json` a la colección de *styles* o de *scripts* que corresponda.
 ```json
 {
   "styles": [
       "../node_modules/milligram/dist/milligram.min.css",
       "styles.css"
       ],
-  "scripts": [],
+  "scripts": ["../node_modules/moment/min/moment.min.js"]
 }
 ```
 Estas colecciones de archivos los usa el *cli* a través de *webpack* para incluirlos minificados y concatenados en un fichero *bundle* sustituyendo a las clásicas etiquetas html. De esta forma el fichero `index.html` apenas tendrás que tocarlo. Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. 
 
 Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo *milligram*. 
+
 
 
 Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti. Descúbrelo en su [wiki](https://github.com/angular/angular-cli/wiki) o sigue esta serie para usarlo mientras aprendes a programar con Angular5.
