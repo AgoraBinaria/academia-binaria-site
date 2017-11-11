@@ -142,19 +142,18 @@ Ejecuta en una terminal estos comandos para que generen los componentes y compru
 
 ```shell
 ng g c lib/components/nav 
-ng g c lib/components/main 
 ng g c lib/components/footer --export 
 ```
 
-Fíjate en el componente del fichero `main.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `cf-main` y `MainComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con us selector `root`.
+Fíjate en el componente del fichero `nav.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `cf-nav` y `NavComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con us selector `root`.
 
 ```typescript
 @Component({
-  selector: "cf-main",
+  selector: "cf-nav",
   template: ``,
   styles: []
 })
-export class MainComponent {}
+export class NavComponent {}
 ```
 
 ## 2.3 Componentes públicos y privados
@@ -163,7 +162,7 @@ La clave del código limpio es **exponer funcionalidad de manera expresiva pero 
 
 Los componentes no deciden por sí mismos su visibilidad. Cuando un componente es generado se declara en un módulo contenedor en su propiedad `declares:[]`. Eso lo hace visible y utilizable por cualquier otro componente del mismo módulo. Pero si quieres usarlo desde fuera tendrás que exportarlo. Eso se hace en la propiedad `exports:[]` del módulo en el que se crea. 
 
->La exportación debe hacerse a mano o indicarse con el *flag* `--export` para que lo haga el cli.
+>La exportación debe hacerse a mano o indicarse con el *flag* `--export` para que lo haga el cli. Esto se ha hecho en el componente `footer`.
 
 **Los componentes privados suelen ser sencillos**. A veces son creados para ser específicamente consumidos dentro de otros componentes. en esas situaciones interesa que sean privados y que generen poco ruido. El siguiente comando crea uno de esos componentes, que es visible dentro del módulo que lo declara, pero no lo és fuera de él. Y ademas no crea carpeta específica.
 
@@ -181,18 +180,57 @@ En esta aplicación hasta ahora nada funcional, te propongo crear un módulo con
 
 ```shell
 ng g m views/home
-ng g c views/home --export --flat
+ng g c views/home/home --export --flat
 ```
+
+El fichero `home.module.ts` que define el módulo debe quedar asi:
+
+```typescript
+@NgModule({
+  imports: [
+    CommonModule
+  ],
+  declarations: [HomeComponent],
+  exports: [HomeComponent]
+})
+export class HomeModule { }
+```
+En el componente podemos empezar a usar las capacidades de Angular para crear páginas web de contenido dinámico.
+
+```typescript
+import { Component, OnInit } from "@angular/core";
+import * as moment from "moment";
+@Component({
+  selector: "cf-home",
+  template: `
+    <main>
+      <header>Main content of the Home Page</header>
+      <div>Still a work in progress... for Now: {{ now }}</div>
+      <div>... to be continued... Tomorrow: {{ tomorrow }}</div>
+    </main>
+  `,
+  styles: []
+})
+export class HomeComponent implements OnInit {
+  now = moment().format();
+  tomorrow = moment()
+    .add(1, "days")
+    .format();
+  constructor() {}
+
+  ngOnInit() {}
+}
+```
+
 Ahora que ya tenemos componentes de infraestructura y negocio, podremos usarlos como bloques constructores de alto nivel en el componente raíz.
 
 ```typescript
 @Component({
-  selector: "cf-main",
+  selector: "cf-root",
   template: `
     <cf-nav></cf-nav>
-    <cf-main></cf-main>
     <cf-home></cf-home>
-    <cf-footer></cf-footer> 
+    <cf-footer></cf-footer>  
   `,
   styles: []
 })
