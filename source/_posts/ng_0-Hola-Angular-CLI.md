@@ -48,7 +48,7 @@ Si todo va bien, en unos segundo podrás visitar [http://localhost:4000](http://
 
 Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow -p cf --minimal true --routing true`. 
 
-> En este tutorial crearemos una aplicación de gestión financiera básica llamada **cash-flow** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga me vendrá bien usar estas opciones para la práctica que acompaña a este tutorial.
+> En este tutorial crearemos una aplicación de gestión financiera básica llamada **cash-flow** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga vendrá bien usar estas opciones para la práctica que acompaña a este tutorial.
 
 | Comando  | Significado |
 | -------- | ----------- |
@@ -67,12 +67,12 @@ Una vez generada y comprobada la ejecución, toca estudiar cómo es la estructur
  
 
 ## 3.1 Visual Studio Code
-Para ver y editar los ficheros te vale cualquier editor de código, pero yo uso y te recomiendo [VSCode](https://code.visualstudio.com/). Es un gran editor, gratuito y multiplataforma. Viene con un terminal integrado y puedes mejorarlo instalando extensiones.
+Para ver y editar los ficheros te vale cualquier editor de código, pero yo uso y te recomiendo [VSCode](https://code.visualstudio.com/). Es un **gran editor, gratuito y multiplataforma**. Viene con un terminal integrado y puedes mejorarlo instalando extensiones.
 
-Antes de empezar debes instalar un paquete de extensiones ya configurado y preparado para el desarrollo de aplicaciones con *Angular*,  se llama [Angular Essentials](https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials). Con eso y el [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) verás Angular en colores.
+Antes de empezar debes instalar un paquete de extensiones ya configurado y preparado para el desarrollo de aplicaciones con *Angular*,  se llama [Angular Essentials](https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials). Con eso y el [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) verás *Angular en colores*.
 
 ## 3.2 Carpetas y Ficheros principales
-Volviendo a la estructura de ficheros y carpetas te encontrás con muchos archivos de distintos tipos. Si eres completamente nuevo en Angular, te llamará la atención las extensiones `.ts`. Son para ficheros [*TypeScript*](https://www.typescriptlang.org/), una evolución del *JavaScript* con facilidades para el programador. Por ahora sólo tienes que familiarizarte con estos:
+Volviendo a la **estructura de ficheros y carpetas** te encontrás con muchos archivos de distintos tipos. Si eres completamente nuevo en Angular, te llamará la atención las extensiones `.ts`. Son para ficheros [*TypeScript*](https://www.typescriptlang.org/), una evolución del *JavaScript* con facilidades para el programador. Por ahora sólo tienes que familiarizarte con estos:
 
 + .angular-cli.json  *: configuración del propio CLI*
 + package.json *: dependencias de librerías y scripts*
@@ -91,9 +91,9 @@ Angular CLI instala y configura un conjunto de herramientas que te harán la vid
 Para probarlo sólo tienes que dejar arrancada la aplicación con el comando `npm start`; **cambiar un fichero de código y comprobar el resultado** en el navegador. Te propongo empezar como en cualquier otro lenguaje; por el famoso *hola mundo*.
 
 ## 4.1 Hola Mundo
-Abre el fichero `app.component.ts` y busca dentro de él una clase llamada `AppComponent`. Encontrarás que tiene una propiedad `title`. Asígnale el saludo de rigor: `title = 'Hello World';`. Guarda y comprueba cómo tu navegador se habrá actualizado automáticamente.
+Abre el fichero `app.component.ts` y busca dentro de él una clase llamada `AppComponent`. Encontrarás que tiene una propiedad `title`. Asígnale el saludo de rigor: `title = 'Hello World';`. Guarda y comprueba cómo tu navegador **se habrá actualizado automáticamente**.
 
-Toda esta magia depende de una cadena de comandos que lanzan distintas herramientas previamente instaladas y configuradas por el CLI. Entre ellas cabe mencionar a [*WebPack*](https://webpack.github.io/), un coloso que afortunadamente viene instalado y preparado para funcionar de manera transparente.
+Toda **esta magia depende de una cadena de comandos** que lanzan distintas herramientas previamente instaladas y configuradas por el CLI. Entre ellas cabe mencionar a [*WebPack*](https://webpack.github.io/), un coloso que afortunadamente viene instalado y preparado para funcionar de manera transparente.
 
 Esta es una lista no exhaustiva de lo que sucede.
 
@@ -135,17 +135,17 @@ Pero el **comando [ng serve](https://github.com/angular/angular-cli/wiki/serve)*
 ```
 
 ## 5.2 Estilos y librerías de terceros
-Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos algún otro producto de terceros. Ya sean utilidades como *[Moment](https://momentjs.com/)*, librerías gráficas como *[chart.js](http://www.chartjs.org/)* o la aplicación de estilos y componentes visuales de *frameworks como Bootstrap o MaterialDesign*. Pero todos se instalan de igual forma. Descargándolos con *npm* y adjuntándolos en el `.angular-cli.json`. 
+Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos **algún que otro producto de terceros**. Ya sean utilidades como *[Moment](https://momentjs.com/)*, librerías gráficas como *[chart.js](http://www.chartjs.org/)* o la aplicación de estilos y componentes visuales de *frameworks como Bootstrap o MaterialDesign*. Pero todos se instalan de igual forma. Descargándolos con *npm* y adjuntándolos en el `.angular-cli.json`. 
 
 >En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama *[milligram](https://milligram.io/)* y es apropiada para prototipos, pruebas o pequeños proyectos. También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y horas.
 
-Se descargan de manera estándar.
+Se descargan e instalan de manera estándar.
 ```shell
 npm i milligram --save
 npm install moment --save
 ```
 
-Y se agrega a través del fichero `.angular-cli.json` a la colección de *styles* o de *scripts* que corresponda.
+Para que se incluyan en la distribución hay que ir a la configuración del *CLI*.Y se agrega a través del fichero `.angular-cli.json` a la colección de *styles* o de *scripts* que corresponda.
 ```json
 {
   "styles": [
@@ -155,12 +155,12 @@ Y se agrega a través del fichero `.angular-cli.json` a la colección de *styles
   "scripts": ["../node_modules/moment/min/moment.min.js"]
 }
 ```
-Estas colecciones de archivos los usa el *cli* a través de *webpack* para incluirlos minificados y concatenados en un fichero *bundle* sustituyendo a las clásicas etiquetas html. De esta forma el fichero `index.html` apenas tendrás que tocarlo. Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. 
+Estas colecciones de archivos los usa el *cli* a través de *webpack* para incluirlos **minificados y concatenados en un fichero *bundle* sustituyendo a las clásicas etiquetas html**. De esta forma el fichero `index.html` apenas tendrás que tocarlo. Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. 
 
 Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo *milligram*. 
 
 
 
-Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti. Descúbrelo en su [wiki](https://github.com/angular/angular-cli/wiki) o sigue esta serie para usarlo mientras aprendes a programar con Angular5.
+Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti. Descúbrelo en su [wiki](https://github.com/angular/angular-cli/wiki) o sigue esta serie, [Base para una aplicación Angular](../base-aplicacion-angular/), para usarlo mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
