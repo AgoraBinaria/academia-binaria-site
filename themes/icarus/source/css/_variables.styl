@@ -17,7 +17,7 @@ color-widget-border = #ccc
 font-sans = "open sans", "Helvetica Neue", "Microsoft Yahei", Helvetica, Arial, sans-serif
 font-serif = Georgia, "Times New Roman", "Microsoft Yahei", serif
 font-mono = "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace
-font-size = 16px
+font-size = 18px
 line-height = 1.6em
 line-height-title = 1.3em
 
@@ -40,9 +40,9 @@ profile-avatar-size = 128px
 block-margin = 40px
 article-padding = 20px
 mobile-nav-width = 280px
-main-column = 7
+main-column = 8
 sidebar-column = 3
-profile-column = 3
+profile-column = 2
 sidebar-column-tablet = 4
 
 if sidebar
@@ -56,7 +56,7 @@ else
     _profile-column = 0
 
 // Grids
-column-width = 100px
+column-width = 120px
 gutter-width = 20px
 if _sidebar-column is 0 and _profile-column is 0
     columns = 10
@@ -65,15 +65,15 @@ else
     columns = main-column + _sidebar-column + _profile-column
 
 if sidebar
-    main-column-tablet = 6
+    main-column-tablet = 7
     if profile
         main-column-tablet = 9
 
 // Media queries
 mq-mini = "screen and (max-width: 559px)"
-mq-mobile = "screen and (min-width: 560px) and (max-width: 799px)"
-mq-tablet = "screen and (min-width: 800px) and (max-width: 1199px)"
-mq-normal = "screen and (min-width: 1200px)"
+mq-mobile = "screen and (min-width: 560px) and (max-width: 1023px)"
+mq-tablet = "screen and (min-width: 1024px) and (max-width: 1279px)"
+mq-normal = "screen and (min-width: 1280px)"
 
 // Code Highlight
 highlight = hexo-config("customize.highlight") || "ir-black"
