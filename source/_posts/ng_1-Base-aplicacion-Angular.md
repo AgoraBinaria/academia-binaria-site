@@ -242,3 +242,4 @@ export class MainComponent {}
 Con esto tendrás una base para una aplicación *Angular*. Sigue esta serie para añadirle funcionalidad mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>

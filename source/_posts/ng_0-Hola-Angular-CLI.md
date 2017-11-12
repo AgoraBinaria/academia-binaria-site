@@ -164,3 +164,4 @@ Una cosa más, los cambios en los ficheros de configuración no se auto recargan
 Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti. Descúbrelo en su [wiki](https://github.com/angular/angular-cli/wiki) o sigue esta serie, [Base para una aplicación Angular](../base-aplicacion-angular/), para usarlo mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
