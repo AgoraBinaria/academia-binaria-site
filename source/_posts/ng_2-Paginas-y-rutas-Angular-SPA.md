@@ -115,4 +115,64 @@ En el fichero `not-found.component.ts` pon algo así:
 
 
 # 2 Lazy Routing
+Las webs SPA se crearon por una razón que casi acaba con ellas: la velocidad. Al realizar el enrutado en el cliente, y querer evitar todos los viajes posibles hasta el servidor, se cargó a la única página web con toda la carga de la aplicación. Lo cual la hizo terriblemente lenta en la primera visita de una usuario. 
 
+El impacto de la primera visita en una aplicación de intranet no suele ser un problema. Pero en internet esa visita puede ser la primera y la última. La solución viene de mano del concepto de *lazy loading* o carga perezosa. Consiste en diferir la carga de la lógica asociada a una dirección hasta el momento en que sea activada dicha ruta. De esa forma, una página no visitada es una página que no pesa. Y la carga inicial se hace mucho más liviana.
+
+## 2.1 Webpack y los bundles por ruta
+Para conseguirlo hay que declarar la ruta de forma que no sea necesario importar el componete a mostrar. De otro modo *webpack* empaquetaría ese componente como algo necesario... y por tanto sería enviado al navegador en el *bundle* principal sin que sea seguro su uso. La solución que ofrecen el *cli* y *webpack* consiste en delegar la asignación del componente a otro módulo, pero sin importarlo.
+
+He creado un una nueva vista en una nueva dirección llamada `/operations`. El componente `OperationsComponet` dónde se ha declarado pero no exportado en el módulo `OperationsModule`. 
+
+```shell
+ng g m views/operations --routing true
+ng g c views/operations/operations --flat
+```
+
+Este módulo no debe ser importado por el `AppModule`. Simplemente debe usarse su ruta relativa en el módulo de enrutado `AppRoutingModule` como un valor especial:
+
+```typescript
+const routes: Routes = [
+  {
+    path: "",
+    component: HomeComponent
+  },
+  {
+    path: "operations",
+    loadChildren: "./views/operations/operations.module#OperationsModule"
+  },
+  {
+    path: "404",
+    component: NotFoundComponent
+  },
+  {
+    path: "**",
+    redirectTo: "/404"
+  }
+  ];
+```
+Con esta información *webpack* va a generar un *bundle* específico para este módulo. Si durante la ejecución se activa la ruta `/operations` entonces descarga ese paquete y ejecuta su contenido.
+
+## 2.2 El enrutador delegado
+Ya sabemos que hasta que no se active la ruta `/operations` no hay que hacer nada. Pero si se activa, entonces se descarga un *bundle* que contiene un módulo y los componentes necesarios. Sólo falta escoger el componente que se asignará a la ruta.
+
+Para eso al crear el módulo operaciones usé el *flag* `routing true`. Esto hace que se genere un segundo módulo de enrutado. El `OperationsRoutingModule` prácticamente idéntico al enrutador raíz. Digamos que es un enrutador subordinado al primero,al cual sólo se llega si en la ruta principal se ha navegado a una dirección concreta. A este nivel la dirección `path: ""` equivale al `path: "operations"` de su enrutador padre.
+
+La ventaja real de este segundo enrutador es que irá empaquetado en el mismo *bundle* que el módulo de negocio y sus componentes. Así que aquí sí que asignaremos un componente concreto. El `OperationsComponent` dejando el fichero `operations.routing.ts` más o menos a´si:
+
+```typescript
+import { OperationsComponent } from "./operations.component";
+const routes: Routes = [
+  {
+    path: "",
+    component: OperationsComponent
+  }
+];
+```
+
+>Puedes tener una idea general de los cambios realizados en [este *commit*](https://github.com/AcademiaBinaria/angular5/commit/b3f79c3324561174e10a7f8fb2668d7dc3e610f1) 
+
+
+# 3 Parámetros
+Rutas con parámetros... 
+... Work in progress ...
