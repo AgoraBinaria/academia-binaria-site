@@ -102,7 +102,7 @@ Los enlaces web tradicionalmente se han resuelto con elementos `<a href=""></a>`
 
 En el fichero `not-found.component.ts` pon algo así:
 ```typescript
-  elector: "cf-not-found",
+  selector: "cf-not-found",
   template: `
     <h1>Not Found</h1>
     <h2>404</h2>
@@ -115,7 +115,7 @@ En el fichero `not-found.component.ts` pon algo así:
 
 
 # 2 Lazy Loading
-Las webs SPA se crearon por una razón que casi acaba con ellas: **la velocidad**. Al realizar el enrutado en el cliente, y querer evitar todos los viajes posibles hasta el servidor, se cargó a la única página web con todo el peso de la aplicación. Lo cual la hizo terriblemente lenta en la primera visita de cada usuario. 
+Las *webs SPA* se crearon por una razón que casi acaba con ellas: **la velocidad**. Al realizar el enrutado en el cliente y querer evitar todos los viajes posibles hasta el servidor, se cargó a la única página web con todo el peso de la aplicación. Lo cual la hizo terriblemente lenta en la primera visita de cada usuario. 
 
 El **impacto de la primera visita** en una aplicación de intranet no suele ser un problema grave. Pero en internet esa visita puede ser la primera y la última. La solución viene de mano del concepto de *lazy loading* o carga perezosa. Consiste en diferir la carga de la lógica asociada a una dirección hasta el momento en que sea activada dicha ruta. De esa forma, **una página no visitada es una página que no pesa**. Y la carga inicial se hace mucho más liviana.
 
@@ -191,7 +191,7 @@ const routes: Routes = [
   }
 ];
 ```
-Esta configuración resuelve las rutas `operations` y `operations/cualquier-cosa`. En la primera carga `OperationsComponente` y en los demás casos el `ItemComponent`.
+Esta configuración resuelve las rutas `operations` y `operations/cualquier-cosa`. En la primera carga `OperationsComponent` y en los demás casos el `ItemComponent`.
 
 > En la práctica que nos ocupa lo usaremos para ver el detalle de las operaciones económicas realizadas. Como por ahora no tenemos, he puesto de ejemplo algunos números bien conocidos.
 
@@ -205,8 +205,9 @@ Para forzar los enlaces he creado un componente a modo de listado llamado `ListC
 </ul>
 ```
 
-Aún más interesante es el componente que muestra cada elemento de la lista, el `ItemComponent`. En este caso fíjate cómo accede a la ruta, obtiene el valor del parámetro y lo usa para mostrarlo en la web. Contenido del fichero `item.component.ts`:
+Aún más interesante es el componente que muestra cada elemento de la lista, el `ItemComponent`. En este caso fíjate cómo accede a la ruta, obtiene el valor del parámetro y lo usa para mostrarlo en la web. 
 
+Contenido del fichero `item.component.ts`:
 ```typescript
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
@@ -224,14 +225,14 @@ export class ItemComponent implements OnInit {
 ```
 
 # 3.1 ActivatedRoute
-El framework *Angular* trae muchas librerías para facilitar la vida al programador. Sólo hay que saber dónde están y cómo pedirlas. Para ello volvemos a la tecnología implementada en *TypeScript* que permite las **importaciones y la inyección de dependencias**.
+El framework *Angular* trae muchas librerías para facilitar la vida al programador. Sólo hay que saber dónde están y cómo pedirlas. Para ello volvemos a la tecnología escogida,  *TypeScript*, que permite las **importaciones y la inyección de dependencias**.
 
 La instrucción `import { ActivatedRoute } from "@angular/router";` pone a disposición del programdor el código donde está definida la clase `ActivatedRoute`, pero no se instancia directamente. En su lugar, se usa como un argumento del constructor de la clase del componente. Ese constructor es invocado por *Angular*, el cual sabe cómo rellenar los argumentos que le pido. Es decir, sabe cómo inyectar instancias de las que dependo.
 
 Una vez que me **inyectan las dependencias en el constructor** ya están listas para ser usadas como propiedades de la clase. *Mágia del TypeScript*. En concreto `this.route` me da acceso a métodos y propiedades para trabajar con la ruta activa y poder leer sus parámetros.
 
 # 3.2 Eventos e interfaces en TypeScript
-El lenguaje *TypeScript* como superconjunto de *JavaScript* aporta técnicas de P.O.O. bien conocidas en lenguajes como *Java* o *C#*. Por ejemplo **la herencia y los interfaces**. Los diseñadores de *Angular* decidieron usar interfaces para implementar el **ciclo de vida de los componentes**. En lugar de lanzar eventos a los que sucribirse, te piden que implementes métodos de distintas interfaces. Esos métodos serán llamados cuando corresponda, como si fuesen suscripciones a eventos.
+El lenguaje *TypeScript* como superconjunto de *JavaScript* aporta técnicas de P.O.O. bien conocidas en lenguajes como *Java* o *C#*. Por ejemplo **la herencia y los interfaces**. Los diseñadores de *Angular* decidieron usar interfaces para implementar el **ciclo de vida de los componentes**. En lugar de lanzar eventos a los que subscribirse, te piden que implementes métodos de distintas interfaces. Esos métodos serán llamados cuando corresponda, como si fuesen subscripciones a eventos.
 
 En este caso la *interfaz* `OnInit` obliga a implementar el método `ngOnInit()` el cual será invocado lo antes posible pero tras la completa construcción del componente. Asegurando así que el código que se ejecute en ese método tenga acceso a un componente completo y totalmente listo. 
 
