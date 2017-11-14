@@ -231,7 +231,7 @@ La instrucción `import { ActivatedRoute } from "@angular/router";` pone a dispo
 Una vez que me **inyectan las dependencias en el constructor** ya están listas para ser usadas como propiedades de la clase. *Mágia del TypeScript*. En concreto `this.route` me da acceso a métodos y propiedades para trabajar con la ruta activa y poder leer sus parámetros.
 
 # 3.2 Eventos e interfaces en TypeScript
-El lenguaje *TypeScript* como superconjunto de *JavaScript* aporta técnicas de P.O.O. bien conocidas en lenguajes como *Java* o *C#*. Por ejemplo **la herencia y los interfaces**. Los diseñadores de *Angular* decidieron usar interfaces para implementar el **ciclo de vida de los componentes**. En lugar de lanzar eventos a los que sucribirse, te piden que implementes métodos de distintas interfaces. Esos métodos que serán llamados cuando corresponda, como si fuesen suscripciones a eventos.
+El lenguaje *TypeScript* como superconjunto de *JavaScript* aporta técnicas de P.O.O. bien conocidas en lenguajes como *Java* o *C#*. Por ejemplo **la herencia y los interfaces**. Los diseñadores de *Angular* decidieron usar interfaces para implementar el **ciclo de vida de los componentes**. En lugar de lanzar eventos a los que sucribirse, te piden que implementes métodos de distintas interfaces. Esos métodos serán llamados cuando corresponda, como si fuesen suscripciones a eventos.
 
 En este caso la *interfaz* `OnInit` obliga a implementar el método `ngOnInit()` el cual será invocado lo antes posible pero tras la completa construcción del componente. Asegurando así que el código que se ejecute en ese método tenga acceso a un componente completo y totalmente listo. 
 
