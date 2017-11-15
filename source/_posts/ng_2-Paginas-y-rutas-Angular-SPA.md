@@ -11,7 +11,7 @@ categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-5_2_SPA.jpg
 ---
-![Tutorial Angular5 1-Base](/images/tutorial-angular-5_2_SPA.jpg)
+![Tutorial Angular5 2-SPA](/images/tutorial-angular-5_2_SPA.jpg)
 
 Las **aplicaciones Angular son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas *SPA, Single Page Applications*. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.
 
