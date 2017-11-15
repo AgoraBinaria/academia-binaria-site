@@ -12,7 +12,7 @@ categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-5_0_cli_1-5.jpg
 ---
-![Tutorial Angular5 0-CLI1.5](/images/tutorial-angular-5_0_cli_1-5.jpg)
+![Tutorial Angular5 0-CLI1.5](/images/tutorial-angular-5_0_cli.png)
 
 **Angular en su versión 5 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
 
