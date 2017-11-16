@@ -32,29 +32,29 @@ La clave para entender cómo funciona *Angular* está en el concepto de **enlace
 
 
 ### 1.1.1 La interpolación entre dobles llaves 
-Ya hemos visto ejemplos sencillos de binding en este tutorial. Por ejemplo en el fichero `title.component.ts` tenemos en su vista html la directiva `{{ title }}`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
+Ya hemos visto [ejemplos de binding](https://github.com/AcademiaBinaria/angular5/blob/master/3-data/cash-flow/src/app/lib/components/nav/title.component.ts) sencillos en este tutorial. 
+En el fichero `new.component.ts` tienes en su vista html la directiva `{{ title | uppecarse }}`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
 
 ```typescript
 @Component({
-  selector: "cf-title",
   template: `
-    <a routerLink="/">{{  | uppercase }}</a>
-    <a routerLink="/operations">Operations</a>`
+    <h2>{{ title | uppercase }}</h2>`
 })
-export class TitleComponent implements OnInit {
+export class NewComponent implements OnInit {
   title = "Cash Flow";
   constructor() {}
   ngOnInit() {}
 }
 ```
 
->La expresión interna hace referencia a variables que se obtienen de las propiedades de la clase controladora del componente. En este caso `TitleComponent` y `title`, con su valor *Cash Flow* en ejecución.  Este enlace mantiene la vista permanentemente actualizada a través de un potente sistema de detección del cambio. 
+>La expresión interna hace referencia a variables que se obtienen de las propiedades de la clase controladora del componente. En este caso `NewComponent` y `title`, con su valor *New Operation* en ejecución.  Este enlace mantiene la vista permanentemente actualizada a través de un potente sistema de detección del cambio. 
 
 ### 1.1.2 Las tuberías |
 Si queremos que la presentación del dato sea distinta a su valor real, podemos usar **funciones de transformación** especiales. Se llaman tuberías o *pipes* y se indican mediante el carácter `|`.
 
-El *framework* nos provee de casos bñasicos como `uppercase, lowercase, date, number...`. También dispones de un mecanismo para crear tus propios *pipes*.
+El *framework* nos provee de casos básicos como `uppercase, lowercase, date, number...`. También dispones de un mecanismo para crear tus propios *pipes*.
 
+>En el caso anterior verás en ejecución el texto *NEW OPERATION*
 
 ## 1.2 Doble Binding
 La comunicación del modelo hacia la vista es sólo el principio. En *Angular* también podrás **comunicar la vista hacia el modelo**, permitiéndole al usuario modificar los datos a través de formularios. En el fichero `new.component.ts` tienes un ejemplo; vamos a analizarlo:
@@ -105,7 +105,7 @@ Pero el caso uso *más repetido de las repeticiones* es el de mostrar tablas o l
 La aplicación del ejemplo tiene un formulario que, aún no te he explicado cómo, guarda el trabajo del usuario en un array. Ese mismo **array se muestra como una tabla** de datos valiéndose de `*ngFor`. Para montar una tabla sólo necesito un código como este:
 
 ```html
-<table>
+<table *ngIf="numberOfOperations>0;else emptyList">
   <thead>
     <tr>
       <th>Description</th>
@@ -123,9 +123,19 @@ La aplicación del ejemplo tiene un formulario que, aún no te he explicado cóm
     </tr>
   </tbody>
 </table>
+<ng-template #emptyList>
+  <h3>No operations yet.</h3>
+</ng-template>
 ```
 
 >Todo lo aquí presente son directivas ya conocidas. La famosa directiva estructural `*ngFor="let operation of operations"`.  Las interpolaciones con tuberías como `operation.amount | number:'7.2-2'`. La subscripción a eventos de `(click)="deleteOperation(operation)"`.
+
+## 2.2 Condicionales 
+Otra directiva estructural muy utilizada es la `*ngIf`, la cual consigue que un elemento se incluya o se elimine en el *DOM* en función de los datos del modelo. 
+
+>En el ejemplo puedes ver que la uso para mostrar la tabla sólo si tiene registrso. En otro aparecerá el mensaje de *No operations yet.* 
+
+Todas estas directivas permiten crear interfaces de usuario dinámicas y conducidas por los datos. Es hora de que veas cómo manejar esos datos.
 
 # 3 Modelo y controlador
 Los componentes los hemos definido como **bloques de constucción de páginas. Mediante una vista y un controlador** resuelven un problema de interación o presentación de modelos. En los puntos anteriores te presenté la vista. Toca ahora estudiar el modelo y el controlador.
@@ -149,7 +159,7 @@ export class Operation {
   public kind: string;
 }
 ```
-Como te digo, este fichero sólo aporta estructura. Más adelante te contaré dónde codificar los métodos de manejo de datos.
+Como te digo, este fichero sólo aporta estructura a los datos. Más adelante te contaré dónde codificar los métodos de manejo de datos.
 
 ## 3.2 El controlador 
 La parte de **lógica del componente** va en la clase que se usa oara us definción. Como [ya has visto](https://github.com/AcademiaBinaria/angular5/blob/master/3-data/cash-flow/src/app/views/operations/item.component.ts) podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Ahora se trata de crear propiedades y métodos con los que comunicarse con la vista.
