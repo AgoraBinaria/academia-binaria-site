@@ -31,14 +31,13 @@ Partiendo de la aplicación tal cómo quedó en [Páginas y rutas Angular SPA](.
 La clave para entender cómo funciona *Angular* está en el concepto de **enlace entre elementos html de las vistas y propiedades de modelos** de datos, el llamado `binding`.
 
 
-### 1.1.1 La interpolación entre dobles llaves 
+### 1.1.1 La interpolación entre  \{ \{ \} \} 
 Ya hemos visto [ejemplos de binding](https://github.com/AcademiaBinaria/angular5/blob/master/3-data/cash-flow/src/app/lib/components/nav/title.component.ts) sencillos en este tutorial. 
-En el fichero `new.component.ts` tienes en su vista html la directiva `{{ title | uppecarse }}`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
+En el fichero `new.component.ts` tienes en su vista html la directiva `{ { title | uppecarse } }`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
 
 ```typescript
 @Component({
-  template: `
-    <h2>{{ title | uppercase }}</h2>`
+  template: `<h2>{{ title | uppercase }}</h2>`
 })
 export class NewComponent implements OnInit {
   title = "Cash Flow";
