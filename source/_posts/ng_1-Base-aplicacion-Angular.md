@@ -239,7 +239,7 @@ export class MainComponent {}
 ```
 
 
-Con esto tendrás una base para una aplicación *Angular*. Sigue esta serie para añadirle funcionalidad mientras aprendes a programar con Angular5.
+Con esto tendrás una base para una aplicación *Angular*. Sigue esta serie para añadirle [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

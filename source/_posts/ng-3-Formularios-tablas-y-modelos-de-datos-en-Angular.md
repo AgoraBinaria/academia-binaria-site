@@ -140,7 +140,7 @@ Todas estas directivas permiten crear interfaces de usuario dinámicas y conduci
 Los componentes los hemos definido como **bloques de constucción de páginas. Mediante una vista y un controlador** resuelven un problema de interación o presentación de modelos. En los puntos anteriores te presenté la vista. Toca ahora estudiar el modelo y el controlador.
 
 ## 3.1 El modelo 
-Sin ir muy lejos en las capacidades que tendría un modelo de datos clásico, vamos al menos a beneficiarnos del ***TypeScript* para definir la estrucutra de datos**. Esto facilitará la programación mediante el autocompletado del editor y reducirá los errores de tecleo mediante la comprobación estática de tipos.
+Sin ir muy lejos en las capacidades que tendría un modelo de datos clásico, vamos al menos a beneficiarnos del ***TypeScript* para definir la estructura de datos**. Esto facilitará la programación mediante el autocompletado del editor y reducirá los errores de tecleo mediante la comprobación estática de tipos.
 
 Para ello necesito una clase sencilla, que bien se podría crear a mano. Pero te recomiendo que sigas familiarizándote con las capacidades de generación de código del *CLI* y uses el siguiente comando:
 

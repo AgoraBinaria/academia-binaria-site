@@ -239,7 +239,7 @@ En este caso la *interfaz* `OnInit` obliga a implementar el método `ngOnInit()`
 
 > En [este *commit*](https://github.com/AcademiaBinaria/angular5/commit/0afd90532bcce9f95bca130838eb11d5a4a3b491) puedes ver los cambios necesarios para incluir parámetros en la aplicación.
 
-Con esto tendrás una aplicación SPA en *Angular*. Sigue esta serie para añadirle funcionalidad mientras aprendes a programar con Angular5.
+Con esto tendrás una aplicación SPA en *Angular*. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
