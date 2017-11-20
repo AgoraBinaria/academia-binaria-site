@@ -202,7 +202,7 @@ Los métodods `saveOperation() y deleteOperation(operation: Operation)` son invo
 Juntos, **la vista y su clase controladora**, resuelven un problema de interacción con el usuario **creando un componente**. Todas las páginas que diseñes serán variaciones y composiciones de estos componentes. 
 
 
-Ya tienes una aplicación en *Angular* que recoge y muestra datos. Sigue esta serie para añadirle funcionalidad mientras aprendes a programar con Angular5.
+Ya tienes una aplicación en *Angular* que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite> 

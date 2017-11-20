@@ -2,6 +2,9 @@
   "name": "academia-binaria.com",
   "version": "1.0.0",
   "private": false,
+  "scripts": {
+    "start": "hexo server"
+  },
   "hexo": {
     "version": "3.4.0"
   },
