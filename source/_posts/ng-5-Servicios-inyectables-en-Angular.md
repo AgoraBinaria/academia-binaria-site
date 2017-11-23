@@ -22,8 +22,7 @@ Para que los componentes consuman los servicios de forma controlada tenemos _iny
 
 Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
-> Código asociado a este artículo en _GitHub_:
-> [AcademiaBinaria/angular5/5-inject](https://github.com/AcademiaBinaria/angular5/tree/master/5-inject/cash-flow)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular5/5-inject](https://github.com/AcademiaBinaria/angular5/tree/master/5-inject/cash-flow)
 
 # 1. Servicios
 
@@ -89,9 +88,9 @@ A partir de este momento, cualquier otro servicio o componente de este módulo q
 
 # 2. Dependencias
 
-Al consumo de los servicios inyectables se le conoce como dependencia. Cada componente o servicio puede declarar en su constructor sus dependencias hacia servicios inyectables.
+Al consumo de los servicios inyectables se le conoce como dependencia. Cada componente o servicio puede **declarar en su constructor sus dependencias** hacia servicios inyectables.
 
-Por ejemplo en el componente `OperationsComponent` teníamos incrustada toda la lógica y mantenimiento de los datos. Debe quedarse solamente con sus responsabilidades de presentación, y delegar en el nuevo servicio todo lo demás.
+Por ejemplo en el componente `OperationsComponent` teníamos incrustada toda la lógica y mantenimiento de los datos. Debe quedarse solamente con sus responsabilidades de presentación y delegar en el nuevo servicio todo lo demás.
 
 ```typescript
 export class OperationsComponent implements OnInit {
@@ -117,11 +116,12 @@ export class OperationsComponent implements OnInit {
   }
 }
 ```
-Como ves, el constructor no tiene otra función que la de recibir las dependencias. Una vez construida la instancia se puede acceder a ellas a través de `this.operationsService`. Ahora este componente ya no sabe nada sobre dónde se almacenan o cómo se recuperan los datos.
+
+Como ves, **el constructor no tiene otra función que la de recibir las dependencias**. Una vez construida la instancia se puede acceder a ellas a través de `this.operationsService`. Ahora este componente ya no sabe nada sobre dónde se almacenan o cómo se recuperan los datos.
 
 ## 2.1 Singleton
 
-Lo mismo que le ocurre al `OperationsComponent` le puede pasar a a cualquier otro componente del módulo. Como por ejemplo el `ItemComponent`. El cual reclama la misma dependencia y recibe la misma instancia. Esto es así porque cada módulo gestiona las dependencias en modo *Singleton*, y entrega a todos los componentes la misma instancia del servicio.
+Lo mismo que le ocurre al `OperationsComponent` le puede pasar a cualquier otro componente del módulo. Como por ejemplo el `ItemComponent`. El cual **reclama la misma dependencia y recibe la misma instancia**. Esto es así porque cada módulo gestiona las dependencias en modo *Singleton*, y entrega a todos los componentes la misma instancia del servicio.
 
 ```typescript
 export class ItemComponent implements OnInit {
@@ -141,7 +141,7 @@ export class ItemComponent implements OnInit {
 
 ## 2.2 Comunicación via url
 
-Para finalizar el ejercicio te muestro cómo desde el `ListComponent` puedes crear enlaces que envían parámetros a otras páginas. Con esa mínima información la página destino puede usar el valor del parámetro para consultar datos en el servicio.
+Para finalizar el ejercicio te muestro cómo desde el `ListComponent` puedes crear **enlaces que envían parámetros a otras páginas**. Con esa mínima información la página destino puede usar el valor del parámetro para consultar datos en el servicio.
 
 ```html
 <tbody>
