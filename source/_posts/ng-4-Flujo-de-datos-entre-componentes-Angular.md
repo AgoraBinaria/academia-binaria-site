@@ -140,7 +140,7 @@ Desde luego necesita convertirse en un controlador, pero además habrá que **ba
 ## 2.2 Comunicación entre estructuras
 Otra situación habitual es **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar el contador o un balance de operaciones en la barra del menú.
 
-Este tipo de comunicaciones también se resuelve mediante *Observables* y merece un capítulo especial. Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes. Sigue esta serie para añadirle [Servicios inyectables en Angular](../categories/Tutorial/Angular/) mientras aprendes a programar con Angular5.
+Este tipo de comunicaciones también se resuelve mediante *Observables* y merece un capítulo especial. Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes. Sigue esta serie para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite> 

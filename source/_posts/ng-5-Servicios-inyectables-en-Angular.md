@@ -16,18 +16,17 @@ thumbnail: /css/images/angular-5_5_inject.png
 
 Texto de introducción a la Inyección de dependencias
 
-Mencionar como la librería `@angular/core` ofrece _inyectables_ para **la
-inyección de dependencias**.
+Mencionar como la librería `@angular/core` ofrece _inyectables_ para **la inyección de dependencias**.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en
-[Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/).
-Al finalizar tendrás una aplicación que comunica componentes entre páginas,
-reparte responsabilidades y gestiona claramente sus dependencias.
+Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/).
+Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
 > Código asociado a este artículo en _GitHub_:
 > [AcademiaBinaria/angular5/5-inject](https://github.com/AcademiaBinaria/angular5/tree/master/5-inject/cash-flow)
+
+> Work in progress
 
 # 1. Comunicación entre componentes de una página
 
