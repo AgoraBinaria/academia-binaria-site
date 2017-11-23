@@ -14,207 +14,148 @@ thumbnail: /css/images/angular-5_5_inject.png
 
 ![Tutorial Angular5 5-Inject](/images/tutorial-angular-5_5_inject.png)
 
-Texto de introducción a la Inyección de dependencias
+La presentación, la lógica y el manejo de datos son tres capas de abstracción que usamos los programadores para mantener organizado nuestro código. En Angular, la presentación es cosa de los componentes. **La lógica y los datos tienen su lugar en servicios compartidos**.
 
-Mencionar como la librería `@angular/core` ofrece _inyectables_ para **la inyección de dependencias**.
+Para que los componentes consuman los servicios de forma controlada tenemos _inyectables_ en la librería `@angular/core` con los que realizar **la inyección de dependencias**.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/).
-Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
+Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
 > Código asociado a este artículo en _GitHub_:
 > [AcademiaBinaria/angular5/5-inject](https://github.com/AcademiaBinaria/angular5/tree/master/5-inject/cash-flow)
 
-> Work in progress
+# 1. Servicios
 
-# 1. Comunicación entre componentes de una página
+Como casi todo en Angular, **los servicios son clases TypeScript**. Su propósito es contener lógica de negocio, clases para acceso a datos o utilidades de infraestructura. Estas clases son perfectamente instanciables desde cualquier otro fichero que las importe. Pero, Angular nos sugiere y facilita que usemos su sistema de inyección de dependencias.
 
-Es habitual crear un componente por página. Es muy común que esa página se
-complique. Y la solución a al complejidad es la **división en componentes y
-reparto de responsabilidade**s.
+Este sistema se base en convenios y configuraciones que controla la instancia concreta que será inyectada al objeto dependiente. Ahora verás cómo funciona **la D.I. en Angular**.
 
-Partiendo de un componente como era el `OperationsComponent` vemos que tenía
-asociadas dos tareas: recoger en un formulario y mostrar en una tabla los datos
-de operaciones financieras. Para repartir la responsabilidad voy a crear un
-componente `NewComponent` para el formulario y otro, el `ListComponent`, para la
-tabla.
+## 1.1 Inyectables
 
-> En la implementación anterior estaba todo en el `NewComponent`, pues no
-> sabíamos como llevarlo a otro sitio y comunicar los componentes.
+La particularidad dela clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e indica que esta clase puede ser inyectada dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios:
 
-Ya que los datos han de guardarse y recuperarse en componentes distintos, hay
-**dos estrategias** para lograrlo. Tener **un único responsable o que cada uno
-se encargue** de sus datos.
+```shell
+ng g s views/operations/operations
+```
 
-## 1.1 Controlador y presentadores
-
-La estrategia de un controlador y múltiples presentadores es la más adecuada
-para la mayor parte de las situaciones. Es la que he escogido para este
-ejercicio.
-
-Se base en que **el componente contenedor** `OperationsComponent` sea el
-**guardián del acceso** a los datos. Mientras que **los componentes
-presentadores** `NewComponent` y `ListComponent` **recibirán la información y
-notificarán los cambios** a su padre controlador.
-
-Para eso tienes que usar dos decoradores de Angular: `@Input()` y `@Output()`.
-
-### 1.1.1 @Input()
-
-Para que una vista muestre datos tiene que usar directivas como `{
-{numberOfOperations} }` asociada a una propiedad pública de la clase componente.
-Se supone que dicha clase es la responsable de su valor. Pero también puede
-**recibirlo desde el exterior**. La novedad es hacer que lo reciba vía _html_.
-
-Empieza por decorar con `@Input()` la propiedad que quieres usar desde fuera.
-Por ejemplo un código como este del archivo `list.component.ts`.
+El resultado es el fichero `operations.service.ts` que he rellenado con un contenido como este:
 
 ```typescript
-export class ListComponent implements OnInit {
-  @Input() public numberOfOperations = 0;
-  @Input() public operations: Operation[] = [];
-}
-```
+import { Injectable } from "@angular/core";
 
-Ahora puedes enviarle datos a este componente desde el _html_ de su consumidor.
-Por ejemplo desde `operations.component.ts` le puedo enviar una constante o,
-mucho más interesante, el valor de una variable.
+@Injectable()
+export class OperationsService {
+  private operations: Operation[] = [];
 
-```html
-<cf-list
-  [numberOfOperations]="numberOfOperations"
-  [operations]="operations" >
-</cf-list>
-```
+  constructor() {}
 
-Y en su clase controladora tenemos el código que almacena los datos.
-
-```typescript
-export class OperationsComponent implements OnInit {
-  public numberOfOperations = 0;
-  public operations: Operation[] = [];
-}
-```
-
-Estoy usando al componente de nivel inferior como un presentador; mientras que
-el contenedor superior actúa como controlador. De esta forma es fácil y queda
-muy limpio el **envío de datos hacia abajo**. Pero, ¿y hacia arriba?.
-
-### 1.1.2 @Output()
-
-Los componentes de nivel inferior no sólo se dedican a presentar datos. También
-pueden crearlos, modificarlos o eliminarlos. Pero no directamente; para hacerlo
-**comunican el cambio requerido al controlador de nivel superior**.
-
-Por ejemplo, el mismo componente `ListComponent` además de mostrar operaciones
-en una tabla permite borrar un registro. Bueno, realmente permite que el usuario
-diga que quiere borrar un registro. En su _html_ tiene algo así:
-
-```html
-<tr *ngFor="let operation of operations">
-  <td>{{ operation.description }}</td>
-  <td>{{ operation.kind }}</td>
-  <td>{{ operation.amount | number:'7.2-2' }}</td>
-  <td><button (click)="deleteOperation(operation)">Delete</button></td>
-</tr>
-```
-
-> Claramente el botón con el evento `(click)="deleteOperation(operation)"`
-> manifiesta una intención de borrar el registro. Pero el método del componente
-> no actúa directamente con el array de datos. Si lo hiciera, sólo afectaría a
-> su copia local.
-
-En su lugar, lo que hace es **emitir un evento**, confiando que alguien lo
-reciba y actúe en consecuencia. La emisión se realiza mediante el decorador
-`@Output() public delete`, sobre una propiedad que es un emisor de eventos
-_tipado_, `new EventEmitter<Operation>();`. El método
-`deleteOperation(operation)`, al que llama la vista, usa dicho emisor para
-emitir la señal hacia arriba.
-
-```typescript
-export class ListComponent implements OnInit {
-  @Output() public delete = new EventEmitter<Operation>();
-
-  public deleteOperation(operation: Operation) {
-    this.delete.emit(operation);
+  public getNumberOfOperations(): number {
+    return this.operations.length;
   }
-}
-```
-
-Mientras tanto, **en el controlador principal la vista se subscribe al evento**
-`(delete)` como si este fuese un evento nativo. La instrucción que se ejecuta
-hace uso del argumento recibido en el identificador `$event`
-
-```html
-<cf-list
-  [numberOfOperations]="0"
-  [operations]="operations"
-  (delete)="deleteOperation($event)" >
-</cf-list>
-```
-
-En el componente principal ya podemos operar con los datos. El método
-`deleteOperation(operation: Operation)` accede y modifica el valor del array
-`operations`. Cuando dicho array cambia en el componente principal, lo notifica
-automáticamente hacia abajo; de nuevo hacia la lista.
-
-```typescript
-export class OperationsComponent implements OnInit {
-  public numberOfOperations = 0;
-  public operations: Operation[] = [];
-
+  public getOperationsList(): Operation[] {
+    return this.operations;
+  }
+  public getOperationById(id: string): Operation {
+    return this.operations.find(o => o._id === id);
+  }
+  public saveOperation(operation: Operation) {
+    operation._id = new Date().getTime().toString();
+    this.operations.push(operation);
+  }
   public deleteOperation(operation: Operation) {
     const index = this.operations.indexOf(operation);
     this.operations.splice(index, 1);
-    this.numberOfOperations = this.operations.length;
   }
 }
 ```
 
-De esta manera se cierra el círculo. Los componentes de bajo nivel pueden
-**recibir datos para ser presentados o emitir eventos** para modificar los
-datos. El componente de nivel superior es el **único responsable de obtener y
-actuar** sobre los datos.
+Ahora tienes centralizado en este servicio toda la lógica de datos. Los demás componentes la podrán utilizar e incluso podrán compartir los datos en memoria, como el *array* de operaciones.
 
-## 1.2 Múltiples controladores
+## 1.2 Providers
 
-Cuando las pantallas se hacen realmente complejas, empiezan a surgir **árboles
-de componentes** de muchos niveles de profundidad. En estas situaciones mantener
-un único controlador a nivel raíz es poco práctico.
+Declarar y decorar la clase no es suficiente. Necesitas **registrarla como un proveedor en algún módulo**. Por ahora hazlo en el cercano módulo de Operaciones usando el array `providers:[]`.
 
-La solución en esos casos pasa porque **algunos componentes tengan su propio
-control de datos**. Para que esto tampoco te lleve a un caos incontrolable te
-enseñaré cómo resolverlo usando _Observables_. Pero eso será más adelante.
+```typescript
+@NgModule({
+  imports: [CommonModule, FormsModule, OperationsRoutingModule],
+  declarations: [ OperationsComponent, NewComponent, ListComponent, ItemComponent],
+  providers: [OperationsService]
+})
+export class OperationsModule {}
+```
 
-# 2. Otras comunicaciones
+A partir de este momento, cualquier otro servicio o componente de este módulo que lo reclame será proveído con una misma instancia de este servicio. Se crea un *singleton* por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional, se provee en este y nada más. Algunos servicios de uso común se proveen en el módulo raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
 
-## 2.1 Comunicación entre distintas páginas
+# 2. Dependencias
 
-En las aplicaciones hay comunicaciones de estado más allá de la página actual.
-La comunicación entre páginas es responsabilidad del `@angular/router`.
+Al consumo de los servicios inyectables se le conoce como dependencia. Cada componente o servicio puede declarar en su constructor sus dependencias hacia servicios inyectables.
 
-En el estado actual del ejemplo, el componente `ItemComponent` es capaz de
-recibir por parámetros una identificación de operación. Pero no tiene acceso al
-array de datos y por tanto no puede mostrar ni interactuar con ellos.
+Por ejemplo en el componente `OperationsComponent` teníamos incrustada toda la lógica y mantenimiento de los datos. Debe quedarse solamente con sus responsabilidades de presentación, y delegar en el nuevo servicio todo lo demás.
 
-Desde luego necesita convertirse en un controlador, pero además habrá que
-**bajar los datos a un nivel compartido entre páginas**. Lo haremos en próximos
-pasos. Primero mediante
-[Servicios inyectables en Angular](../categories/Tutorial/Angular/) y después
-usando [Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/).
+```typescript
+export class OperationsComponent implements OnInit {
+  public numberOfOperations = 0;
+  public operations: Operation[] = [];
 
-## 2.2 Comunicación entre estructuras
+  constructor(private operationsService: OperationsService) {}
 
-Otra situación habitual es **comunicar la vista de negocio activa con elementos
-generales** de la página. Por ejemplo podrías querer mostrar el contador o un
-balance de operaciones en la barra del menú.
+  ngOnInit() {
+    this.refreshData();
+  }
+  public saveOperation(operation: Operation) {
+    this.operationsService.saveOperation(operation);
+    this.refreshData();
+  }
+  public deleteOperation(operation: Operation) {
+    this.operationsService.deleteOperation(operation);
+    this.refreshData();
+  }
+  private refreshData() {
+    this.numberOfOperations = this.operationsService.getNumberOfOperations();
+    this.operations = this.operationsService.getOperationsList();
+  }
+}
+```
+Como ves, el constructor no tiene otra función que la de recibir las dependencias. Una vez construida la instancia se puede acceder a ellas a través de `this.operationsService`. Ahora este componente ya no sabe nada sobre dónde se almacenan o cómo se recuperan los datos.
 
-Este tipo de comunicaciones también se resuelve mediante _Observables_ y merece
-un capítulo especial. Por ahora tienes una aplicación en _Angular_ que comunica
-datos y cambios entre componentes. Sigue esta serie para añadirle
-[Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/) mientras
-aprendes a programar con Angular5.
+## 2.1 Singleton
 
-> Aprender, programar, disfrutar, repetir. -- <cite>Saludos, Alberto
-> Basalo</cite>
+Lo mismo que le ocurre al `OperationsComponent` le puede pasar a a cualquier otro componente del módulo. Como por ejemplo el `ItemComponent`. El cual reclama la misma dependencia y recibe la misma instancia. Esto es así porque cada módulo gestiona las dependencias en modo *Singleton*, y entrega a todos los componentes la misma instancia del servicio.
+
+```typescript
+export class ItemComponent implements OnInit {
+  public operation: Operation;
+
+  constructor(
+    private route: ActivatedRoute,
+    private operationsService: OperationsService
+  ) {}
+
+  ngOnInit() {
+    const id = this.route.snapshot.params["id"];
+    this.operation = this.operationsService.getOperationById(id);
+  }
+}
+```
+
+## 2.2 Comunicación via url
+
+Para finalizar el ejercicio te muestro cómo desde el `ListComponent` puedes crear enlaces que envían parámetros a otras páginas. Con esa mínima información la página destino puede usar el valor del parámetro para consultar datos en el servicio.
+
+```html
+<tbody>
+    <tr *ngFor="let operation of operations">
+      <td><a [routerLink]="[operation._id]">{{ operation._id }}</a></td>  
+      <td>{{ operation.description }}</td>
+      <td>{{ operation.kind }}</td>
+      <td>{{ operation.amount | number:'7.2-2' }}</td>
+      <td><button (click)="deleteOperation(operation)">Delete</button> </td>
+    </tr>
+  </tbody>
+```
+
+Este caso de uso mantiene los datos en memoria, lo cual es muy poco fiable y sólo debe usarse con información muy volatil. Sigue esta serie para añadirle [Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/) mientras aprendes a programar con Angular5.
+
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>

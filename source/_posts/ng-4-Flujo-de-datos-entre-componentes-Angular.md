@@ -25,6 +25,7 @@ Partiendo de la aplicación tal cómo quedó en [Formularios, tablas y modelos d
 
 
 # 1. Comunicación entre componentes de una página
+
 Es habitual crear un componente por página. Es muy común que esa página se complique. Y la solución a al complejidad es la **división en componentes y reparto de responsabilidade**s. 
 
 Partiendo de un componente como era el `OperationsComponent` vemos que tenía asociadas dos tareas: recoger en un formulario y mostrar en una tabla los datos de operaciones financieras. Para repartir la responsabilidad  voy a crear un componente `NewComponent` para el formulario y otro, el `ListComponent`, para la tabla. 
@@ -34,6 +35,7 @@ Partiendo de un componente como era el `OperationsComponent` vemos que tenía as
 Ya que los datos han de guardarse y recuperarse en componentes distintos, hay **dos estrategias** para lograrlo. Tener **un único responsable o que cada uno se encargue** de sus datos.
 
 ## 1.1 Controlador y presentadores
+
 La estrategia de un controlador y múltiples presentadores es la más adecuada para la mayor parte de las situaciones. Es la que he escogido para este ejercicio.
 
 Se base en que **el componente contenedor** `OperationsComponent` sea el **guardián del acceso** a los datos. Mientras que **los componentes presentadores** `NewComponent` y `ListComponent` **recibirán la información y notificarán los cambios** a su padre controlador.
@@ -41,6 +43,7 @@ Se base en que **el componente contenedor** `OperationsComponent` sea el **guard
 Para eso tienes que usar dos decoradores de Angular: `@Input()` y `@Output()`.
 
 ### 1.1.1 @Input()
+
 Para que una vista muestre datos tiene que usar directivas como `{ {numberOfOperations} }` asociada a una propiedad pública de la clase componente. Se supone que dicha clase es la responsable de su valor. Pero también puede **recibirlo desde el exterior**. La novedad es hacer que lo reciba vía *html*.
 
 Empieza por decorar con `@Input()` la propiedad que quieres usar desde fuera. Por ejemplo un código como este del archivo `list.component.ts`.
@@ -51,6 +54,7 @@ export class ListComponent implements OnInit {
   @Input() public operations: Operation[] = [];
 }
 ```
+
 Ahora puedes enviarle datos a este componente desde el *html* de su consumidor. Por ejemplo desde `operations.component.ts` le puedo enviar una constante o, mucho más interesante, el valor de una variable.
 
 ```html
@@ -59,6 +63,7 @@ Ahora puedes enviarle datos a este componente desde el *html* de su consumidor. 
   [operations]="operations" >
 </cf-list>
 ```
+
 Y en su clase controladora tenemos el código que almacena los datos. 
 
 ```typescript
@@ -71,6 +76,7 @@ export class OperationsComponent implements OnInit {
 Estoy usando al componente de nivel inferior como un presentador; mientras que el contenedor superior actúa como controlador. De esta forma es fácil y queda muy limpio el **envío de datos hacia abajo**. Pero, ¿y hacia arriba?.
 
 ### 1.1.2 @Output()
+
 Los componentes de nivel inferior no sólo se dedican a presentar datos. También pueden crearlos, modificarlos o eliminarlos. Pero no directamente; para hacerlo **comunican el cambio requerido al controlador de nivel superior**.
 
 Por ejemplo, el mismo componente `ListComponent` además de mostrar operaciones en una tabla permite borrar un registro. Bueno, realmente permite que el usuario diga que quiere borrar un registro. En su *html* tiene algo así:
@@ -97,6 +103,7 @@ export class ListComponent implements OnInit {
   }
 }
 ```
+
 Mientras tanto, **en el controlador principal la vista se subscribe al evento** `(delete)` como si este fuese un evento nativo. La instrucción que se ejecuta hace uso del argumento recibido en el identificador `$event`
 
 ```html
@@ -120,6 +127,7 @@ export class OperationsComponent implements OnInit {
   }
 }
 ```
+
 De esta manera se cierra el círculo. Los componentes de bajo nivel pueden **recibir datos para ser presentados o emitir eventos** para modificar los datos. El componente de nivel superior es el **único responsable de obtener y actuar** sobre los datos.
 
 ## 1.2 Múltiples controladores
@@ -131,6 +139,7 @@ La solución en esos casos pasa porque **algunos componentes tengan su propio co
 # 2. Otras comunicaciones
 
 ## 2.1 Comunicación entre distintas páginas
+
 En las aplicaciones hay comunicaciones de estado más allá de la página actual. La comunicación entre páginas es responsabilidad del `@angular/router`.
 
 En el estado actual del ejemplo, el componente `ItemComponent` es capaz de recibir por parámetros una identificación de operación. Pero no tiene acceso al array de datos y por tanto no puede mostrar ni interactuar con ellos.
@@ -138,9 +147,10 @@ En el estado actual del ejemplo, el componente `ItemComponent` es capaz de recib
 Desde luego necesita convertirse en un controlador, pero además habrá que **bajar los datos a un nivel compartido entre páginas**. Lo haremos en próximos pasos. Primero mediante  [Servicios inyectables en Angular](../categories/Tutorial/Angular/) y después usando [Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/).
 
 ## 2.2 Comunicación entre estructuras
+
 Otra situación habitual es **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar el contador o un balance de operaciones en la barra del menú.
 
 Este tipo de comunicaciones también se resuelve mediante *Observables* y merece un capítulo especial. Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes. Sigue esta serie para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
-> -- <cite>Saludos, Alberto Basalo</cite> 
+> -- <cite>Saludos, Alberto Basalo</cite>
