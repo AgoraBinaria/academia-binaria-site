@@ -26,19 +26,19 @@ Partiendo de la aplicación tal cómo quedó en [Formularios, tablas y modelos d
 
 # 1. Comunicación entre componentes de una página
 
-Es habitual crear un componente por página. Es muy común que esa página se complique. Y la solución a al complejidad es la **división en componentes y reparto de responsabilidade**s. 
+Es habitual crear un componente por página. Es muy común que esa página se complique. Y la solución a la complejidad es la **división en componentes y reparto de responsabilidade**s. 
 
-Partiendo de un componente como era el `OperationsComponent` vemos que tenía asociadas dos tareas: recoger en un formulario y mostrar en una tabla los datos de operaciones financieras. Para repartir la responsabilidad  voy a crear un componente `NewComponent` para el formulario y otro, el `ListComponent`, para la tabla. 
+Partiendo de un componente como era el `OperationsComponent` vemos que tenía asociadas dos tareas: recoger en un formulario y mostrar en una tabla los datos de operaciones financieras. Para repartir la responsabilidad creamos un componente, el `NewComponent`, para el formulario y otro, el `ListComponent`, para la tabla.
 
->En la implementación anterior estaba todo en el `NewComponent`, pues no sabíamos como llevarlo a otro sitio y comunicar los componentes.
+>En la [implementación anterior del `NewComponent`](https://github.com/AcademiaBinaria/angular5/blob/master/3-data/cash-flow/src/app/views/operations/new.component.ts) estaba todo pues no sabíamos como llevarlo a otro sitio y comunicar los componentes.
 
-Ya que los datos han de guardarse y recuperarse en componentes distintos, hay **dos estrategias** para lograrlo. Tener **un único responsable o que cada uno se encargue** de sus datos.
+Los datos han de guardarse y recuperarse en componentes distintos; tenemos **dos estrategias** para lograrlo. Tener **un único responsable o que cada componente se encargue** de sus datos.
 
 ## 1.1 Controlador y presentadores
 
 La estrategia de un controlador y múltiples presentadores es la más adecuada para la mayor parte de las situaciones. Es la que he escogido para este ejercicio.
 
-Se base en que **el componente contenedor** `OperationsComponent` sea el **guardián del acceso** a los datos. Mientras que **los componentes presentadores** `NewComponent` y `ListComponent` **recibirán la información y notificarán los cambios** a su padre controlador.
+Se basa en que **el componente contenedor** `OperationsComponent` sea el **guardián del acceso** a los datos. Mientras que **los componentes presentadores** `NewComponent` y `ListComponent` **recibirán la información y notificarán los cambios** a su padre controlador.
 
 Para eso tienes que usar dos decoradores de Angular: `@Input()` y `@Output()`.
 
@@ -77,7 +77,7 @@ Estoy usando al componente de nivel inferior como un presentador; mientras que e
 
 ### 1.1.2 @Output()
 
-Los componentes de nivel inferior no sólo se dedican a presentar datos. También pueden crearlos, modificarlos o eliminarlos. Pero no directamente; para hacerlo **comunican el cambio requerido al controlador de nivel superior**.
+Los componentes de nivel inferior no sólo se dedican a presentar datos. También pueden crearlos, modificarlos o eliminarlos. Aunque no directamente; para hacerlo **comunican el cambio requerido al controlador de nivel superior**.
 
 Por ejemplo, el mismo componente `ListComponent` además de mostrar operaciones en una tabla permite borrar un registro. Bueno, realmente permite que el usuario diga que quiere borrar un registro. En su *html* tiene algo así:
 
@@ -90,9 +90,11 @@ Por ejemplo, el mismo componente `ListComponent` además de mostrar operaciones 
 </tr>
 ```
 
->Claramente el botón con el evento `(click)="deleteOperation(operation)"` manifiesta una intención de borrar el registro. Pero el método del componente no actúa directamente con el array de datos. Si lo hiciera, sólo afectaría a su copia local.
+Claramente el botón con el evento `(click)="deleteOperation(operation)"` manifiesta una intención de borrar el registro. Pero el método del componente no actúa directamente con el array de datos. 
 
-En su lugar, lo que hace es **emitir un evento**, confiando que alguien lo reciba y actúe en consecuencia. La emisión se realiza mediante el decorador `@Output() public delete`, sobre una propiedad que es un emisor de eventos *tipado*, `new EventEmitter<Operation>();`. El método `deleteOperation(operation)`, al que llama la vista, usa dicho emisor para emitir la señal hacia arriba.
+>Si lo hiciera haría difícil gestionar los cambios e imposibilitaría el uso de inmutables o técnicas más avanzadas de programación..
+
+En su lugar, lo que hace es **emitir un evento**, confiando que alguien lo reciba y actúe en consecuencia. La emisión se realiza mediante el decorador `@Output() public delete`, sobre una propiedad que es un emisor de eventos *tipado*, `new EventEmitter<Operation>();`. El método `deleteOperation(operation)`, es un delegado al que llama la vista y usa dicho emisor para... ejem, emitir la señal hacia arriba.
 
 ```typescript
 export class ListComponent implements OnInit {
@@ -104,7 +106,7 @@ export class ListComponent implements OnInit {
 }
 ```
 
-Mientras tanto, **en el controlador principal la vista se subscribe al evento** `(delete)` como si este fuese un evento nativo. La instrucción que se ejecuta hace uso del argumento recibido en el identificador `$event`
+Mientras tanto, **en el controlador principal la vista se subscribe al evento** `(delete)` como si este fuese un evento nativo. La instrucción que se ejecuta hace uso del argumento recibido en el identificador `$event` estándar del framework.
 
 ```html
 <cf-list 
@@ -113,7 +115,8 @@ Mientras tanto, **en el controlador principal la vista se subscribe al evento** 
   (delete)="deleteOperation($event)" >
 </cf-list>
 ```
-En el componente principal ya podemos operar con los datos. El método `deleteOperation(operation: Operation)` accede y modifica el valor del array `operations`. Cuando dicho array cambia en el componente principal, lo notifica automáticamente hacia abajo; de nuevo hacia la lista.
+
+En el componente principal ya podemos operar con los datos. El método `deleteOperation(operation: Operation)` accede y modifica el valor del array `operations`. Cuando dicho array cambia en el componente principal lo notifica automáticamente hacia abajo; de nuevo hacia la lista.
 
 ```typescript
 export class OperationsComponent implements OnInit {
@@ -128,29 +131,29 @@ export class OperationsComponent implements OnInit {
 }
 ```
 
-De esta manera se cierra el círculo. Los componentes de bajo nivel pueden **recibir datos para ser presentados o emitir eventos** para modificar los datos. El componente de nivel superior es el **único responsable de obtener y actuar** sobre los datos.
+De esta manera se cierra el círculo. Los componentes de bajo nivel pueden **recibir datos para ser presentados o emitir eventos para modificarlos**. El componente de nivel superior es el **único responsable de obtener y actuar** sobre los datos.
 
 ## 1.2 Múltiples controladores
+
 Cuando las pantallas se hacen realmente complejas, empiezan a surgir **árboles de componentes** de muchos niveles de profundidad. En estas situaciones mantener un único controlador a nivel raíz es poco práctico. 
 
 La solución en esos casos pasa porque **algunos componentes tengan su propio control de datos**. Para que esto tampoco te lleve a un caos incontrolable te enseñaré cómo resolverlo usando *Observables*. Pero eso será más adelante. 
-
 
 # 2. Otras comunicaciones
 
 ## 2.1 Comunicación entre distintas páginas
 
-En las aplicaciones hay comunicaciones de estado más allá de la página actual. La comunicación entre páginas es responsabilidad del `@angular/router`.
+En las aplicaciones hay **comunicaciones de estado más allá de la página actual**. La comunicación entre páginas es responsabilidad del `@angular/router`.
 
-En el estado actual del ejemplo, el componente `ItemComponent` es capaz de recibir por parámetros una identificación de operación. Pero no tiene acceso al array de datos y por tanto no puede mostrar ni interactuar con ellos.
+En el [estado actual del componente `ItemComponent`](https://github.com/AcademiaBinaria/angular5/blob/master/3-data/cash-flow/src/app/views/operations/item.component.ts) es capaz de recibir por parámetros una identificación de operación. Pero no tiene acceso al array de datos y por tanto no los puede mostrar ni interactuar con ellos.
 
-Desde luego necesita convertirse en un controlador, pero además habrá que **bajar los datos a un nivel compartido entre páginas**. Lo haremos en próximos pasos. Primero mediante  [Servicios inyectables en Angular](../categories/Tutorial/Angular/) y después usando [Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/).
+Desde luego necesita convertirse en un controlador, pero antes habrá que **bajar los datos a un nivel compartido entre páginas**. Lo haremos en próximos pasos. Primero mediante  [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) y después usando [Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/).
 
 ## 2.2 Comunicación entre estructuras
 
 Otra situación habitual es **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar el contador o un balance de operaciones en la barra del menú.
 
-Este tipo de comunicaciones también se resuelve mediante *Observables* y merece un capítulo especial. Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes. Sigue esta serie para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular5.
+Este tipo de comunicaciones también se resuelve mediante *Observables* y merece un capítulo especial. Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes de una misma página. Sigue esta serie para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

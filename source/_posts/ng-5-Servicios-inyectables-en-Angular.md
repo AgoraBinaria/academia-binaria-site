@@ -28,11 +28,11 @@ Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componente
 
 Como casi todo en Angular, **los servicios son clases TypeScript**. Su propósito es contener lógica de negocio, clases para acceso a datos o utilidades de infraestructura. Estas clases son perfectamente instanciables desde cualquier otro fichero que las importe. Pero, Angular nos sugiere y facilita que usemos su sistema de inyección de dependencias.
 
-Este sistema se base en convenios y configuraciones que controla la instancia concreta que será inyectada al objeto dependiente. Ahora verás cómo funciona **la D.I. en Angular**.
+Este sistema se base en convenios y configuraciones que controlan la instancia concreta que será inyectada al objeto dependiente. Ahora verás cómo funciona **[la Dependency Inyection](https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias) en Angular**.
 
 ## 1.1 Inyectables
 
-La particularidad dela clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e indica que esta clase puede ser inyectada dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios:
+La particularidad de las clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e **indica que esta clase puede ser inyectada** dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios:
 
 ```shell
 ng g s views/operations/operations
@@ -84,7 +84,7 @@ Declarar y decorar la clase no es suficiente. Necesitas **registrarla como un pr
 export class OperationsModule {}
 ```
 
-A partir de este momento, cualquier otro servicio o componente de este módulo que lo reclame será proveído con una misma instancia de este servicio. Se crea un *singleton* por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional, se provee en este y nada más. Algunos servicios de uso común se proveen en el módulo raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
+A partir de este momento cualquier otro servicio o componente de este módulo que lo reclame **será proveído con una misma instancia** de este servicio. Se crea un [*singleton*](https://es.wikipedia.org/wiki/Singleton) por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional se provee en este y nada más. Algunos servicios de uso común se proveen en el módulo raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
 
 # 2. Dependencias
 
@@ -138,6 +138,8 @@ export class ItemComponent implements OnInit {
   }
 }
 ```
+
+> Ojo, si se provee la misma clase en dos o más módulos se genera una instancia en cada uno de ellos. Los componentes recibirán la instancia del módulo jerárquicamente más cercano.
 
 ## 2.2 Comunicación via url
 
