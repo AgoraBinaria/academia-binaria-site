@@ -58,50 +58,57 @@
     </url>
 
     <url>
+        <loc>http://academia-binaria.com/tag/Forms/</loc>
+        <lastmod>2017-12-18T09:39:11.989Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://academia-binaria.com/tag/CLI/</loc>
-        <lastmod>2017-11-23T17:34:41.000Z</lastmod>
+        <lastmod>2017-12-18T09:39:12.015Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://academia-binaria.com/tag/SPA/</loc>
-        <lastmod>2017-11-23T17:34:41.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://academia-binaria.com/tag/Forms/</loc>
-        <lastmod>2017-11-24T08:43:04.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://academia-binaria.com/tag/Angular/</loc>
-        <lastmod>2017-11-24T08:52:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://academia-binaria.com/tag/Angular5/</loc>
-        <lastmod>2017-11-24T08:52:16.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://academia-binaria.com/tag/Tutorial/</loc>
-        <lastmod>2017-11-24T08:52:16.000Z</lastmod>
+        <lastmod>2017-12-18T09:39:12.022Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://academia-binaria.com/tag/DI/</loc>
-        <lastmod>2017-11-24T08:52:16.000Z</lastmod>
+        <lastmod>2017-12-18T11:50:18.316Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://academia-binaria.com/tag/Angular/</loc>
+        <lastmod>2017-12-18T13:14:48.537Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://academia-binaria.com/tag/Angular5/</loc>
+        <lastmod>2017-12-18T13:14:48.537Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://academia-binaria.com/tag/Tutorial/</loc>
+        <lastmod>2017-12-18T13:14:48.537Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://academia-binaria.com/tag/http/</loc>
+        <lastmod>2017-12-18T13:14:48.537Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
