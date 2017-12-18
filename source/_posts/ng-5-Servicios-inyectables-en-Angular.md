@@ -157,7 +157,7 @@ Para finalizar el ejercicio te muestro cómo desde el `ListComponent` puedes cre
   </tbody>
 ```
 
-Este caso de uso mantiene los datos en memoria, lo cual es muy poco fiable y sólo debe usarse con información muy volatil. Sigue esta serie para añadirle [Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/) mientras aprendes a programar con Angular5.
+Este caso de uso mantiene los datos en memoria, lo cual es muy poco fiable y sólo debe usarse con información muy volatil. Sigue esta serie para añadirle [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
