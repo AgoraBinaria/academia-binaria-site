@@ -14,7 +14,7 @@ thumbnail: /css/images/angular-5_6_http.png
 
 ![Tutorial Angular5 6-http](/images/tutorial-angular-5_6_http.png)
 
-Las comunicaciones http son una pieza fundamental del desarrollo web, y en Angular siempre han sido fáciles y potentes. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas. Pero con la versión actual **consumir un servicio REST vuelve a ser cosa de niños**.
+Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido fáciles y potentes. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas. Pero con la versión actual **consumir un servicio REST** vuelve a ser cosa de niños.
 
 Claro que para ello tendremos que jugar con los _observables_ y los servicios de la librería `@angular/common/http` con los que realizar **comunicaciones asíncronas en Angular**.
 
@@ -27,7 +27,7 @@ Partiendo de la aplicación tal cómo quedó en [Servicios inyectables en Angula
 
 # 1. El servicio HttpClient
 
-La librería `@angular/common/http` trae el módulo `HttpClientModule` con el servicio inyectable `HttpClient` que debes reclamar como dependencia en tus propios constructores.
+La librería `@angular/common/http` trae el módulo `HttpClientModule` con el servicio inyectable `HttpClient` que debes declarar como dependencia en tus propios constructores.
 
 En el fichero `operations.service.ts` tienes el código que reclama la dependencia y la configura con una ruta base obtenida de la configuración de `environment`. Queda algo así:
 
@@ -43,7 +43,7 @@ A partir de este momento sólo queda invocar los métodos REST en la propiedad `
 
 # 2 Métodos REST
 
-Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la url a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la en´vian correctamente como objetos _JSON_.
+Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la url a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la envían automáticamente como objetos _JSON_.
 
 Un ejemplo sencillo lo tienes en el servicio `OperationsService`.
 
@@ -62,21 +62,21 @@ Un ejemplo sencillo lo tienes en el servicio `OperationsService`.
  }
 ```
 
-> Cada método de negocio, configura la llamada de infraestructura; parece poca cosa. Podría ser un buen sitio para validar la información antes de ser enviada, o quizás agrupar varias llamadas de red para una misma operación de negocio.
+> Cada método de negocio, configura la llamada de infraestructura; parece poca cosa. Podría ser un buen sitio para validar la información antes de ser enviada, o quizás agrupar varias llamadas de red para una misma operación de negocio. El _dolar_ al final del nombre es un convenio para las funciones que devuelven observables.
 
 # 3 Observables
 
-Las comunicaciones entre navegadores y servidores son varios órdenes de magnitud más lentas que ls operaciones en memoria. Por tanto deben realizarse de manera asíncrona para garantizar una buena experiencia al usuario.
+Las **comunicaciones** entre navegadores y servidores son varios órdenes de magnitud más lentas que las operaciones en memoria. Por tanto deben realizarse de manera asíncrona para garantizar una buena experiencia al usuario.
 
-Esta experiencia no siempre fue tan buena para el programador. Sobre todo con las primeras comunicaciones _AJAX_ basadas en el paso de funciones _callback_. La aparición de las _promises_ mejoró la claridad del código, y ahora con los _Observables_ tenemos además una gran potencia para manipular la información asíncrona.
+Esta experiencia no siempre fue tan buena para el programador. Sobre todo con las primeras comunicaciones _AJAX_ basadas en el paso de funciones _callback_. La aparición de las _promises_ mejoró la claridad del código, y ahora con los _Observables_ tenemos además una gran potencia para manipular la **información asíncrona**.
 
 > El patrón `Observable` fue implementado por Microsoft en la librería _Reactive Extensions_ más conocida como `RxJs`. El equipo de Angular decidió utilizarla para el desarrollo de las comunicaciones asíncronas. Esta extensa librería puede resultar intimidante en un primer vistazo. Pero con muy poco conocimiento puedes programar casi todas las funcionalidades que se te ocurran.
 
 Lo primero es importar el código, esto se hace forma similar a cualquier otra clase o función. Para empezar basta con `import { Observable } from "rxjs/Observable";`.
 
-Esta es una clase genérica, donde sus instancias admiten la manipulación interna de tipos concretos. Por eso ves en el ejemplo que algunas funciones retornan `: Observable<Operation>`, o si no saben que tipo esperar se conforman con `: Observable<any>`.
+Esta es una clase genérica donde sus instancias admiten la manipulación interna de tipos más o menos concretos. Por eso ves en el ejemplo que algunas funciones retornan `: Observable<Operation>`, o si no saben que tipo esperar se conforman con `: Observable<any>`.
 
-En cualquier caso, toda operación asíncrona retornará una instancia observable a la cual habrá que subscribirse para recibir los datos, o los errores, cuando termine. Eso debes hacerlo en los componentes que consuman el servicio, no en el propio servicio.
+En cualquier caso, **toda operación asíncrona retornará una instancia observable** a la cual habrá que subscribirse para recibir los datos o los errores, cuando termine. Por limpieza eso debes hacerlo en los componentes que consuman el servicio, no en el propio servicio.
 
 ## 3.1 Lectura
 
