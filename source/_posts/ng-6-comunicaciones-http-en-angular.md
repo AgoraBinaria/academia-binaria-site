@@ -41,9 +41,9 @@ export class OperationsService {
 
 A partir de este momento sólo queda invocar los métodos REST en la propiedad `this.http`.
 
-# 2 Métodos REST
+## 1.1 Métodos REST
 
-Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la url a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la en´vian correctamente como objetos _JSON_.
+Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la url a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la envían correctamente como objetos _JSON_.
 
 Un ejemplo sencillo lo tienes en el servicio `OperationsService`.
 
@@ -64,7 +64,7 @@ Un ejemplo sencillo lo tienes en el servicio `OperationsService`.
 
 > Cada método de negocio, configura la llamada de infraestructura; parece poca cosa. Podría ser un buen sitio para validar la información antes de ser enviada, o quizás agrupar varias llamadas de red para una misma operación de negocio.
 
-# 3 Observables
+# 2 Observables
 
 Las comunicaciones entre navegadores y servidores son varios órdenes de magnitud más lentas que ls operaciones en memoria. Por tanto deben realizarse de manera asíncrona para garantizar una buena experiencia al usuario.
 
@@ -78,26 +78,44 @@ Esta es una clase genérica, donde sus instancias admiten la manipulación inter
 
 En cualquier caso, toda operación asíncrona retornará una instancia observable a la cual habrá que subscribirse para recibir los datos, o los errores, cuando termine. Eso debes hacerlo en los componentes que consuman el servicio, no en el propio servicio.
 
-## 3.1 Lectura
+## 2.1 Lectura
 
-En `operations.component` están las llamadas y las subscripciones necesarias. Por ejemplo el método `refreshData()` realiza llamadas y se suscribe para conocer los resultados.
+En `operations.component` están las llamadas y las suscripciones necesarias. Por ejemplo el método `refreshData()` realiza llamadas y se suscribe para conocer los resultados. Cada suscripción es un _callback_ al que habrá que pasarle el contexto mediante `.bind(this)`.
 
 ```typescript
 private refreshData() {
- this.operationsService
-   .getOperationsList$()
-   .subscribe(
-     data => (this.operations = data),
-     err => this.catchError(err)
-   );
+  this.message = `Refreshing Data`;
+  this.fullError = null;
+  this.operationsService
+    .getOperationsList$()
+    .subscribe(this.showOperations.bind(this), this.catchError.bind(this));
+  this.operationsService
+    .getNumberOfOperations$()
+    .subscribe(this.showCount.bind(this), this.catchError.bind(this));
+}
+private showOperations(operations: Operation[]) {
+  this.operations = operations;
+  this.message = `operations Ok`;
+}
+private showCount(data: any) {
+  this.numberOfOperations = data.count;
+  this.message = `count Ok`;
+}
+private catchError(err) {
+  if (err instanceof HttpErrorResponse) {
+    this.message = `Http Error: ${err.status}, text: ${err.statusText}`;
+  } else {
+    this.message = `Unknown error, text: ${err.message}`;
+  }
+  this.fullError = err;
 }
 ```
 
-El método `subscribe` recibe hasta tres argumentos (ok, error, fin) donde colocar funciones receptoras para cada tipo de evento que ocurra. Sólo el primero es obligatorio, y es en el que recibes la información directamente desempaquetada. En el segundo, normalmente pondrás lógica para responder ante códigos de error devueltos por el servidor.
+El método `subscribe` recibe hasta tres argumentos (ok, error, fin) donde colocar funciones receptoras para cada tipo de evento que ocurra. Sólo el primero es obligatorio, y es en el que recibes la información directamente desempaquetada. En el segundo, normalmente pondrás lógica para responder ante códigos de error devueltos por el servidor. Es opcional porque hay técnicas para gestionarlos de manera centralizada pero en este ejemplo te muestro con detalle cómo tratar y analizar los eventos de error.
 
 > Recordatorio para novatos: Es importante comprender la naturaleza asíncrona de estas operaciones. El código de las funciones subscritas se ejecutará en el futuro, no de una manera secuencial.
 
-## 3.2 Escritura
+## 2.2 Escritura
 
 Si lo que quieres es enviar objetos a un servidor, por ejemplo mediante el verbo _POST_, sólo tienes que pasarle la _payload_ al método de negocio y suscribirte a la respuesta.
 
@@ -110,6 +128,8 @@ public saveOperation(operation: Operation) {
 ```
 
 > De nuevo, fíjate como refrescamos los datos una vez recibida la respuesta. Hacerlo antes podría dar lugar a respuestas incongruentes. En este caso no es la respuesta en sí lo que interesa, sino el hecho de haya terminado bien.
+
+# 3 Interceptores
 
 Ya tenemos los datos almacenados en un servidor, aunque por ahora de forma anónima. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../categories/Tutorial/Angular/) mientras aprendes a programar con Angular5.
 
