@@ -2,12 +2,18 @@
 title: DataBinding el flujo de datos de Angular2
 tags:  
 - Angular2
+- Forms
+- Tutorial
 categories:
 - Introducción 
 permalink: databinding-el-flujo-de-datos-de-angular2
 id: 13
 updated: 2016/11/10 14:56:46
 date: 2016/05/25 17:26:32
+---
+
+> ACTUALIZACIÓN: para una versión más reciente del contenido visita la página [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/)
+
 ---
 
 > Código asociado en [angular2/3-databinding/](https://github.com/AcademiaBinaria/angular2/tree/master/3-databinding) 
@@ -84,3 +90,12 @@ En estos ejemplos se han visto propiedades y eventos estándar. Pero todo lo dic
 El objetivo, conseguido, es aumentar el **rendimiento**. Y un efecto colateral es la **simplificación del API** de AngularJS. Desaparecen casi todas las directivas estructurales. Especialmente las famosas `ng-click ng-blur` y demás directivas asociadas a eventos. Tampoco se necesitan más las directivas de `ng-show` y `ng-hide`.
 
 Las únicas directivas estructurales que permanecen son `*ngIf` `*ngSwitch` y `*ngFor`. Pero esas merecen tratamiento aparte.
+
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
+
+---
+
+### ACTUALIZACIÓN
+
+Para una versión más reciente del contenido visita la página [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/)

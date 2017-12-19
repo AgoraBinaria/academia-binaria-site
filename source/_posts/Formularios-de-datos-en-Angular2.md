@@ -2,6 +2,8 @@
 title: Formularios de datos en Angular2
 tags:  
 - Angular2
+- Forms
+- Tutorial
 categories:
 - Introducción 
 permalink: formularios-de-datos-en-angular2
@@ -9,6 +11,10 @@ id: 21
 updated: 2016-06-22 18:05:58
 date: 2016-06-22 16:32:34
 thumbnail: /css/images/angular.jpg
+---
+
+> ACTUALIZACIÓN: para una versión más reciente del contenido visita la página [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/)
+
 ---
 
 Los formularios en AngularJS fueron un éxito inicial debido entre otras coas al *double binding*. Otra cosa que no fue nunca simple es la **validación de controles en los formularios**. En Angular 2 y con la última versión RC3 la cosa mejora, pero es aún un *Work in progress.*
@@ -116,4 +122,11 @@ La validación temprana es el objetivo fundamental de un desarrollo de formulari
 
 Lo veremos en próximas entregas. Sígueme en [mi cuenta de twitter](https://twitter.com/albertobasalo) o suscríbete a la [revista mensual de Academia Binaria](http://academia-binaria.us4.list-manage.com/subscribe?u=c8ad2d2e7d02c26e32ce4cded&amp;id=b67e4d2339) y serás el primero en ser informado.
 
-*Keep coding, keep learning.*
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
+
+---
+
+### ACTUALIZACIÓN
+
+Para una versión más reciente del contenido visita la página [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/)

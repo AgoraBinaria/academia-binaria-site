@@ -2,6 +2,8 @@
 title: Comunicaciones http observables con Angular2
 tags:  
 - Angular2
+- http
+- Tutorial
 categories:
 - Introducción 
 permalink: comunicaciones-http-observables-con-angular2
@@ -11,6 +13,9 @@ date: 2016-06-16 11:47:28
 thumbnail: /css/images/angular.jpg
 ---
 
+> ACTUALIZACIÓN: para una versión más reciente del contenido visita la página [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/)
+
+---
 En AngularJS, y en otros frameworks del lado cliente, la idea de fue simple desde el principio: dame **plantillas estáticas y datos dinámicos**. Las comunicaciones *http* son las arterias vitales de transporte de esos datos dinámicos. Y en Angular 2 se han revisado por completo, llevando las comunicaciones asíncronas al siguiente nivel.
 
 <!-- more -->
@@ -247,4 +252,11 @@ Angular 2 ha trastocado todo lo que hacíamos en las versiones 1.x, pero sólo e
 
 Por cierto, por ahora ni rastro del viejo `$resource`. No tardará en aparecer una versión basada en *streams observables*. Sígueme en [mi cuenta de twitter](https://twitter.com/albertobasalo) o suscríbete a la [revista mensual de Academia Binaria](http://academia-binaria.us4.list-manage.com/subscribe?u=c8ad2d2e7d02c26e32ce4cded&amp;id=b67e4d2339) y en cuanto me entere serás el primero en ser informado.
 
-*Keep coding, keep learning.*
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
+
+---
+
+### ACTUALIZACIÓN
+
+Para una versión más reciente del contenido visita la página [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/)

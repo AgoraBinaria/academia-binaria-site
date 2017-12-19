@@ -2,12 +2,18 @@
 title: 'Componentes, los bloques de construcción de Angular2'
 tags:  
 - Angular2
+- CLI
+- Tutorial
 categories:
 - Introducción 
 permalink: componentes-los-bloques-de-construccion-de-angular-2
 id: 26
 updated: 2016/11/07 18:39:26
 date: 2016/05/23 14:07:27
+---
+
+> ACTUALIZACIÓN: para una versión más reciente del contenido visita la página [Base para una aplicación Angular](../base-aplicacion-angular/)
+
 ---
 
 >Código asociado en GitHub: [angular2/2-modulos/](https://github.com/AcademiaBinaria/angular2/tree/master/2-modulos) 
@@ -142,3 +148,12 @@ imports:[..., MovimientosModule] // 2 registro del modulo importado con todo lo 
 Esta manera de encapsular componentes unos dentro de otros permite crear **grandes aplicaciones de tamaño empresarial** sin sacrificar la limpieza del código. Cada componente debe diseñarse de forma que resuelva un problema de negocio concreto, por tanto manejable. Y si puede ser **reutilizable** mucho mejor.
 
 La agrupación de componentes en módulos ayuda a mantener la aplicación organizada.
+
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
+
+---
+
+### ACTUALIZACIÓN
+
+Para una versión más reciente del contenido visita la página [Base para una aplicación Angular](../base-aplicacion-angular/)

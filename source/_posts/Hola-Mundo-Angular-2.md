@@ -2,12 +2,18 @@
 title: Hola Mundo Angular 2
 tags:  
 - Angular2
+- CLI
+- Tutorial
 categories:
 - Introducción 
 permalink: hola-mundo-en-angular-2
 id: 12
 updated: 2016/10/31 12:36:28
 date: 2016/05/18 16:10:18
+---
+
+> ACTUALIZACIÓN: para una versión más reciente del contenido visita la página [Hola Angular CLI](../hola-angular-cli/)
+
 ---
 
 >Código asociado en GitHub: [angular2/1-HolaMundo/](https://github.com/AcademiaBinaria/angular2/tree/master/1-hola-mundo)
@@ -186,4 +192,13 @@ Si todo ha ido bien, no siempre ocurre con estas versiones tan verdes, podrás d
 
 <div class="flex-video">  
     <iframe src="https://www.youtube.com/embed/Y7izsxhPpQY"></iframe>
-</div>   
+</div>
+
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
+
+---
+
+### ACTUALIZACIÓN
+
+Para una versión más reciente del contenido visita la página [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/)

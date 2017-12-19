@@ -2,12 +2,18 @@
 title: 'Angular2 DI: Inyección de dependencias'
 tags:  
 - Angular2
+- DI
+- Tutorial
 categories:
 - Introducción 
 permalink: angular2-di-inyeccion-de-dependencias
 id: 14
 updated: 2016/11/10 14:52:13
 date: 2016/05/30 11:09:09
+---
+
+> ACTUALIZACIÓN: para una versión más reciente del contenido visita la página [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/)
+
 ---
 
 >Código asociado en [angular2/4-injection/](https://github.com/AcademiaBinaria/angular2/tree/master/4-injection)
@@ -106,3 +112,12 @@ Para ciertos casos, AngularJS 2 permite modelos de inyección más avanzados. Me
 >Algunas de estas posibilidades están siendo retocadas durante la actual *Release Candidate*, y se esperan cambios de cara a las próxima versión estable.
 
 El viejo principio de *divide y vencerás* se aplica rotundamente en las aplicaciones Angular 2. Si creas **módulos reutilizables** estarás sentando las bases para crear grandes aplicaciones de negocio con AngularJS.
+
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
+
+---
+
+### ACTUALIZACIÓN
+
+Para una versión más reciente del contenido visita la página [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/)

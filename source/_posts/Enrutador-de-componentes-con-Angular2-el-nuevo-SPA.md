@@ -2,6 +2,8 @@
 title: Enrutador de componentes con Angular2 el nuevo SPA
 tags:  
 - Angular2
+- SPA
+- Tutorial
 categories:
 - Introducción 
 permalink: enrutado-con-angular2-el-nuevo-spa
@@ -9,6 +11,10 @@ id: 15
 updated: 2016/12/07 18:23:02
 date: 2016/06/02 08:52:04
 thumbnail: /css/images/angular.jpg
+---
+
+> ACTUALIZACIÓN: para una versión más reciente del contenido visita la página [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/)
+
 ---
 
 > Código asociado en [angular2/6-routing/](https://github.com/AcademiaBinaria/angular2/tree/master/6-routing)
@@ -323,3 +329,12 @@ En *Angular2* se incluye esta funcionalidad, pero a día de hoy aún no está di
 En cuanto sea *usable* actualizaré este artículo y difundiré la buena nueva a los cuatro vientos. Como sabes aún estamos esperando la primera *Release Candidate* de `angular-cli` y habrá mejoras importantes. 
 
 Mantente a la última recibiendo el [boletín de noticias de Academia Binaria](http://academia-binaria.us4.list-manage.com/subscribe?u=c8ad2d2e7d02c26e32ce4cded&id=b67e4d2339) o siguiéndome en las [redes sociales](https://twitter.com/albertobasalo). 
+
+> Aprender, programar, disfrutar, repetir.
+> -- <cite>Saludos, Alberto Basalo</cite>
+
+---
+
+### ACTUALIZACIÓN
+
+Para una versión más reciente del contenido visita la página [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/)
