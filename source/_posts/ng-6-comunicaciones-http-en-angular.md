@@ -14,11 +14,7 @@ thumbnail: /css/images/angular-5_6_http.png
 
 ![Tutorial Angular5 6-http](/images/tutorial-angular-5_6_http.png)
 
-<<<<<<< HEAD
 Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido fáciles y potentes. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas. Pero con la versión actual **consumir un servicio REST** vuelve a ser cosa de niños.
-=======
-Las comunicaciones http son una pieza fundamental del desarrollo web, y en Angular siempre han sido fáciles y potentes. ¿Siempre?. Bueno cuando apareció Angular 2 echábamos en falta algunas cosillas. Pero con la versión actual **consumir un servicio REST vuelve a ser cosa de niños**.
->>>>>>> 85783e7be44b5614ddfcbfc7d3d3c128a0febefc
 
 Claro que para ello tendremos que jugar con los _observables_ y los servicios de la librería `@angular/common/http` con los que realizar **comunicaciones asíncronas en Angular**.
 
@@ -47,11 +43,7 @@ A partir de este momento sólo queda invocar los métodos REST en la propiedad `
 
 ## 1.1 Métodos REST
 
-<<<<<<< HEAD
 Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la url a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la envían automáticamente como objetos _JSON_.
-=======
-Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la url a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la envían correctamente como objetos _JSON_.
->>>>>>> 85783e7be44b5614ddfcbfc7d3d3c128a0febefc
 
 Un ejemplo sencillo lo tienes en el servicio `OperationsService`.
 
