@@ -4,10 +4,11 @@ permalink: formularios-tablas-y-modelos-de-datos-en-angular
 date: 2017-11-15 10:17:37
 tags:  
 - Angular
-- Angular 2
 - Angular5
+- Angular2
 - Forms
 - Tutorial
+- Introducción
 categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-5_3_data.jpg
