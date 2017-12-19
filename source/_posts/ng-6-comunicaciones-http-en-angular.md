@@ -4,6 +4,7 @@ permalink: comunicaciones-http-en-Angular
 date: 2017-12-18 11:06:00
 tags:  
 - Angular
+- Angular 2
 - Angular5
 - http
 - Tutorial

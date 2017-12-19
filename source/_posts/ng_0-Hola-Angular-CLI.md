@@ -5,6 +5,7 @@ date: 2017-11-07 13:38:42
 updated: 2017-11-08 09:47:00
 tags:  
 - Angular
+- Angular 2
 - Angular5
 - CLI
 - Tutorial

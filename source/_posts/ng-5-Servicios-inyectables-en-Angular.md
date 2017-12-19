@@ -4,6 +4,7 @@ permalink: servicios-inyectables-en-Angular
 date: 2017-11-23 10:44:58
 tags:  
 - Angular
+- Angular 2
 - Angular5
 - DI
 - Tutorial

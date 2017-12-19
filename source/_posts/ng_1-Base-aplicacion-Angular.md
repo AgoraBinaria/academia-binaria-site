@@ -4,6 +4,7 @@ permalink: base-aplicacion-angular
 date: 2017-11-09 11:09:46
 tags:  
 - Angular
+- Angular 2
 - Angular5
 - CLI
 - Tutorial

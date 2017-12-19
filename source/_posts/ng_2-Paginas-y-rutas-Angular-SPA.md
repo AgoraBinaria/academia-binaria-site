@@ -4,6 +4,7 @@ permalink: paginas-y-rutas-angular-spa
 date: 2017-11-13 17:19:14
 tags:  
 - Angular
+- Angular 2
 - Angular5
 - SPA
 - Tutorial

@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>http://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
-        <lastmod>2017-12-19T15:44:16.000Z</lastmod>
+        <loc>http://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
+        <lastmod>2017-12-19T17:38:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +16,7 @@
 
     <url>
         <loc>http://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-        <lastmod>2017-12-18T15:30:24.000Z</lastmod>
+        <lastmod>2017-12-19T17:38:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +24,7 @@
 
     <url>
         <loc>http://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-        <lastmod>2017-11-24T08:43:04.000Z</lastmod>
+        <lastmod>2017-12-19T17:38:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -32,7 +32,7 @@
 
     <url>
         <loc>http://academia-binaria.com/base-aplicacion-angular/</loc>
-        <lastmod>2017-11-23T17:34:41.000Z</lastmod>
+        <lastmod>2017-12-19T17:38:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -40,15 +40,15 @@
 
     <url>
         <loc>http://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
-        <lastmod>2017-11-23T17:34:41.000Z</lastmod>
+        <lastmod>2017-12-19T17:38:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>http://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
-        <lastmod>2017-11-23T17:31:55.000Z</lastmod>
+        <loc>http://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+        <lastmod>2017-12-19T17:38:14.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

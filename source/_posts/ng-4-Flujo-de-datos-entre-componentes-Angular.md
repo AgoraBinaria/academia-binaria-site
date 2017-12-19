@@ -4,6 +4,7 @@ permalink: flujo-de-datos-entre-componentes-angular
 date: 2017-11-20 17:10:44
 tags:  
 - Angular
+- Angular 2
 - Angular5
 - Forms
 - Tutorial
