@@ -14,7 +14,7 @@ thumbnail: /css/images/angular-5_6_http.png
 
 ![Tutorial Angular5 6-http](/images/tutorial-angular-5_6_http.png)
 
-Las comunicaciones http son una pieza fundamental del desarrollo web, y en Angular siempre han sido fáciles y potentes. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas. Pero con la versión actual **consumir un servicio REST vuelve a ser cosa de niños**.
+Las comunicaciones http son una pieza fundamental del desarrollo web, y en Angular siempre han sido fáciles y potentes. ¿Siempre?. Bueno cuando apareció Angular 2 echábamos en falta algunas cosillas. Pero con la versión actual **consumir un servicio REST vuelve a ser cosa de niños**.
 
 Claro que para ello tendremos que jugar con los _observables_ y los servicios de la librería `@angular/common/http` con los que realizar **comunicaciones asíncronas en Angular**.
 
@@ -137,7 +137,7 @@ Angular ha incorporado recientemente el concepto de interceptor que había funci
 
 Aprovechando el **TypeScript** y sus características de programación orientada a objetos, en **Angular** han optado por obligarnos a cumplir _interfaces_ y como contraparte al cumplir ese contrato invocan a nuestro código en circunstancias controladas. ¿Cómo se hace?.
 
-Para empezar hay que crear un servicio inyectable en un módulo general o en el raíz. Yo he creado el `CatchInterceptorService` en `lib/catch-interceptor.service.ts`. Su propósito será capturar las respuestas y gestionar de forma centralizada los errores que se obtengan en un único lugar. Como cualquier otro inyectable habrá que proveerlo en un módulo, yo lo hice en el raíz. Si abres el `app.module.ts` verás un sistema de aprovisionamiento complejo.
+Para empezar hay que crear un servicio inyectable en un módulo general o en el raíz. Yo he creado el `CatchInterceptorService` en `lib/catch-interceptor.service.ts`. Ten a mano [este enlace](https://github.com/AcademiaBinaria/angular5/blob/master/6-http/cash-flow/src/app/lib/catch-interceptor.service.ts) para seguir el retos del artículo. Su propósito será capturar las respuestas y gestionar de forma centralizada los errores que se obtengan en un único lugar. Como cualquier otro inyectable habrá que proveerlo en un módulo, yo lo hice en el raíz. Si abres el `app.module.ts` verás un sistema de aprovisionamiento algo complejo.
 
 ```typescript
 providers: [
@@ -173,18 +173,21 @@ Además de tipos de datos como `Observable<any>` con métodos clave como `.subsc
 
 Podemos ver a los observables como _streams_, es decir una corriente de datos que circula por una tubería. Los operadores serán funciones que afecten al contenido o al caudal y que se pueden agregar o eliminar ordenadamente de la tubería. Una de esas operaciones se llama `tap`, un grifo.
 
-> Nota: este operador fue anteriormente conocido como [`do`](http://reactivex.io/documentation/operators/do.html).
+> Nota: este operador fue anteriormente conocido como `do`.[Ver documentación operador do](http://reactivex.io/documentation/operators/do.html).
 
 La operación `tap` se usa cuando se quiere actuar ante un cambio en el contenido o caudal pero sin cambiarlo. Para mi es adecuada porque lo que pretendo es auditar las llamadas y enterarme de los errores sin tocar absolutamente nada.
 
-En base a todo lo anterior montaré una sentencias como estas dentro de la función `intercept`:
+En base a todo lo anterior montaré unas sentencias como estas dentro de la función `intercept`:
 
 ```typescript
 const handledRequest = next.handle(req);
 const successCallback = this.interceptResponse.bind(this);
 const errorCallback = this.catchError.bind(this);
-const interceptOperator = tap<HttpEvent<any>>(successCallback, errorCallback);
-return handledRequest.pipe(interceptOperator);
+const interceptionOperator = tap<HttpEvent<any>>(
+  successCallback,
+  errorCallback
+);
+return handledRequest.pipe(interceptionOperator);
 ```
 
 Tómate tu tiempo para revisar cada línea. En primer lugar obtengo un puntero al _stream observable_ que es la petición en curso. Despues asigno dos funciones locales que actuarán como _callbacks_ para cuando lleguen datos o errores respectivamente. Preparo el operador `tap` de la librería observable asignádole ambos _callbacks_ y un tipo de retorno concreto en su genérico. Y por último mediante el método `pipe` engancho el operador a la tubería por la que circula el chorro. Respira y vuelve a leerlo.
@@ -193,7 +196,7 @@ Tómate tu tiempo para revisar cada línea. En primer lugar obtengo un puntero a
 
 Con esto tienes un sistema que envía a la consola información extra como la duración de las llamadas. Además inspecciona los errores en un único lugar. Esto puede incluso hacer innecesario que los componentes procesen errores.
 
-Ya tenemos los datos almacenados en un servidor con el que nos ciumnicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables, el _httpClient_ y los interceptores estamos a un paso de darle seguridad a las comunicaciones. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../categories/Tutorial/Angular/) mientras aprendes a programar con Angular5.
+Ya tenemos los datos almacenados en un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables, el _httpClient_ y los interceptores estamos a un paso de darle seguridad a las comunicaciones. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../categories/Tutorial/Angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
