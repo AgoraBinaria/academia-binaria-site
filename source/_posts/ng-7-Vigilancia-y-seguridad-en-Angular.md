@@ -29,11 +29,11 @@ Partiendo de la aplicación tal cómo quedó en [Comunicaciones http en Angular]
 
 # 1 Seguridad
 
-La seguridad de las comunicaciones con un servicio REST se resuelve habitualmente mediante una credencial generada por el servidor llamada _token_. Un usuario registrado en el sistema puede hacer _log in_ enviando una vez su identificador y contraseña. Si todo va bien, a cambio el servidor le enviará un _token_ que deberá usar en las siguientes llamadas. Con esto el servidor será capaz de autentificar las llamadas y responder adecuadamente.
+La seguridad de las comunicaciones con un servicio REST se resuelve habitualmente mediante una **credencial generada por el servidor llamada _token_**. Un usuario registrado en el sistema puede hacer _log in_ enviando una vez su identificador y contraseña. Si todo va bien, a cambio el servidor le enviará un _token_ que deberá usar en las siguientes llamadas. Con esto el servidor será capaz de autentificar las llamadas y responder adecuadamente.
 
 ## 1.1 Detectar intrusos
 
-En el ejercicio anterior usé el `CatchInterceptorService` para capturar los errores obtenidos del servidor. Cuando nos llegue un `401 Unauthorized` querrá decir que el servidor no acepta las actuales credenciales del usuario. Lo que hago es llevar al usuario a una página para que pueda registrarse o volver a identificarse en el sistema.
+En el ejercicio anterior usé el `CatchInterceptorService` para capturar los errores obtenidos del servidor. Cuando me llegue un código `401 Unauthorized` querrá decir que el servidor no acepta las actuales credenciales del usuario. Lo que hago es llevar al usuario a una página para que pueda registrarse o volver a identificarse en el sistema.
 
 ```typescript
 private catchHttpError(err: HttpErrorResponse) {
@@ -54,7 +54,7 @@ private navigateToLogin() {
 
 ## 1.2 Obtener credenciales
 
-Mediante un formulario pregunto al usuario los datos de identificación estándar, _email y password_. Estos se envían al servidor para que registre un usuario nuevo o valide a uno existente según el caso. Mira el código del fichero `credentials.component.ts`.
+Mediante un formulario pregunto al usuario los datos de identificación estándar: _email y password_. Estos se envían al servidor para que registre un usuario nuevo o valide a uno existente según el caso. Mira el código del fichero `credentials.component.ts`.
 
 ```typescript
 public sendCredential() {
@@ -82,15 +82,15 @@ private invalidCredentials() {
 
 ## 1.3 Almacenamiento del token
 
-Si se aceptan las credenciales, el servidor nos devolverá un objeto con el _token_ de la sesión para el usuario. Es habitual que envíe más información como roles, y preferencias del usuario... pero eso ya depende del API. Lo que depende de ti es guardar ese _token_.
+Si se aceptan las credenciales **el servidor nos devolverá un objeto con el _token_ de la sesión** para el usuario. Es habitual que envíe más información como roles, y preferencias del usuario... pero eso ya depende del API. Lo que depende de ti es guardar ese _token_.
 
-El almacenamiento recomendado en los navegadores es el `localStorage` pero en este tutorial introductorio tendrás que conformarte con almacenarlo en la memoria. Eso sí, necesitamos un lugar que sea accesible para un interceptor que aún no has visto, el `TokenInterceptorService` que se encargará de enviar dicho _token_ en todas las llamadas. Para comunicar este componente de las credenciales con ese interceptor sin acoplarlos he decidido usar un servicio intermedio: el `BusService`.
+El **almacenamiento recomendado en los navegadores es el `localStorage`** pero en este tutorial introductorio tendrás que conformarte con almacenarlo en la memoria. Eso sí, necesitamos un lugar que sea accesible para un interceptor que aún no has visto: el `TokenInterceptorService`, que se encargará de enviar dicho _token_ en todas las llamadas. Para comunicar este componente de las credenciales con ese interceptor sin acoplarlos he decidido usar un servicio intermedio: el `BusService`.
 
 ### 1.3.1 El bus service
 
-Este servicio del fichero `bus.service.ts` es la implementación más sencilla del patrón _Redux_ que he podido crear. Se basa en utilizar la librería `RxJs` para emitir cambios en el estado de un modelo, y que otro servicio pueda subscribirse para ser notificado de dichos cambios.
+Este servicio del fichero `bus.service.ts` es la implementación más sencilla del patrón _Redux_ que he podido crear. Se basa en utilizar la librería `RxJs` para emitir cambios en el estado de un modelo; y que otro servicio pueda subscribirse para ser notificado de dichos cambios.
 
-El emisor será el componente `CredentialsComponent` que envía las credenciales al servidor y recibe el _token_. El subscriptor será el servicio interceptor `TokenInterceptorService` que usará dicho _token_ para identificar al usuario actual en todas las llamadas al servidor. Y en el medio está el `BusService` que actúa de enlace entre ambos. Este es el código necesario:
+El emisor será el componente `CredentialsComponent` que envía las credenciales al servidor y recibe el _token_. El subscriptor será el servicio de interceptación  `TokenInterceptorService` que usará dicho _token_ para identificar al usuario actual en todas las llamadas al servidor. Y en el medio está el `BusService` que actúa de enlace entre ambos. Este es el código necesario en el fichero `bus.service.ts`:
 
 ```typescript
 private userToken$ = new Subject<any>();
@@ -105,7 +105,8 @@ public emitUserToken(userToken: any) {
 }
 ```
 
-El tipo genérico `Subject<any>` viene en la librería `rxjs/Subject` y es el hermano mayor del ya conocido `Observable<any>`. En este caso permite ademas _emitir_ valores que recibirán los subscriptores. La suscripción puede realizarse directamente contra la instancia del `Subject`, pero lo recomendable es que dicha instancia sea privada y que sólo exponga una parte de su funcionalidad. Digamos que exponemos el _Observable_ de sólo lectura obtenido mediante la función `.asObservable()`.
+El tipo genérico `Subject<any>` viene en la librería `rxjs/Subject` y es el hermano mayor del ya conocido `Observable<any>`. En este caso permite ademas _emitir_ valores que recibirán los subscriptores. La suscripción puede realizarse directamente contra la instancia del `Subject`, pero lo recomendable es que dicha instancia sea privada y que sólo exponga una parte de su funcionalidad. 
+> Digamos que exponemos el _Observable_ de sólo lectura obtenido mediante la función `.asObservable()`.
 
 ### 1.3.2 El Token Interceptor Service
 
@@ -130,7 +131,7 @@ private setTokenIfAny(data) {
 
 # 2 vigilancia
 
-El servicio `TokenInterceptorService` se encarga de enviar el _token_ actual en cada llamda que pasa por sus manos. Para ello implementa la interfaz `HttpInterceptor` en su método `intercept()` con la lógica suficiente para enviar el token en una cabecera acorada con el API. En este caso uso la estándar `Authorization`.
+El servicio `TokenInterceptorService` se encarga de enviar el _token_ actual en cada llamada que pasa por sus manos. Para ello implementa la interfaz `HttpInterceptor` en su método `intercept()` con la lógica suficiente para enviar el token en una cabecera acordada con el API. En este caso uso la estándar `Authorization`.
 
 ```typescript
 public intercept(
@@ -149,11 +150,13 @@ private setAuthHeader(req: HttpRequest<any>): HttpRequest<any> {
 }
 ```
 
-A parte de toda la _liturgia_ a la que nos obliga el `HttpInterceptor`, al final la lógica es sencilla. Se trata de rellenar la cabecera con el token actual. Si es válido o no, es algo que decidirá el servidor. Aquí simplemente envías lo que tienes.
+A parte de toda la _liturgia_ a la que nos obliga el `HttpInterceptor`, al final la lógica es sencilla. Se trata de rellenar la cabecera con el token actual. Si es o no válido es algo que decidirá el servidor. Aquí simplemente envías lo que tienes.
 
-> En Angular promueven el uso de funciones y datos _inmutables_ de ahí que nos obliguen a clonar las cabeceras antes de modificarlas.
+> En Angular promueven el uso de funciones y datos _inmutables_ de ahí que nos obliguen a clonar las cabeceras para modificarlas.
 
-Ya tenemos al usuario identificado y los datos se envían o reciben acompañados de una cabecera que el servidor interpreta como una firma; lo básico para un sistema mínimamente seguro. Con esto completas tu formación y dispones de conocimiento para crear aplicaciones Angular. Repasa esta serie [tutorial de introducción a Angular](../categories/Tutorial/Angular/) verás como aprendes a programar con Angular5.
+Ya tenemos al usuario identificado y los datos se envían o reciben acompañados de una cabecera que el servidor interpreta como una firma; lo básico para un sistema mínimamente seguro. 
+
+Con esto completas tu formación y dispones de conocimiento para crear aplicaciones Angular. Repasa esta serie [tutorial de introducción a Angular](../categories/Tutorial/Angular/) verás como aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
