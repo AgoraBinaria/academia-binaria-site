@@ -2,22 +2,22 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
-        <loc>http://academia-binaria.com/post-sitemap.xml</loc>
-        <lastmod>2017-12-19T17:46:37.000Z</lastmod>
+        <loc>https://academia-binaria.com/post-sitemap.xml</loc>
+        <lastmod>2017-12-29T12:40:02.902Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://academia-binaria.com/page-sitemap.xml</loc>
-        <lastmod>2017-12-19T17:16:30.000Z</lastmod>
+        <loc>https://academia-binaria.com/page-sitemap.xml</loc>
+        <lastmod>2017-12-20T09:17:19.801Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://academia-binaria.com/category-sitemap.xml</loc>
+        <loc>https://academia-binaria.com/category-sitemap.xml</loc>
         <lastmod>2016-04-19T05:01:25.000Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://academia-binaria.com/tag-sitemap.xml</loc>
+        <loc>https://academia-binaria.com/tag-sitemap.xml</loc>
         <lastmod>2015-11-12T15:55:15.000Z</lastmod>
     </sitemap>
 
