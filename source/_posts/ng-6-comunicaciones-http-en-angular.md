@@ -198,7 +198,7 @@ Tómate tu tiempo para revisar cada línea. En primer lugar obtengo un puntero a
 
 Con esto tienes un sistema que envía a la consola información extra como la duración de las llamadas. Además inspecciona los errores en un único lugar. Esto puede incluso hacer innecesario que los componentes procesen errores.
 
-Ya tenemos los datos almacenados en un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables, el _httpClient_ y los interceptores estamos a un paso de darle seguridad a las comunicaciones. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../categories/Tutorial/Angular/) mientras aprendes a programar con Angular5.
+Ya tenemos los datos almacenados en un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables, el _httpClient_ y los interceptores estamos a un paso de darle seguridad a las comunicaciones. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
