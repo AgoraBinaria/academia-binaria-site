@@ -133,7 +133,7 @@ public saveOperation(operation: Operation) {
 
 # 3 Interceptores
 
-Angular ha incorporado recientemente el concepto de interceptor que había funcionado muy bien en AngularJS. Ahora los interceptores son clases con métodos que interceptan (de ahí su nombre) todas las peticiones http realizadas. En esos métodos puedes poner lógica que modifique, cancele o simplemente controle el ciclo petición/respuesta de cada llamada.
+Angular ha incorporado recientemente el concepto de interceptor que había funcionado muy bien en *AngularJS*. Ahora los interceptores son clases con métodos que interceptan (de ahí su nombre) todas las peticiones http realizadas. En esos métodos puedes poner lógica que modifique, cancele o simplemente controle el ciclo petición/respuesta de cada llamada.
 
 ## 3.1 Implementación de la interfaz
 
