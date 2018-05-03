@@ -86,43 +86,57 @@
     </url>
 
     <url>
+        <loc>https://academia-binaria.com/tag/observables/</loc>
+        <lastmod>2018-05-03T09:07:15.049Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://academia-binaria.com/tag/Angular2/</loc>
-        <lastmod>2017-12-29T12:59:08.709Z</lastmod>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Tutorial/</loc>
-        <lastmod>2017-12-29T12:59:08.709Z</lastmod>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Angular/</loc>
-        <lastmod>2017-12-29T12:59:08.709Z</lastmod>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Angular5/</loc>
-        <lastmod>2017-12-29T12:59:08.709Z</lastmod>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Introduccion/</loc>
-        <lastmod>2017-12-29T12:59:08.709Z</lastmod>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/observables/</loc>
-        <lastmod>2017-12-29T12:59:08.709Z</lastmod>
+        <loc>https://academia-binaria.com/tag/Angular6/</loc>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/reactiveForms/</loc>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

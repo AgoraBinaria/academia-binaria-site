@@ -17,147 +17,171 @@ thumbnail: /css/images/angular_8_reactive.png
 
 ![Tutorial Angular 8-reactive](/images/tutorial-angular_8_reactive.png)
 
-La seguridad de los datos es una responsabilidad compartida entre el servidor y el cliente. En **Angular** usaremos los _interceptores_ para detectar intrusos y enviar credenciales. La **identificación de usuarios y el control** de acceso es parte del trabajo de un desarrollador front-end.
+El **doble enlace automático** entre elementos html y propiedades de objetos fue el primer gran éxito de **Angular**. Ese _doble-binding_ facilita mucho el desarrollo de formularios. Pero esa magia tienen un coste en escalabilidad; impacta en el tiempo de ejecución y además dificulta la validación y el mantenimiento de formularios complejos.
 
-Veremos nuevos usos de los _observables_ y los servicios de la librería `@angular/common/http` con los que tratar con los **tokens para comunicaciones seguras en Angular**.
+La solución pasa por desacoplar el modelo y la vista, introduciendo una capa que gestione ese doble enlace. Los servicios y directivas del módulo `ReactiveFormsModule` que viene en la librería `@angular/forms` permiten programar **formularios reactivos conducidos por el código**.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/). Al finalizar tendrás una aplicación que identifica usuarios y se responsabiliza de almacenar y comunicar el _token_ de seguridad de un servicio REST.
+Partiendo de la aplicación tal cómo quedó en [Vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/). Al finalizar tendrás una aplicación con formularios _model driven_ fáciles de mantener y validar.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/kakebo/8-reactive](https://github.com/AcademiaBinaria/kakebo/tree/8-reactive)
 
 
-# 1 Seguridad
+# 1 Desacople
 
-La seguridad de las comunicaciones con un servicio REST se resuelve habitualmente mediante una **credencial generada por el servidor llamada _token_**. Un usuario registrado en el sistema puede hacer _log in_ enviando una vez su identificador y contraseña. Si todo va bien, a cambio el servidor le enviará un _token_ que deberá usar en las siguientes llamadas. Con esto el servidor será capaz de autentificar las llamadas y responder adecuadamente.
+La directiva `[(ngModel)]="model.property"` con su popular _banana in a box_ establece el doble enlace entre el elemento de la vista al que se le aplica y una propiedad del modelo. Los cambios en la vista son trasladados automáticamente al modelo, y al revés; cualquier cambio en el modelo se refleja inmediatamente en la vista.
 
-## 1.1 Detectar intrusos
+Se puede establecer validaciones y configurar el evento que dispara las actualizaciones; todo ello usando más y más atributos y directivas en la plantilla. Son los formularios _template driven_ que degeneran en un html farragoso y difícil de mantener.
 
-En el ejercicio anterior usé el `CatchInterceptorService` para capturar los errores obtenidos del servidor. Cuando me llegue un código `401 Unauthorized` querrá decir que el servidor no acepta las actuales credenciales del usuario. Lo que hago es llevar al usuario a una página para que pueda registrarse o volver a identificarse en el sistema.
+## 1.1 Form Builder
+
+Entra en acción el  `FormBuilder`, un servicio del que han de depender los componentes que quieran desacoplar el modelo de la vista. Se usa para construir un formulario creando un `FormGroup`, o grupo de controles, que realiza un seguimiento del valor y estado de validez de los datos.
+
+Veamos un ejemplo mínimo de su declaración. 
 
 ```typescript
-private catchHttpError(err: HttpErrorResponse) {
-  if (err.status === 401) {
-    this.catchUnauthorized();
-  } else {
-    console.warn(err.statusText);
-  }
-}
-private catchUnauthorized() {
-  console.log("Not authorized");
-  this.navigateToLogin();
-}
-private navigateToLogin() {
-  this.router.navigateByUrl("/credentials/login");
+import { FormBuilder, FormGroup } from '@angular/forms';
+public form: FormGroup;
+constructor(private formBuilder: FormBuilder) {}
+public ngOnInit() {
+  this.form = this.formBuilder.group({});
 }
 ```
 
-## 1.2 Obtener credenciales
+# 2 Form Group
 
-Mediante un formulario pregunto al usuario los datos de identificación estándar: _email y password_. Estos se envían al servidor para que registre un usuario nuevo o valide a uno existente según el caso. Mira el código del fichero `credentials.component.ts`.
+El formulario se define como un grupo de controles. Cada control tendrá un nombre y una configuración. Esa definición permite establecer un valor inicial al control y asignarle validaciones.
+
+En este paso tenemos a disposición varias sobrecargas para configurar con mayor o menor detalle el control.
+
+## 2.1 Default data
+Para empezar es fácil asignar valores por defecto. Incluso es un buen momento para modificar o transformar datos previos para ajustarlos a cómo los verá el usuario
 
 ```typescript
-public sendCredential() {
-  this.errorMessage = "";
-  const credential = this.pageData.credential;
-  const service = this.pageData.title;
-  this.credentialsService
-    .sendCredential(credential, service)
-    .subscribe(
-      this.acceptedCredentials.bind(this),
-      this.invalidCredentials.bind(this)
-    );
-}
-private acceptedCredentials(token) {
-  this.busService.emitUserToken(token);
-  this.router.navigateByUrl("/");
-}
-private invalidCredentials() {
-  this.busService.emitUserToken(null);
-  this.errorMessage = "Invalid Credentials";
+this.name = 'ALBERTO';
+this.form = this.formBuilder.group({
+  email: 'info@angular.io',
+  name: this.name.toLowerCase(),
+  registeredOn : new Date().toISOString().substring(0, 10)
+  password: ''
+});
+```
+
+## 2.1 Enlace en la vista
+
+Mientras tanto en la vista html... Este trabajo previo y extra que tienes que hacer en el controlador se recompensa con una mayor limpieza en la vista. Lo único necesario será asignar por nombre el elemento html con el control que lo gestionará.
+
+>Para ello usaremos dos directivas que vienen dentro del módulo _reactivo_ son `[formGroup]="objetoFormulario"` para el formulario en su conjunto, y `formControlName="nombreDelControl"` para cada control.
+
+```html
+<form [formGroup]="form">
+  <label for="email">E-mail</label>
+  <input name="email"
+         formControlName="email"
+         type="email" />
+  <label for="name">Name</label>
+  <input name="name"
+         formControlName="name"
+         type="text" />
+  <label for="registeredOn">Registered On</label>
+  <input name="registeredOn"
+         formControlName="registeredOn"
+         type="date" />
+  <label for="password">Password</label>
+  <input name="password"
+         formControlName="password"
+         type="password" />
+</form>
+```
+
+# 2 Validación de formularios
+
+La validación es una pieza clave de la entrada de datos en cualquier aplicación. Es el primer **frente de defensa ante errores de usuarios**; involuntarios o deliberados.
+
+Dichas validaciones se solían realizar agregando atributos html tales como el conocido `required`. Pero todo eso ahora se traslada a la configuración de cada control, dónde podrás establecer un o varias reglas de validación. 
+
+>De nuevo tienes distintas sobrecargas que te permiten resolver limpiamente casos sencillos de una sola validación, o usar baterías de reglas. Las reglas son funciones y el objeto `Validators` del _framework_ viene con las más comunes listas para usar.  
+
+```typescript
+this.form = this.formBuilder.group({
+  email: [
+    'info@angular.io', 
+    [ Validators.required, Validators.email ]
+  ],
+  name: [
+    this.name.toLowerCase(),
+    Validators.required
+  ],
+  registeredOn : new Date().toISOString().substring(0, 10)
+  password: [
+    '', 
+    [ Validators.required, Validators.minLength(4) ]
+  ]
+});
+```
+A estas validaciones integradas se puede añadir otras creadas por el programador. Incluso con ejecución asíncrona para validaciones realizadas en el servidor.
+
+# 3 Estados
+
+Los formularios y controles reactivos están gestionados por máquinas de estados que determinan en todo momento la situación de cada control y del formulario en si mismo.
+
+## 3.1 Estados de validación
+
+Al establecer una más reglas para uno o más controles activamos el sistema de chequeo y control del estado de cada control y del formulario en su conjunto.
+
+La máquina de estados de validación contempla los siguientes mutuamente excluyentes:
+
+- **VALID**: el control ha pasado todos los chequeos
+- **INVALID**: el control ha fallado al menos en una regla.
+- **PENDING**: el control está en medio de un proceso de validación
+- **DISABLED**: el control está desactivado y exento de validación
+
+Cuando un control incumple con alguna regla de validación, estas se reflejan en su propiedad `errors` que será un objeto con una propiedad por cada regla insatisfecha y un valor o mensaje de ayuda guardado en dicha propiedad.
+
+## 3.2 Estados de modificación
+
+Los controles, y el formulario, se someten a otra máquina que monitoriza el valor del control y sus cambios. 
+
+La máquina de estados de cambio contempla entre otros los siguientes:
+
+- **PRINSTINE**: el valor del control no ha sido cambiado por el usuario
+- **DIRTY**: el usuario ha modificado el valor del control.
+- **TOUCHED**: el usuario ha lanzado un evento `blur` sobre el control.
+- **UNTOUCHED**: el usuario no ha lanzado un evento `blur` sobre el control.
+
+Como en el caso de los estados de validación, el formulario también se somete a estos estados en función de cómo estén sus controles.
+
+# 4 Valor
+
+Este sistema de gestión de los controles del formulario oculta la parte más valiosa, el valor que se pretende almacenar, en una la propiedad `value` del formulario. 
+
+Contendrá un objeto con las mismas propiedades usadas durante la definición del formulario, cada una con el valor actual del control asociado.
+
+Un ejemplo típico sueles ser como la siguiente vista y su controlador:
+
+```html
+<form [formGroup]="form"
+      (submit)="onSubmit(form.value)">
+  <label for="email">E-mail</label>
+  <input name="email"
+         formControlName="email"
+         type="email" />
+ <button type="submit"
+        [disabled]="form.invalid">Save</button>
+</form>
+```
+
+```typescript
+public onSubmit(formValue: any) {
+  console.log(formValue);
+  // { email:'info@angular.io' }
 }
 ```
 
-> Este componente sirve para registrar o identificar usuarios. Cambia su comportamiento según el valor de `this.pageData` que viene determinado desde el enrutador. Esta es una manera sencilla de reutilizar componentes. Mira en `credentials.routing.ts` para tener más detalles.
+Ya tenemos formularios reactivos conducidos por los datos que te permitirán construir pantallas complejas manteniendo el control en el modelo y dejando la vista despejada. 
 
-## 1.3 Almacenamiento del token
-
-Si se aceptan las credenciales **el servidor nos devolverá un objeto con el _token_ de la sesión** para el usuario. Es habitual que envíe más información como roles, y preferencias del usuario... pero eso ya depende del API. Lo que depende de ti es guardar ese _token_.
-
-El **almacenamiento recomendado en los navegadores es el `localStorage`** pero en este tutorial introductorio tendrás que conformarte con almacenarlo en la memoria. Eso sí, necesitamos un lugar que sea accesible para un interceptor que aún no has visto: el `TokenInterceptorService`, que se encargará de enviar dicho _token_ en todas las llamadas. Para comunicar este componente de las credenciales con ese interceptor sin acoplarlos he decidido usar un servicio intermedio: el `BusService`.
-
-### 1.3.1 El bus service
-
-Este servicio del fichero `bus.service.ts` es la implementación más sencilla del patrón _Redux_ que he podido crear. Se basa en utilizar la librería `RxJs` para emitir cambios en el estado de un modelo; y que otro servicio pueda subscribirse para ser notificado de dichos cambios.
-
-El emisor será el componente `CredentialsComponent` que envía las credenciales al servidor y recibe el _token_. El subscriptor será el servicio de interceptación  `TokenInterceptorService` que usará dicho _token_ para identificar al usuario actual en todas las llamadas al servidor. Y en el medio está el `BusService` que actúa de enlace entre ambos. Este es el código necesario en el fichero `bus.service.ts`:
-
-```typescript
-private userToken$ = new Subject<any>();
-
-constructor() {}
-
-public getUserToken$(): Observable<any> {
-  return this.userToken$.asObservable();
-}
-public emitUserToken(userToken: any) {
-  this.userToken$.next(userToken);
-}
-```
-
-El tipo genérico `Subject<any>` viene en la librería `rxjs/Subject` y es el hermano mayor del ya conocido `Observable<any>`. En este caso permite ademas _emitir_ valores que recibirán los subscriptores. La suscripción puede realizarse directamente contra la instancia del `Subject`, pero lo recomendable es que dicha instancia sea privada y que sólo exponga una parte de su funcionalidad. 
-> Digamos que exponemos el _Observable_ de sólo lectura obtenido mediante la función `.asObservable()`.
-
-### 1.3.2 El Token Interceptor Service
-
-Ya sólo falta consumir ese _Observable_ en el servicio interceptor `token-interceptor.service.ts`. Para ello me suscribo a los cambios emitidos desde el `BusService` y guardo el token que me envíen para su uso posterior.
-
-```typescript
-private token: string = "InitialAuthorizationToken";
-
-constructor(private busService: BusService) {
-  this.subscribeToTokenChanges();
-}
-
-private subscribeToTokenChanges() {
-  this.busService.getUserToken$().subscribe(this.setTokenIfAny.bind(this));
-}
-private setTokenIfAny(data) {
-  if (data && data.token) {
-    this.token = data.token;
-  }
-}
-```
-
-# 2 vigilancia
-
-El servicio `TokenInterceptorService` se encarga de enviar el _token_ actual en cada llamada que pasa por sus manos. Para ello implementa la interfaz `HttpInterceptor` en su método `intercept()` con la lógica suficiente para enviar el token en una cabecera acordada con el API. En este caso uso la estándar `Authorization`.
-
-```typescript
-public intercept(
-  req: HttpRequest<any>,
-  next: HttpHandler
-): Observable<HttpEvent<any>> {
-  const authorizationReq = this.setAuthHeader(req);
-  const handledRequest = next.handle(authorizationReq);
-  return handledRequest;
-}
-private setAuthHeader(req: HttpRequest<any>): HttpRequest<any> {
-  const authorization = `Bearer ${this.token}`;
-  const headers = req.headers.set("Authorization", authorization);
-  const authorizationReq = req.clone({ headers });
-  return authorizationReq;
-}
-```
-
-A parte de toda la _liturgia_ a la que nos obliga el `HttpInterceptor`, al final la lógica es sencilla. Se trata de rellenar la cabecera con el token actual. Si es o no válido es algo que decidirá el servidor. Aquí simplemente envías lo que tienes.
-
-> En Angular promueven el uso de funciones y datos _inmutables_ de ahí que nos obliguen a clonar las cabeceras para modificarlas.
-
-Ya tenemos al usuario identificado y los datos se envían o reciben acompañados de una cabecera que el servidor interpreta como una firma; lo básico para un sistema mínimamente seguro. 
-
-Con esto completas tu formación y dispones de conocimiento para crear aplicaciones Angular. Repasa esta serie [tutorial de introducción a Angular](../categories/Tutorial/Angular/) verás como aprendes a programar con Angular5.
+Con esto completas tu formación y dispones de conocimiento para crear aplicaciones Angular. Repasa esta serie [tutorial de introducción a Angular](../categories/Tutorial/Angular/) verás como aprendes a programar con Angular.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
