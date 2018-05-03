@@ -1,20 +1,21 @@
 ---
-title: Vigilancia y seguridad en Angular
-permalink: vigilancia-y-seguridad-en-Angular
-date: 2017-12-29 11:49:27
+title: Formularios reactivos con Angular
+permalink: formularios-reactivos-con-Angular
+date: 2018-05-03 10:59:27
 tags:  
 - Angular
+- Angular6
 - Angular5
 - Angular2
-- observables
+- reactiveForms
 - Tutorial
 - Introducción
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-5_7_watch.png
+thumbnail: /css/images/angular_8_reactive.png
 ---
 
-![Tutorial Angular5 7-watch](/images/tutorial-angular-5_7_watch.png)
+![Tutorial Angular 8-reactive](/images/tutorial-angular_8_reactive.png)
 
 La seguridad de los datos es una responsabilidad compartida entre el servidor y el cliente. En **Angular** usaremos los _interceptores_ para detectar intrusos y enviar credenciales. La **identificación de usuarios y el control** de acceso es parte del trabajo de un desarrollador front-end.
 
@@ -22,10 +23,10 @@ Veremos nuevos usos de los _observables_ y los servicios de la librería `@angul
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Comunicaciones http en Angular](../comunicaciones-http-en-Angular/). Al finalizar tendrás una aplicación que identifica usuarios y se responsabiliza de almacenar y comunicar el _token_ de seguridad de un servicio REST.
+Partiendo de la aplicación tal cómo quedó en [Vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/). Al finalizar tendrás una aplicación que identifica usuarios y se responsabiliza de almacenar y comunicar el _token_ de seguridad de un servicio REST.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular5/7-watch](https://github.com/AcademiaBinaria/angular5/tree/master/7-watch/cash-flow)
-> El servicio REST se encuentra en _GitHub_: [AcademiaBinaria/ApiBase](https://github.com/AcademiaBinaria/ApiBase)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/kakebo/8-reactive](https://github.com/AcademiaBinaria/kakebo/tree/8-reactive)
+
 
 # 1 Seguridad
 
@@ -154,8 +155,9 @@ A parte de toda la _liturgia_ a la que nos obliga el `HttpInterceptor`, al final
 
 > En Angular promueven el uso de funciones y datos _inmutables_ de ahí que nos obliguen a clonar las cabeceras para modificarlas.
 
-Ya tenemos al usuario identificado y los datos se envían o reciben acompañados de una cabecera que el servidor interpreta como una firma; lo básico para un sistema mínimamente seguro. Sigue esta serie para crear tus [formularios reactivos con Angular](../formularios-reactivos-con-Angular/) mientras aprendes a programar con Angular6. 
+Ya tenemos al usuario identificado y los datos se envían o reciben acompañados de una cabecera que el servidor interpreta como una firma; lo básico para un sistema mínimamente seguro. 
 
+Con esto completas tu formación y dispones de conocimiento para crear aplicaciones Angular. Repasa esta serie [tutorial de introducción a Angular](../categories/Tutorial/Angular/) verás como aprendes a programar con Angular5.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
