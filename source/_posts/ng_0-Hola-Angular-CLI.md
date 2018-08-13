@@ -2,29 +2,28 @@
 title: Hola Angular CLI
 permalink: hola-angular-cli
 date: 2017-11-07 13:38:42
-updated: 2017-11-08 09:47:00
+updated: 2018-08-13 17:54:00
 tags:  
 - Angular
-- Angular5
 - Angular2
 - CLI
 - Tutorial
 - Introducción
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-5_0_cli_1-5.jpg
+thumbnail: /css/images/angular_0_cli.png
 ---
-![Tutorial Angular5 0-CLI1.5](/images/tutorial-angular-5_0_cli.png)
+![Tutorial Angular 0-CLI](/images/tutorial-angular_0_cli.png)
 
-**Angular en su versión 5 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
+**Angular en su versión 6 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
 
 <!-- more -->
 
-El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su versión 1.5 es más potente y versátil que nunca. Además es muy sencillo dominar los aspectos básicos.
+El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su versión 6 es más potente y versátil que nunca. Además es muy sencillo dominar los aspectos básicos.
 
 >Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/0-hello](https://github.com/AcademiaBinaria/angular5/tree/master/0-hello/cash-flow) 
 
-# 1. Instalación de Angular CLI 1.5
+# 1. Instalación de Angular CLI
 
 Para empezar, como en casi cualquier desarrollo necesitarás disponer de *NodeJS* y su manejador de de paquetes *npm*. Tenerlos actualizados es un mandamiento básico para un desarrollador web.
 
