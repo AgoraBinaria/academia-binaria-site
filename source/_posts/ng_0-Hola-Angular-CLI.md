@@ -11,9 +11,9 @@ tags:
 - Introducción
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular_0_cli.png
+thumbnail: /css/images/angular-0_cli.png
 ---
-![Tutorial Angular 0-CLI](/images/tutorial-angular_0_cli.png)
+![Tutorial Angular 0-CLI](/images/tutorial-angular-0_cli.png)
 
 **Angular en su versión 6 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
 
