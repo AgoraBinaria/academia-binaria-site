@@ -2,7 +2,7 @@
 title: Hola Angular CLI
 permalink: hola-angular-cli
 date: 2018-08-13 17:54:00
-updated: 2018-08-13 17:54:00
+updated: 2018-08-13 19:19:00
 tags:  
 - Angular
 - Angular2
@@ -19,9 +19,9 @@ thumbnail: /css/images/angular-0_cli.png
 
 <!-- more -->
 
-El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su versión 6 es más potente y versátil que nunca. Además es muy sencillo dominar los aspectos básicos.
+El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 6** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
->Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/0-hello](https://github.com/AcademiaBinaria/angular5/tree/master/0-hello/cash-flow) 
+>Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/0-Hello](https://github.com/AcademiaBinaria/autobot/tree/0-hello) 
 
 # 1. Instalación de Angular CLI
 
@@ -36,13 +36,13 @@ ng help
 ng help new
 ```
 
-# 2. Crear y ejecutar una aplicación Angular 5
+# 2. Crear y ejecutar una aplicación Angular 6
 
 Una vez que hayas instalado el CLI de manera global ya puedes empezar a usarlo en tu directorio de trabajo. El primer comando será `ng new` que te va a **generar toda una aplicación funcional** y las configuraciones necesarias para su depuración, pruebas y ejecución.
 
 ```shell
-ng new cash-flow -p cf --minimal true --routing true 
-cd cash-flow
+ng new autobot -s -S -t
+cd autobot
 npm start
 ```
 
@@ -50,21 +50,27 @@ npm start
 
 Si todo va bien, en unos segundo podrás visitar [http://localhost:4000](http://localhost:4000) para ver en marcha la aplicación.
 
-Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow -p cf --minimal true --routing true`. 
+Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow autobot -s -S -t`. 
 
-> En este tutorial crearemos una aplicación de gestión financiera básica llamada **cash-flow** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga vendrá bien usar estas opciones para la práctica que acompaña a este tutorial.
+> En este tutorial crearemos una aplicación muy básica para jugar con coches llamada **autobot** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga vendrá bien conocer estas y otroas opciones para crear aplicaciones profesionales. Aquí una explicación de lo usado.
 
 | Comando  | Significado |
 | -------- | ----------- |
 | ng  | programa principal del cli instalado en la máquina  |
 | new  | comando para solicitar la generación una nueva aplicación  |
-| cash-flow  | nombre de la nueva aplicación  |
-| -p  | modificador para establecer un prefijo de nombrado  |
-| cf  | valor del prefijo, normalmente las iniciales de la aplicación  |
-| --minimal  | la aplicación en su mínima expresión   |
-| true  | valor para activar la anterior opción  |
-| --routing  |  vamos a creara una aplicación SPA y eso requiere rutas   |
-| true  | valor para activar la anterior opción  |
+| autobot  | nombre de la nueva aplicación  |
+| -s  | estilos (no usaremos mucho) en línea  |
+| -S  | tampoco vamos a usar test unitarios  |
+| -t  | no recomendable en proyectos serios  |
+
+> Para un ejemplo más realista, consulta cómo está hecho [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , el hermano mayor de *AutoBot*
+
+```shell
+ng new astrobot --routing -s -S
+cd astrobot
+npm start
+```
+
 
 # 3. Estructura de una aplicación Angular
 Una vez generada y comprobada la ejecución, toca estudiar cómo es la estructura de la aplicación. Para ello revisa carpeta a carpeta. Las malas noticias son que hay **una enorme cantidad de ficheros y carpetas**, las buenas son que como verás, casi todo es **configuración e infraestructura**. 
@@ -79,7 +85,7 @@ Antes de empezar debes instalar un paquete de extensiones ya configurado y prepa
 
 Volviendo a la **estructura de ficheros y carpetas** te encontrás con muchos archivos de distintos tipos. Si eres completamente nuevo en Angular, te llamará la atención las extensiones `.ts`. Son para ficheros [*TypeScript*](https://www.typescriptlang.org/), una evolución del *JavaScript* con facilidades para el programador. Por ahora sólo tienes que familiarizarte con estos:
 
-+ .angular-cli.json  *: configuración del propio CLI*
++ angular.json  *: configuración del propio CLI. La madre de todos los configuradores*
 + package.json *: dependencias de librerías y scripts*
 + src/ *: la carpeta donde están los archivos fuentes*
     + index.html *: un fichero HTML índice estándar*
@@ -92,7 +98,7 @@ Echa un vistazo a estos ficheros, pronto los modificaremos para sentirnos progra
 
 # 4. Edición
 
-Angular CLI instala y configura un conjunto de herramientas que te harán la vida más fácil. Entre otras, destaca la capacidad de **recargar la aplicación en caliente** en cuanta guardas tu trabajo como programador. En esta última versión, la 1.5, se ha mejorado el proceso y es realmente rápido.
+Angular CLI instala y configura un conjunto de herramientas que te harán la vida más fácil. Entre otras, destaca la capacidad de **recargar la aplicación en caliente** en cuanta guardas tu trabajo como programador. En esta última versión, la 6, se ha mejorado el proceso y es realmente rápido.
 
 Para probarlo sólo tienes que dejar arrancada la aplicación con el comando `npm start`; **cambiar un fichero de código y comprobar el resultado** en el navegador. Te propongo empezar como en cualquier otro lenguaje; por el famoso *hola mundo*.
 
@@ -123,34 +129,37 @@ El `package.json` es el fichero estándar de *npm* donde se almacenan las **depe
 ```json
 {
   "dependencies": {
-      "@angular/core": "^5.0.0",
+      "@angular/core": "^6.1.0",
   },
   "devDependencies": {
-      "@angular/cli": "1.5.0",
+      "@angular/cli": "6.1.0",
   }
 }
 ```
 
 Otro uso del `package.json` es servir de **contenedor de scripts** para automatizar tareas de operaciones rutinarias. Por ejemplo, el comando estándar `npm start` ejecutará el contenido asignado en el fichero *json*, originalmente `ng serve`. Esto lanza el servidor de pruebas con sus opciones por defecto. 
 
-Pero el **comando [ng serve](https://github.com/angular/angular-cli/wiki/serve)** admite muchas configuraciones. Te propongo que uses esta para activar un modo de compilación más rápido y seguro, y para que se abra el navegador de forma automática en cuanto lances el servidor.
+Pero el **comando [ng serve](https://github.com/angular/angular-cli/wiki/serve)** admite muchas configuraciones. Te propongo que uses esta para activar un modo de compilación más rápido y seguro, y para que se abra el navegador de forma automática en cuanto lances el servidor. Y además te recomiendo que uses un puerto específico para cada aplicación.
 
 ```json
 {
- "start": "ng serve --aot -o",
+ "start": "ng serve -o --port 4203",
 }
 ```
 
 ## 5.2 Estilos y librerías de terceros
 
-Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos **algún que otro producto de terceros**. Ya sean utilidades como *[Moment](https://momentjs.com/)*, librerías gráficas como *[chart.js](http://www.chartjs.org/)* o la aplicación de estilos y componentes visuales de *frameworks como Bootstrap o MaterialDesign*. Pero todos se instalan de igual forma. Descargándolos con *npm* y adjuntándolos en el `.angular-cli.json`. 
+Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos **algún que otro producto de terceros**. Ya sean utilidades como *[Moment](https://momentjs.com/)*, librerías gráficas como *[chart.js](http://www.chartjs.org/)* o la aplicación de estilos y componentes visuales de *frameworks como Bootstrap o MaterialDesign*. Pero todos se instalan de igual forma. Descargándolos con *npm* y adjuntándolos en el `angular.json`. 
 
->En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama *[milligram](https://milligram.io/)* y es apropiada para prototipos, pruebas o pequeños proyectos. También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y horas.
+>En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama *[bulma](https://bulma.io/)* y es apropiada para prototipos, pruebas o pequeños proyectos. Como otros muchos frameworks css, bulma necesita los iconos de [Font Awesome](https://fontawesome.com/). 
+
+También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y horas. Casi todas las librerías que uses se importrán directamente en TypeScript. No hya necesidad de agregar su script en ningún sitio.
 
 Se descargan e instalan de manera estándar.
 
 ```shell
-npm i milligram --save
+npm i bulma --save
+npm i font-awesome --save
 npm install moment --save
 ```
 
@@ -158,21 +167,27 @@ Para que se incluyan en la distribución hay que ir a la configuración del *CLI
 
 ```json
 {
-  "styles": [
-      "../node_modules/milligram/dist/milligram.min.css",
-      "styles.css"
-      ],
-  "scripts": ["../node_modules/moment/min/moment.min.js"]
+    "styles": [
+        "node_modules/bulma/css/bulma.min.css",
+        "node_modules/font-awesome/css/font-awesome.css",
+        "src/styles.css"
+    ]
 }
 ```
 
 Estas colecciones de archivos los usa el *cli* a través de *webpack* para incluirlos **minificados y concatenados en un fichero *bundle* sustituyendo a las clásicas etiquetas html**. De esta forma el fichero `index.html` apenas tendrás que tocarlo. Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. 
 
-Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo *milligram*. 
+Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo *bulma*. 
 
+# 6. Angular y el CLI
 
+Por si la línea de comandos te suena muy antigua, y lo tuyo son las interfaces gráficas, estás de suerte. El reciente proyecto [Angular Console](https://angularconsole.com/) te permite generar y ejecutar comandos desde una cómoda interfaz gráfica.
 
-Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti. Descúbrelo en su [wiki](https://github.com/angular/angular-cli/wiki) o sigue esta serie, [Base para una aplicación Angular](../base-aplicacion-angular/), para usarlo mientras aprendes a programar con Angular5.
+Otros productos que te puede interesar instalar son: [Compodoc](https://compodoc.app/) para la generación de documentación y [Webpack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) para el visualizar y controlar el código generado.
+
+Para mayor conociemito te recomiendo la [wiki](https://github.com/angular/angular-cli/wiki) y este artículo que trata la configuración del CLI en profundidad [Angular CLI 6 under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
+
+Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 6. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/).
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
