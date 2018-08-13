@@ -1,7 +1,7 @@
 ---
 title: Hola Angular CLI
 permalink: hola-angular-cli
-date: 2017-11-07 13:38:42
+date: 2018-08-13 17:54:00
 updated: 2018-08-13 17:54:00
 tags:  
 - Angular
