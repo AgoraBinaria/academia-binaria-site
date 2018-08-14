@@ -29,7 +29,7 @@ Para empezar, como en casi cualquier desarrollo necesitarás disponer de *NodeJS
 
 Empieza con una instalación global que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea. La ayuda está disponible tanto de modo general como para cada comando que vayas a usar.
 
-```shell
+```bash
 npm i -g @angular/cli@latest
 ng -v
 ng help
@@ -40,7 +40,7 @@ ng help new
 
 Una vez que hayas instalado el CLI de manera global ya puedes empezar a usarlo en tu directorio de trabajo. El primer comando será `ng new` que te va a **generar toda una aplicación funcional** y las configuraciones necesarias para su depuración, pruebas y ejecución.
 
-```shell
+```bash
 ng new autobot -s -S -t
 cd autobot
 npm start
@@ -65,7 +65,7 @@ Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow au
 
 > Para un ejemplo más realista, consulta cómo está hecho [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , el hermano mayor de *AutoBot*
 
-```shell
+```bash
 ng new astrobot --routing -s -S
 cd astrobot
 npm start
@@ -157,7 +157,7 @@ También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y
 
 Se descargan e instalan de manera estándar.
 
-```shell
+```bash
 npm i bulma --save
 npm i font-awesome --save
 npm install moment --save
@@ -185,7 +185,25 @@ Por si la línea de comandos te suena muy antigua, y lo tuyo son las interfaces 
 
 Otros productos que te puede interesar instalar son: [Compodoc](https://compodoc.app/) para la generación de documentación y [Webpack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) para el visualizar y controlar el código generado.
 
-Para mayor conociemito te recomiendo la [wiki](https://github.com/angular/angular-cli/wiki) y este artículo que trata la configuración del CLI en profundidad [Angular CLI 6 under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
+Una vez instalados, configura nuevos *scripts* en el `package.json` para poder lanzarlos más tarde.
+
+```json
+{
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve -o --port 4203",
+        "build": "ng build --prod --stats-json",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "doc": "compodoc -p src/tsconfig.app.json -s",
+        "stats": "webpack-bundle-analyzer dist/autobot/stats.json"
+  }
+}
+```
+
+
+Para complementar tu conocimiento del CLI te recomiendo la [wiki](https://github.com/angular/angular-cli/wiki) y este artículo que trata la configuración del CLI en profundidad [Angular CLI 6 under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
 Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 6. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/).
 
