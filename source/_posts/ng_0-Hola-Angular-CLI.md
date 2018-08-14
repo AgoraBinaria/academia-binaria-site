@@ -25,9 +25,9 @@ El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de
 
 # 1. Instalación de Angular CLI
 
-Para empezar, como en casi cualquier desarrollo necesitarás disponer de *NodeJS* y su manejador de de paquetes *npm*. Tenerlos actualizados es un mandamiento básico para un desarrollador web.
+Para empezar, como en casi cualquier desarrollo **necesitarás *NodeJS* y su manejador de de paquetes *npm***. Tenerlos actualizados es un mandamiento básico para un desarrollador web.
 
-Empieza con una instalación global que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea. La ayuda está disponible tanto de modo general como para cada comando que vayas a usar.
+Empieza con una **instalación global** que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea. La ayuda está disponible tanto de modo general como para cada comando que vayas a usar.
 
 ```console
 $ npm i -g @angular/cli@latest
@@ -50,7 +50,7 @@ npm start
 
 Si todo va bien, en unos segundo podrás visitar [http://localhost:4000](http://localhost:4000) para ver en marcha la aplicación.
 
-Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow autobot -s -S -t`. 
+Pero volvamos a la terminal y analicemos la primera línea. `ng new autobot -s -S -t`. 
 
 > En este tutorial crearemos una aplicación muy básica para jugar con coches llamada **autobot** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga vendrá bien conocer estas y otroas opciones para crear aplicaciones profesionales. Aquí una explicación de lo usado.
 
