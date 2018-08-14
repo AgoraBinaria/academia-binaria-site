@@ -118,6 +118,8 @@ Esta es una lista no exhaustiva de lo que sucede.
       1. compilado de la aplicación
       2. recarga del navegador
 
+Cambia a tu antojo el `app.component.ts` y comprueba los cambios de manera inmediata en tu navegador.
+
 # 5. Configuración
 
 El CLI viene con pilas incluidas, se puede usar desde el primer momento. Sólo quedan pequeñas mejoras que hacer. Por ejemplo ajustar el `package.json` y agregar librerías de terceros.
@@ -185,6 +187,8 @@ Por si la línea de comandos te suena muy antigua, y lo tuyo son las interfaces 
 
 Otros productos que te puede interesar instalar son: [Compodoc](https://compodoc.app/) para la generación de documentación y [Webpack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) para el visualizar y controlar el código generado.
 
+Los ultimos toques antes de publicar pueden incluir el *script de analytics* en el `index.html` y un comando para publicar en *github pages*.
+
 Una vez instalados, configura nuevos *scripts* en el `package.json` para poder lanzarlos más tarde.
 
 ```json
@@ -193,6 +197,7 @@ Una vez instalados, configura nuevos *scripts* en el `package.json` para poder l
         "ng": "ng",
         "start": "ng serve -o --port 4203",
         "build": "ng build --prod --stats-json",
+        "gh": "ng build --prod --output-path docs --base-href https://academiabinaria.github.io/autobot/",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
