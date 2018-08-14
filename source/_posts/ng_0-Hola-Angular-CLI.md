@@ -29,18 +29,18 @@ Para empezar, como en casi cualquier desarrollo necesitarás disponer de *NodeJS
 
 Empieza con una instalación global que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea. La ayuda está disponible tanto de modo general como para cada comando que vayas a usar.
 
-```bash
-npm i -g @angular/cli@latest
-ng -v
-ng help
-ng help new
+```console
+$ npm i -g @angular/cli@latest
+$ ng -v
+$ ng help
+$ ng help new
 ```
 
 # 2. Crear y ejecutar una aplicación Angular 6
 
 Una vez que hayas instalado el CLI de manera global ya puedes empezar a usarlo en tu directorio de trabajo. El primer comando será `ng new` que te va a **generar toda una aplicación funcional** y las configuraciones necesarias para su depuración, pruebas y ejecución.
 
-```bash
+```console
 ng new autobot -s -S -t
 cd autobot
 npm start
@@ -65,7 +65,7 @@ Pero volvamos a la terminal y analicemos la primera línea. `ng new cash-flow au
 
 > Para un ejemplo más realista, consulta cómo está hecho [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , el hermano mayor de *AutoBot*
 
-```bash
+```console
 ng new astrobot --routing -s -S
 cd astrobot
 npm start
@@ -157,7 +157,7 @@ También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y
 
 Se descargan e instalan de manera estándar.
 
-```bash
+```console
 npm i bulma --save
 npm i font-awesome --save
 npm install moment --save
