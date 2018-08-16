@@ -207,6 +207,8 @@ Una vez instalados, configura nuevos *scripts* en el `package.json` para poder l
 ```
 
 
+Comprueba las ejecuciones de los distintos *scripts*. Con `npm start` no se generan ficheros físicos. Todos es en memoria pra mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build` creará una carpeta `/dist/autobot` en la que dejará los archivos necesarios para ejecución. Por último `npm run gh` los prepara para enviar como a la carpeta `./docs` listos para publicar en las  *git hub pages*. 
+
 Para complementar tu conocimiento del CLI te recomiendo la [wiki](https://github.com/angular/angular-cli/wiki) y este artículo que trata la configuración del CLI en profundidad [Angular CLI 6 under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
 Esto es sólo el principio, *Angular CLI 6* puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 6. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/).
