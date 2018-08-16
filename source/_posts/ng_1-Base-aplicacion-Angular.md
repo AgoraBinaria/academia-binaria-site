@@ -1,28 +1,26 @@
 ---
 title: Base para una aplicación Angular
 permalink: base-aplicacion-angular
-date: 2017-11-09 11:09:46
+date: 2018-08-16 11:05:46
 tags:  
 - Angular
-- Angular5
-- Angular2
 - CLI
 - Tutorial
 - Introducción
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-5_1_Base.jpg
+thumbnail: /css/images/angular-1_base.png
 ---
-![Tutorial Angular5 1-Base](/images/tutorial-angular-5_1_base.png)
+![Tutorial Angular5 1-Base](/images/tutorial-angular-1_base.png)
 
-Vamos a crear una **base sobre la que programar una aplicación Angular 5** profesional. Usaremos el *CLI* para generar una estructura sobre la que crecer. Será como una semilla para un desarrollo controlado. 
+Vamos a crear una **base sobre la que programar una aplicación Angular 6** profesional. Usaremos el *CLI* para generar una estructura sobre la que crecer. Será como una semilla para un desarrollo controlado. 
 La idea de árbol se usa en muchas analogías informáticas. La emplearemos en dos conceptos básicos en Angular: **los módulos y los componentes**.
 
 <!-- more -->
 
 Partimos de la aplicación tal cómo la dejamos en el [Hola Mundo en Angular](../hola-angular-cli/). Al finalizar tendrás un esqueleto del que colgar módulos y componentes funcionales.
 
->Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/1-base](https://github.com/AcademiaBinaria/angular5/tree/master/1-base/cash-flow) 
+>Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/1-base](https://github.com/AcademiaBinaria/autobot/tree/1-base) 
 
 # 1. Módulos
 
@@ -30,7 +28,7 @@ Los módulos son **contenedores dónde almacenar los componentes y servicios** d
 
 ## 1.1 Definición mediante decoradores
 
-Antes de importar cualquier módulo hay que definirlo. En Angular **los módulos de declaran como clases de TypeScript**, habitualmente vacías, decoradas con una función especial. Es la función `@NgModule()` que recibe un objeto como único argumento. En las propiedades de ese objeto es dónde se configura el módulo. 
+Antes de importar cualquier módulo hay que definirlo. En Angular 6 **los módulos de declaran como clases de TypeScript**, habitualmente vacías, decoradas con una función especial. Es la función `@NgModule()` que recibe un objeto como único argumento. En las propiedades de ese objeto es dónde se configura el módulo. 
 
 Mira el módulo `AppModule` original que genera el CLI en el fichero `app.module.ts`.
 
@@ -50,7 +48,7 @@ El módulo `App` también se conoce como **módulo raíz** porque de él surgen 
 
 >En la situación original el módulo principal depende un módulo para realizar el enrutado (el `AppRoutingModule` que usarás más adelante) y de otro para la presentación en el navegador (el `BrowserModule`).
 
-### 1.2.1 Dos mundos paralelos: imports de Angular e import de TypeScript
+### 1.2.1 Dos mundos paralelos: imports de Angular 6 e import de TypeScript
 
 Si es la primera vez que ves código TypeScript te llamarán la atención las primeras líneas de cada fichero. En el `app.module.ts` son algo así:
 
@@ -61,7 +59,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 ```
 
-Estas **sentencias de importación son propias del lenguaje** y nada tienen que ver con Angular. En ellas se indica que este fichero importa el contenido de otros ficheros *TypeScript*. La importación se realiza a través de la ruta física relativa al fichero actual, o en el directorio `node_modules` si es código de terceros.
+Estas **sentencias de importación son propias del lenguaje** y nada tienen que ver con Angular 6. En ellas se indica que este fichero importa el contenido de otros ficheros *TypeScript*. La importación se realiza a través de la ruta física relativa al fichero actual, o en el directorio `node_modules` si es código de terceros.
 
 >En general no tendrás que preocuparte de estas importaciones físicas, pues el *VSCode* y las extensiones esenciales se encargan de hacerlo automáticamente.
 
@@ -97,13 +95,13 @@ Por ahora hay asegurar que **este módulo es importado por el raíz**. Para ello
 
 # 2. Componentes
 
-Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. **Los componentes son los bloques básicos de construcción de las páginas web en Angular**. Contienen una parte visual en html (la Vista) y una funcional en Typescript (el Controlador).
+Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. **Los componentes son los bloques básicos de construcción de las páginas web en Angular 6**. Contienen una parte visual en html (la Vista) y una funcional en Typescript (el Controlador).
 
 >La aplicación original que crea el CLI nos regala un primer componente de ejemplo en el fichero `app.component.ts`. Según la configuración del CLI este componente puede haber sido creado en un sólo fichero (es el caso escogido a efectos didácticos) o en dos o tres ficheros especializados (con la vista y los estilos en ficheros propios).
 
 ## 2.1 Anatomía de un componente
 
-Los componentes, como el resto de artefactos en Angular, serán **clases TypeScript decoradas** con funciones específicas. En este caso la función es `@Component()` que recibe un objeto de definición de componente. Igual que en el caso de los módulos contiene las propiedades en las que configurar el componente.
+Los componentes, como el resto de artefactos en Angular 6, serán **clases TypeScript decoradas** con funciones específicas. En este caso la función es `@Component()` que recibe un objeto de definición de componente. Igual que en el caso de los módulos contiene las propiedades en las que configurar el componente.
 
 ```typescript
 import { Component } from "@angular/core";
@@ -126,7 +124,7 @@ La propiedad **`styles` y su gemela `stylesUrl` permiten asignar estilos** *CSS,
 
 **En la clase del componente nos encontraremos la implementación de su funcionalidad**. Normalmente expondrá propiedades y métodos para ser consumidos e invocados de forma declarativa desde la vista.
 
-Una aplicación web en Angular se monta como un **árbol de componentes**. El componente raíz ya viene creado; ahora toca darle contenido mediante una estructura de página y las vistas funcionales.
+Una aplicación web en Angular 6 se monta como un **árbol de componentes**. El componente raíz ya viene creado; ahora toca darle contenido mediante una estructura de página y las vistas funcionales.
 
 ## 2.2 Generación de componentes
 
@@ -194,7 +192,7 @@ El fichero `home.module.ts` que define el módulo debe quedar asi:
 })
 export class HomeModule { }
 ```
-En el componente podemos empezar a usar las capacidades de Angular para crear páginas web de contenido dinámico.
+En el componente podemos empezar a usar las capacidades de Angular 6 para crear páginas web de contenido dinámico.
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
@@ -233,7 +231,7 @@ Ahora que ya tenemos **componentes de infraestructura y negocio**, podremos usar
 })
 export class MainComponent {}
 ```
-Con esto tendrás una base para una aplicación *Angular*. Sigue esta serie para añadirle [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular5.
+Con esto tendrás una base para una aplicación *Angular 6*. Sigue esta serie para añadirle [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

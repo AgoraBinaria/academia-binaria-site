@@ -86,6 +86,13 @@
     </url>
 
     <url>
+        <loc>https://academia-binaria.com/tag/Angular2/</loc>
+        <lastmod>2018-05-03T11:53:46.071Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://academia-binaria.com/tag/Angular5/</loc>
         <lastmod>2018-05-03T11:53:46.071Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -107,36 +114,29 @@
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/Angular2/</loc>
-        <lastmod>2018-08-13T17:19:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://academia-binaria.com/tag/Tutorial/</loc>
-        <lastmod>2018-08-13T17:19:00.000Z</lastmod>
+        <lastmod>2018-08-16T09:17:14.084Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/CLI/</loc>
-        <lastmod>2018-08-13T17:19:00.000Z</lastmod>
+        <lastmod>2018-08-16T09:17:14.084Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Angular/</loc>
-        <lastmod>2018-08-13T17:19:00.000Z</lastmod>
+        <lastmod>2018-08-16T09:17:14.084Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Introduccion/</loc>
-        <lastmod>2018-08-13T17:19:00.000Z</lastmod>
+        <lastmod>2018-08-16T09:17:14.084Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

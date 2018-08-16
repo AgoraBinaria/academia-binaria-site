@@ -5,7 +5,6 @@ date: 2018-08-13 17:54:00
 updated: 2018-08-13 19:19:00
 tags:  
 - Angular
-- Angular2
 - CLI
 - Tutorial
 - Introducción
@@ -23,7 +22,7 @@ El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de
 
 >Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/0-Hello](https://github.com/AcademiaBinaria/autobot/tree/0-hello) 
 
-# 1. Instalación de Angular CLI
+# 1. Instalación de Angular CLI 6
 
 Para empezar, como en casi cualquier desarrollo **necesitarás *NodeJS* y su manejador de de paquetes *npm***. Tenerlos actualizados es un mandamiento básico para un desarrollador web.
 
@@ -122,11 +121,11 @@ Cambia a tu antojo el `app.component.ts` y comprueba los cambios de manera inmed
 
 # 5. Configuración
 
-El CLI viene con pilas incluidas, se puede usar desde el primer momento. Sólo quedan pequeñas mejoras que hacer. Por ejemplo ajustar el `package.json` y agregar librerías de terceros.
+El CLI 6 viene con pilas incluidas, se puede usar desde el primer momento. Sólo quedan pequeñas mejoras que hacer. Por ejemplo ajustar el `package.json` y agregar librerías de terceros.
 
 ## 5.1 Package.json
 
-El `package.json` es el fichero estándar de *npm* donde se almacenan las **dependencias de terceros**. Contiene las librerías que necesita la aplicación para ejecutarse, por ejemplo todas las de *Angular*. Y también las herramientas que necesita el programador, por ejemplo el propio *AngularCLI*;
+El `package.json` es el fichero estándar de *npm* donde se almacenan las **dependencias de terceros**. Contiene las librerías que necesita la aplicación para ejecutarse, por ejemplo todas las de *Angular 6*. Y también las herramientas que necesita el programador, por ejemplo el propio *AngularCLI*;
 
 ```json
 {
@@ -181,7 +180,7 @@ Estas colecciones de archivos los usa el *cli* a través de *webpack* para inclu
 
 Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo *bulma*. 
 
-# 6. Angular y el CLI
+# 6. Angular 6 y el CLI 6
 
 Por si la línea de comandos te suena muy antigua, y lo tuyo son las interfaces gráficas, estás de suerte. El reciente proyecto [Angular Console](https://angularconsole.com/) te permite generar y ejecutar comandos desde una cómoda interfaz gráfica.
 
@@ -210,7 +209,7 @@ Una vez instalados, configura nuevos *scripts* en el `package.json` para poder l
 
 Para complementar tu conocimiento del CLI te recomiendo la [wiki](https://github.com/angular/angular-cli/wiki) y este artículo que trata la configuración del CLI en profundidad [Angular CLI 6 under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
-Esto es sólo el principio, *Angular CLI* puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 6. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/).
+Esto es sólo el principio, *Angular CLI 6* puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 6. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/).
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
