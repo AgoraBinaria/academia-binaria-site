@@ -1,7 +1,7 @@
 ---
 title: Base para una aplicación Angular
 permalink: base-aplicacion-angular
-date: 2018-08-16 11:05:46
+date: 2018-08-17 11:02:46
 tags:  
 - Angular
 - CLI
@@ -178,7 +178,6 @@ Son **componentes de infraestructura**. Conviene guardarlos en una carpeta espec
 El caso es **distinguir los componentes de infraestructura de los de negocio** o funcionalidad. Los módulos `core` y `shared` los trataremos como de infraestructura y todos los demás serán de negocio.
 
 ![Árbol de módulos](/images/1-base_module_tree.png)
-![Tutorial Angular 1-Base](/images/tutorial-angular-1_base.png)
 
 >En esta aplicación hasta ahora no es nada funcional, y ya tiene tres módulos y cinco componentes!!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido, y por ahora te permitirá practicar con la creación de módulos y componentes. Para un ejemplo más realista, consulta cómo está hecho [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , el hermano mayor de *AutoBot*
 
