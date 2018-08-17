@@ -45,13 +45,13 @@ cd autobot
 npm start
 ```
 
- Una vez finalizada la instalación de todas las librerías necesarias puedes bajar a la carpeta recién creada y ejecutar el comando standard de*npm*  para el arranque de cualquier aplicación: `npm start`.
+ Una vez finalizada la instalación de todas las librerías necesarias puedes bajar a la carpeta recién creada y ejecutar el comando standard de *npm*  para el arranque de cualquier aplicación: `npm start`.
 
 Si todo va bien, en unos segundo podrás visitar [http://localhost:4000](http://localhost:4000) para ver en marcha la aplicación.
 
 Pero volvamos a la terminal y analicemos la primera línea. `ng new autobot -s -S -t`. 
 
-> En este tutorial crearemos una aplicación muy básica para jugar con coches llamada **autobot** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga vendrá bien conocer estas y otroas opciones para crear aplicaciones profesionales. Aquí una explicación de lo usado.
+> En este tutorial crearemos una aplicación muy básica para jugar con coches llamada **autobot** Una excusa para aprender a programar en Angular; nada serio. El comando [`ng new`](https://github.com/angular/angular-cli/wiki/new) mostrado utiliza opciones que nos vendrán bien en un futuro, aunque por ahora sólo sirven para demostrar las capacidades del generador. Para empezar podríamos habernos limitado a un simple `ng new nombre-de-mi-aplicacion` pero a la larga vendrá bien conocer estas y otras opciones para crear aplicaciones profesionales. Aquí una explicación de lo usado.
 
 | Comando  | Significado |
 | -------- | ----------- |
@@ -97,7 +97,7 @@ Echa un vistazo a estos ficheros, pronto los modificaremos para sentirnos progra
 
 # 4. Edición
 
-Angular CLI instala y configura un conjunto de herramientas que te harán la vida más fácil. Entre otras, destaca la capacidad de **recargar la aplicación en caliente** en cuanta guardas tu trabajo como programador. En esta última versión, la 6, se ha mejorado el proceso y es realmente rápido.
+Angular CLI instala y configura un conjunto de herramientas que te harán la vida más fácil. Entre otras, destaca la capacidad de **recargar la aplicación en caliente** en cuanto guardas tu trabajo como programador. En esta última versión, la 6, se ha mejorado el proceso y es realmente rápido.
 
 Para probarlo sólo tienes que dejar arrancada la aplicación con el comando `npm start`; **cambiar un fichero de código y comprobar el resultado** en el navegador. Te propongo empezar como en cualquier otro lenguaje; por el famoso *hola mundo*.
 
@@ -154,7 +154,7 @@ Las librerías que vienen de fábrica tienen todo lo necesario para crear aplica
 
 >En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama *[bulma](https://bulma.io/)* y es apropiada para prototipos, pruebas o pequeños proyectos. Como otros muchos frameworks css, bulma necesita los iconos de [Font Awesome](https://fontawesome.com/). 
 
-También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y horas. Casi todas las librerías que uses se importrán directamente en TypeScript. No hya necesidad de agregar su script en ningún sitio.
+También usaremos *[Moment](https://momentjs.com/)* para el trabajo con fechas y horas. Casi todas las librerías que uses se importarán directamente en TypeScript. No hya necesidad de agregar su script en ningún sitio.
 
 Se descargan e instalan de manera estándar.
 
@@ -186,7 +186,7 @@ Por si la línea de comandos te suena muy antigua, y lo tuyo son las interfaces 
 
 Otros productos que te puede interesar instalar son: [Compodoc](https://compodoc.app/) para la generación de documentación y [Webpack Bundle Analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) para el visualizar y controlar el código generado.
 
-Los ultimos toques antes de publicar pueden incluir el *script de analytics* en el `index.html` y un comando para publicar en *github pages*.
+Los últimos toques antes de publicar pueden incluir el *script de analytics* en el `index.html` y un comando para publicar en *github pages*.
 
 Una vez instalados, configura nuevos *scripts* en el `package.json` para poder lanzarlos más tarde.
 
@@ -207,7 +207,7 @@ Una vez instalados, configura nuevos *scripts* en el `package.json` para poder l
 ```
 
 
-Comprueba las ejecuciones de los distintos *scripts*. Con `npm start` no se generan ficheros físicos. Todos es en memoria pra mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build` creará una carpeta `/dist/autobot` en la que dejará los archivos necesarios para ejecución. Por último `npm run gh` los prepara para enviar como a la carpeta `./docs` listos para publicar en las  *git hub pages*. 
+Comprueba las ejecuciones de los distintos *scripts*. Con `npm start` no se generan ficheros físicos. Todos es en memoria pra mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build` creará una carpeta `./dist/autobot` en la que dejará los archivos necesarios para ejecución. Por último `npm run gh` los prepara para enviar como a la carpeta `./docs` listos para publicar en las  *git hub pages*. 
 
 Para complementar tu conocimiento del CLI te recomiendo la [wiki](https://github.com/angular/angular-cli/wiki) y este artículo que trata la configuración del CLI en profundidad [Angular CLI 6 under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
