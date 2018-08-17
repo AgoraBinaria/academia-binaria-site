@@ -84,7 +84,7 @@ Este módulo te servirá de **contenedor para guardar componentes** y servicios 
 export class CoreModule {}
 ```
 
-Por ahora hay asegurar que **este módulo es importado por el raíz**. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
+Por ahora hay que asegurar que **este módulo es importado por el raíz**. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
 
 ```typescript
 @NgModule({
@@ -107,7 +107,7 @@ import { Core } from "@angular/core";
 
 @Component({
   selector: "app-root",
-  template: ``,
+  template: `<h1>Hello</h1>`,
   styles: []
 })
 export class AppComponent {}
@@ -140,7 +140,7 @@ ng g c core/navigator/main --flat
 ng g c core/navigator/footer --flat 
 ```
 
-Fíjate en el componente del fichero `nav.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `app-navigator` y `NavigatorComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con us selector `root`.
+Fíjate en el componente del fichero `nav.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `app-navigator` y `NavigatorComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con su selector `root`.
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
