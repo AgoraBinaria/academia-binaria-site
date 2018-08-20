@@ -121,7 +121,7 @@ export class AppComponent {}
 
 **Los componentes definen nuevas etiquetas HTML** para ser usados dentro de otros componentes. Excepcionalmente en este caso por ser el componente raíz se consume en el página `index.html`. El nombre de la nueva etiqueta se conoce como *selector*. En este caso la propiedad `selector: "app-root"` permite el uso de este componente dentro de otro con esta invocación `<app-root></app-root>`. En este caso el componente raíz.
 
->Particularidades del compnente raíz. Su nombre oficial es `AppComponent`, y su selector debería se `app-app` Pero su *selector* es `app-root` formado a partir del prefijo de la aplicación y su supuesto nombre oficioso. Observa el prefijo `app` que se usará en todos los componentes propios y fue asignado por defecto durante la generación de la aplicación. Puede personalizarse usando el modificador `--prefix` de `ng new` y en distintos ficheros de configuración. Volviendo al componente ráiz; está destinado a ser usado en la página principal, en el `index.html`. Eso obliga a registrarlo de una manera especial en el módulo ráiz. Hay que incluirlo en el array `bootstrap: [AppComponent]` donde se incluyen los componentes con la capacidad de lanzar la aplicación.
+>Particularidades del compnente raíz. Su nombre oficial es `AppComponent`, y su selector debería llamarse `app-app`. Pero su *selector real* es `app-root`, formado a partir del prefijo de la aplicación y su supuesto nombre oficioso. Observa el prefijo `app` que se usará en todos los componentes propios, fue asignado por defecto durante la generación de la aplicación. Puede personalizarse usando el modificador `--prefix` de `ng new` y en distintos ficheros de configuración. Volviendo al componente raíz; está destinado a ser usado en la página principal, en el `index.html`. Eso obliga a registrarlo de una manera especial en el módulo raíz. Hay que incluirlo en el array `bootstrap: [AppComponent]`, e ahí donde se incluyen los componentes con la capacidad de lanzar la aplicación. 
 
 ```typescript
 @NgModule({
@@ -143,11 +143,11 @@ Y en el `index.html`
 
 **La plantilla representa la parte visual** del componente. De forma simplificada, o cuando tiene poco contenido, puede escribirse directamente en la propiedad `template` del objeto decorador. Pero es más frecuente encontrar la plantilla en su propio fichero *html* y referenciarlo como una ruta relativa en la propiedad `templateUrl`.
 
-La propiedad **`styles` y su gemela `stylesUrl` permiten asignar estilos** *CSS, SASS o LESS* al componente. Estos estilos se incrustan durante la compilación en los nodos del *DOM* generado. Son exclusivos del componente y facilitan el desarrollo granular de aplicaciones.
+La propiedad **`styles` y su gemela `stylesUrl` permiten asignar estilos** *CSS, SASS o LESS* al componente. Estos estilos se incrustan durante la compilación en los nodos del *DOM* generado. Son exclusivos del componente y facilitan el diseño y maquetación granular de las aplicaciones.
 
 **En la clase del componente nos encontraremos la implementación de su funcionalidad**. Normalmente expondrá propiedades y métodos para ser consumidos e invocados de forma declarativa desde la vista.
 
-Una aplicación web en Angular 6 se monta como un **árbol de componentes**. El componente raíz ya viene creado; ahora toca darle contenido mediante una estructura de página y las vistas funcionales.
+Una aplicación web en Angular 6 se monta como un **árbol de componentes**. El componente raíz ya viene creado y convenientemente declarado; ahora toca darle contenido mediante una estructura de página y las vistas funcionales.
 
 ## 2.2 Generación de componentes
 
@@ -193,7 +193,7 @@ Los componentes no deciden por sí mismos su **visibilidad**. Cuando un componen
 
 **Los componentes privados suelen ser sencillos**. A veces son creados para ser específicamente consumidos dentro de otros componentes. En esas situaciones interesa que sean privados y que generen poco ruido. Incluso, en casos extremadamente simples, si usamos el modificador `--flat` ni siquiera generan carpeta propia.
 
-Como regal general, cuando en un plantilla se incruste otro componente Angular lo buscará dentro del propio módulo en el que pretende usarse. Si no lo encuentra entonces buscará ente los componentes exportados por los módulos que hayan sido importados por el contenedor.
+Como regla general, **cuando en una plantilla se incruste otro componente**, Angular lo buscará dentro del propio módulo en el que pretende usarse. Si no lo encuentra entonces lo buscará entre los componentes exportados por los módulos que hayan sido importados por el actual contenedor.
 
 # 3. Organización
 
@@ -205,7 +205,7 @@ El caso es **distinguir los componentes de infraestructura de los de negocio** o
 
 ![Árbol de módulos](/images/1-base_module_tree.png)
 
->En esta aplicación hasta ahora no es nada funcional, y ya tiene tres módulos y cinco componentes!!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido, y por ahora te permitirá practicar con la creación de módulos y componentes. Para un ejemplo más realista, consulta cómo está hecho *Astrobot* [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , es el hermano mayor y más profesional de *AutoBot*.
+>En esta aplicación hasta ahora no es nada funcional,!y ya tiene tres módulos y cinco componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes. Para un ejemplo más realista, consulta cómo está hecho *Astrobot* [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , que es el hermano mayor y más profesional de *AutoBot*.
 
 Con esto tendrás una base para una aplicación *Angular 6*. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular6.
 
