@@ -73,7 +73,7 @@ ng g m core
 Esta es la sintaxis abreviada del comando [`ng generate`](https://github.com/angular/angular-cli/wiki/generate) el cual dispone de varios planos de construcción o *blueprints*. El que he usado aquí es el de `module aka m` para la construcción de módulos.
 
 El resultado es la creación del fichero `core/core.module.ts` con la declaración y decoración del módulo `CoreModule`.
-Este módulo te servirá de **contenedor para guardar componentes** y servicios esenciales para nuestra aplicación. Pero eso lo veremos más adelante. 
+Este módulo te servirá de **contenedor para guardar componentes** y otros servicios esenciales para nuestra aplicación. Pero eso lo veremos más adelante. 
 
 ```typescript
 @NgModule({
@@ -84,13 +84,19 @@ Este módulo te servirá de **contenedor para guardar componentes** y servicios 
 export class CoreModule {}
 ```
 
-Por ahora hay que asegurar que **este módulo es importado por el raíz**. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
+Por ahora hay que asegurar que **este módulo es importado por el raíz, el AppModule**. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
 
 ```typescript
 @NgModule({
- imports: [BrowserModule, CoreModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, CoreModule],
+  providers: [],
+  bootstrap: [AppComponent]
 })
+export class AppModule {}
 ```
+
+> El módulo raíz, al igual que como verás más tarde con el componente ráiz, es un tanto especial. Su nombre oficial es App, aunque todo la documentación se refiere a él como raíz o root. 
 
 # 2. Componentes
 
@@ -113,9 +119,27 @@ import { Core } from "@angular/core";
 export class AppComponent {}
 ```
 
-**Los componentes definen nuevas etiquetas HTML** para ser usados dentro de otros componentes. Excepcionalmente en este caso por ser el componente raíz se consume en el página `index.html`. El nombre de la nueva etiqueta se conoce como *selector*. En este caso la propiedad `selector: "app-root"` permite el uso de este componente dentro de otro con esta invocación `<app-root></app-root>`. 
+**Los componentes definen nuevas etiquetas HTML** para ser usados dentro de otros componentes. Excepcionalmente en este caso por ser el componente raíz se consume en el página `index.html`. El nombre de la nueva etiqueta se conoce como *selector*. En este caso la propiedad `selector: "app-root"` permite el uso de este componente dentro de otro con esta invocación `<app-root></app-root>`. En este caso el componente raíz.
 
->Observa el prefijo `app` que se usará en todos los componentes propios. Fue asignado por defecto durante la generación de la aplicación. Puede personalizarse usando el modificador `--prefix` de `ng new` y en distintos ficheros de configuración.
+>Particularidades del compnente raíz. Su nombre oficial es `AppComponent`, y su selector debería se `app-app` Pero su *selector* es `app-root` formado a partir del prefijo de la aplicación y su supuesto nombre oficioso. Observa el prefijo `app` que se usará en todos los componentes propios y fue asignado por defecto durante la generación de la aplicación. Puede personalizarse usando el modificador `--prefix` de `ng new` y en distintos ficheros de configuración. Volviendo al componente ráiz; está destinado a ser usado en la página principal, en el `index.html`. Eso obliga a registrarlo de una manera especial en el módulo ráiz. Hay que incluirlo en el array `bootstrap: [AppComponent]` donde se incluyen los componentes con la capacidad de lanzar la aplicación.
+
+```typescript
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, CoreModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+Y en el `index.html`
+
+```html
+<body>
+  <app-root></app-root>
+</body>
+```
+
 
 **La plantilla representa la parte visual** del componente. De forma simplificada, o cuando tiene poco contenido, puede escribirse directamente en la propiedad `template` del objeto decorador. Pero es más frecuente encontrar la plantilla en su propio fichero *html* y referenciarlo como una ruta relativa en la propiedad `templateUrl`.
 
@@ -169,17 +193,19 @@ Los componentes no deciden por sí mismos su **visibilidad**. Cuando un componen
 
 **Los componentes privados suelen ser sencillos**. A veces son creados para ser específicamente consumidos dentro de otros componentes. En esas situaciones interesa que sean privados y que generen poco ruido. Incluso, en casos extremadamente simples, si usamos el modificador `--flat` ni siquiera generan carpeta propia.
 
+Como regal general, cuando en un plantilla se incruste otro componente Angular lo buscará dentro del propio módulo en el que pretende usarse. Si no lo encuentra entonces buscará ente los componentes exportados por los módulos que hayan sido importados por el contenedor.
+
 # 3. Organización
 
 Todos los programas tiene partes repetitivas. Los principios de **organización y código limpio** nos permiten identificarlas y reutilizarlas. Con los componentes ocurre lo mismo. El módulo y los componentes recién creados suelen ser comunes a casi todas las aplicaciones. Estos y otros muchos surgirán de manera natural durante el desarrollo de una aplicación para ser utilizados en múltiples páginas. 
 
 Son **componentes de infraestructura**. Conviene guardarlos en una carpeta especial. Aquí la he llamado `shared`, pero `tools`, `common`, o `lib` suelen ser otros nombres habituales.
 
-El caso es **distinguir los componentes de infraestructura de los de negocio** o funcionalidad. Los módulos `core` y `shared` los trataremos como de infraestructura y todos los demás serán de negocio.
+El caso es **distinguir los componentes de infraestructura de los de negocio** o funcionalidad. Los módulos `core` y `shared` los trataremos como de infraestructura y todos los demás serán de negocio (aún no tenemos). El primero es para meter cosas de uso único esenciales para la aplicación. El segundo para meter bloques reutilizables durante la construcción de la aplicación. Recuerda que sólo son convenios de arquitectura de software; adáptalos a tus necesidades.
 
 ![Árbol de módulos](/images/1-base_module_tree.png)
 
->En esta aplicación hasta ahora no es nada funcional, y ya tiene tres módulos y cinco componentes!!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido, y por ahora te permitirá practicar con la creación de módulos y componentes. Para un ejemplo más realista, consulta cómo está hecho [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , el hermano mayor de *AutoBot*
+>En esta aplicación hasta ahora no es nada funcional, y ya tiene tres módulos y cinco componentes!!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido, y por ahora te permitirá practicar con la creación de módulos y componentes. Para un ejemplo más realista, consulta cómo está hecho *Astrobot* [AcademiaBinaria/AstroBot](https://github.com/AcademiaBinaria/astrobot/) , es el hermano mayor y más profesional de *AutoBot*.
 
 Con esto tendrás una base para una aplicación *Angular 6*. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular6.
 
