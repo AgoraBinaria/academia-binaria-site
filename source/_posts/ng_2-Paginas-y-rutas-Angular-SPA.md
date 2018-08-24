@@ -131,7 +131,7 @@ En Angular 6 el *lazy loading* es tan sencillo que ya se recomienda implementarl
 
 He creado unas vistas para ser usada en las direcciones `/` u  `/about`. Los componentes asociados se llaman `HomeComponent` u `AboutComponent`. Se han **declarado pero no exportado** en sus repectivos módulos `HomeModule` y `AboutModule`. No es necesario exportarlos porque no será reclamdao directamente por nuestro código.
 
-```shell
+```bash
 ng g m home --routing true
 ng g c home/home
 ng g m about --routing true
@@ -178,70 +178,116 @@ Ese tipo de direcciones se consideran paramétricas, tienen unos segmentos está
 
 Volvamos a los coches. Vamos a crear rutas como */car/model-s* o */car/roadster*. Para ello necesitamos el segmento principal */car* y delegar su uso al `CarModule`.
 
+```bash
+ng g m car --routing true
+ng g c car/car
+```
+El `car-routing.module.ts` tendrá este contenido.
+
 ```typescript
-import { OperationsComponent } from "./operations.component";
+import { CarComponent } from './car/car.component';
 const routes: Routes = [
   {
-    path: "",
-    component: OperationsComponent
-  },
-  {
-    path: ":id",
-    component: ItemComponent
+    path: ':carId',
+    component: CarComponent
   }
 ];
 ```
 
-Esta configuración resuelve las rutas `operations` y `operations/cualquier-cosa`. En la primera carga `OperationsComponent` y en los demás casos el `ItemComponent`.
+Esta configuración resuelve las rutas `car/cualquier-cosa`. Y las carga con el componente `CarComponent`. El segundo segmento se almacenará como parámetro y será recogido con el nombre `carId`.
 
-> En la práctica que nos ocupa lo usaremos para ver el detalle de las operaciones económicas realizadas. Como por ahora no tenemos, he puesto de ejemplo algunos números bien conocidos.
-
-Para forzar los enlaces he creado un componente a modo de listado llamado `ListComponent`. La parte interesante de su *html* es:
+Para forzar los enlaces he creado un listado en el `HomeComponent`. La parte interesante de su *html* es:
 
 ```html
-<ul>
-  <li><a routerLink="/operations/271">Number e</a></li>
-  <li><a routerLink="/operations/314">Pi</a></li>
-  <li><a routerLink="/operations/667">Gravitational Constant</a></li>
+<ul class="menu-list">
+  <li><a [routerLink]="['/car', 'Model S']">Model S</a></li>
+  <li><a [routerLink]="['/car', 'Model X']">Model X</a></li>
+  <li><a [routerLink]="['/car', 'Model 3']">Model 3</a></li>
+  <li><a [routerLink]="['/car', 'Roadster']">Roadster</a></li>
 </ul>
 ```
 
-Aún más interesante es el componente que muestra cada elemento de la lista, el `ItemComponent`. En este caso fíjate cómo accede a la ruta, obtiene el valor del parámetro y lo usa para mostrarlo en la web. 
+Aún más interesante es el componente que muestra cada elemento de la lista, el `CarComponent`. En este caso fíjate cómo accede a la ruta, obtiene el valor del parámetro y lo usa para mostrarlo en la web. 
 
-Contenido del fichero `item.component.ts`:
+Contenido del fichero `car.component.ts` relacionado con la obtención del parámetro de la ruta activa:
 
 ```typescript
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 @Component({
-  selector: "cf-item",
-  template: ` <h3>{{ _id }}</h3>`
+  selector: "app-car",
+  template: ` 
+    <div class="card-header-title">
+      {{ carId }}
+    </div>`
 })
-export class ItemComponent implements OnInit {
-  _id: any;
+export class CarComponent implements OnInit {
+  public carId;
   constructor(private route: ActivatedRoute) {}
   ngOnInit() {
-    this._id = this.route.snapshot.params["id"];
+    this.carId = this.route.snapshot.params['carId'];
   }
 }
 ```
 
-# 3.1 ActivatedRoute
+## 3.1 ActivatedRoute
 
-El framework *Angular* trae muchas librerías para facilitar la vida al programador. Sólo hay que saber dónde están y cómo pedirlas. Para ello volvemos a la tecnología escogida,  *TypeScript*, que permite las **importaciones y la inyección de dependencias**.
+El framework *Angular* 6 trae muchas librerías para facilitar la vida al programador. Sólo hay que saber dónde están y cómo pedirlas. Para ello volvemos a la tecnología escogida,  *TypeScript*, que permite las **importaciones y la inyección de dependencias**.
 
-La instrucción `import { ActivatedRoute } from "@angular/router";` pone a disposición del programdor el código donde está definida la clase `ActivatedRoute`, pero no se instancia directamente. En su lugar, se usa como un argumento del constructor de la clase del componente. Ese constructor es invocado por *Angular*, el cual sabe cómo rellenar los argumentos que le pido. Es decir, sabe cómo inyectar instancias de las que dependo.
+La instrucción `import { ActivatedRoute } from "@angular/router";` pone a disposición del programador el código donde está definida la clase `ActivatedRoute`. Pero no se instancia directamente, en su lugar, se usa como un argumento del constructor de la clase del componente. Ese constructor es invocado por *Angular*, y dinámicamente el propio framework sabe cómo rellenar los argumentos que se pidan en los constructores. Es decir, sabe cómo inyectar instancias en las que dependencias declaradas.
 
-Una vez que me **inyectan las dependencias en el constructor** ya están listas para ser usadas como propiedades de la clase. *Mágia del TypeScript*. En concreto `this.route` me da acceso a métodos y propiedades para trabajar con la ruta activa y poder leer sus parámetros.
+Una vez que han **inyectan las dependencias en el constructor** ya están listas para ser usadas como propiedades de la clase. *Mágia del TypeScript*. En concreto `this.route` da acceso a métodos y propiedades para trabajar con la ruta activa y poder leer sus parámetros.
 
-# 3.2 Eventos e interfaces en TypeScript
+## 3.2 Eventos e interfaces en TypeScript
 
 El lenguaje *TypeScript* como superconjunto de *JavaScript* aporta técnicas de P.O.O. bien conocidas en lenguajes como *Java* o *C#*. Por ejemplo **la herencia y los interfaces**. Los diseñadores de *Angular* decidieron usar interfaces para implementar el **ciclo de vida de los componentes**. En lugar de lanzar eventos a los que subscribirse, te piden que implementes métodos de distintas interfaces. Esos métodos serán llamados cuando corresponda, como si fuesen subscripciones a eventos.
 
-En este caso la *interfaz* `OnInit` obliga a implementar el método `ngOnInit()` el cual será invocado lo antes posible pero tras la completa construcción del componente. Asegurando así que el código que se ejecute en ese método tenga acceso a un componente completo y totalmente listo. 
+En este caso la *interfaz* `OnInit` obliga a implementar el método `ngOnInit()` el cual será invocado lo antes posible pero tras la completa construcción del componente. Asegurando así que el código que se ejecute en ese método tenga acceso a un componente completo y totalmente listo. Esta es la manera recomendada para ejecutar código de inicialización de los componentes, dejando los constructores vacíos y sólo dedicados a declarar dependencias.
 
+# 4 Rutas anidadas
 
-Con esto tendrás una aplicación SPA en *Angular 6*. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular6.
+Cuando las intefaces se complican, es habitual que las aplicaciones dsiponga de menús de navegación a distintos niveles. Dentro de una misma página podemos quere ver distinto contenido y admas reflejarlo en la *url*. Para resolver esta situación en Angular 6 disponemos de la técnica de las *nested routes*.
+
+> De una manera un tanto forzada la he incluído en la página `/about`. La cual disponen de su propio menú de navegación, y lo que es más importante, su propio `<router-outlet></router-outlet>`.
+
+Para empezar veamos como queda el *html* del `about.component.ts`. Vamos a dotarlo de dos rutas nuevas `/about/links` y `/about/info`. Cada una mostrará contenido en un componente adecuadamente insertado en el `<router-outlet></router-outlet>` local.
+
+```html
+<nav class="navbar" role="navigation">
+  <div class="navbar-menu is-active">
+    <div class="navbar-start">
+      <a class="navbar-item"  [routerLink]="['./links']"> Links</a>
+      <a class="navbar-item"  [routerLink]="['./info']"> Info</a>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+```
+
+Para que funcione empezamos por crear los dos compoentes `LinksComponent` e `InfoComponent` de forma rutinaria. Y los asignamos en el `about-routing.module.ts` como subordinados a la ruta principal con el comando `children:[]`.
+
+```typescript
+const routes: Routes = [
+  {
+    path: '',
+    component: AboutComponent,
+    children: [
+      {
+        path: 'links',
+        component: LinksComponent
+      },
+      {
+        path: 'info',
+        component: InfoComponent
+      }
+    ]
+  }
+];
+```
+
+La combinación de `children, loadChild, component, redirectTo` ... asociadas a `path` es lo que te dará toda la potencia para configurar tu aplcación y responder a cualquier *url* desde la misma y única página `index.html`. 
+
+Con esto tendrás una aplicación SPA en *Angular*. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
