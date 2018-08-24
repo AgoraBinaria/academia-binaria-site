@@ -1,19 +1,18 @@
 ---
 title: Páginas y rutas Angular SPA
 permalink: paginas-y-rutas-angular-spa
-date: 2017-11-13 17:19:14
+date: 2018-08-24 12:19:14
 tags:  
 - Angular
-- Angular5
-- Angular2
 - SPA
+- Routing
 - Tutorial
 - Introducción
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-5_2_SPA.jpg
+thumbnail: /css/images/angular-2_spa.png
 ---
-![Tutorial Angular5 2-SPA](/images/tutorial-angular-5_2_SPA.png)
+![Tutorial Angular5 2-SPA](/images/tutorial-angular-2_spa.png)
 
 
 Las **aplicaciones Angular son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas *SPA, Single Page Applications*. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.
@@ -24,7 +23,7 @@ Seguimos usando el concepto de árbol, ahora como analogía de **las rutas y las
 
 Partiendo de la aplicación tal cómo quedó en [Base para una aplicación Angular](../base-aplicacion-angular/). Al finalizar tendrás un SPA con vistas asociadas a sus rutas.
 
->Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/2-spa](https://github.com/AcademiaBinaria/angular5/tree/master/2-spa/cash-flow) 
+>Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/2-spa](https://github.com/AcademiaBinaria/autobot/tree/2-spa) 
 
 # 1. Rutas
 
@@ -118,7 +117,7 @@ En el fichero `not-found.component.ts` pon algo así:
   styles: []
 ```
 
->Por ahora la funcionalidad de `routerLink` no mejora en nada a `href`. Pero lo hará. Mientras tanto familiarízate con su sintaxis y... asegúrate de importar `RouterModule` en `not-found.module.ts`. Puedes ver los cambios realizados hasta ahora en [este *commit*](https://github.com/AcademiaBinaria/angular5/commit/464a5f0fd5f8975157793b0a3c13d7f61f890fa5) 
+>Por ahora la funcionalidad de `routerLink` no mejora en nada a `href`. Pero lo hará. Mientras tanto familiarízate con su sintaxis y... asegúrate de importar `RouterModule` en `not-found.module.ts`. 
 
 
 # 2 Lazy Loading
@@ -179,9 +178,6 @@ const routes: Routes = [
   }
 ];
 ```
-
->Puedes tener una idea general de los cambios realizados en [este *commit*](https://github.com/AcademiaBinaria/angular5/commit/b3f79c3324561174e10a7f8fb2668d7dc3e610f1) 
-
 
 # 3 Parámetros
 
@@ -251,9 +247,8 @@ El lenguaje *TypeScript* como superconjunto de *JavaScript* aporta técnicas de 
 
 En este caso la *interfaz* `OnInit` obliga a implementar el método `ngOnInit()` el cual será invocado lo antes posible pero tras la completa construcción del componente. Asegurando así que el código que se ejecute en ese método tenga acceso a un componente completo y totalmente listo. 
 
-> En [este *commit*](https://github.com/AcademiaBinaria/angular5/commit/0afd90532bcce9f95bca130838eb11d5a4a3b491) puedes ver los cambios necesarios para incluir parámetros en la aplicación.
 
-Con esto tendrás una aplicación SPA en *Angular*. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular5.
+Con esto tendrás una aplicación SPA en *Angular 6*. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
