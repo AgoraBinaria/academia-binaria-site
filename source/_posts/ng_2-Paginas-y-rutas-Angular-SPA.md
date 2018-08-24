@@ -15,7 +15,7 @@ thumbnail: /css/images/angular-2_spa.png
 ![Tutorial Angular5 2-SPA](/images/tutorial-angular-2_spa.png)
 
 
-Las **aplicaciones Angular son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas *SPA, Single Page Applications*. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.
+Las **aplicaciones Angular 6 son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas *SPA, Single Page Applications*. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.
 
 Seguimos usando el concepto de árbol, ahora como analogía de **las rutas y las vistas** asociadas. Algo que se consigue fácilmente con `@angular/router` **el enrutador de Angular**.
 
@@ -27,22 +27,36 @@ Partiendo de la aplicación tal cómo quedó en [Base para una aplicación Angul
 
 # 1. Rutas
 
-Al crear la aplicación hice uso del flag `routing true` en el comando de generación del *CLI*. Esto causó la aparición de no uno, sino dos módulos gemelos en la raíz de la aplicación. Has estudiado el `AppModule` verdadero módulo raíz, y ahora verás su gemelo: el **módulo de enrutado** 'AppRoutingModule'.
+Al crear la aplicación hice uso del flag `routing true` en el comando de generación del *CLI*. Esto causó la aparición de no uno, sino dos módulos gemelos en la raíz de la aplicación. Has estudiado el `AppModule` verdadero módulo raíz, y ahora verás su gemelo: el **módulo de enrutado** `AppRoutingModule` .
 
 ## 1.1 RouterModule
 
-Este módulo cumple dos funciones. Por un lado **importa al `RouterModule`** que contiene toda la lógica necesaria para enrutar en el navegador. Por otro lado, permite la **definición de rutas** en el array `Routes[]`. 
-
->Por motivos estéticos he cambiado el nombre original del fichero `app-routing.module.ts` a `app.routing.ts` y así disponer de un icono propio en el tema [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme).
+El módulo `AppRoutingModule` cumple dos funciones. Por un lado **importa al `RouterModule`** de Angular, el cual contiene toda la lógica necesaria para enrutar en el navegador. Por otro lado, permite la **definición de rutas** en el array `Routes[]`. 
 
 ```typescript
 import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./views/home/home.component";
 const routes: Routes = [
   {
-    path: "",
-    component: HomeComponent
-  }];
+    path: '',
+    loadChildren: './home/home.module#HomeModule'
+  },
+  {
+    path: 'about',
+    loadChildren: './about/about.module#AboutModule'
+  },
+  {
+    path: 'car',
+    loadChildren: './car/car.module#CarModule'
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found'
+  }
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
@@ -50,57 +64,37 @@ const routes: Routes = [
 export class AppRoutingModule {}
 ```
 
-El array de rutas recibe **objetos con propiedades** de configuración. La primera es `path:` en la que se especifica **la dirección** que resuelve, en este caso la ruta vacía o raíz del árbol de rutas. Otra propiedad fundamental es `component` la cual indica **el componente** que se debe mostrar cuando esta ruta se active.
+El array de rutas recibe **objetos ruta** con propiedades de configuración. 
 
-En este caso he aprovechado el componente `HomeComponent` para asociarlo a la ruta raíz. Pero, ¿qué pasará con dicho componente? ¿dónde se cargará?. Presentamos a `<router-outlet>`.
+La primera es `path:` en la que se especifica **la dirección** que resuelve, en este caso la ruta vacía o raíz del árbol de rutas. Las otras son opcionales y las veremos poco a poco.
+
+Empecemos casi por el final y de paso hagamos algo útil para no perdernos. La propiedad `component` es fundamental pues indica **el componente** que se debe mostrar cuando esta ruta se active. pPero hay más...
+
+### 1.1.1 Router Redirect
+
+La configuración de rutas no sólo permite asignar componentes a las direcciones. También se pueden hacer **redirecciones de unas direcciones a otras**. Y por supuesto puede haber **rutas no contempladas o errores** por parte del usuario, los infames `404 Not Found`.
+
+> En este caso cuando se escriba la ruta `/not-foud` se mostrará un componente, el `NotFoundComponent`, cuyo contenido indicará al usaurio que se ha perdido. Claro que nadie va voluntariamente a esa ruta. Mediante el `path: '**'` le indico que ante cualquier ruta no contemplada anteriormente se ejecute el comando `redirectTo: 'not-found'`, el cual nos lleva a una ruta conocida con un mensaje bien conocido. Page Not Found.
+
+Pero, ¿qué pasará con el componente activado? ¿dónde se cargará?. Presentamos a `<router-outlet>`.
 
 ## 1.2 Router Outlet
 
 La idea general de **una SPA es tener una única página que cargue dinámicamente otras vistas**. Normalmente la página contenedora mantiene el menú de navegación, el pie de página y otras áreas comunes. Y deja un espacio para la carga dinámica. Para ello necesitamos saber **qué componente cargar y dónde mostrarlo**. De esto último se ocupa la etiqueta ` <router-outlet></router-outlet>`.
 
-En el `app.component.ts` había un reclamo directo al componente `cf-home`. Para hacerlo dinámico se sustituye por ` <router-outlet></router-outlet>` quedando algo así:
+En el `main.component.ts` había un contenido *hard-coded*. Para hacerlo dinámico se sustituye por por el elemento de angular `<router-outlet></router-outlet>`. El cual inyectará dinámicamente el componente que le corresponda según la ruta activa. Queda algo así:
 
 ```typescript
-    selector: "cf-root",
+    selector: 'app-main',
     template: `
-      <cf-nav></cf-nav>
-      <router-outlet></router-outlet>
-      <cf-footer></cf-footer>
-    `
+    <main class="section">
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+    `,
     styles: []
 ```
-> Puedes ver los cambios realizados en [este *commit*](https://github.com/AcademiaBinaria/angular5/commit/a0ae9077ea2a74e8683de8b281147661b7a9f508)
-
-## 1.3 Router Redirect
-
-La configuración de rutas no sólo permite asignar componentes a las direcciones. También se pueden hacer **redirecciones de unas direcciones a otras**. Y por supuesto puede haber **rutas no contempladas o errores** por parte del usuario, los infames `404 Not Found`.
-
-Un ejemplo de ambas situaciones sería configurar nuestras rutas de forma que toda ruta desconocida nos lleve a otra general que muestre un mensaje predeterminado. Para hacerlo genera un módulo y un componente llamados `NotFound` con los siguientes comandos:
-
-```shell
-ng g m views/not-found
-ng g c views/not-found/not-found --export --flat
-```
-Vuelve al módulo de enrutado, ahora conocido como `app.routing.ts`, y agrega dos nuevas entradas al array `routes`.
-
-```typescript
-const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent
-  },
-  {
-    path: "404",
-    component: NotFoundComponent
-  },
-  {
-    path: "**",
-    redirectTo: "/404"
-  }
-  ];
-```
-
-La entrada interesante es la última. Su dirección `path: "**"` indica que es cualquier ruta que no haya sido resuelta previamente. Un *not found* de toda la vida. En este caso lo redirijo a una ruta existente: `/404`. Y a esta última se le asocia un componente concreto, el `NotFoundComponent`.
 
 ## 1.4 Router Link
 
@@ -117,7 +111,7 @@ En el fichero `not-found.component.ts` pon algo así:
   styles: []
 ```
 
->Por ahora la funcionalidad de `routerLink` no mejora en nada a `href`. Pero lo hará. Mientras tanto familiarízate con su sintaxis y... asegúrate de importar `RouterModule` en `not-found.module.ts`. 
+>Por ahora la funcionalidad de `routerLink` no mejora en nada a `href`. Pero lo hará. Mientras tanto familiarízate con su sintaxis y... asegúrate de importar `RouterModule` en los módulos en los que lo vayas a usar. 
 
 
 # 2 Lazy Loading
@@ -125,65 +119,64 @@ Las *webs SPA* se crearon por una razón que casi acaba con ellas: **la velocida
 
 El **impacto de la primera visita** en una aplicación de intranet no suele ser un problema grave. Pero en internet esa visita puede ser la primera y la última. La solución viene de mano del concepto de *lazy loading* o carga perezosa. Consiste en diferir la carga de la lógica asociada a una dirección hasta el momento en que sea activada dicha ruta. De esa forma, **una página no visitada es una página que no pesa**. Y la carga inicial se hace mucho más liviana.
 
+En Angular 6 el *lazy loading* es tan sencillo que ya se recomienda implementarlo por defecto. Para hacerlo conoceremos más comandos del `Router` y algunas herramientas de compilación usadas por el *Angular CLI*.
+
 ## 2.1 Webpack y los bundles por ruta
 
-Objetivo: adelgazar el peso del *bundle* principal. Para conseguirlo hay que configurar las rutas de forma que no sea necesario importar los componentes a mostrar. De otro modo *webpack* empaquetaría ese componente como algo necesario... y por tanto sería enviado al navegador en el *bundle* principal sin que sea seguro su uso. La solución que ofrecen el *cli* y *webpack* consiste en **delegar la asignación del componente a otro módulo, pero sin importarlo**.
+ Hay que saber que el *Angular CLI* usa internamente la herramienta de empaquetado *webpack*. La cual recorre el código *TypeScript* buscando `imports` y empaquetando su contendo en sacos o *bundles*. 
+ 
+ Objetivo: adelgazar el peso del *bundle* principal, el `main.js`.Para conseguirlo hay que configurar las rutas de forma que no sea necesario importar los componentes a mostrar tal como se ha hecho con el `NotFoundComponent`. De hacerlo así con todos, *webpack* empaquetaría esos componentes como algo necesario... y por tanto serían enviados al navegador en el *bundle* principal sin que sea seguro su uso. 
+ 
+ La solución que ofrecen el *cli* y *webpack* consiste en **delegar la asignación del componente a otro módulo, pero sin importarlo** hasta que su ruta principal se active.
 
-He creado un una nueva vista para ser usada en una nueva dirección llamada `/operations`. El componente se llama `OperationsComponent` y se ha **declarado pero no exportado** en el módulo `OperationsModule`. 
+He creado unas vistas para ser usada en las direcciones `/` u  `/about`. Los componentes asociados se llaman `HomeComponent` u `AboutComponent`. Se han **declarado pero no exportado** en sus repectivos módulos `HomeModule` y `AboutModule`. No es necesario exportarlos porque no será reclamdao directamente por nuestro código.
 
 ```shell
-ng g m views/operations --routing true
-ng g c views/operations/operations --flat
+ng g m home --routing true
+ng g c home/home
+ng g m about --routing true
+ng g c about/about
 ```
 
-Este módulo no debe ser importado por el `AppModule`. Simplemente debe usarse su ruta relativa en el módulo de enrutado `AppRoutingModule` como un valor especial. Fíjate que **la dirección del fichero es una cadena de texto** asignada a una nueva propiedad de objeto route, la propiedad `loadChildren:""`. No se está produciendo ninguna importación en *TypeScript* como ocurre con los componentes `HomeComponent` y  `NotFoundComponent`.
+Estos módulo no debe ser importado por el `AppModule`. Simplemente debe usarse su ruta relativa en el módulo de enrutado `AppRoutingModule` como un valor especial. Fíjate que **la dirección del fichero es una cadena de texto** asignada a una nueva propiedad de objeto *route*, la propiedad `loadChildren:""`. No se está produciendo ninguna importación en *TypeScript* como ocurre con el componente `NotFoundComponent`.
 
-```typescript
-const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent
-  },
-  {
-    path: "operations",
-    loadChildren: "./views/operations/operations.module#OperationsModule"
-  },
-  {
-    path: "404",
-    component: NotFoundComponent
-  },
-  {
-    path: "**",
-    redirectTo: "/404"
-  }
-  ];
-```
+Con esta información *webpack* va a generar un *bundle* específico para cada módulo. Si durante la ejecución se activa la ruta `/` (muy probable porque es la ruta raíz) o la ruta `/about` entonces se descarga ese paquete concreto y se ejecuta su contenido. Mientras tanto, se queda almacenado en el servidor. 
 
-Con esta información *webpack* va a generar un *bundle* específico para este módulo. Si durante la ejecución se activa la ruta `/operations` entonces descarga ese paquete y ejecuta su contenido. Mientras tanto, se queda almacenado en el servidor.
+> Esto hace que la aplicación de Angular pese menos y responda antes, mejorando el tiempo de pintado inicial. La combinación de estas y otras técnicas que veremos en este tutorial sacarán el mejor rendimiento posible a tu aplicación Angular 6.
 
 ## 2.2 El enrutador delegado
+Ya sabemos que hasta que no se active la ruta `/` o la `/about` no hay que hacer nada. Pero si se activa, entonces se descarga un *bundle* que contiene un módulo y los componentes necesarios. Sólo falta escoger dentro de ese módulo el componente que se asignará a la ruta.
 
-Ya sabemos que hasta que no se active la ruta `/operations` no hay que hacer nada. Pero si se activa, entonces se descarga un *bundle* que contiene un módulo y los componentes necesarios. Sólo falta escoger dentro de ese módulo el componente que se asignará a la ruta.
+Para eso al crear el módulo de operaciones usé el *flag* `routing true`. Esto hace que se genere un segundo módulo de enrutado. El `HomeRoutingModule` y el `AboutRoutingModule` son  prácticamente idénticos al enrutador raíz. 
 
-Para eso al crear el módulo de operaciones usé el *flag* `routing true`. Esto hace que se genere un segundo módulo de enrutado. El `OperationsRoutingModule` prácticamente idéntico al enrutador raíz. Digamos que es **un enrutador subordinado** al primero. Sólo se llega aquí si en la ruta principal se ha navegado a una dirección concreta. A este nivel la dirección `path: ""` se agrega al `path: "operations"` de su enrutador padre.
+> Digamos que son **enrutadores subordinados** al primero. Sólo se llega aquí si en la ruta principal se ha navegado a una dirección concreta. Se hace notar esa distinción durante el proceso de importación del módulo de Angular `RouterModule`. En el caso principal se pone `imports: [RouterModule.forRoot(routes)]` y en todos los demás `imports: [RouterModule.forChild(routes)]`.
 
-La ventaja real de este segundo enrutador es que irá empaquetado en el mismo *bundle* que el módulo de negocio y sus componentes. Aquí sí que asignaremos un componente concreto: el `OperationsComponent`. Dejando el fichero `operations.routing.ts` más o menos así:
+A nivel subordinado, la dirección `path: ""` se agrega al `path: ""` de su enrutador padre. Cuidado, es un error común repetir el *path* a nivel hijo.
+
+La ventaja real de este segundo enrutador es que irá empaquetado en el mismo *bundle* que el módulo de negocio y sus componentes. Aquí sí que asignaremos un componente concreto: el `HomeComponent` o el `AboutComponent`. Por ejemplo el fichero `home-routing.module.ts` quedará más o menos así:
 
 ```typescript
-import { OperationsComponent } from "./operations.component";
+import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {
-    path: "",
-    component: OperationsComponent
+    path: '',
+    component: HomeComponent
   }
 ];
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class HomeRoutingModule {}
 ```
 
 # 3 Parámetros
 
-Las rutas vistas hasta ahora se consideran estáticas pues se han definido usando constantes. Es muy habitual tener **páginas con la misma estructura pero distintos contenidos**. Un blog con sus posts, una tienda con sus productos... hay miles de ejemplos así.
+Las rutas vistas hasta ahora se consideran estáticas pues se han definido usando constantes. Es muy habitual tener **páginas con la misma estructura pero distintos contenidos**. Un blog con sus posts, una tienda con sus productos, o un garaje con sus coches... hay miles de ejemplos así.
 
 Ese tipo de direcciones se consideran paramétricas, tienen unos segmentos estáticos y otros dinámicos. Estos últimos se definen con parámetros, algo así como **variables dentro de la cadena de la ruta**. Su sintaxis obliga a precederlas de dos puntos. Por ejemplo `countries/:country/cities/:city` resolvería rutas como *countries/usa/cities/new-york* o *countries/france/cities/paris*. Rellenando los parámetros `:country` y `:city` con los valores necesarios.  
+
+Volvamos a los coches. Vamos a crear rutas como */car/model-s* o */car/roadster*. Para ello necesitamos el segmento principal */car* y delegar su uso al `CarModule`.
 
 ```typescript
 import { OperationsComponent } from "./operations.component";
