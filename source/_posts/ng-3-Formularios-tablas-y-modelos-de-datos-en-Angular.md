@@ -120,7 +120,7 @@ La comunicación del modelo hacia la vista es sólo el principio. En *Angular* t
 
 La directiva `[(ngModel)]` se compone de un atributo *custom* `ngModel` y lo rodea de los símbolos `[()]`. Esta técnica es conocida como *banana in a box* porque su sintaxis requiere un `()` dentro de un `[]` y une las capacidades de las expresiones y los eventos facilitando la comunicación bidireccional.
 
-> Atención: La directiva `ngModel` viene dentro del módulo `FormsModule` que hay qe importar explícitamente.
+> Atención: La directiva `ngModel` viene dentro del módulo `FormsModule` que hay que importar explícitamente.
 
 Por ejemplo `[(ngModel)]="rechargedDistance"` enlaza doblemente la propiedad del modelo `rechargedDistance` con el elemento `<input>` de la vista. Cada tecleo del usuario se registra en la variable. Y el valor de la variable se muestra en el `<input>`.
 
@@ -135,13 +135,13 @@ Por ejemplo `[(ngModel)]="rechargedDistance"` enlaza doblemente la propiedad del
 
 # 2 Estructuras
 
-Los anteriores modificadores actúan a nivel de contenido del HTML. Veremos ahora una para de directivas que afectan directamente a la estrucutra del árbol DOM. Son las llamadas directivas estructurales que comienzan por el signo `*` 
+Los anteriores modificadores actúan a nivel de contenido del HTML. Veremos ahora una para de directivas que afectan directamente a la estructuradel árbol DOM. Son las llamadas directivas estructurales que comienzan por el signo `*` 
 
 ## 2.2 Condicionales \*ngIf
 
 La directiva estructural más utilizada es la `*ngIf`, la cual consigue que un elemento se incluya o se elimine en el *DOM* en función de los datos del modelo. 
 
->En el ejemplo puedes ver que la uso para mostrar los mandos de acelaración y freno sólo cuando hay batería. En otro aparecerá el formulario de regarga. 
+>En el ejemplo puedes ver que la uso para mostrar los mandos de acelaración y freno sólo cuando hay batería. En otro aparecerá el formulario de recarga. 
 
 ```html
 <section *ngIf="hasBattery(); else rechargingSection"  >
@@ -155,7 +155,7 @@ La directiva estructural más utilizada es la `*ngIf`, la cual consigue que un e
   </form>
 </ng-template>
 ```
-### 2.2.1 Identificadores con \# 
+### 2.2.1 Identificadores con hashtag 
 
 En el código anterior apreciarás que aparece un elemento `<ng-template>` no estándar con el atributo llamado `#rechargingSection` precedido por un `#`. La directiva `#` genera un indentificador único para el elemento al que se le aplica y permite referirse a él en otros lugares del código.
 
@@ -191,7 +191,7 @@ Los componentes los hemos definido como **bloques de constucción de páginas. M
 
 Sin ir muy lejos en las capacidades que tendría un modelo de datos clásico, vamos al menos a beneficiarnos del ***TypeScript* para definir la estructura de datos**. Esto facilitará la programación mediante el autocompletado del editor y reducirá los errores de tecleo mediante la comprobación estática de tipos.
 
-Para ello necesito una interfaz sencilla. Esto es puro *TypeScript* no es ningún artificio registrable en Angular. Esos sí, en algún sitio tienen que estar. Yo suelo usar la ruta `core/store/models`, pero es algo completamente arbitrario.
+Para ello necesito una interfaz sencilla. Esto es puro *TypeScript*, no es ningún artificio registrable en Angular. Esos sí, en algún sitio tienen que estar. Yo suelo usar la ruta `core/store/models`, pero es algo completamente arbitrario.
 
 ```typescript
 export interface Car {
@@ -214,7 +214,7 @@ export interface Link {
 
 ## 3.1.1 Constantes
 
-En ocasiones, habrá datos *hard-coded* en tu aplicación. En ese caso se resuelve usando constantes. Pro ejemplo en el fichero `core/store/cars.ts` tenemos:
+En ocasiones, habrá datos *hard-coded* en tu aplicación. En ese caso se resuelve exportando constantes. Por ejemplo en el fichero `core/store/cars.ts` tenemos:
 
 ```typescript
 import { Car } from './models/car.model';
@@ -230,8 +230,7 @@ export const CARS: Car[] = [
 
 Un tipo especial de constantes son aquellas consideradas de configuración. Incluso con valores distintos según el entorno de ejecución. En Angular 6 nos ofrecen la carpeta especial `environments`.
 
-En ella habrá al menos un fichero maestro usand en tiempo de desarrollo llamado simplemente `environment.ts`. Dentro aparece una única constante exportada con el redundante nombre `environment`. En ese objeto sin esquema predefinido puedes incluir todos los datos de configuración que necesites en tu programa.
-
+En ella habrá al menos un fichero maestro usado en tiempo de desarrollo y llamado simplemente `environment.ts`. Dentro aparece una única constante exportada con el redundante nombre `environment`. En ese objeto sin esquema predefinido puedes incluir todos los datos de configuración que necesites en tu programa.
 
 ```typescript
 export const environment = {
@@ -246,11 +245,12 @@ export const environment = {
   warningKmsBattery: 150
 };
 ```
-> Además del *master* tenemos al menos otro fichero para el entorno de producción. Pueden crearse más, pero este siempre aparece; es el `environment.prod.ts`. Su estrucutra ha de ser igual a la del master, pero al con al menos un cambio en su contenido; `production:true`. Por lo demás el CLI se encarga de compilar la aplicación con los valores tomados del fichero adecuado para el entorno. 
+
+> Además del *master* tenemos al menos otro fichero para el entorno de producción. Pueden crearse más para más entornos, pero este siempre aparece; es el `environment.prod.ts`. Su estructura ha de ser igual a la del master pero al con al menos un cambio en su contenido; `production:true`. Por lo demás el CLI se encarga de compilar la aplicación con los valores tomados del fichero adecuado para el entorno. 
 
 ## 3.2 El controlador
 
-La parte de **lógica del componente** va en la clase que se usa para us definción. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `CarComponent`.
+La parte de **lógica del componente** va en la clase que se usa para su definción. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `CarComponent`.
 
 ```typescript
 constructor(private route: ActivatedRoute) {}
@@ -273,7 +273,7 @@ export class CarComponent implements OnInit {
 }
 ``` 
 
-Y métodos a los que llamará la vista, según actú el usuario.
+Y métodos a los que llamará la vista, según actúe el usuario.
 
 ```typescript
 public onBrake() {
@@ -290,15 +290,11 @@ public onRecharge() {
 
 Podemos decir que las propiedades públicas de la clase actuarán como *binding* de datos con la vista. Mientras que los métodos públicos serán invocados desde los eventos de la misma vista.
 
-Mira el código completo de la clase `CarComponent`en el fichero `car.component.ts` para tener una visión completa del componente.
-
-Como ves, las propidades `car, speedClass, batteryClass,rechargedDistance` se corresponden con las utilizadas en las directivas de enlace en la vista.
-
-Los métodods `onBrake(), onThrottle(), onRecharge()` son invocados desde eventos de elementos del html.
+Mira el código completo de **la clase** `CarComponent`en el fichero `car.component.ts` para tener una visión completa del componente. Como ves, **las propidades** `car, speedClass, batteryClass,rechargedDistance` se corresponden con las utilizadas en las directivas de enlace en la vista. **Los métodods** `onBrake(), onThrottle(), onRecharge()` son invocados desde eventos de elementos del *html*.
 
 Juntos, **la vista y su clase controladora**, resuelven un problema de interacción con el usuario **creando un componente**. Todas las páginas que diseñes serán variaciones y composiciones de estos componentes. 
 
-> Y esto es sólo el comienzo. La idea de compenente será fundamental en la web del mañana para la creación de pàginas mediante `web components`. Pero eso ya se verá más adelante...
+> Y esto es sólo el comienzo. La idea de componente será fundamental en la web del mañana para la creación de pàginas mediante `web components`. Pero eso ya se verá más adelante...
 
 Ahora tienes una aplicación en *Angular 6* que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular6.
 
