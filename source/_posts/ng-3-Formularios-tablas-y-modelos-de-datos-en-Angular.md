@@ -253,11 +253,13 @@ export const environment = {
 La parte de **lógica del componente** va en la clase que se usa para su definción. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `CarComponent`.
 
 ```typescript
-constructor(private route: ActivatedRoute) {}
-ngOnInit() {
-  const carId = this.route.snapshot.params['carId'];
-  this.car = CARS.find(c => c.link.url === carId);
-  setInterval(() => this.timeGoesBy(), environment.refreshInterval);
+export class CarComponent implements OnInit {
+  constructor(private route: ActivatedRoute) {}
+  ngOnInit() {
+    const carId = this.route.snapshot.params['carId'];
+    this.car = CARS.find(c => c.link.url === carId);
+    setInterval(() => this.timeGoesBy(), environment.refreshInterval);
+  }
 }
 ``` 
 
