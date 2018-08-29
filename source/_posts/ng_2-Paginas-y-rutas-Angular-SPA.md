@@ -12,7 +12,7 @@ categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-2_spa.png
 ---
-![Tutorial Angular5 2-SPA](/images/tutorial-angular-2_spa.png)
+![Tutorial Angular 2-SPA](/images/tutorial-angular-2_spa.png)
 
 
 Las **aplicaciones Angular 6 son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas *SPA, Single Page Applications*. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.

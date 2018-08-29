@@ -1,21 +1,19 @@
 ---
 title: Formularios, tablas y modelos de datos en Angular
 permalink: formularios-tablas-y-modelos-de-datos-en-angular
-date: 2017-11-15 10:17:37
+date: 2018-08-29 19:17:37
 tags:  
 - Angular
-- Angular5
-- Angular2
 - Forms
 - Tutorial
 - Introducción
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-5_3_data.jpg
+thumbnail: /css/images/angular-3_data.png
 ---
-![Tutorial Angular5 3-Data](/images/tutorial-angular-5_3_data.png)
+![Tutorial Angular 3-Data](/images/tutorial-angular-3_data.png)
 
-Las **aplicaciones Angular son excelentes para el tratamiento de datos** en el navegador. La recogida de información mediante formularios y la presentación de páginas dinámicas fue su razón de ser.
+Las **aplicaciones Angular 6 son excelentes para el tratamiento de datos** en el navegador. La recogida de información mediante formularios y la presentación de páginas dinámicas fue su razón de ser.
 
 Vamos a ver cómo la librería `@angular/forms` enlaza **las vistas, los controladores y los modelos** y cómo se hace la presentación de datos en **listas y tablas**.
 
@@ -23,7 +21,7 @@ Vamos a ver cómo la librería `@angular/forms` enlaza **las vistas, los control
 
 Partiendo de la aplicación tal cómo quedó en [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/). Al finalizar tendrás una aplicación que recoge y presenta datos.
 
->Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/3-data](https://github.com/AcademiaBinaria/angular5/tree/master/3-data/cash-flow) 
+>Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/3-data](https://github.com/AcademiaBinaria/autobot/tree/3-data) 
 
 
 # 1. Formularios
@@ -221,7 +219,7 @@ Los métodods `saveOperation() y deleteOperation(operation: Operation)` son invo
 Juntos, **la vista y su clase controladora**, resuelven un problema de interacción con el usuario **creando un componente**. Todas las páginas que diseñes serán variaciones y composiciones de estos componentes. 
 
 
-Ya tienes una aplicación en *Angular* que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular5.
+Ya tienes una aplicación en *Angular 6* que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite> 
