@@ -40,7 +40,7 @@ La clave para entender cómo funciona *Angular* está en el concepto de **enlace
 
 ### 1.1.1 La interpolación entre  \{ \{ \} \}
 
-En el fichero `car.component.ts` tienes en su vista *html* encontrarás elementos ajenos al lenguaje. Son las directivas. La primera que encuentras es `{ { car.model | uppecarse } }`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
+En el fichero `car.component.ts` tienes en su vista *html* encontrarás elementos ajenos al lenguaje. Son las directivas. La primera que encuentras es `{{ title }}`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
 
 Este es un ejemplo en su forma más simple posible.
 
@@ -61,8 +61,6 @@ export class AppComponent {
 Si queremos que la presentación del dato sea distinta a su valor real, podemos usar **funciones de transformación** especiales. Se llaman tuberías o *pipes* y se indican mediante el carácter `|`.
 
 El *framework* nos provee de casos básicos como `uppercase, lowercase, date, number...`. También dispones de un mecanismo para crear tus propios *pipes*.
-
->En el caso anterior verás en ejecución el texto *LEARNING ANGULAR* si usas `{{ title | upercase }}` en la plantilla.
 
 Más ejemplos los encontrarás en el componente `car.component.ts`. Haciendo uso de los *pipes* `currency` y `number` contra el objeto *car*. 
 
