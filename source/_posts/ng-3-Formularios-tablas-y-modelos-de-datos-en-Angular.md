@@ -250,7 +250,8 @@ export const environment = {
 
 ## 3.2 El controlador
 
-La parte de **lógica del componente** va en la clase que se usa para su definción. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `CarComponent`.
+La parte de **lógica del componente** va en la clase que se usa para su definción. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `CarComponent` viéndolo comm la clase que és: en su inicialización, propiedades y métodos.
+
 
 ```typescript
 export class CarComponent implements OnInit {
@@ -275,7 +276,7 @@ export class CarComponent implements OnInit {
 }
 ``` 
 
-Y métodos a los que llamará la vista, según actúe el usuario.
+Y los métodos a los que llamará la vista, según actúe el usuario.
 
 ```typescript
 public onBrake() {
@@ -292,11 +293,11 @@ public onRecharge() {
 
 Podemos decir que las propiedades públicas de la clase actuarán como *binding* de datos con la vista. Mientras que los métodos públicos serán invocados desde los eventos de la misma vista.
 
-Mira el código completo de **la clase** `CarComponent`en el fichero `car.component.ts` para tener una visión completa del componente. Como ves, **las propidades** `car, speedClass, batteryClass,rechargedDistance` se corresponden con las utilizadas en las directivas de enlace en la vista. **Los métodods** `onBrake(), onThrottle(), onRecharge()` son invocados desde eventos de elementos del *html*.
+Mira el código completo de **la clase** `CarComponent`en el fichero `car.component.ts` para tener una visión completa del componente. Como ves, **las propidades** `car, speedClass, batteryClass,rechargedDistance` se corresponden con las utilizadas en las directivas de enlace en la vista. **Los métodos** `onBrake(), onThrottle(), onRecharge()` son invocados desde eventos de elementos del *html*.
 
 Juntos, **la vista y su clase controladora**, resuelven un problema de interacción con el usuario **creando un componente**. Todas las páginas que diseñes serán variaciones y composiciones de estos componentes. 
 
-> Y esto es sólo el comienzo. La idea de componente será fundamental en la web del mañana para la creación de pàginas mediante `web components`. Pero eso ya se verá más adelante...
+> Y esto es sólo el comienzo. La idea de componente será fundamental en la web del mañana para la creación de páginas mediante `web components`. Pero eso ya se verá más adelante...
 
 Ahora tienes una aplicación en *Angular 6* que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular6.
 
