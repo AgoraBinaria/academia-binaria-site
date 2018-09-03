@@ -16,7 +16,7 @@
     });
     if (typeof lightGallery != 'undefined') {
         var options = {
-            selector: '.gallery-item'
+            selector: ''
         };
         $('.article-entry').each(function (i, entry) {
             lightGallery(entry, options);
