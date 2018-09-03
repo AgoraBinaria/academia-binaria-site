@@ -13,13 +13,13 @@ thumbnail: /css/images/angular-3_data.png
 ---
 ![Tutorial Angular 3-Data](/images/tutorial-angular-3_data.png)
 
-Las **aplicaciones Angular 6 son excelentes para el tratamiento de datos** en el navegador. La recogida de información mediante formularios y la presentación de páginas dinámicas fue su razón de ser.
+Las **aplicaciones Angular 6 son excelentes para el tratamiento de datos** en el navegador. Su razón de ser fue la recogida de información mediante formularios y la presentación de páginas dinámicas de forma sencilla.
 
-Vamos a ver cómo la librería `@angular/forms` enlaza **las vistas, los controladores y los modelos** y cómo se hace la presentación de datos en **listas y tablas**.
+Vamos a ver cómo la librería `@angular/forms` enlaza **las vistas, los controladores y los modelos**; y cómo se hace la presentación de datos en **listas y tablas**.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/). Al finalizar tendrás una aplicación que recoge y presenta datos.
+Partiendo de la aplicación tal cómo quedó en [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/), al finalizar tendrás una aplicación que recoge y presenta datos.
 
 >Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/3-data](https://github.com/AcademiaBinaria/autobot/tree/3-data) 
 
@@ -31,7 +31,7 @@ Partiendo de la aplicación tal cómo quedó en [Páginas y rutas Angular SPA](.
 
 # 1. Formularios
 
-**Los formularios son el punto de entrada** de información a nuestros sistemas. Llevan con nosotros desde el inicio de la propia informática y se han comido una buena parte del tiempo de programación. En *Angular* han prestado una atención a ellos facilitando su desarrollo, **desde pantallas simples a complejos procesos**.
+**Los formularios son el punto de entrada** de información a nuestros sistemas. Llevan con nosotros desde el inicio de la propia informática y se han comido una buena parte del tiempo de programación. En *Angular* han prestado una especial atención a ellos facilitando su desarrollo, **desde pantallas simples hasta complejos procesos**.
 
 ## 1.1 El Binding
 
@@ -252,7 +252,6 @@ export const environment = {
 
 La parte de **lógica del componente** va en la clase que se usa para su definción. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `CarComponent` viéndolo comm la clase que és: en su inicialización, propiedades y métodos.
 
-
 ```typescript
 export class CarComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
@@ -262,7 +261,7 @@ export class CarComponent implements OnInit {
     setInterval(() => this.timeGoesBy(), environment.refreshInterval);
   }
 }
-``` 
+```
 
 Ahora se trata de crear propiedades para aportar datos a la vista
 
@@ -274,7 +273,7 @@ export class CarComponent implements OnInit {
   public rechargedDistance;
   ...
 }
-``` 
+```
 
 Y los métodos a los que llamará la vista, según actúe el usuario.
 
@@ -288,8 +287,7 @@ public onThrottle() {
 public onRecharge() {
   this.car.remainingBattery = this.rechargedDistance;
 }
-``` 
-
+```
 
 Podemos decir que las propiedades públicas de la clase actuarán como *binding* de datos con la vista. Mientras que los métodos públicos serán invocados desde los eventos de la misma vista.
 
