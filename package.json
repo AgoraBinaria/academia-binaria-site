@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "start": "hexo generate",
+    "start": "hexo generate && git add * && git commit -m 'pub' && git push",
     "build": "hexo server"
   },
   "hexo": {
