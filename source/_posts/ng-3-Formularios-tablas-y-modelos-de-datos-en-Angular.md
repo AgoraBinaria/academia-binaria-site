@@ -11,7 +11,7 @@ categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-3_data.png
 ---
-![Tutorial Angular 3-Data](/images/tutorial-angular-3_data.png)
+![formularios-tablas-y-modelos-de-datos-en-angular](/images/tutorial-angular-3_data.png)
 
 Las **aplicaciones Angular 6 son excelentes para el tratamiento de datos** en el navegador. Su razón de ser fue la recogida de información mediante formularios y la presentación de páginas dinámicas de forma sencilla.
 
