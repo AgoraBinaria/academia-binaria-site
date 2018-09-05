@@ -1,21 +1,19 @@
 ---
 title: Flujo de datos entre componentes Angular
 permalink: flujo-de-datos-entre-componentes-angular
-date: 2017-11-20 17:10:44
+date: 2018-09-06 17:10:44
 tags:  
 - Angular
-- Angular5
-- Angular2
 - Forms
 - Tutorial
 - Introducción
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-5_4_flow.png
+thumbnail: /css/images/angular-4_flow.png
 ---
-![Tutorial Angular5 4-Flow](/images/tutorial-angular-5_4_flow.png)
+![flujo-de-datos-entre-componentes-angular](/images/tutorial-angular-4_flow.png)
 
-Los formularios profesionales son complejos y **Angular ofrece soluciones de comunicación para pantallas complejas**. Favorece la implementación de buenas prácticas mediante el desarrollo de componentes atómicos y reutilizables.
+Los formularios profesionales son complejos y **Angular 6 ofrece soluciones de comunicación para pantallas complejas**. Favorece la implementación de buenas prácticas mediante el desarrollo de componentes atómicos y reutilizables.
 
 Pero comunicar componentes no es tarea fácil y puede generar código difícil de seguir. La librería `@angular/forms` ofrece *tuberías de comunicación* para **mantener el flujo de datos bajo control**.
 
@@ -23,7 +21,7 @@ Pero comunicar componentes no es tarea fácil y puede generar código difícil d
 
 Partiendo de la aplicación tal cómo quedó en [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/). Al finalizar tendrás una aplicación que reparte la responsabilidad de recoger y presentar datos en dos componentes.
 
->Código asociado a este artículo en *GitHub*: [AcademiaBinaria/angular5/4-flow](https://github.com/AcademiaBinaria/angular5/tree/master/4-flow/cash-flow) 
+>Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/4-flow](https://github.com/AcademiaBinaria/autobot/tree/4-flow) 
 
 
 # 1. Comunicación entre componentes de una página
@@ -155,7 +153,7 @@ Desde luego necesita convertirse en un controlador, pero antes habrá que **baja
 
 Otra situación habitual es **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar el contador o un balance de operaciones en la barra del menú.
 
-Este tipo de comunicaciones también se resuelve mediante *Observables* y merece un capítulo especial. Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes de una misma página. Sigue esta serie para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular5.
+Este tipo de comunicaciones también se resuelve mediante *Observables* y merece un capítulo especial. Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes de una misma página. Sigue esta serie para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
