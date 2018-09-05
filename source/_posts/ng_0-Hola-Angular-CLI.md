@@ -164,7 +164,7 @@ npm i font-awesome --save
 npm install moment --save
 ```
 
-Para que se incluyan en la distribución hay que ir a la configuración del *CLI*.Y se agrega a través del fichero `.angular-cli.json` a la colección de *styles* o de *scripts* que corresponda.
+Para que se incluyan en la distribución hay que ir a la configuración del *CLI*.Y se agrega a través del fichero `.angular.json` a la colección de *styles* o de *scripts* que corresponda.
 
 ```json
 {
