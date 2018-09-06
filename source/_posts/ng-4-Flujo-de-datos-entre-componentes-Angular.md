@@ -4,7 +4,7 @@ permalink: flujo-de-datos-entre-componentes-angular
 date: 2018-09-06 17:10:44
 tags:  
 - Angular
-- Forms
+- Components
 - Tutorial
 - Introducción
 categories:
@@ -13,9 +13,9 @@ thumbnail: /css/images/angular-4_flow.png
 ---
 ![flujo-de-datos-entre-componentes-angular](/images/tutorial-angular-4_flow.png)
 
-Los desarrollos profesionales son complejos pero con **Angular 6 tenemos soluciones de comunicación para pantallas complejas**. Mediante el desarrollo de componentes atómicos y reutilizables, Angular favorece la implementación de buenas prácticas.
+Los desarrollos profesionales son complicados pero con **Angular 6 tenemos soluciones de comunicación simples para pantallas complejas**. Mediante el desarrollo de componentes atómicos y reutilizables Angular favorece la implementación de buenas prácticas.
 
-Comunicar componentes llevarnos a código difícil de seguir. La librería `@angular/forms` ofrece *tuberías de comunicación* para **mantener el flujo de datos bajo control**.
+Crear y comunicar muchos componentes puede llevarnos a código difícil de seguir. La librería `@angular/forms` ofrece *tuberías de comunicación* para **mantener el flujo de datos bajo control**.
 
 <!-- more -->
 
