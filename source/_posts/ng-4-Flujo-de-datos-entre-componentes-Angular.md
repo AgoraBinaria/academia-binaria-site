@@ -7,6 +7,9 @@ tags:
 - Components
 - Tutorial
 - Introducción
+- Angular6
+- Angular5
+- Angular2
 categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-4_flow.png

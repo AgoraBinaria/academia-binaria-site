@@ -7,6 +7,9 @@ tags:
 - CLI
 - Tutorial
 - Introducción
+- Angular6
+- Angular5
+- Angular2
 categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-1_base.png

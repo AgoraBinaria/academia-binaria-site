@@ -7,6 +7,9 @@ tags:
 - Forms
 - Tutorial
 - Introducción
+- Angular6
+- Angular5
+- Angular2
 categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular-3_data.png
