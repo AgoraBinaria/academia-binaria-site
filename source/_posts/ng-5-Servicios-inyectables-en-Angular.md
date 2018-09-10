@@ -4,19 +4,21 @@ permalink: servicios-inyectables-en-Angular
 date: 2017-11-23 10:44:58
 tags:  
 - Angular
-- Angular5
-- Angular2
+- Servicios
 - DI
 - Tutorial
 - Introducción
+- Angular6
+- Angular5
+- Angular2
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-5_5_inject.png
+thumbnail: /css/images/angular-5_inject.png
 ---
 
-![Tutorial Angular5 5-Inject](/images/tutorial-angular-5_5_inject.png)
+![Tutorial Angular5 5-Inject](/images/tutorial-angular-5_inject.png)
 
-La presentación, la lógica y el manejo de datos son tres capas de abstracción que usamos los programadores para mantener organizado nuestro código. En Angular, la presentación es cosa de los componentes. **La lógica y los datos tienen su lugar en servicios compartidos**.
+La presentación, la lógica y el manejo de datos son tres capas de abstracción que usamos los programadores para mantener organizado nuestro código. En Angular 6, la presentación es cosa de los componentes. **La lógica y los datos tienen su lugar en servicios compartidos**.
 
 Para que los componentes consuman los servicios de forma controlada tenemos _inyectables_ en la librería `@angular/core` con los que realizar **la inyección de dependencias**.
 
@@ -24,7 +26,8 @@ Para que los componentes consuman los servicios de forma controlada tenemos _iny
 
 Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular5/5-inject](https://github.com/AcademiaBinaria/angular5/tree/master/5-inject/cash-flow)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/5-inject](https://github.com/AcademiaBinaria/autobot/tree/5-inject/)
+> > Tienes una versión desplegada operativa para probar [AutoBot](https://academiabinaria.github.io/autobot/) 
 
 # 1. Servicios
 
@@ -159,7 +162,7 @@ Para finalizar el ejercicio te muestro cómo desde el `ListComponent` puedes cre
   </tbody>
 ```
 
-Este caso de uso mantiene los datos en memoria, lo cual es muy poco fiable y sólo debe usarse con información muy volátil. Sigue esta serie para añadirle [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular5.
+Este caso de uso mantiene los datos en memoria, lo cual es muy poco fiable y sólo debe usarse con información muy volátil. Sigue esta serie para añadirle [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
