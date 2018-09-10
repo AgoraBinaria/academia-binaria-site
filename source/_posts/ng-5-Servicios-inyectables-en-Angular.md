@@ -16,7 +16,7 @@ categories:
 thumbnail: /css/images/angular-5_inject.png
 ---
 
-![Tutorial Angular5 5-Inject](/images/tutorial-angular-5_inject.png)
+![Tutorial Angular 5-Inject](/images/tutorial-angular-5_inject.png)
 
 La presentación, la lógica y el manejo de datos son tres capas de abstracción que usamos los programadores para mantener organizado nuestro código. En Angular 6, la presentación es cosa de los componentes. **La lógica y los datos tienen su lugar en servicios compartidos**.
 
@@ -33,7 +33,7 @@ Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componente
 
 Como casi todo en Angular, **los servicios son clases TypeScript**. Su propósito es contener lógica de negocio, clases para acceso a datos o utilidades de infraestructura. Estas clases son perfectamente instanciables desde cualquier otro fichero que las importe. Pero, Angular nos sugiere y facilita que usemos su sistema de inyección de dependencias.
 
-Este sistema se base en convenios y configuraciones que controlan la instancia concreta que será inyectada al objeto dependiente. Ahora verás cómo funciona **[la Dependency Inyection](https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias) en Angular**.
+Este sistema se base en convenios y configuraciones que controlan la instancia concreta que será inyectada al objeto dependiente. Ahora verás cómo funciona **[la Dependency Injection](https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias) en Angular**.
 
 ## 1.1 Inyectables
 
@@ -79,6 +79,8 @@ Ahora tienes centralizado en este servicio toda la lógica de datos. Los demás 
 ## 1.2 Providers
 
 Declarar y decorar la clase no es suficiente. Necesitas **registrarla como un proveedor en algún módulo**. Por ahora hazlo en el cercano módulo de Operaciones usando el array `providers:[]`.
+
+> Ya no es necesario en Angular 6
 
 ```typescript
 @NgModule({
