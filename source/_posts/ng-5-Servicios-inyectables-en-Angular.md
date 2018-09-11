@@ -31,7 +31,7 @@ Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componente
 
 # 1. Servicios
 
-Como casi todo en Angular, **los servicios son clases TypeScript**. Su propósito es contener lógica de negocio, clases para acceso a datos o utilidades de infraestructura. Estas clases son perfectamente instanciables desde cualquier otro fichero que las importe. Pero, Angular nos sugiere y facilita que usemos su sistema de inyección de dependencias.
+Como casi todo en Angular, **los servicios son clases TypeScript**. Su propósito es contener lógica de negocio, clases para acceso a datos o utilidades de infraestructura. Estas clases son perfectamente instanciables desde cualquier otro fichero que las importe. Pero Angular nos sugiere y facilita que usemos su sistema de inyección de dependencias.
 
 Este sistema se basa en convenios y configuraciones que controlan la instancia concreta que será inyectada al objeto dependiente. Ahora verás cómo funciona la **[Dependency Injection](https://es.wikipedia.org/wiki/Inyecci%C3%B3n_de_dependencias) en Angular**.
 
@@ -67,15 +67,15 @@ export class CarsService {
 
 Ahora tienes centralizado en este servicio la poca lógica de datos que tenemos hasta el momento. Los demás componentes la podrán utilizar.
 
-## 1.2 Providers raíz
+## 1.2 Proveedor raíz
 
-Declarar y decorar la clase no es suficiente para poder reclamarla. Necesitas **registrarla como un proveedor en algún módulo**.  En Angular 6 los servicios se autoproveen en el módoulo raíz mediante la configuración `providedIn: 'root'` de su decorador como acabas de ver en el caso del `CarsService`.
+Declarar y decorar la clase no es suficiente para poder reclamarla. Necesitas **registrarla como un proveedor en algún módulo**.  En Angular 6 los servicios se autoproveen en el módoulo raíz mediante la configuración `providedIn: 'root'` de su decorador. Un ejemplo lo acabas de ver en el caso del `CarsService`.
 
-Esto es útil y cómodo en una gran cantidad de casos. El módulo raíz es visible para toda la aplicación de forma que cualquier componente puede reclamar un servicio suyo sin problema. Excepto que el problema sea el tamaño. El módulo raíz se carga al arrancar y todas sus referencias van el *bundle* principal. Si queremos repartir el peso debemos llevar ciertos servicios a los módulo funcional que los necesite. 
+Esto es útil y cómodo en una gran cantidad de casos. El módulo raíz es visible para toda la aplicación de forma que cualquier componente puede reclamar un servicio suyo sin problema. Excepto que el problema sea el tamaño. El módulo raíz se carga al arrancar y todas sus referencias van el *bundle* principal. Si queremos repartir el peso debemos llevar ciertos servicios al módulo funcional que los necesite. 
 
-## 1.2 Providers funcionales
+## 1.2 Proveedores funcionales
 
-Servicios como el `DisplayService` o el `EngineService` sólo son reclmados por componentes del `CarModule`. En estos casos interesa que su contenido vaya en el *bundle* del módulo funcional `CarsModule`. Para ello eliminamos de su decoración el `providedIn: 'root'` y los proveemos expñicitamente en la decoración del módulo en `car.module.ts`
+Servicios como el `DisplayService` o el `EngineService` sólo son reclamados por componentes del `CarModule`. En estos casos interesa que su contenido vaya en el *bundle* del módulo funcional `CarModule`. Para ello eliminamos de su decoración el `providedIn: 'root'` y los proveemos explícitamente en la propiedad `providers` de la decoración usada en `car.module.ts`
 
 
 ```typescript
@@ -91,9 +91,9 @@ A partir de este momento cualquier otro servicio o componente de este módulo qu
 
 ## 1.3 Singleton
 
-Se crea un [*singleton*](https://es.wikipedia.org/wiki/Singleton) por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional se provee en este y nada más. Si va a ser compartido, entonces gana la opción de auto proveerlo en el raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
+Se crea un [*singleton*](https://es.wikipedia.org/wiki/Singleton) por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional se provee en este y nada más. Si va a ser compartido, entonces, gana la opción de auto proveerlo en el raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
 
-Pero siempre será una instancia única por módulo. Si un *singleton* no es lo adecuado, entonces puedes proveer el mismo servicio en distintos módulos. De esa forma se creará una instancia distinta para cada uno. Si se provee la misma clase en dos o más módulos se genera una instancia en cada uno de ellos. Los componentes recibirán la instancia del módulo jerárquicamente más cercano.
+Pero siempre será **una instancia única por módulo**. Si un *singleton* no es lo adecuado, entonces puedes proveer el mismo servicio en distintos módulos. De esa forma se creará una instancia distinta para cada uno. Si se provee la misma clase en dos o más módulos se genera una instancia en cada uno de ellos. Los componentes recibirán la instancia del módulo jerárquicamente más cercano.
 
 > Incluso es posible usar el array `providers:[]` en la decoración de un componente o de otro servicio. Haciendo así aún más granular la elección de instancia. 
 
@@ -102,7 +102,7 @@ Pero siempre será una instancia única por módulo. Si un *singleton* no es lo 
 
 Al consumo de los servicios inyectables se le conoce como dependencia. Cada componente o servicio puede **declarar en su constructor sus dependencias** hacia servicios inyectables. El convenio exige que se especifique el tipo esperado. 
 
-Por ejemplo en el componente `CarComponent` teníamos incrustada toda la lógica y mantenimiento de los datos. Debe quedarse solamente con sus responsabilidades de presentación y delegar el resto en los nuevos servicios. Así queda el constructor del `car.component.ts`
+Por ejemplo, en el componente `CarComponent` teníamos incrustada toda la lógica y mantenimiento de los datos. Debe quedarse solamente con sus responsabilidades de presentación y delegar el resto en los nuevos servicios. Así queda el constructor del `car.component.ts`
 
 ```typescript
 export class CarComponent implements OnInit {
@@ -132,7 +132,7 @@ Como ves, **el constructor no tiene otra función que la de recibir las dependen
 
 ## 2.1 Inversión del control
 
-Un concepto íntimamente relaciona con la inyección de depencencias es el de *Inversion of Control*. El compoente dependiente expresa sus necesidades, pero es el *framework* el que en última instancia decide lo que recibirá. Vemos entonces que el invocado cede ese control al invocador.
+Un concepto íntimamente relacionado con la inyección de depencencias es el de *Inversion of Control*. El componente dependiente expresa sus necesidades, pero es el *framework* el que en última instancia decide lo que recibirá. Vemos entonces que el invocado cede ese control al invocador.
 
 En Angular, el comportamiento por defecto es el de proveer un *singleton*, pero hay más opciones si se usa el objeto `provider` con `useClass` , `useValue` y `useFactory`. Por ejemplo:
 
@@ -150,7 +150,7 @@ export class OneModule {}
 ```
 
 
-Ya tenemos la aplicación mejor estructurada, pero el almacén de datos es mejorable. Se mantienen los datos hard-coded, muy incómodo para actualizar; o en memoria, poco fiable y volátil. Lo más habitual es guardar y recuperar la información en un servidor *http*. Sigue esta serie para añadir [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular6.
+Ya tenemos la aplicación Autobot mucho mejor estructurada, pero el almacén de datos es mejorable. Se mantienen los datos hard-coded, muy incómodo para actualizar; o en memoria, poco fiable y volátil. Lo más habitual es guardar y recuperar la información en un servidor *http*. Sigue esta serie para añadir [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
