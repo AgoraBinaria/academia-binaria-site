@@ -37,15 +37,15 @@ Este sistema se basa en convenios y configuraciones que controlan la instancia c
 
 ## 1.1 Inyectables
 
-La particularidad de las clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e **indica que esta clase puede ser inyectada** dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios:
+La particularidad de las clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e **indica que esta clase puede ser inyectada** dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios. Estos son ejemplos de instrucciones para crear un *service*.
 
 ```shell
 ng g s core/cars
 ng g s car/engine
-ng g s car/display
+ng g service car/display
 ```
 
-El resultado son ficheros como `cars.service.ts` que he rellenado con un contenido como este:
+El resultado son ficheros como `cars.service.ts` con su decorador que convierte una *class* normal en algo *injectable*. Los he rellenado con un contenido como este:
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -91,7 +91,7 @@ A partir de este momento cualquier otro servicio o componente de este módulo qu
 
 ## 1.3 Singleton
 
-Se crea un [*singleton*](https://es.wikipedia.org/wiki/Singleton) por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional se provee en este y nada más. Si va a ser compartido, entonces, gana la opción de auto proveerlo en el raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
+Se crea un [*singleton*](https://es.wikipedia.org/wiki/Singleton) por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional se provee en este y nada más. Si va a ser compartido, entonces gana la opción de auto proveerlo en el raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
 
 Pero siempre será **una instancia única por módulo**. Si un *singleton* no es lo adecuado, entonces puedes proveer el mismo servicio en distintos módulos. De esa forma se creará una instancia distinta para cada uno. Si se provee la misma clase en dos o más módulos se genera una instancia en cada uno de ellos. Los componentes recibirán la instancia del módulo jerárquicamente más cercano.
 
@@ -132,7 +132,7 @@ Como ves, **el constructor no tiene otra función que la de recibir las dependen
 
 ## 2.1 Inversión del control
 
-Un concepto íntimamente relacionado con la inyección de depencencias es el de *Inversion of Control*. El componente dependiente expresa sus necesidades, pero es el *framework* el que en última instancia decide lo que recibirá. Vemos entonces que el invocado cede ese control al invocador.
+Un concepto íntimamente relacionado con la inyección de depencencias es el de *Inversion of Control*. El componente dependiente expresa sus necesidades, pero es el *framework* el que en última instancia decide lo que recibirá. Vemos entonces que **el invocado cede el control al invocador**.
 
 En Angular, el comportamiento por defecto es el de proveer un *singleton*, pero hay más opciones si se usa el objeto `provider` con `useClass` , `useValue` y `useFactory`. Por ejemplo:
 
@@ -150,7 +150,7 @@ export class OneModule {}
 ```
 
 
-Ya tenemos la aplicación Autobot mucho mejor estructurada, pero el almacén de datos es mejorable. Se mantienen los datos hard-coded, muy incómodo para actualizar; o en memoria, poco fiable y volátil. Lo más habitual es guardar y recuperar la información en un servidor *http*. Sigue esta serie para añadir [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular6.
+Ya tenemos la aplicación Autobot mucho mejor estructurada, pero el almacén de datos es mejorable. Se mantienen los datos *hard-coded*, muy incómodo para actualizar; o en memoria, poco fiable y volátil. Lo más habitual es guardar y recuperar la información en un servidor *http*. Sigue esta serie para añadir [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
