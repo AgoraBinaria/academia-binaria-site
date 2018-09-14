@@ -1,7 +1,7 @@
 ---
 title: Comunicaciones http en Angular
 permalink: comunicaciones-http-en-Angular
-date: 2018-14-18 11:06:00
+date: 2018-09-14 11:06:00
 tags:  
 - Angular
 - http
@@ -33,12 +33,10 @@ Partiendo de la aplicación tal cómo quedó en [Servicios inyectables en Angula
 
 La librería `@angular/common/http` trae el módulo `HttpClientModule` con el servicio inyectable `HttpClient` que debes declarar como dependencia en tus propios constructores.
 
-En el fichero `operations.service.ts` tienes el código que reclama la dependencia y la configura con una ruta base obtenida de la configuración de `environment`. Queda algo así:
+En tu código tienes que reclamar la dependencia para poder usarla. Queda algo así:
 
 ```typescript
-export class OperationsService {
-  private url = environment.apiUrl + "pub/items/";
-
+export class CarsService {
   constructor(private http: HttpClient) {}
 }
 ```
@@ -47,26 +45,49 @@ A partir de este momento sólo queda invocar los métodos REST en la propiedad `
 
 ## 1.1 Métodos REST
 
-Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la url a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la envían automáticamente como objetos _JSON_.
+Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la *url* a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la envían automáticamente como objetos _JSON_.
 
-Un ejemplo sencillo lo tienes en el servicio `OperationsService`.
+Veamos un ejemplo sencillo para montar un *CRUD* de cualquier cosa, coches por ejemplo. He usado una notación similar al *SQL* para ilustrar lo que se espera de los comandos.
 
 ```typescript
- public getOperationsList$(): Observable<Operation[]> {
-   return this.http.get<Operation[]>(this.url);
+ public selectCars$(): Observable<Car[]> {
+   return this.http.get<Car[]>('https://autobot.com/api/cars/');
  }
- public getOperationById$(id: string): Observable<Operation> {
-   return this.http.get<Operation>(this.url + id);
+ public selectCar$(carId: string): Observable<Car> {
+   return this.http.get<Car>('https://autobot.com/api/cars/' + carId);
  }
- public saveOperation$(operation: Operation): Observable<any> {
-   return this.http.post(this.url, operation);
+ public insertCar$(car: Car): Observable<car> {
+   return this.http.post<Car>('https://autobot.com/api/cars/', car);
  }
- public deleteOperation$(operation: Operation): Observable<any> {
-   return this.http.delete(this.url + operation._id);
+public updateCar$(car: Car): Observable<car> {
+   return this.http.put<Car>('https://autobot.com/api/cars/' + car._id, car);
+ }
+ public deleteCar$(operation: Operation): Observable<any> {
+   return this.http.delete('https://autobot.com/api/cars/' + car._id);
  }
 ```
 
 > Cada método de negocio, configura la llamada de infraestructura; parece poca cosa. Podría ser un buen sitio para validar la información antes de ser enviada, o quizás agrupar varias llamadas de red para una misma operación de negocio. El _dolar_ al final del nombre es un convenio para las funciones que devuelven observables.
+
+El consumo de este servicio en su versión más básica sería algo así:
+
+```typescript
+export class CarsComponent {
+  constructor(private cars: CarsService) {}
+
+  public ngOnInit(){
+    this.cars.selectCars$()
+      .susbcribe(
+        cars => console.log('I have ': cars.lenght + ' cars.'),
+        err => console.error('There was an error: ': err.message)
+      )
+  }
+}
+```
+
+El método de nuestro servicio nos devuelve un observable de los datos de la respuesta *http*. Es un *stream* de un sólo suceso pero al que alguien debe subscribirse. En la susbcripción asignamos funciones *callback*. La primera se ejecutará al recibir los datos. La segunda en caso de que haya un error.
+
+Y hasta aquí lo básico de comunicaciones *http*. ¿Fácil verdad?. Pero la vida real raramente es tan sencilla. Si quieres enfrentarte a algo más duro debes prepararte y dominar los observables *RxJs*. Pero eso ya no será *your grandpa´s http anymore*.
 
 # 2 Observables
 
@@ -200,7 +221,7 @@ Tómate tu tiempo para revisar cada línea. En primer lugar obtengo un puntero a
 
 Con esto tienes un sistema que envía a la consola información extra como la duración de las llamadas. Además inspecciona los errores en un único lugar. Esto puede incluso hacer innecesario que los componentes procesen errores.
 
-Ya tenemos los datos almacenados en un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables, el _httpClient_ y los interceptores estamos a un paso de darle seguridad a las comunicaciones. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular5.
+Ya tenemos los datos almacenados en un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables, el _httpClient_ y los interceptores estamos a un paso de darle seguridad a las comunicaciones. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
