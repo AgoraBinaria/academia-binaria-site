@@ -231,7 +231,7 @@ La narrativa de lo que sucede en esta fucnión es la siguiente:
 - 3 - Realizamos una llamada asincrona para obtener el coche con es identificador. El resultado es un nuevo *stream* que retorna `Observable<Car>`.
 - 4 - Almacenamos el coche e inicializamos indicadores mediante `tap`. Sin cambiar nada en el curso del arroyo.
 - 5 - Para continuar el viaje hay que llamar de nuevo al servidor y de forma asíncrona completar o rellenar datos del coche. De nuevo una derivación en la corriente, auqne el tipo siga siendo el mismo: `Observable<Car>` .
-- 6 - Al tener los datos ya completos queremos ceder el control al usuario y refrescar los indicadores según su manejo. La repetición de funciones a intervalos encja en la filosofía *Observable* y se incorpora en *RxJs* mediante la función 'interval(period)' que retorna una secuencia de números a cada intervalo programado.
+- 6 - Al tener los datos ya completos queremos ceder el control al usuario y refrescar los indicadores según su manejo. La repetición de funciones a intervalos encja en la filosofía *Observable* y se incorpora en *RxJs* mediante la función `interval(period)` que retorna una secuencia de números a cada intervalo programado.
 - 7 - Por último podemos ejecutar una función *callback* ante cada suceso usando la función `.subscribe(callback)`. 
 
 
