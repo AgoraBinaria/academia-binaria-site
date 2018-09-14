@@ -108,13 +108,21 @@ En cualquier caso, **toda operación asíncrona retornará una instancia observa
 En `HomeComponent` tenemos un ejemplo sencillo para empezar con el consumo de observables. En una llamda al servicio obtemos como resultado un Observable. Pero mira el código relevante y verás que las cosas cambian:
 
 ```typescript
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
   public carLinks$: Observable<Link[]>;
 
   constructor(private cars: CarsService) {}
 
   public ngOnInit() {
-    this.carLinks$ = this.cars.getCars$().pipe(map(cars => cars.map(this.getLinkFromCar)));
+    this.carLinks$ = 
+      this.cars.getCars$()
+      .pipe(
+        map(
+          (cars: Car[]): Link[] => cars.map(this.getLinkFromCar)
+        )
+      );
   }
   private getLinkFromCar(car: Car): Link {
     return {
@@ -128,11 +136,13 @@ export class HomeComponent implements OnInit {
 
 ## 2.1.1 Pipe
 
-Los datos devueltos raramente vienen en el formato preciso para usar en la vista. Con frecuencia hay que transformarlos al vuelo en cuanto se reciben. Recordemos que *HttpClient* no devuelve los datos tal cual sino un *stream* de estados de dichos datos. La manipulación será sobre el *stream* no direactamente sobre los datos y para manipular un torrente hay que encauzarlo en tuberías.
+Los datos devueltos raramente vienen en el formato preciso para usar en la vista. Con frecuencia hay que transformarlos al vuelo en cuanto se reciben. Recordemos que ***HttpClient* no devuelve los datos tal cual sino un *stream* de estados** de dichos datos. La manipulación será sobre el *stream* no direactamente sobre los datos y para manipular un torrente hay que encauzarlo en tuberías.
 
 Aquí es donde aparece el método `.pipe(operator1, operator2...)` aplicado a un observable, en luagar o antes de `.susbcribe(okCallback, errCallback)`. Este método entuba una serie de operadores predefinidos que manipulan el chorro de estados observados.
 
-El operador más utilizado es `map(source => target)`.
+El operador más utilizado es `map(sourceStream => targetStream)`. Este operador recibe una función *callBack* que será invocada ante cada dato recibido. Esa función tienen que retornar un valor para sustituir al actual y así transformar el contenido del chorro.
+
+> En este caso partimos de un *array* de objetos de tipo `Car[]` y lo transformamos en otro array de tipo `Link[]`. Para ello, forzando un poco el ejercicio, he usado la función `.map(sourceElement => targetElement)` de los *arrays Javascript*. El conflicto es intencionado por mi parte para mostrar la coincidencia en nombre y propósito. Pero son cosas muy distintas pues el operador `map` ha de importarse de `rxjs/operators` y aplicarse a un observable dentro de su método `.pipe()`. Nada que ver con la sencilla función `array.map(callback)`.
 
 ## 2.1.2 Async
 
@@ -142,8 +152,45 @@ El operador más utilizado es `map(source => target)`.
   </app-menu-list>
 ```
 
+El consumo de observables en la vista se recomienda hacerlo mediante el *pipe* `observable<any> | async`. El cuál se subscribe al torrente y devuelve sus estados concretos. Se podría, pero no se recomienda, haber resuelto el tema de la siguiente manera:
 
-> Recordatorio para novatos: Es importante comprender la naturaleza asíncrona de estas operaciones. El código de las funciones subscritas se ejecutará en el futuro, no de una manera secuencial.
+```typescript
+@Component({
+  selector: 'app-home',
+  template: `
+  <app-menu-list caption="Cars in your garage:"
+    [links]="carLinks">
+  </app-menu-list>
+  `,
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class HomeComponent implements OnInit {
+  public carLinks: Link[];
+  constructor(private cars: CarsService) {}
+
+  public ngOnInit() {
+    this.carLinks$ = this.cars.getCars$()
+      .pipe(
+        map(
+          (cars: Car[]): Link[] => cars.map(this.getLinkFromCar)
+        )
+      )
+      .subscribe(
+        (links: Link[]): void => this.links= links;
+      );
+  }
+  private getLinkFromCar(car: Car): Link {
+    return {
+      caption: car.link.caption,
+      routerLink: '/car/' + car.link.routerLink,
+      value: formatNumber(car.cost, 'en-US') + ' EUR'
+    };
+  }
+}
+```
+
+> Recordatorio para novatos asíncronos: Es importante comprender la naturaleza asíncrona de estas operaciones. El código de las funciones *callbacks* subscritas se ejecutará en el futuro, no de una manera secuencial.
 
 ## 2.2 Escritura
 
