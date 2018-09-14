@@ -78,8 +78,8 @@ export class CarsComponent {
   public ngOnInit(){
     this.cars.selectCars$()
       .susbcribe(
-        cars => console.log('I have ': cars.lenght + ' cars.'),
-        err => console.error('There was an error: ': err.message)
+        cars => console.log('I have ' + cars.lenght + ' cars.'),
+        err => console.error('There was an error: ' + err.message)
       )
   }
 }
@@ -99,44 +99,49 @@ Esta experiencia no siempre fue tan buena para el programador. Sobre todo con la
 
 Lo primero es importar el código, esto se hace forma similar a cualquier otra clase o función. Para empezar basta con `import { Observable } from "rxjs/Observable";`.
 
-Esta es una clase genérica donde sus instancias admiten la manipulación interna de tipos más o menos concretos. Por eso ves en el ejemplo que algunas funciones retornan `: Observable<Operation>`, o si no saben que tipo esperar se conforman con `: Observable<any>`.
+Esta es una clase genérica donde sus instancias admiten la manipulación interna de tipos más o menos concretos. Por eso ves en el ejemplo que algunas funciones retornan `: Observable<Car>`, o si no saben que tipo esperar se conforman con `: Observable<any>`.
 
 En cualquier caso, **toda operación asíncrona retornará una instancia observable** a la cual habrá que subscribirse para recibir los datos o los errores, cuando termine. Por limpieza eso debes hacerlo en los componentes que consuman el servicio, no en el propio servicio.
 
 ## 2.1 Lectura
 
-En `operations.component` están las llamadas y las suscripciones necesarias. Por ejemplo el método `refreshData()` realiza llamadas y se suscribe para conocer los resultados. Cada suscripción es un _callback_ al que habrá que pasarle el contexto mediante `.bind(this)`.
+En `HomeComponent` tenemos un ejemplo sencillo para empezar con el consumo de observables. En una llamda al servicio obtemos como resultado un Observable. Pero mira el código relevante y verás que las cosas cambian:
 
 ```typescript
-private refreshData() {
-  this.message = `Refreshing Data`;
-  this.fullError = null;
-  this.operationsService
-    .getOperationsList$()
-    .subscribe(this.showOperations.bind(this), this.catchError.bind(this));
-  this.operationsService
-    .getNumberOfOperations$()
-    .subscribe(this.showCount.bind(this), this.catchError.bind(this));
-}
-private showOperations(operations: Operation[]) {
-  this.operations = operations;
-  this.message = `operations Ok`;
-}
-private showCount(data: any) {
-  this.numberOfOperations = data.count;
-  this.message = `count Ok`;
-}
-private catchError(err) {
-  if (err instanceof HttpErrorResponse) {
-    this.message = `Http Error: ${err.status}, text: ${err.statusText}`;
-  } else {
-    this.message = `Unknown error, text: ${err.message}`;
+export class HomeComponent implements OnInit {
+  public carLinks$: Observable<Link[]>;
+
+  constructor(private cars: CarsService) {}
+
+  public ngOnInit() {
+    this.carLinks$ = this.cars.getCars$().pipe(map(cars => cars.map(this.getLinkFromCar)));
   }
-  this.fullError = err;
+  private getLinkFromCar(car: Car): Link {
+    return {
+      caption: car.link.caption,
+      routerLink: '/car/' + car.link.routerLink,
+      value: formatNumber(car.cost, 'en-US') + ' EUR'
+    };
+  }
 }
 ```
 
-El método `subscribe` recibe hasta tres argumentos (ok, error, fin) donde colocar funciones receptoras para cada tipo de evento que ocurra. Sólo el primero es obligatorio, y es en el que recibes la información directamente desempaquetada. En el segundo, normalmente pondrás lógica para responder ante códigos de error devueltos por el servidor. Es opcional porque hay técnicas para gestionarlos de manera centralizada pero en este ejemplo te muestro con detalle cómo tratar y analizar los eventos de error.
+## 2.1.1 Pipe
+
+Los datos devueltos raramente vienen en el formato preciso para usar en la vista. Con frecuencia hay que transformarlos al vuelo en cuanto se reciben. Recordemos que *HttpClient* no devuelve los datos tal cual sino un *stream* de estados de dichos datos. La manipulación será sobre el *stream* no direactamente sobre los datos y para manipular un torrente hay que encauzarlo en tuberías.
+
+Aquí es donde aparece el método `.pipe(operator1, operator2...)` aplicado a un observable, en luagar o antes de `.susbcribe(okCallback, errCallback)`. Este método entuba una serie de operadores predefinidos que manipulan el chorro de estados observados.
+
+El operador más utilizado es `map(source => target)`.
+
+## 2.1.2 Async
+
+```html
+  <app-menu-list caption="Cars in your garage:"
+    [links]="carLinks$ | async">
+  </app-menu-list>
+```
+
 
 > Recordatorio para novatos: Es importante comprender la naturaleza asíncrona de estas operaciones. El código de las funciones subscritas se ejecutará en el futuro, no de una manera secuencial.
 
