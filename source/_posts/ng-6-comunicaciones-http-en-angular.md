@@ -69,7 +69,7 @@ public updateCar$(car: Car): Observable<car> {
 
 > Cada método de negocio, configura la llamada de infraestructura; parece poca cosa. Podría ser un buen sitio para validar la información antes de ser enviada, o quizás agrupar varias llamadas de red para una misma operación de negocio. El _dolar_ al final del nombre es un convenio para las funciones que devuelven observables.
 
-## 1.2 Sunscribe
+## 1.2 Subscribe
 
 El consumo de este servicio en su versión más básica sería algo así:
 
