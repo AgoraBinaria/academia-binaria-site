@@ -20,11 +20,11 @@ thumbnail: /css/images/angular-2_spa.png
 
 Las **aplicaciones Angular 6 son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas *SPA, Single Page Applications*. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.
 
-Seguimos usando el concepto de árbol, ahora como analogía de **las rutas y las vistas** asociadas. Algo que se consigue fácilmente con `@angular/router` **el enrutador de Angular**.
+En este tutorial aprenderás a crear una Angular SPA fácilmente usando `@angular/router`, **el enrutador de Angular**.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Base para una aplicación Angular](../base-aplicacion-angular/). Al finalizar tendrás un SPA con vistas asociadas a sus rutas.
+Partiendo de la aplicación tal cómo quedó en [Base para una aplicación Angular](../base-aplicacion-angular/). Seguimos usando el concepto de árbol, ahora como analogía de **las rutas y las vistas** asociadas. Al finalizar tendrás una angular SPA con vistas asociadas a sus rutas.
 
 >Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/2-spa](https://github.com/AcademiaBinaria/autobot/tree/2-spa) 
 
@@ -34,7 +34,7 @@ Al crear la aplicación hice uso del flag `routing true` en el comando de genera
 
 ## 1.1 RouterModule
 
-El módulo `AppRoutingModule` cumple dos funciones. Por un lado **importa al `RouterModule`** de Angular, el cual contiene toda la lógica necesaria para enrutar en el navegador. Por otro lado, permite la **definición de rutas** en el array `Routes[]`. 
+El Angular Router necesita ser importado y configurado. El módulo `AppRoutingModule` cumple dos funciones. Por un lado **importa al `RouterModule`** de Angular, el cual contiene toda la lógica necesaria para enrutar en el navegador. Por otro lado, permite la **definición de rutas** en el array `Routes[]`. 
 
 ```typescript
 import { Routes, RouterModule } from "@angular/router";
@@ -83,9 +83,9 @@ Pero, ¿qué pasará con el componente activado? ¿dónde se cargará?. Presenta
 
 ## 1.2 Router Outlet
 
-La idea general de **una SPA es tener una única página que cargue dinámicamente otras vistas**. Normalmente la página contenedora mantiene el menú de navegación, el pie de página y otras áreas comunes. Y deja un espacio para la carga dinámica. Para ello necesitamos saber **qué componente cargar y dónde mostrarlo**. De esto último se ocupa la etiqueta ` <router-outlet></router-outlet>`.
+La idea general de **una SPA es tener una única página que cargue dinámicamente otras vistas**. Normalmente la página contenedora mantiene el menú de navegación, el pie de página y otras áreas comunes. Y deja un espacio para la carga dinámica. Para ello necesitamos saber **qué componente cargar y dónde mostrarlo**. De esto último se ocupa el *router outlet* mediante la etiqueta ` <router-outlet></router-outlet>`.
 
-En el `main.component.ts` había un contenido *hard-coded*. Para hacerlo dinámico se sustituye por el elemento de Angular `<router-outlet></router-outlet>`. El cual inyectará dinámicamente el componente que le corresponda según la ruta activa. El `MainComponent` queda así:
+En el `main.component.ts` había un contenido *hard-coded*. Para hacerlo dinámico se sustituye por el elemento de Angular `<router-outlet></router-outlet>`. Este elemento del framework inyectará dinámicamente el componente que le corresponda según la ruta activa. El `MainComponent` queda así:
 
 ```typescript
     selector: 'app-main',

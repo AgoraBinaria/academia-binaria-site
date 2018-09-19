@@ -134,7 +134,7 @@ Por ejemplo `[(ngModel)]="rechargedDistance"` enlaza doblemente la propiedad del
 </form>
 ```
 
-> La directiva `ngModel` es mucho más potente de lo visto aquí. Entre otras cosas permite decidir el citerio de actualizción (a cada cambio o al salir del control). También se verá más adelante el asunto de la validación, que requiere un trato especial. 
+> La directiva `ngModel` es mucho más potente de lo visto aquí. Entre otras cosas permite decidir el criterio de actualización (a cada cambio o al salir del control). También se verá más adelante el asunto de la validación, que requiere un trato especial. Cuando empiezas con Angular Forms, **un input y su ngModel** asociado serán tus mejores amigos.
 
 # 2 Estructuras
 

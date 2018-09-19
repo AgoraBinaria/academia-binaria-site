@@ -51,7 +51,7 @@ La estrategia de un controlador y múltiples presentadores es la más adecuada p
 
 Haremos que **el componente controlador** `CarComponent` sea el guardián del acceso a los datos. Mientras que **los componentes presentadores** `IndicatorComponent`, `SpeedControlComponent` y `BatteryRechargerComponent` recibirán la información para presentar y notificarán la intención de realizar cambios a su controlador.
 
-Para eso tienes que usar dos decoradores de Angular: `@Input()` y `@Output()`.
+Para eso tienes que usar dos decoradores de Angular: `@Input()` y `@Output()`. Son la verisón Angular del clásico *input , output* aplicado a componentes.
 
 ### 1.1.1 @Input()
 

@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "private": false,
   "scripts": {
-    "start": "hexo generate",
-    "pub": "hexo generate && git add * && git commit -m 'pub' && git push",
-    "build": "hexo server"
+    "start": "hexo server",
+    "pub": "hexo generate && git add * && git commit -m 'pub' && git push"
   },
   "hexo": {
     "version": "3.7.1"

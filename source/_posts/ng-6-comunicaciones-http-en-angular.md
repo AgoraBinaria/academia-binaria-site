@@ -5,6 +5,7 @@ date: 2018-09-14 11:06:00
 tags:  
 - Angular
 - http
+- RxJS
 - Observables
 - Tutorial
 - Introducción
@@ -20,11 +21,11 @@ thumbnail: /css/images/angular-6_http.png
 
 Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido fáciles y potentes. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas... y la librería *RxJs* y sus *streams* son intimidantes para los novatos. 
 
-Pero con la versión 6 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones asíncronas en Angular 6**.
+Pero con la versión Angular 6 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones http asíncronas en Angular 6**.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/). Al finalizar tendrás una aplicación que almacena y recupera los datos consumiendo un servicio REST.
+Partiendo de la aplicación tal cómo quedó en [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/). Al finalizar tendrás una aplicación que almacena y recupera los datos consumiendo un servicio REST usando las tecnologías de Angular Http.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/6-http](https://github.com/AcademiaBinaria/autobot/tree/6-http)
 > > Tienes una versión desplegada operativa para probar [AutoBot](https://academiabinaria.github.io/autobot/) 
@@ -73,7 +74,7 @@ public updateCar$(car: Car): Observable<car> {
 
 ## 1.2 Subscribe
 
-El consumo de este servicio en su versión más básica sería algo así:
+Los observables http han de consumirse mediante el método subscribe para que realmente se lancen. Dicho método subscribe admite hasta tres callbacks: `susbcribe(data, err, end)` para que se ejecuten en respuesta a eventos. El consumo de este servicio en su versión más básica sería algo así:
 
 ```typescript
 export class CarsComponent {
@@ -89,7 +90,7 @@ export class CarsComponent {
 }
 ```
 
-El método de nuestro servicio nos devuelve **un observable de los datos de la respuesta *http***. Es un *stream* de un sólo suceso pero al que alguien debe subscribirse. En la susbcripción asignamos funciones *callback*. La primera se ejecutará al recibir los datos. La segunda en caso de que haya un error.
+El método de nuestro servicio nos devuelve **un observable de los datos de la respuesta *http***. Es un *stream* de un sólo suceso pero al que alguien debe subscribirse. En la susbcripción asignamos funciones *callback*. La primera se ejecutará al recibir los datos. La segunda en caso de que haya un error. El método *subscribe* 
 
 Y hasta aquí lo básico de comunicaciones *http*. ¿Fácil verdad?. Pero la vida real raramente es tan sencilla. Si quieres enfrentarte a algo más duro debes prepararte y dominar los observables *RxJs*. 
 

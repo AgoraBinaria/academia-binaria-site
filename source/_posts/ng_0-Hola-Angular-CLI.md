@@ -17,11 +17,11 @@ thumbnail: /css/images/angular-0_cli.png
 ---
 ![hola-angular-cli](/images/tutorial-angular-0_cli.png)
 
-**Angular en su versión 6 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
+**Angular en su versión 6 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El Angular CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
 
 <!-- more -->
 
-El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 6** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
+El comúnmente conocido como **AngularCLI** o *angular cli* o *angular-cli* o * CLI a secas* es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 6** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
 >Código asociado a este artículo en *GitHub*: [AcademiaBinaria/AutoBot/0-Hello](https://github.com/AcademiaBinaria/autobot/tree/0-hello) 
 
@@ -30,6 +30,8 @@ El comúnmente conocido como **AngularCLI** o *CLI a secas* es la herramienta de
 Para empezar, como en casi cualquier desarrollo **necesitarás *NodeJS* y su manejador de de paquetes *npm***. Tenerlos actualizados es un mandamiento básico para un desarrollador web.
 
 Empieza con una **instalación global** que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea. La ayuda está disponible tanto de modo general como para cada comando que vayas a usar.
+
+Instrucciones para instalar angular cli.
 
 ```console
 $ npm i -g @angular/cli@latest
