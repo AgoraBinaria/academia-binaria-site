@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
+        <lastmod>2018-09-17T09:42:17.567Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
         <lastmod>2018-09-17T08:48:37.095Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -65,14 +73,6 @@
     <url>
         <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
         <lastmod>2018-05-03T11:53:46.071Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
-        <lastmod>2018-05-03T09:07:15.049Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
