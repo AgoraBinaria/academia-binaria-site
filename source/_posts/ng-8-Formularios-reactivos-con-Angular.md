@@ -9,7 +9,7 @@ tags:
 - Angular2
 - reactiveForms
 - Tutorial
-- Introducción
+- Avanzado
 categories:
 - [Tutorial, Angular] 
 thumbnail: /css/images/angular_8_reactive.png
