@@ -32,11 +32,11 @@ Partiendo de la aplicación tal cómo quedó en [Comunicaciones http en Angular]
 
 # 1 Resolver
 
-Cuando las una ruta se activa, el router de angular carga un componente en la vista. Bien, pero normalmente necesitará unos datos para ser mostrados. Y casi siempre serán datos de obrtención asíncrona. Lo cual nos lleva a tener que esperar antes de mostrar y mostrar vacíos, o cargando... En cualquier caso tendremos algún que otro *if* comprobando si los datos están listos o no.
+Cuando una ruta se activa, el *router de Angular* carga un componente en la vista. Bien, pero normalmente necesitará unos **datos iniciales** para ser mostrados. Y casi siempre serán datos de obtención asíncrona. Lo cual nos lleva a tener que esperar antes de mostrar, mostrar vacíos, o cargando... En cualquier caso tendremos algún que otro *if* comprobando si los datos están listos o no.
 
-Una posible solución vienen de la mano de los *resolvers*. Son servicios que implementan la interfaz `Resolve<any>` y que se ejecutan (resuelven) antes de cargar el componente de la ruta activa. Cuando termina avisa al router y este pone a disposición del componente los datos ya cargados, liberándolo de la lógica de carga, espera y comprobación. A cambio, la transición hacia la ruta no es tan fluida y agradece una buena animación.
+Una posible solución vienen de la mano de los *resolvers*. Son servicios que implementan la interfaz `Resolve<any>` y que se ejecutan (resuelven) antes de cargar el componente de la ruta activa. Cuando termina avisa al router y este pone **a disposición del componente los datos ya cargados**, liberándolo de la lógica de carga, de la espera y de las comprobaciones de nulos e indefinidos. 
 
-Veamos por ejemplo la ruta raíz de Autobot que necesita la lista de coches para empezar. Esta solución invoucra tres ficheros.
+A cambio, la transición hacia la ruta no es tan fluida y agradece una buena animación. Veamos por ejemplo la ruta raíz de Autobot que necesita la lista de coches para empezar. Esta solución involucra tres ficheros.
 
 ## 1.1 Interfaz Resolve
 
@@ -49,7 +49,7 @@ export class CarsResolverService implements Resolve<Car[]> {
   public resolve = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Car[]> => this.cars.getCars$();
 }
 ```
-El método devuelve un observable al que se subscribe el router.
+El método devuelve un observable al que se subscribe el *router*.
 
 ## 1.2 Routes
 
@@ -65,11 +65,11 @@ const routes: Routes = [{
 }];
 ```
 
-Lo que hace el Angular Router es subscribirse al método `resolve` y almacenar su respuesta en una variable, en este caso llamada `cars`. Dicha variable será consumida de forma síncrona por el componente.
+Lo que hace el *Angular Router* es subscribirse al método `resolve` y almacenar su respuesta en una variable, en este caso llamada `cars`. Dicha variable será consumida de forma síncrona por el componente.
 
 ## 1.3 Snapshot data
 
-El `HomeComponent` no interactúa directamente con el resolver y por tanto no reclama el servicio en sus dependencias. Símplemente trabaja con el router.
+El `HomeComponent` no interactúa directamente con el *resolver* y por tanto no reclama el servicio en sus dependencias. Símplemente trabaja con el *router*.
 
 ```typescript
   public cars: Car[];
@@ -79,7 +79,7 @@ El `HomeComponent` no interactúa directamente con el resolver y por tanto no re
   }
 ```
 
-No hay necesidad de subscripción ni de control extra en la vista sobre la propiedad `cars`. Este patrón es recomendable cuando no queremos mostrar una vista a medio cargar, o cuando la lógica de carga asíncrona complica demasiado el componente.
+> No hay necesidad de subscripción ni de control extra en la vista sobre la propiedad `cars`. Este patrón es recomendable cuando no queremos mostrar una vista a medio cargar, o cuando la lógica de carga asíncrona complica demasiado el componente.
 
 # 2 Interceptor
 
