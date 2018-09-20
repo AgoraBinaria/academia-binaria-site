@@ -83,26 +83,26 @@ El `HomeComponent` no interactúa directamente con el *resolver* y por tanto no 
 
 # 2 Interceptor
 
-Hasta ahora todas las comunicacione con nuestro servidor ha sido anónimas. Los datos eran públicos y no se exigía nada para poder leer o guardar información. Pero no siempre es así y los procesos de envío y recepción de datos del servidor suelen ser nominales y por tanto requieren de una identificación del usuario.
+Hasta ahora todas las comunicacione con nuestro servidor han sido anónimas. Los datos eran públicos y no se exigía nada para poder leer o guardar información. Pero no siempre es así y los procesos de envío y recepción de datos del servidor suelen ser nominales y por tanto requieren de una **identificación del usuario**.
 
 La seguridad de las comunicaciones con un servicio REST se resuelve habitualmente mediante una **credencial generada por el servidor llamada _token_**. Un usuario registrado en el sistema puede hacer _log in_ enviando una vez su identificador y contraseña. Si todo va bien, a cambio el servidor le enviará un _token_ que deberá usar en las siguientes llamadas. Con esto el servidor será capaz de autentificar las llamadas y responder adecuadamente.
 
-La detección de fallos y el envío de credenciales es algo que haremos a casi todas las llamadas http. Parece razonable disponer de un mecanísmo único que se aplique a todas las llamdas sin necesidad de ir una por una. En Angular, eso se consigue con los interceptores.
+La detección de fallos y el envío de credenciales es algo que haremos a casi todas las llamadas *http*. Parece razonable disponer de un **mecanísmo único** que se aplique a todas las llamadas sin necesidad de ir una por una. En Angular, eso se consigue con los interceptores.
 
 ## 2.1 Interfaz HttpInterceptor
 
-El módulo http de Angular nos ofrexe una interfaz para implementar en servicios estándar y convertirlos en interceptores. En la interfaz `HttpInterceptor` que obliga a crear el método intercept que nos deja una firma un pelín compleja,  `intercept(req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>>` . Vayamos por partes:
+El módulo *http* de Angular nos ofrece una interfaz para implementar en servicios estándar y convertirlos en interceptores. Es la interfaz `HttpInterceptor`, que obliga a crear el método `intercept` que nos deja una firma un pelín compleja,  `intercept(req: HttpRequest<any>, next: HttpHandler):Observable<HttpEvent<any>>` . Vayamos por partes:
 
-- `req: HttpRequest<any>` es un puntero a la peticíon en curso y su tipo deja bien claro que es eso, una http request.
+- `req: HttpRequest<any>` es un puntero a la peticíon en curso y su tipo lo deja bien, es una *http request*.
 - `next: HttpHandler` cada petición es manipulada por múltiples manejadores y cada interceptor es encadenado al siguiente manejador mediante este parámetro.
-- `: Observable<HttpEvent<any>>`el tipo devuelto es llamativo porque además de ser un observable, resulta que usa un doble genérico. La razón es que este observable, no se queda simplemente con el evento de respuesta si no que observa cualquier evento http que le suceda a la petión. Entre ellos estará la recepción de la respuesta. Pero es uno más.
+- `: Observable<HttpEvent<any>>`el tipo devuelto es llamativo porque además de ser un observable, resulta que usa un doble genérico. La razón es que este observable no se queda simplemente con el evento de respuesta, sino que observa cualquier evento *http* que le suceda a la petición. Entre ellos estará la recepción de la respuesta. Pero es uno más.
 
 ```typescript
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req)
   }
 ```
-La respuesta del método se puede simplificar con `next.handle(req)`. Esto sería tener un interceptor que no hace abosolutamente nada. Habitualmente usaremos los interceptores para mutar la llamada, procesar la respuesta o ambas como en este caso.
+La respuesta del método se puede simplificar con `next.handle(req)`. Esto sería como tener un interceptor que no hace abosolutamente nada. Habitualmente usaremos los interceptores para mutar la llamada, procesar la respuesta o ambas tareas como en este caso.
 
 ```typescript
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -111,7 +111,7 @@ La respuesta del método se puede simplificar con `next.handle(req)`. Esto serí
   }
 ```
 
-La llamada en curso no se puede modificar alegremente. Es inmutable, y por tanto, exige ser clonada si queremos hacer algún cambio. Afortunadamente Angular nos ofrece de métodos de clonación y mutado para las operaciones más habituales, como agregar una cabecera de autorización adjuntando un token a cada llamada. Claro que para que esto funcione `this.token` ha de tener un valor del que por ahora no tenemos ni idea.
+La llamada en curso no se puede modificar alegremente. Es inmutable, y por tanto, exige ser clonada si queremos hacer algún cambio. Afortunadamente Angular nos ofrece métodos de **clonación y mutado** para las operaciones más habituales. Como agregar una cabecera de autorización adjuntando un token a cada llamada. 
 
 ```typescript
   private getReqWithAuthorization = (req: HttpRequest<any>) =>
@@ -119,10 +119,11 @@ La llamada en curso no se puede modificar alegremente. Es inmutable, y por tanto
       setHeaders: { Authorization: `Bearer ${this.token}` }
     });
 ```
+Claro que para que esto funcione `this.token` ha de tener un valor del que por ahora no tenemos ni idea.
 
 > En Angular promueven el uso de funciones y datos _inmutables_ de ahí que nos obliguen a clonar las cabeceras para modificarlas.
 
-La otra gran labor encomendada a los interceptores es procesar las respuestas cuando lleguen desde el API. Para ello no hay más que entubar el operador RxJS adecuado en el stream de la petición. Por ejemplo un capturador genérico de errores con una especial atención al 401.
+La otra gran labor encomendada a los interceptores es procesar las respuestas cuando lleguen desde el API. Para ello no hay más que entubar el operador *RxJS* adecuado en el *stream* de la petición. Por ejemplo este es un capturador genérico de errores con una especial atención al 401.
 
 ```typescript
   private handleError = err => {
@@ -138,13 +139,13 @@ La otra gran labor encomendada a los interceptores es procesar las respuestas cu
   };
 ```
 
-> A parte de toda la _liturgia_ a la que nos obliga el `HttpInterceptor`, al final la lógica es sencilla. Se trata de rellenar la cabecera con el token actual. Si es o no válido es algo que decidirá el servidor. Aquí simplemente envías lo que tienes.
+> A parte de toda la _liturgia_ a la que nos obliga el `HttpInterceptor`, al final la lógica es sencilla. Se trata de rellenar la cabecera con el token actual. Si es o no válido es algo que decidirá el servidor. Aquí simplemente envías lo que tienes y capturas la respuesta.
 
 ## 2.2 Enviar credenciales para obtener un token
 
-Una correcta separación de responsabilidades no debe exigir nada más al interceptor. Debemos provverle de un mecanismo mediante el cual pueda notificar fallos de seguridad. Y de otro con el que pueda estar al tanto de cambios en el testigo de identificación del usuario. 
+Una correcta separación de responsabilidades no debe exigir nada más al interceptor. Debemos proveerle de un mecanismo mediante el cual pueda notificar fallos de seguridad. Y de otro con el que pueda estar al tanto de cambios en el testigo de identificación del usuario. 
 
-Esa labor la realizaremos en un servicio de intermediación. Hay muchas soluciones para este problema: un bus de enventos es una de ellas. Y un refinamiento del mismo es el patrón redux. Sin complicarnos demasiado, podemos empezar con una implementación *naive* como la del servicio `core/global-store.service.ts`
+Esa labor la realizaremos en un servicio de intermediación. Hay muchas soluciones para este problema: un **_bus_ de eventos** es una de ellas. Y un refinamiento del mismo es el patrón *redux*. Sin complicarnos demasiado, podemos empezar con una implementación *naive* como la del servicio `core/global-store.service.ts`
 
 ```typescript
 export class GlobalStoreService {
@@ -165,9 +166,9 @@ export class GlobalStoreService {
 }
 ```
 
-Sin entrar en mucho detalle, por ahora, esta clase es un intermediario que permite comunicar objetos despachando operaciones y recibir notificaciones subscribiendonos a temas de interés seleccionados.
+> Sin entrar en mucho detalle, por ahora ;-), esta clase es un intermediario que permite comunicar objetos despachando operaciones y recibir notificaciones subscribiendonos a temas de interés seleccionados.
 
-En el caso de la seguridad, el interceptor notifica los fallos y recibe los cambios en el token. Este es un extracto de la funcionalidad usada en el `AuthInterceptorService`.
+En el caso de la seguridad, el interceptor notifica los fallos y recibe los cambios en el *token*. Este es un extracto de la funcionalidad usada en el `AuthInterceptorService`.
 
 ```typescript
   private token: string;
@@ -181,7 +182,7 @@ En el caso de la seguridad, el interceptor notifica los fallos y recibe los camb
   };
 ```
 
-En algún lugar de la ráiz de la plcación, como el `core/vavigator.componente.ts` es necesario escuchar ciertos eventos  y redirigir al usuario convenientemente.
+En algún lugar de la raíz de la aplicación, como por ejemplo el `core/navigator.componente.ts`, es necesario escuchar ciertos eventos y redirigir al usuario convenientemente.
 
 ```typescript
 export class NavigatorComponent implements OnInit {
@@ -198,7 +199,7 @@ export class NavigatorComponent implements OnInit {
 }
 ```
 
-Por supuesto que necesitaremos un formulario que recoja las credenciales del usuario y la envíe al servidor para validar y su cusao recibir un token. Pero todo eso lo tienes en el repositorio de ejemplo. Aquí simplemente pongo la pieza que cierra el círulo de la seguridad, la recepcióndel token en `auth/access.component.ts`
+Por supuesto que necesitaremos un formulario que recoja las credenciales del usuario y la envíe al servidor para validar y en su caso recibir un *token*. Pero todo eso lo tienes en el repositorio de ejemplo. Aquí simplemente pongo la pieza que cierra el círulo de la seguridad, la recepción del *token* en `auth/access.component.ts` que luego será enviado por el interceptor en las cabeceras de cada llamada.
 
 ```typescript
 export class AccessComponent implements OnInit {
@@ -210,9 +211,7 @@ export class AccessComponent implements OnInit {
 }
 ```
 
-Si se aceptan las credenciales, **el servidor nos devolverá un objeto con el _token_ de la sesión** para el usuario. Es habitual que envíe más información como roles, y preferencias del usuario... pero eso ya depende del API. Lo que depende de ti es guardar ese _token_.
-
-El **almacenamiento recomendado en los navegadores es el `localStorage` o el `sessionStorage`** pero en este tutorial introductorio tendrás que conformarte con almacenarlo en la memoria. 
+> Si se aceptan las credenciales, **el servidor nos devolverá un objeto con el _token_ de la sesión** para el usuario. Es habitual que envíe más información como roles, y preferencias del usuario... pero eso ya depende del API. Lo que depende de ti es guardar ese _token_. El **almacenamiento recomendado en los navegadores es el `localStorage` o el `sessionStorage`** pero en este tutorial introductorio tendrás que conformarte con almacenarlo en la memoria. 
 
 # 3 Guardias
 
