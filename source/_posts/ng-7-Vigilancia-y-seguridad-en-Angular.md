@@ -215,15 +215,15 @@ export class AccessComponent implements OnInit {
 
 # 3 Guardias
 
-Con este nombre y vininedo de tratr el tema de la seguridad, parecería que estos servicios están destinados al control de acceso de las aplicaciones. Pero tiene por qué ser así. Los *guards* son servicios que implementan alguna de las interfaces `canActivate, canLoad, canActivateChild, canDeactivate` que viene con el router de Angular.
+Con este nombre y viniendo de tratar el tema de la seguridad, parecería que estos servicios están destinados al control de acceso de las aplicaciones. Pero no tiene por qué ser así. Los *guards* son **servicios que implementan interfaces del RouterModule**. Concretamente alguna de estas: `canActivate, canLoad, canActivateChild, canDeactivate`. Que vengan con el *router* nos debe hacer pensar más en rutas que en seguridad.
 
-Es cierto que las tres primeras pueden colaborar en una mejor experiencia de usuarios no autenticados al impedirles acceder a páginas para las que no tienen permiso. Pero asumiendo siempre que la última palabra la tiene el API que evalía la petición del usuario.
+Es cierto que las tres primeras pueden colaborar en una mejor experiencia de usuarios no autenticados al impedirles acceder a páginas para las que no tienen permiso. Aunque asumiendo siempre que la última palabra la tiene el API que evalúa la petición del usuario.
 
-Pero, además de la seguridad, se usan mucho para comprobar si se han seguido los pasos correctos en un proceso. Por ejemplo, para llegar al paso del pago en una tienda online podría ser imprescindible haber rellando antes la dirección postal. Este sería una caso de uso para cualquiera de los tres primeros *cancerberos*.
+Pero, además de la seguridad, se usan mucho para comprobar si se han seguido los pasos correctos en un proceso. Por ejemplo, para llegar al paso del pago en una tienda online podría ser imprescindible haber rellenado antes la dirección postal. Este sería una caso de uso para cualquiera de los tres primeros *cancerberos*.
 
 ## 3.1 Interfaz canDeactivate
 
-En el fichero `car/travel.guard.ts` he implementado un caso poco relacionado con la seguridad; el `canDeactivate` para impedir o avisar antes de abandonar una página.
+En el fichero `car/travel.guard.ts` he implementado un caso poco relacionado con la seguridad; el `canDeactivate` para impedir o **avisar antes de abandonar** una página.
 
 ```typescript
 @Injectable()
@@ -237,9 +237,9 @@ export class TravelGuard implements CanDeactivate<CarComponent> {
 }
 ```
 
-Como ves, es mucho más compleja la declaraciíon del método que su implementación. Basta con responder cierto o falso de forma síncrona o asíncrona. Este método será invocado por el Angular Router antes de cambiar la ruta activa, dando oprtunidad al programadaro para interceptar la acción del usuario. En mi ejemplo si hay cambios en el viaje debe guardarlos antes de abandonar la página.
+Como ves, es mucho más compleja la declaraciíon del método que su implementación. Basta con **responder cierto o falso de forma síncrona o asíncrona**. Este método será invocado por el *Angular Router* antes de cambiar la ruta activa, dando así oportunidad al programador para interceptar la acción del usuario. En mi ejemplo, si hay cambios en el viaje debe guardarlos antes de abandonar la página.
 
-El resto de la sintáxis involucra al router para enganchar el *guard* y al componente para suminstrar la información relevante. Tenemos sendos extractos del `car-routing.module.ts` y del `car.component.ts`.
+El resto de la sintáxis involucra al *router* para enganchar el *guard* y al componente para suministrar la información relevante. Tenemos sendos extractos del `car-routing.module.ts` y del `car.component.ts`.
 
 ```typescript
   const routes: Routes = [
@@ -260,9 +260,9 @@ El resto de la sintáxis involucra al router para enganchar el *guard* y al comp
   }
 ```
 
-Terminamos así con una aplicaión que es capaz de mostrar, recoger y almacenar información relativa a un usuario de manera segura. También usa los observables y el router eficientemente. Es lo menos que se puede pedir y con ello se completa el tutorial de introducción a Angular.
+Terminamos así con una aplicación que es capaz de mostrar, recoger y almacenar información relativa a un usuario de manera segura. También usa los observables y el *router* eficientemente. Es lo menos que se puede pedir y con ello se completa el **tutorial de introducción a Angular**.
 
-Pero temas más avanzados con los que continuar. Sigue esta serie para iniciar el tutorial de Angular avanzado y crear tus [formularios reactivos con Angular](../formularios-reactivos-con-Angular/) mientras aprendes a programar con Angular6. 
+Pero hay temas más avanzados con los que continuar. Sigue esta serie para iniciar el **tutorial de Angular avanzado** y crear tus [formularios reactivos con Angular](../formularios-reactivos-con-Angular/) mientras aprendes a programar con Angular6. 
 
 
 > Aprender, programar, disfrutar, repetir.
