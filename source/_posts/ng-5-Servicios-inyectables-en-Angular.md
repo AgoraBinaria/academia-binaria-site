@@ -16,7 +16,7 @@ categories:
 thumbnail: /css/images/angular-5_inject.png
 ---
 
-![Tutorial Angular 5-Inject](/images/tutorial-angular-5_inject.png)
+![servicios-inyectables-en-Angular](/images/tutorial-angular-5_inject.png)
 
 La presentación, la lógica y el manejo de datos son tres capas de abstracción que usamos los programadores para mantener organizado nuestro código. En Angular 6, la presentación es cosa de los componentes. **La lógica y los datos tienen su lugar en servicios compartidos**.
 

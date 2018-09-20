@@ -65,41 +65,6 @@
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/DI/</loc>
-        <lastmod>2018-09-11T09:25:02.417Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Servicios/</loc>
-        <lastmod>2018-09-11T09:25:02.417Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/http/</loc>
-        <lastmod>2018-09-19T10:30:36.673Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Observables/</loc>
-        <lastmod>2018-09-19T10:30:36.673Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/RxJS/</loc>
-        <lastmod>2018-09-19T10:30:36.673Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://academia-binaria.com/tag/Forms/</loc>
         <lastmod>2018-09-19T10:33:06.853Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -121,50 +86,85 @@
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/Angular2/</loc>
+        <loc>https://academia-binaria.com/tag/Components/</loc>
         <lastmod>2018-09-19T10:37:42.704Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular2/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/DI/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Tutorial/</loc>
-        <lastmod>2018-09-19T10:37:42.704Z</lastmod>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/http/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Angular/</loc>
-        <lastmod>2018-09-19T10:37:42.704Z</lastmod>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Angular5/</loc>
-        <lastmod>2018-09-19T10:37:42.704Z</lastmod>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Introduccion/</loc>
-        <lastmod>2018-09-19T10:37:42.704Z</lastmod>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://academia-binaria.com/tag/Angular6/</loc>
-        <lastmod>2018-09-19T10:37:42.704Z</lastmod>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/Components/</loc>
-        <lastmod>2018-09-19T10:37:42.704Z</lastmod>
+        <loc>https://academia-binaria.com/tag/Servicios/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Observables/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/RxJS/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

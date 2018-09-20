@@ -7,6 +7,30 @@
     </url>
 
     <url>
+        <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+        <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
         <lastmod>2018-09-19T10:37:42.704Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,30 +49,6 @@
     <url>
         <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
         <lastmod>2018-09-19T10:33:06.853Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
-        <lastmod>2018-09-19T10:30:36.673Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
-        <lastmod>2018-09-17T09:42:17.567Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-        <lastmod>2018-09-11T09:25:02.417Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

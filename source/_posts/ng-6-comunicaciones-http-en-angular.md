@@ -17,7 +17,7 @@ categories:
 thumbnail: /css/images/angular-6_http.png
 ---
 
-![Tutorial Angular5 6-http](/images/tutorial-angular-6_http.png)
+![comunicaciones-http-en-Angular](/images/tutorial-angular-6_http.png)
 
 Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido fáciles y potentes. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas... y la librería *RxJs* y sus *streams* son intimidantes para los novatos. 
 

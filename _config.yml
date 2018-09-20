@@ -76,7 +76,6 @@ theme: icarus
 
 sitemap:
     path: sitemap.xml
-    template: ./sitemap_template.xml
     
 all_minifier: true
 

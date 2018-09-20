@@ -16,18 +16,22 @@ categories:
 thumbnail: /css/images/angular-7_watch.png
 ---
 
-![Tutorial Angular5 7-watch](/images/tutorial-angular-7_watch.png)
+![vigilancia-y-seguridad-en-Angular](/images/tutorial-angular-7_watch.png)
 
-La seguridad de los datos es una responsabilidad compartida entre el servidor y el cliente. En **Angular 6** usaremos los _interceptores_ para detectar intrusos y enviar credenciales. La **identificación de usuarios y el control** de acceso es parte del trabajo de un desarrollador front-end.
+La seguridad de los datos es una responsabilidad compartida entre el servidor y el cliente. En **Angular 6** usaremos los _interceptores_ para detectar intrusos y enviar credenciales. Veremos como los _guards_ nos permiten controlar la navegación interna y los _resolvers_ nos aseguran los datos por adelantado.
 
-Veremos nuevos usos de los _observables_ y los servicios de la librería `@angular/common/http` con los que tratar con los **tokens para comunicaciones seguras en Angular**.
+ La **identificación de usuarios y el control** de acceso y navegación es parte del trabajo de un desarrollador front-end. Veremos nuevos usos de los _observables_ y los servicios de la librerías `@angular/common/http` y `@angular\router` con los que tratar  **comunicaciones seguras y fluidas en Angular**.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Comunicaciones http en Angular](../comunicaciones-http-en-Angular/). Al finalizar tendrás una aplicación que identifica usuarios y se responsabiliza de almacenar y comunicar el _token_ de seguridad de un servicio REST.
+Partiendo de la aplicación tal cómo quedó en [Comunicaciones http en Angular](../comunicaciones-http-en-Angular/). Al finalizar tendrás una aplicación que identifica usuarios y se responsabiliza de almacenar y comunicar el _token_ de seguridad de un servicio REST y mejora la usabilidad controlando la entrada y la salida en las páginas.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/7-watch](https://github.com/AcademiaBinaria/autobot/tree/7-watch)
 > > Tienes una versión desplegada operativa para probar [AutoBot](https://academiabinaria.github.io/autobot/) 
+
+
+# 1 Resolver
+
 
 # 1 Seguridad
 
