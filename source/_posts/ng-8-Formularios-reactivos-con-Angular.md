@@ -121,7 +121,9 @@ this.form = this.formBuilder.group({
   ]
 });
 ```
-A estas validaciones integradas se puede añadir otras creadas por el programador. Incluso con ejecución asíncrona para validaciones realizadas en el servidor.
+A estas validaciones integradas se puede añadir otras creadas por el programador. Incluso con ejecución asíncrona para validaciones realizadas en el servidor. 
+
+> Revisa por los [validadores de ejemplo en Autobot](https://github.com/AcademiaBinaria/autobot/blob/8-reactive/src/app/shared/custom.validators.ts)
 
 # 3 Estados
 
@@ -153,6 +155,8 @@ La máquina de estados de cambio contempla entre otros los siguientes:
 
 Como en el caso de los estados de validación, el formulario también se somete a estos estados en función de cómo estén sus controles.
 
+> Puedes saber en todo momento los estados de cambio y validación de cada control, [mira cómo se obtienen en Autobot](https://github.com/AcademiaBinaria/autobot/blob/8-reactive/src/app/shared/form-tools.service.ts)
+
 # 4 Valor
 
 Este sistema de gestión de los controles del formulario oculta la parte más valiosa (el valor que se pretende almacenar) en la propiedad `value` del formulario. 
@@ -180,7 +184,7 @@ public onSubmit(formValue: any) {
 }
 ```
 
-Ya tenemos formularios reactivos conducidos por los datos que te permitirán construir pantallas complejas manteniendo el control en el modelo y dejando la vista despejada. 
+Ya tenemos formularios reactivos conducidos por los datos que te permitirán construir pantallas complejas manteniendo el control en el modelo y dejando la vista despejada. Como resumen podemos decir que vamos a programar más en TypeScript que en Html. La ventaja del desacople es que podremos controlar lo que enviamos y recibimos de la vista. Así se pueden aplicar formatos, validaciones y transformaciones entre lo que presentamos y lo que enviamos hacia los servicios.
 
 > Para un ejemplo más completo de los formularios reactivos en Angular explora el componente [Access de Autobot](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/auth/access). En [Shared](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/shared) tienes un par de servicios de ayuda para validación de fromularios.
 
