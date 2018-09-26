@@ -60,9 +60,9 @@ En este paso tenemos a disposición varias sobrecargas para configurar con mayor
 Para empezar es fácil asignar valores por defecto. Incluso es un buen momento para modificar o transformar datos previos para ajustarlos a cómo los verá el usuario, sin necesidad de cambiar los datos de base.
 
 ```typescript
-this.name = 'ALBERTO';
+this.name = 'TUTORIAL ANGULAR';
 this.form = this.formBuilder.group({
-  email: 'info@angular.io',
+  email: 'tutorial@angular.io',
   name: this.name.toLowerCase(),
   registeredOn : new Date().toISOString().substring(0, 10)
   password: ''
@@ -107,7 +107,7 @@ Dichas validaciones se solían realizar agregando atributos html tales como el c
 ```typescript
 this.form = this.formBuilder.group({
   email: [
-    'info@angular.io', 
+    'tutorial@angular.io', 
     [ Validators.required, Validators.email ]
   ],
   name: [
@@ -176,11 +176,13 @@ Un ejemplo típico suele ser como la siguiente vista y su controlador:
 ```typescript
 public onSubmit(formValue: any) {
   console.log(formValue);
-  // { email:'info@angular.io' }
+  // { email:'tutorial@angular.io' }
 }
 ```
 
 Ya tenemos formularios reactivos conducidos por los datos que te permitirán construir pantallas complejas manteniendo el control en el modelo y dejando la vista despejada. 
+
+> Para un ejemplo más completo de los formularios reactivos en Angular explora el componente [Access de Autobot](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/auth/access). En [Shared](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/shared) tienes un par de servicios de ayuda para validación de fromularios.
 
 Con esto incias tu formación avanzada y dispones de más conocimiento para crear aplicaciones Angular. Repasa la serie de introducción a Angular [tutorial de introducción a Angular](../tag/Introduccion//) y verás como aprendes a programar con Angular 7.
 
