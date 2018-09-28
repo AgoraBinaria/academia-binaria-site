@@ -188,7 +188,7 @@ Ya tenemos formularios reactivos conducidos por los datos que te permitirán con
 
 > Para un ejemplo más completo de los formularios reactivos en Angular explora el componente [Access de Autobot](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/auth/access). En [Shared](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/shared) tienes un par de servicios de ayuda para validación de fromularios.
 
-Con esto incias tu formación avanzada y dispones de más conocimiento para crear aplicaciones Angular. Repasa la serie de introducción a Angular [tutorial de introducción a Angular](../tag/Introduccion//) y verás como aprendes a programar con Angular 7.
+Con esto incias tu formación avanzada y dispones de más conocimiento para crear aplicaciones Angular. Repasa la serie de introducción a Angular [tutorial de introducción a Angular](../tag/Introduccion/) y avanza dominando la [Detección del cambio en Angular ](../deteccion-del-cambio-en-Angular/) verás como aprendes a programar con Angular 7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
