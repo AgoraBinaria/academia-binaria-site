@@ -1,5 +1,5 @@
 ---
-title: Detección del cambio con RxJS y Angular
+title: Detección del cambio Angular
 permalink: deteccion-del-cambio-con-RxJS-y-Angular
 date: 2018-09-28 12:09:27
 tags:  
@@ -8,7 +8,6 @@ tags:
 - Angular6
 - Angular5
 - Angular2
-- RxJS
 - Observables
 - ChangeDetection
 - Tutorial
@@ -97,7 +96,7 @@ Normalmente tendrá que crear un nuevo objeto y reasignarlo en lugar del anterio
 
 La estrategia `onPush` trata a todos los `Inputs` en inmutables, es decir, algo que no espera que cambie. Similar al paso de parámetros por valor, que si cambia es porque és otro puntero.
 
-## 3.2 EL clonado
+## 3.2 El clonado
 El potencialmente pesado trabajo de clonado lo podemos evitar en muchos casos usando alguna de estas técnicas:
 
 - **Tipos primitivos** que se pasan por valor en las propiedades `@Input()`
