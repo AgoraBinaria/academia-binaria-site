@@ -1,7 +1,7 @@
 ---
-title: Deteccion del cambio con RxJS y Angular
+title: Detección del cambio con RxJS y Angular
 permalink: deteccion-del-cambio-con-RxJS-y-Angular
-date: 2018-09-26 10:59:27
+date: 2018-09-28 12:09:27
 tags:  
 - Angular
 - Angular7
@@ -20,175 +20,106 @@ thumbnail: /css/images/angular-9_change.png
 
 ![deteccion-del-cambio-con-RxJS-y-Angular](/images/tutorial-angular-9_change.png)
 
-El **doble enlace automático** entre elementos *html* y propiedades de objetos fue el primer gran éxito de **Angular**. Ese _doble-binding_ facilita mucho el desarrollo de formularios. Pero esa magia tienen un coste en escalabilidad; impacta en el tiempo de ejecución y además dificulta la validación y el mantenimiento de formularios complejos.
+La forma en que Angular realiza su renderizado y actualiza sus vistas es un factor clave para el rendimiento de las aplicaciones. ¿Cómo funciona la estrategia de detección de cambios de Angular? Pues tiene dos modos: `default` o *automágico* y `onPush` o *mindfullness*.
 
-La solución en Angular 7 pasa por desacoplar el modelo y la vista, introduciendo una capa que gestione ese doble enlace. Los servicios y directivas del módulo `ReactiveFormsModule` que viene en la librería `@angular/forms` permiten programar **formularios reactivos conducidos por el código**.
+Es importante tomar consciencia porque es costoso realizar la detección más veces de lo necesario y porque no hacerlo suficientemente implica no ver resultados reales. Con un mayor conocimiento del `changDetectionStrategy` y un poco de trabajo extra tendrás aplicaciones más eficientes y mantenibles.
+
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás una aplicación con formularios _model driven_ fáciles de mantener y validar.
+Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás una aplicación que actualiza la vista sólo cuando es necesario, es decir: cuando los datos han cambiado.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/9-change](https://github.com/AcademiaBinaria/autobot/tree/9-change)
 
 
-# 1 Desacople
+# 1 Comunicación de datos entre componentes
 
-La directiva `[(ngModel)]="model.property"` con su popular _banana in a box_ establece el doble enlace entre el elemento de la vista al que se le aplica y una propiedad del modelo. Los cambios en la vista son trasladados automáticamente al modelo, y al revés; cualquier cambio en el modelo se refleja inmediatamente en la vista.
+La detección de cambios se dispara ante eventos que le ocurren a los componentes. **La detección se realiza componente a componete**, así que compensa tener muchos componentes pequeños, para que cada uno por si sólo no genere demasiado ruido.
 
-Se pueden establecer validaciones y configurar los eventos que disparan las actualizaciones; pero todo ello usando más y más atributos y directivas en la plantilla. Son los formularios _template driven_ que degeneran en un *html* farragoso y difícil de mantener.
+## 1.1 Componentes Contenedores y Presentadores
 
-## 1.1 Form Builder
+Al pasar de un único componente a varios mini-componentes, se propone usar **el patrón contenedor / presentadores**. Se mantiene un componente padre que contiene múltiples componentes presentadores hijos. El contendor es el único con acceso a los servicios de negocio y datos. Los presentadores reciben los datos y emiten eventos. Los presentadores no obtienen ni modifican por su cuenta.
 
-Entra en acción el  `FormBuilder`, un servicio del que han de depender los componentes que quieran desacoplar el modelo de la vista. Se usa para construir un formulario creando un `FormGroup`, (un grupo de controles) que realiza un seguimiento del valor y estado de cambio y validez de los datos.
+Nomenclatura
+- **Container**: aka *Parent, Smart* 
+- **Presenter**: aka *Child, Dumb*
 
-Veamos un ejemplo mínimo de su declaración. 
+> Este reparto de responsabilidades es aconsejable independientemente de la estrategia de detección aplicada.
+
+# 2 Change detectionstrategies
+
+Con la aplicación bien estructurada en componentes y con la comunicación estandarizada, habremos reducido el impacto de la detección del cambio y estaremos preparados para optimizarlo. Conozcamos en detalle las estratégias de detección del cambio.
+
+El decorador `@Component()` admite en su configuración la poco conocida propiedad `changeDetection`. Que de forma explícita se usa así:
+
+``` typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+@Component({
+  changeDetection: ChangeDetectionStrategy.Default,
+  selector: 'app-root',
+  template: `<h1>Changes are wellcome</h1> `
+})
+export class AppComponent {}
+```
+
+# 2.1 Detección automática, *default*
+
+Por defecto, Angular tiene que ser conservador y verificar cada posible cambio, esto se denomina comprobación sucia o *dirty checking*. Se dispara **con demasiada frecuencia**, al menos en los siguientes casos: 
+
+- Eventos desde el browser
+- Timers, intervals etc..
+- Llamadas http
+- Promesas y código asíncrono.
+
+Por si fuera poco, además de dispararse mucho es **muy costoso**. Determinar que algo ha cambiado implica comparar dos estados: el actual y el anterior.
+
+> La comparación es valor a valor, en profundidad, para cada objeto de cada array, para cada propiedad de cada objeto.
+
+Contod, esta estrategia es cómoda para el programador y suficiente para casos básicos. Pero demasiada mágia dificulta el control en aplicaciones complejas. Y en pantallas de mucha información e interacción degrada el rendimiento percibido.
+
+# 2.2 Detección manual, *onPush*
+
+Como se puede preveer, la detección del cambio manual es lanzada por el programador. No siempre va a ser laborioso, pero será más consciente pues para que ocurra han de darse alguna de estas circunstancias:
+
+- **Explícitamente** el programador solicita la detección llamando a `ChangeDetectorRef.detectChanges();
+- **Implícitamente** al usar el `pipe Async` en la vista se llama a ese mismo método.
+- **Conscientemente** el desarrollador obliga a un componente a repintarse si le cambia la referencia a un `@Input()`.
+
+> En este modo los componentes dejan de evaluar y comparar sus propiedades rutinariamente. Sólo atienden a eventos `@Output()` o **cambios de referencia** `@Input()`. Esto relaja mucho al motor de Angular, que ya no tiene que hacer comparaciones odiosas. Sabrá que algo ha cambiado porque... es otro objeto. 
+
+# 3 Inmutabilidad
+
+Como ya se ha dicho, para que Angular en la estrategia automática decida que algo ha cambiado necesita hacer una comparación por valor. Para evitar ese coste usamos la estrategia manual y el programador tienen que cambiar la referencia de algo cuando quiera que Angualar repinte la vista. 
+
+## 3.1 Por referencia y por valor
+
+Normalmente tendrá que crear un nuevo objeto y reasignarlo en lugar del anterior en un **ciclo de clonación, mutación y asignación**. Por costoso que parezca siempre compensa si evita muchas e innecesarias comparaciones por valor en estructuras profundas.
+
+La estrategia `onPush` trata a todos los `Inputs` en inmutables, es decir, algo que no espera que cambie. Similar al paso de parámetros por valor, que si cambia es porque és otro puntero.
+
+## 3.2 EL clonado
+El potencialmente pesado trabajo de clonado lo podemos evitar en muchos casos usando alguna de estas técnicas:
+
+- **Tipos primitivos** que se pasan por valor en las propiedades `@Input()`
+- **Arrays**: muchos métodos como `.filter() .slice() .sort() .concat()` etc, devuelven nuevas referencias sin modificar el array original.
+- **Observables y el pipe Async**, pues en este caso se subscribe y lanza implícitamente la detección del cambio. Sin necesidad de clonar.
+
+Para los demás casos tenemos operadores *TypeScript* sencillos y optimizados para obtener nuevas referencias a partir de otros ya existentes.
 
 ```typescript
-import { FormBuilder, FormGroup } from '@angular/forms';
-public form: FormGroup;
-constructor(private formBuilder: FormBuilder) {}
-public ngOnInit() {
-  this.form = this.formBuilder.group({});
-}
+const original = { name:'first', value:1 };
+const cloned = { ...original };
+const mutated = { ...original, value:2, newProperty: 'added' };
+const list = [ original, cloned, mutated ];
+const clonedList = [ ...list ];
+const mutatedList = [ ...list, { name: 'new item'} ];
+const newList = list.filter(i => i.name=='first');
 ```
 
-# 2 Form Group
 
-El formulario se define como un grupo de controles. Cada control tendrá un nombre y una configuración. Esa definición permite establecer un valor inicial al control y asignarle validaciones.
+Ya tienes los conocimientos para acelerar y reducir la incertidumbre sobre el actualización de vistas usando el patrón contenedor / presentador junto con la estrategia de detección de cambios OnPush.
 
-En este paso tenemos a disposición varias sobrecargas para configurar con mayor o menor detalle el objeto de control.
-
-## 2.1 Default data
-Para empezar es fácil asignar valores por defecto. Incluso es un buen momento para modificar o transformar datos previos para ajustarlos a cómo los verá el usuario, sin necesidad de cambiar los datos de base.
-
-```typescript
-this.name = 'TUTORIAL ANGULAR';
-this.form = this.formBuilder.group({
-  email: 'tutorial@angular.io',
-  name: this.name.toLowerCase(),
-  registeredOn : new Date().toISOString().substring(0, 10)
-  password: ''
-});
-```
-
-## 2.1 Enlace en la vista
-
-Mientras tanto en la vista html... Este trabajo previo y extra que tienes que hacer en el controlador se recompensa con una mayor limpieza en la vista. Lo único necesario será asignar por nombre el elemento html con el control typescript que lo gestionará.
-
->Para ello usaremos dos directivas que vienen dentro del módulo _reactivo_ son `[formGroup]="objetoFormulario"` para el formulario en su conjunto, y `formControlName="nombreDelControl"` para cada control.
-
-```html
-<form [formGroup]="form">
-  <label for="email">E-mail</label>
-  <input name="email"
-         formControlName="email"
-         type="email" />
-  <label for="name">Name</label>
-  <input name="name"
-         formControlName="name"
-         type="text" />
-  <label for="registeredOn">Registered On</label>
-  <input name="registeredOn"
-         formControlName="registeredOn"
-         type="date" />
-  <label for="password">Password</label>
-  <input name="password"
-         formControlName="password"
-         type="password" />
-</form>
-```
-
-# 2 Validación de formularios
-
-La validación es una pieza clave de la entrada de datos en cualquier aplicación. Es el primer **frente de defensa ante errores de usuarios**; involuntarios o deliberados.
-
-Dichas validaciones se solían realizar agregando atributos html tales como el conocido `required`. Pero todo eso ahora se traslada a la configuración de cada control, donde podrás establecer una o varias reglas de validación sin mancharte con html. 
-
-> De nuevo tienes distintas sobrecargas que te permiten resolver limpiamente casos sencillos de una sola validación, o usar baterías de reglas. Las reglas son funciones y el objeto `Validators` del _framework_ viene con las más comunes listas para usar.  
-
-```typescript
-this.form = this.formBuilder.group({
-  email: [
-    'tutorial@angular.io', 
-    [ Validators.required, Validators.email ]
-  ],
-  name: [
-    this.name.toLowerCase(),
-    Validators.required
-  ],
-  registeredOn : new Date().toISOString().substring(0, 10)
-  password: [
-    '', 
-    [ Validators.required, Validators.minLength(4) ]
-  ]
-});
-```
-A estas validaciones integradas se puede añadir otras creadas por el programador. Incluso con ejecución asíncrona para validaciones realizadas en el servidor. 
-
-> Revisa por los [validadores de ejemplo en Autobot](https://github.com/AcademiaBinaria/autobot/blob/8-reactive/src/app/shared/custom.validators.ts)
-
-# 3 Estados
-
-Los formularios y controles reactivos están gestionados por máquinas de estados que determinan en todo momento la situación de cada control y del formulario en si mismo.
-
-## 3.1 Estados de validación
-
-Al establecer una o más reglas para uno o más controles activamos el sistema de chequeo y control del estado de cada control y del formulario en su conjunto.
-
-La máquina de estados de validación contempla los siguientes estados mutuamente excluyentes:
-
-- **VALID**: el control ha pasado todos los chequeos
-- **INVALID**: el control ha fallado al menos en una regla.
-- **PENDING**: el control está en medio de un proceso de validación
-- **DISABLED**: el control está desactivado y exento de validación
-
-Cuando un control incumple con alguna regla de validación, estas se reflejan en su propiedad `errors` que será un objeto con una propiedad por cada regla insatisfecha y un valor o mensaje de ayuda guardado en dicha propiedad.
-
-## 3.2 Estados de modificación
-
-Los controles, y el formulario, se someten a otra máquina de estados que monitoriza el valor del control y sus cambios. 
-
-La máquina de estados de cambio contempla entre otros los siguientes:
-
-- **PRINSTINE**: el valor del control no ha sido cambiado por el usuario
-- **DIRTY**: el usuario ha modificado el valor del control.
-- **TOUCHED**: el usuario ha tocado el control lanzando un evento `blur` al salir.
-- **UNTOUCHED**: el usuario no ha tocado y salido del control lanzando ningún evento `blur`.
-
-Como en el caso de los estados de validación, el formulario también se somete a estos estados en función de cómo estén sus controles.
-
-> Puedes saber en todo momento los estados de cambio y validación de cada control, [mira cómo se obtienen en Autobot](https://github.com/AcademiaBinaria/autobot/blob/8-reactive/src/app/shared/form-tools.service.ts)
-
-# 4 Valor
-
-Este sistema de gestión de los controles del formulario oculta la parte más valiosa (el valor que se pretende almacenar) en la propiedad `value` del formulario. 
-
-Contendrá un objeto con las mismas propiedades usadas durante la definición del formulario, cada una con el valor actual del control asociado.
-
-Un ejemplo típico suele ser como la siguiente vista y su controlador:
-
-```html
-<form [formGroup]="form"
-      (submit)="onSubmit(form.value)">
-  <label for="email">E-mail</label>
-  <input name="email"
-         formControlName="email"
-         type="email" />
- <button type="submit"
-        [disabled]="form.invalid">Save</button>
-</form>
-```
-
-```typescript
-public onSubmit(formValue: any) {
-  console.log(formValue);
-  // { email:'tutorial@angular.io' }
-}
-```
-
-Ya tenemos formularios reactivos conducidos por los datos que te permitirán construir pantallas complejas manteniendo el control en el modelo y dejando la vista despejada. Como resumen podemos decir que vamos a programar más en TypeScript que en Html. La ventaja del desacople es que podremos controlar lo que enviamos y recibimos de la vista. Así se pueden aplicar formatos, validaciones y transformaciones entre lo que presentamos y lo que enviamos hacia los servicios.
-
-> Para un ejemplo más completo de los formularios reactivos en Angular explora el componente [Access de Autobot](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/auth/access). En [Shared](https://github.com/AcademiaBinaria/autobot/tree/8-reactive/src/app/shared) tienes un par de servicios de ayuda para validación de fromularios.
+> Para un ejemplo más completo de estos conceptos explora los componentes [Home de Autobot](https://github.com/AcademiaBinaria/autobot/tree/9-change/src/app/home). En [Car](https://github.com/AcademiaBinaria/autobot/tree/9-change/src/app/car) tienes un ejemplo de notificación manual usando `ChangeDetectorRef`.
 
 Continúa tu formación avanzada para crear aplicaciones Angular siguiendo la serie del [tutorial avanzado de desarrollo con Angular](../tag/Avanzado/) y verás como aprendes a programar con Angular 7.
 

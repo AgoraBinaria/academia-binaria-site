@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/deteccion-del-cambio-con-RxJS-y-Angular/</loc>
+    
+    <lastmod>2018-09-28T10:10:11.131Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
     
     <lastmod>2018-09-26T08:29:06.669Z</lastmod>
