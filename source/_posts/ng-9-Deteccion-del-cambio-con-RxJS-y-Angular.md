@@ -1,6 +1,6 @@
 ---
-title: Detección del cambio Angular
-permalink: deteccion-del-cambio-con-RxJS-y-Angular
+title: Detección del cambio en Angular
+permalink: deteccion-del-cambio-en-Angular
 date: 2018-09-28 12:09:27
 tags:  
 - Angular
@@ -17,7 +17,7 @@ categories:
 thumbnail: /css/images/angular-9_change.png
 ---
 
-![deteccion-del-cambio-con-RxJS-y-Angular](/images/tutorial-angular-9_change.png)
+![deteccion-del-cambio-en-Angular](/images/tutorial-angular-9_change.png)
 
 La forma en que Angular realiza su renderizado y actualiza sus vistas es un factor clave para el rendimiento de las aplicaciones. ¿Cómo funciona la estrategia de detección de cambios de Angular? Pues tiene dos modos: `default` o *automágico* y `onPush` o *mindfullness*.
 
