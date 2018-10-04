@@ -1,6 +1,6 @@
 ---
-title: Detección del cambio en Angular
-permalink: deteccion-del-cambio-en-Angular
+title: El patrón Redux con NgRx en Angular
+permalink: el-patron-redux-con-ngrx-en-angular
 date: 2018-09-28 12:09:27
 tags:  
 - Angular
@@ -8,15 +8,16 @@ tags:
 - Angular6
 - Angular5
 - Angular2
-- ChangeDetection
+- Redux
+- NgRx
 - Tutorial
 - Avanzado
 categories:
 - [Tutorial, Angular] 
-thumbnail: /css/images/angular-9_change.png
+thumbnail: /css/images/angular-a_redux.png
 ---
 
-![deteccion-del-cambio-en-Angular](/images/tutorial-angular-9_change.png)
+![el-patron-redux-con-ngrx-en-angular](/images/tutorial-angular-a_redux.png)
 
 La forma en que Angular realiza su renderizado y actualiza sus vistas es un factor clave para el rendimiento de las aplicaciones. ¿Cómo funciona la estrategia de detección de cambios de Angular? Pues tiene dos modos: `default` o *automágico* y `onPush` o *mindfullness*.
 
@@ -25,9 +26,9 @@ Es importante tomar consciencia porque es costoso realizar la detección más ve
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás una aplicación que actualiza la vista sólo cuando es necesario, es decir: cuando los datos han cambiado.
+Partiendo de la aplicación tal cómo quedó en [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular/). Al finalizar tendrás una aplicación que actualiza la vista sólo cuando es necesario, es decir: cuando los datos han cambiado.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/9-change](https://github.com/AcademiaBinaria/autobot/tree/9-change)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/a-redux](https://github.com/AcademiaBinaria/autobot/tree/a-redux)
 
 
 # 1 Comunicación de datos entre componentes
@@ -119,7 +120,7 @@ Ya tienes los conocimientos para acelerar y reducir la incertidumbre sobre el ac
 
 > Para un ejemplo más completo de estos conceptos explora los componentes [Home de Autobot](https://github.com/AcademiaBinaria/autobot/tree/9-change/src/app/home). En [Car](https://github.com/AcademiaBinaria/autobot/tree/9-change/src/app/car) tienes un ejemplo de notificación manual usando `ChangeDetectorRef`.
 
-Continúa tu formación avanzada aprendiendo a usar el [patrón Redux con NgRX en Angular](../el-patron-redux-con-ngrx-en-angular/) y verás como aprendes a programar con Angular 7.
+Continúa tu formación avanzada para crear aplicaciones Angular siguiendo la serie del [tutorial avanzado de desarrollo con Angular](../tag/Avanzado/) y verás como aprendes a programar con Angular 7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
