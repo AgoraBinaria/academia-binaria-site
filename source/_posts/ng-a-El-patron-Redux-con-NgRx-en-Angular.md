@@ -26,7 +26,7 @@ Le pasa a todas las aplicaciones. Crecen y crecen en funcionalidad y complejidad
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular/). Al finalizar tendrás una aplicación que gestiona centralizadamente los cambios, que permite conocer qué ocurrió y predecir lo que ocurrirá.
+Partiendo del código tal cómo quedó en [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular/). Al finalizar tendrás una aplicación que gestiona centralizadamente los cambios, que permite conocer qué ocurrió y predecir lo que ocurrirá.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/a-redux](https://github.com/AcademiaBinaria/autobot/tree/a-redux)
 
@@ -47,7 +47,7 @@ Tenemos tres principios básicos que cumplir:
 
 ## 1.1 Elementos de Redux
 
-Estos son los artificios fundamentales que incorporaremos nuestra aplicación:
+Estos son los artificios fundamentales que incorporaremos a nuestro desarrollo:
 
 - **Store**: El sistema que mantiene el estado. Despacha acciones de mutado sobre el mismo y comunica cambios enviando copias de sólo lectura a los subscriptores.
 - **State**: Árbol de objetos que contienen la única copia válida de la información. Representa el valor del almacén en un momento determinado.
@@ -69,7 +69,7 @@ NgRx es el estándar de facto para implementar Redux en Angular. Está basada en
 
 ## 2.1 Instalación y configuración
 
-Para agregar *NgRx* a un app te propongo la siguiente receta de comandos. Además tendrás que instalar en tu navegador las herramientas de diagnóstico [Redux DevTools](http://extension.remotedev.io/).
+Para agregar *NgRx* a un app te propongo la siguiente receta de comandos. Además de esto tendrás que instalar en tu navegador las herramientas de diagnóstico [Redux DevTools](http://extension.remotedev.io/).
 
 ```shell
 npm i @angular-devkit/schematics --save-dev
@@ -115,7 +115,7 @@ export const rootReducers: ActionReducerMap<RootState> = {
 };
 ```
 
-Las funciones reductoras pueden estar en cualquier fichero. Son puras y no deben ser incluídas en ninguna clase. Normalmente tendrás un fichero para cada reductor. El del router ya viene hecho por NgRx, todos los demás son cosa tuya. Por ejemplo este es el reductor sobre la propiedad `global: GlobalState`.
+Las funciones reductoras pueden estar en cualquier fichero. Son puras y no deben ser incluídas en ninguna clase. Normalmente tendrás un fichero para cada reductor. El del *router* ya viene hecho por NgRx, todos los demás son cosa tuya. Por ejemplo este es el reductor sobre la propiedad `global: GlobalState`.
 
 ```typescript
 export function globalReducer(state = initialState, action: GlobalActions): GlobalState {
@@ -138,7 +138,7 @@ Como puedes ver esta función recibe dos argumento: el estado y la acción que p
 
 El patrón Redux no obliga a grandes cosas respecto a cómo implementar las acciones. Lo único que de verdad necesitas es crear objetos con una propiedad obligatoria `type` y otra opcional `payoload`.
 
-Pero en NgRX han decidido aprovechar al máximo las papacidades del TypeScript y proponen usar un código fuertemente tipado. Para empezar crean un `enum` que detalla los posible tipos de una acción y les asigna un texto para que luzcan y faciliten su búsqueda en *logs*. 
+Pero en NgRX han decidido aprovechar al máximo las papacidades del *TypeScript* y proponen usar un código fuertemente tipado. Para empezar crean un `enum` que detalla los posible tipos de una acción y les asigna un texto para que luzcan y faciliten su búsqueda en *logs*. 
 
 ```typescript
 export enum GlobalActionTypes {
@@ -148,7 +148,7 @@ export enum GlobalActionTypes {
 }
 ```
 
-Y claro, en un ambiente tipado, la acción será una clase que ha de cumplir una interfaz. En dicha clase queda ya predetermindo su tipo de acción y por supuesto que permiten fijar el tipo de datos la `payload`. Todo ello genera un código como el siguiente.
+Y claro, en un ambiente tipado, la acción será una clase que ha de cumplir una interfaz. En dicha clase queda ya predetermindo su tipo de acción; y por supuesto que permiten fijar el tipo de datos de la `payload`. Todo ello genera un código como el siguiente.
 
 ```typescript
 export class SendUserMesage implements Action {
@@ -157,7 +157,7 @@ export class SendUserMesage implements Action {
 }
 ```
 
-Para terminar, y ya que habremos de crear un buen número de clases para las acciones, también nos proponene crear un tipo combinado que ofrezca a los consumidores el plantel completo y delimitado de acciones posibles.
+Para terminar, y ya que habremos de crear un buen número de clases para las acciones, también nos propone exprimir *TypeScript* para crear un tipo combinado que ofrezca a los consumidores el plantel completo y delimitado de acciones posibles.
 
 ```typescript
 export type GlobalActions = SendUserMesage | IsLoginNeeded | StoreToken;
@@ -167,7 +167,7 @@ Es normal que al principio todo este *boilerplate* te parezca un exceso. Pero en
 
 ## 2.4 Dispatch y Select, despacho de acciones y selección de cambios
 
-La comunicación del resto del código con este estado centralizado se realizará por dos conductos oficiales: Dispatch y Select. El primero es un método que recibe como único parámetro una instancia de una acción. Dicha instancia lleva implícito el tipo y puede ir rellena de una *payload*. Así es como se envían los cambios hacia el almacén.
+Desde el resto del código **la comunicación con este estado centralizado se realizará por dos conductos oficiales : Dispatch y Select**. El primero es un método que recibe como único parámetro una instancia de una acción. Dicha instancia lleva implícito el tipo y puede ir rellena de una *payload*. Así es como se envían los cambios hacia el almacén.
 
 ```typescript
 constructor(private store: Store<RootState>) {
@@ -175,7 +175,7 @@ constructor(private store: Store<RootState>) {
 }
 ```
 
-No esperamos respuesta de este método. Es un mundo de *fire and forget*. a cambio, en cualquier otro lugar o lugares de nuestro código podremos recibir notificicadciones de cualquier cambio que se haya producido. De forma desacoplada podremos recibir el mensaje con una subscripción.
+No esperamos respuesta de este método. Es un mundo de *fire and forget*. Pero en cualquier otro lugar o lugares de nuestro código podremos recibir notificicadciones de cualquier cambio que se haya producido. De forma desacoplada podremos recibir el mensaje con una simple subscripción *RxJS*.
 
 ```typescript
 this.store
@@ -189,23 +189,23 @@ Con esto tenemos una primera implementación del patrón Redux en Angular usando
 
 # 3 Efectos y módulos funcionales
 
-Las funciones reductoras, como ya se ha dicho, deben ser puras. La idea es que puedan ser auditadas, re ejecutadas y testeadas sin que necesiten servicios externos ni causen efectos colaterales. Y esto es un problema con la cantidad de ejecuciones asíncronas en las aplicaciones web. Cualquier tentación de lanzar una llamada AJAX dentro de un reductor debe ser elimindad de inmediato. 
+Las funciones reductoras, como ya se ha dicho, deben ser puras. La idea es que puedan ser auditadas, re-ejecutadas y testeadas sin que necesiten servicios externos ni causen efectos colaterales. Y esto es un problema con la cantidad de **ejecuciones asíncronas en las aplicaciones web**. Cualquier tentación de lanzar una llamada *AJAX* dentro de un reductor debe ser elimindad de inmediato. 
 
-Dos razones: por un lado para realizar la llamada AJAX en Angular se necesita invocar al httpClient de alguna manera. Y, ya que la función no pertenece a ninguna clase, no puede haber constructor que reclame la inyección de dicho servicio. Tampoco las funciones puras tienen permitido usar nada que no venga entre sus argumentos. Por otra parte las funciones puras ha de ser predecibles, y una llamda a un servidor remoto no es en absoluto predecible. Puede pasarle de todo. Así que los reductores no son país para procesos asíncronos.
+> Dos razones: por un lado en Angular se necesita invocar al *httpClient* de alguna manera para realizar la llamada *AJAX*. Y, ya que la función no pertenece a ninguna clase, no puede haber constructor que reclame la inyección de dicho servicio. Tampoco las funciones puras tienen permitido usar nada que no venga entre sus argumentos. Por otra parte las funciones puras han de ser predecibles, y una llamada a un servidor remoto no es en absoluto predecible. Puede pasarle de todo, así que los reductores no son país para procesos asíncronos.
 
-La solución que proponen NgRX es usar un artificio llamado efecto, porque será encargado de los efectos secundarios que provocan las las instrucciones asíncronas. De una forma simplista, diremos que las acciones asíncronas se multiplicarán por tres. El comando que genera la llamada, y los dos potenciales eventos con la respuesta correcta o el error.
+La solución que proponen *NgRX* es usar un artificio llamado efecto, porque será encargado de **los efectos secundarios que provocan las las instrucciones asíncronas**. De una forma simplista, diremos que las acciones asíncronas se multiplicarán por tres. El comando que genera la llamada, y los dos potenciales eventos con la respuesta correcta o el error.
 
 Para manejarlo todo incluyen en la librería el módulo `EffectsModule` que ha de registrarse junto al `StoreModule`. Desde ese momento *NgRX* activa un sistema de seguimiento que trata las acciones como un stream de *RxJS* y permite subscribirse a la invocación de dichas acciones y tratarlas adecuadamente. Una vez más, aprovechan las caraterísticas del *TypeScript* y hacen uso de los decoradores para definir las funciones que responderán a la ejecución de las acciones.
 
 ## 3.1 @Effect(), efectos secundarios
 
-El decorador `@Effect()` se aplica a propiedades de servicios estandar de Angular. NgRX invoca esas funciones ante cada acción despachada, así que lo primero que debemos hacer es aplicar un filtro para quedarnos con las acciones del tipo que nos interese. El que lanzará la llamda `http`. 
+El decorador `@Effect()` se aplica a propiedades de servicios estandar de Angular. *NgRX* invoca esas funciones ante cada acción despachada, así que lo primero que debemos hacer es aplicar un filtro para quedarnos con las acciones del tipo que nos interese. El que lanzará la llamda `http`. 
 
-> Todo el trabajo se realizará con *streams* y requiere de un conocimiento previo de la librería RxJS y de la mecánica de su método `pipe` y sus operadores reactivos.
+> Todo el trabajo se realizará con *streams* y requiere de un conocimiento previo de la librería *RxJS* y de la mecánica de su método `pipe` y sus operadores reactivos.
 
-Cuando llegue una de esas acciones realizaremos la llamada asíncrona sin complejos. Recordemos que un efecto forma parte de un servicio inyectable de Angular. No tienen ninguna restricción funcional por parte de Redux. Obviamente la respuesta debe ser capturada y tratada según haya sido correcta o non. 
+Cuando llegue una de esas acciones realizaremos la llamada asíncrona sin complejos. Recordemos que un efecto forma parte de un servicio inyectable de Angular. No tienen ninguna restricción funcional por parte de Redux. Obviamente la respuesta debe ser capturada y tratada según haya sido correcta o no. 
 
-Si recibimos una respuesta válida podremos retornar directamente una nueva acción que actualice el estado con los datos recibidos. En cambio, si ha habido un error habrá que reactivar el *stream* con un nuevo observable que emita la acción que procesará el error.
+Si recibimos una respuesta válida podremos retornar directamente una nueva acción que actualice el estado con los datos recibidos. En cambio si ha habido un error, habrá que reactivar el *stream* con un nuevo observable que emita la acción que procesará el error.
 
 ```typescript
 @Effect()
@@ -222,17 +222,17 @@ public loadCarsEffect$: Observable<CarsActions> = this.actions$.pipe(
 );
 ```
 
-Tómate el tiempo necesario para comprender este código. Especialmente los operadores `ofType` de NgRX y el `mergMap` de RxJS .Fíjate bien en los tipos de los datos recibidos y devueltos. El efecto trata con observables de acciones. Recibe una y devuelve otra que puede ser de alguno de los dos tipos previstos. En el caso correcto se cambia una acción por otra, en otro caso se crea un nuevo observable mediante el constructor `of()` antes del retorno.
+Tómate el tiempo necesario para comprender este código. Especialmente los operadores `ofType` de *NgRX* y el `mergeMap` de *RxJS*. Fíjate bien en los tipos de los datos recibidos y devueltos. El efecto trata con observables de acciones. Recibe una y devuelve otra que puede ser de alguno de los otros dos tipos previstos. En el caso correcto se cambia una acción por otra, en otro caso se crea un nuevo observable mediante el constructor `of()` antes del retorno.
 
-> Para un ejemplo más completo de estos conceptos explora la implementación completa en el proyecto Autobot. El [RootStore](https://github.com/AcademiaBinaria/autobot/tree/a-redux/src/app/core) hace uso de efectos en la carpeta `store/state/cars`.
+> Para un ejemplo más completo de estos conceptos explora la implementación en el proyecto Autobot. El [RootStore](https://github.com/AcademiaBinaria/autobot/tree/a-redux/src/app/core) hace uso de efectos en la carpeta `store/state/cars`.
 
 ## 3.2 Feature, módulos funcionales
 
-Ya que Redux está especialmente indicado en grandes aplicaciones, pero manteninedo un estado centralizado, es fácil que acabemos un módulo raiz demasiado pesado que ralentice el inicio de la aplicación. Para adaptar la gestión central a un entorno con módulos cargado con  *lazyloading* necesitamos una última ayuda, de lamano de `FeatureModule`.
+Ya que Redux está especialmente indicado en grandes aplicaciones pero manteniendo un estado centralizado, es fácil que acabemos con un módulo raiz demasiado pesado que ralentice el inicio de la aplicación. Para adaptar la gestión central a un entorno con módulos cargado con  *lazyloading* necesitamos una última ayuda, de la mano de `FeatureModule`.
 
-Esencialmente es una nuevo store supeditado al principal pero que nos define, y por tanto no pesa, hasta que no es necesario. En Autobot el [CarModule](https://github.com/AcademiaBinaria/autobot/tree/a-redux/src/app/car) es un buen ejemplo de store cargado de forma dinámica como una `Feature`.
+Esencialmente es una nuevo *store* supeditado al principal pero que no se define, y por tanto no pesa, hasta que no es necesario. En Autobot el [CarModule](https://github.com/AcademiaBinaria/autobot/tree/a-redux/src/app/car) es un buen ejemplo de *store* cargado de forma dinámica como una `Feature`.
 
-Ya tienes los conocimientos para gestionar de manera centralizada, auditable y predecible el estado de tus aplicaciones. El patrón Redux lucirá más cuanto más grande y compleja sea tu aplicación.
+Ya tienes los conocimientos para gestionar de manera centralizada, auditable y predecible el estado de tus programas. El patrón Redux lucirá más cuanto más grande y compleja sea tu aplicación.
 
 Continúa tu formación avanzada para crear aplicaciones Angular siguiendo la serie del [tutorial avanzado de desarrollo con Angular](../tag/Avanzado/) y verás como aprendes a programar con Angular 7.
 
