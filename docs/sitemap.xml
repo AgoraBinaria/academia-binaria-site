@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
     
-    <lastmod>2018-09-28T11:38:27.739Z</lastmod>
+    <lastmod>2018-10-08T10:50:36.622Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
     
-    <lastmod>2018-09-28T10:50:30.237Z</lastmod>
+    <lastmod>2018-10-04T14:52:23.274Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    
+    <lastmod>2018-09-28T11:38:27.739Z</lastmod>
     
   </url>
   
