@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
+    
+    <lastmod>2018-10-17T09:06:56.293Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
     
     <lastmod>2018-10-15T11:09:18.076Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
     
     <lastmod>2018-09-20T07:49:21.647Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-    
-    <lastmod>2018-09-19T10:37:42.704Z</lastmod>
     
   </url>
   

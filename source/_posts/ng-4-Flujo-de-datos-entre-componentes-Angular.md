@@ -180,7 +180,7 @@ De esta manera se cierra el círculo. Los componentes de bajo nivel pueden **rec
 
 Cuando las pantallas se hacen realmente complejas, empiezan a surgir **árboles de componentes** de muchos niveles de profundidad. En estas situaciones mantener un único controlador a nivel raíz es poco práctico. 
 
-La solución en esos casos pasa porque *algunos componentes tengan su propio control de datos*. Para que esto tampoco te lleve a un caos incontrolable te enseñaré cómo resolverlo usando *Observables*. Pero eso será más adelante. 
+La solución en esos casos pasa porque *algunos componentes tengan su propio control de datos*. Para que esto tampoco te lleve a un caos incontrolable te enseñaré cómo resolverlo usando *Observables*. Pero eso será más adelante, en el artículo mucho más avanzado dedicado a [El patrón Redux con NgRx en Angular](../el-patron-redux-con-ngrx-en-angular/)
 
 # 2. Otras comunicaciones
 
@@ -190,7 +190,7 @@ En las aplicaciones hay **comunicaciones de estado más allá de la página actu
 
 Por ejemplo el [componente `CarComponent`](https://github.com/AcademiaBinaria/autobot/blob/4-flow/src/app/car/car/car.component.ts) es capaz de recibir por parámetros una identificación de un coche. Esa información es el resultado de una acción del usuario en la patalla `/home` programada en el componente `HomeComponent`. Por tanto es una comunicación entre componentes, en la que ambos son *controladores hermanos*. 
 
-> Desde luego habrá que mejorar el acceso y control de los datos que por ahora es muy rudimentario. Lo haremos en próximos pasos. Primero mediante  [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) y después usando [Comunicaciones HTTP en Angular](../categories/Tutorial/Angular/)
+> Desde luego habrá que mejorar el acceso y control de los datos que por ahora es muy rudimentario. Lo haremos en próximos pasos. Primero mediante  [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) y después usando [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/)
 
 ## 2.2 Comunicación entre estructuras
 
