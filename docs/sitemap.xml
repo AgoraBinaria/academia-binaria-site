@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
+    
+    <lastmod>2018-10-17T16:40:52.003Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
     
     <lastmod>2018-10-17T09:06:56.293Z</lastmod>
@@ -44,14 +51,14 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
+    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
     
     <lastmod>2018-09-20T07:49:21.647Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
     
     <lastmod>2018-09-20T07:49:21.647Z</lastmod>
     
@@ -61,13 +68,6 @@
     <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
     
     <lastmod>2018-09-19T10:34:51.416Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
-    
-    <lastmod>2018-09-19T10:33:06.853Z</lastmod>
     
   </url>
   

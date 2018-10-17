@@ -79,7 +79,7 @@ Más ejemplos los encontrarás en el componente `car.component.ts`. Haciendo uso
 
 En *Html* disponemos de atributos para asignar valores a propiedades de los elementos. Esos atributos reciben los valores como constantes. Pero, si se encierran entre corchetes se convierten en un **evaluador de expresiones** y puede recibir una variable o cualquier otra expresión. 
 
-Como por ejemplo usando una *porgress bar* cuyo valor cambia en tiempo de ejcución. O para desabilitar un elemento dinámicamente.
+Como por ejemplo usando una *progress bar* cuyo valor cambia en tiempo de ejcución. O para desabilitar un elemento dinámicamente.
 
 ```html
 <progress [value]="car.currentSpeed" [max]="car.topSpeed"></progress>
