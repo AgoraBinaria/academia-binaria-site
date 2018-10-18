@@ -234,7 +234,7 @@ Esencialmente es una nuevo *store* supeditado al principal pero que no se define
 
 Ya tienes los conocimientos para gestionar de manera centralizada, auditable y predecible el estado de tus programas. El patrón Redux lucirá más cuanto más grande y compleja sea tu aplicación.
 
-Continúa tu formación avanzada para crear aplicaciones Angular siguiendo la serie del [tutorial avanzado de desarrollo con Angular](../tag/Avanzado/) y verás como aprendes a programar con Angular 7.
+Continúa tu formación avanzada para crear aplicaciones [PWA, entre la web y las apps con Angular](../pwa-entre-la-web-y-las-apps-con-angular) y verás como aprendes a programar con Angular 7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

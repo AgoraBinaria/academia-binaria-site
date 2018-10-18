@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
+    
+    <lastmod>2018-10-18T09:59:59.189Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
     
     <lastmod>2018-10-17T16:40:52.003Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
     
     <lastmod>2018-10-15T11:09:18.076Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
-    
-    <lastmod>2018-10-08T11:21:38.617Z</lastmod>
     
   </url>
   
