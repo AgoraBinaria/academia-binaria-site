@@ -208,7 +208,7 @@ Una caracterísitca de las *apps* nativas muy aprecia por los usuarios es la cap
 
 Ya tienes una web que se comporta progresivamente como una App nativa, una *Progressive Web Application*. Las mejoras en rendimiento y experiencia de usuario son recompensa más que suficiente para que le des una oportunidad a las **Angular PWA**.
 
-Continúa tu formación avanzada para crear aplicaciones Angular siguiendo la serie del [tutorial avanzado de desarrollo con Angular](../tag/Avanzado/) y verás como aprendes a programar con Angular 7.
+Continúa tu formación avanzada para crear aplicaciones con mayor [Velocidad y SEO con el SSR de Angular Universal](../velocidad-y-seo-con-el-ssr-de-angular-universal) y verás como aprendes a programar con Angular 7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
