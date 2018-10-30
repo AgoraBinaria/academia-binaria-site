@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/velocidad-y-seo-con-el-ssr-de-angular-universal/</loc>
+    
+    <lastmod>2018-10-30T11:46:19.082Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
+    
+    <lastmod>2018-10-26T10:24:39.547Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
     
     <lastmod>2018-10-18T09:59:59.189Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
     
     <lastmod>2018-10-17T09:06:56.293Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
-    
-    <lastmod>2018-10-15T11:09:18.076Z</lastmod>
     
   </url>
   
