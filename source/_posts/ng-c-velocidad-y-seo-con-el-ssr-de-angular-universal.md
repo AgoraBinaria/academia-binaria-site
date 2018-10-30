@@ -46,9 +46,9 @@ Montar eso a mano ya no es una opción. La solución parte de renderizar el html
 
 Este trabajo se ha automatizado y se resuelve con un par de comandos del Angular CLI. 
 
-````bash
+```bash
 ng g app-shell --client-project astrobot --universal-project server-astrobot
-```` 
+``` 
 El efecto de este comando se materializa especialmente con la aparición de nuevos targets para los builders del CLI en el fichero [angular.json](https://github.com/AcademiaBinaria/astrobot/blob/fff2a9f2c38f4b333489063b6f812a3b614fe173/angular.json#L141). 
 
 Con el comando `ng run astrobot:app-shell` podrás generar una versión especial de distribución en al que el index.html ya va prerenderizado con el contenido del componente asociado a la ruta shell. Realmente lo que hace es ejecutar tu aplicación sobre una ruta predefinida. Tomar el html resultado e inyectarlo en el body del index.html que irá a distribución.
@@ -63,10 +63,10 @@ Claro que esto es sólo un truco para que ese primer momento de espera se reduzc
 
 Para empezar tendrás que instalar y registrar las librerias necesarias. Además habrá que crear el pequeño servidor Express, y configurar al cli para que haga el despliegue de ambos: cliente y servidor. Este laborioso trabajo se ha automatizado y ahora mismo se resuelve casi todo con un par de instrucciones.
 
-````bash
+```bash
 ng add @nguniversal/express-engine
 npm run build:ssr && npm run serve:ssr
-```` 
+```
 El resultado es un servidor Node que a cada petición web responde enviando el index.html. Pero, y esta es la clave, resolverá la ruta ejecutando la aplicación Angular antes de responder al navegador. De esa forma el index.html irá recién generado con el contenido tal cual lo vería el usuario tras la ejecución de Angular. Así que la espera al primer pintado se reduce y eso es bueno.
 
 Pero, la principal ventaja en este caso es que al traer información dinámica puede usarse para indexar el contenido del sitio. Esto es dóblemente bueno, porque ahora todos los robots indexadores podrán catalogar tu site como si de una web cñasica se tratase. Y los uusarios humanos podrán continuar la ejecución en local disfrutando de las ventajas de una SPA.
