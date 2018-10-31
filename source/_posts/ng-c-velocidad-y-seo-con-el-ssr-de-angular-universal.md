@@ -48,7 +48,7 @@ Este trabajo se ha automatizado y se resuelve con un par de comandos del Angular
 
 ```bash
 ng g app-shell --client-project astrobot --universal-project server-astrobot
-``` 
+```
 
 El efecto de este comando se materializa especialmente con la aparición de nuevos *targets para los builders* del CLI en el fichero [angular.json](https://github.com/AcademiaBinaria/astrobot/blob/fff2a9f2c38f4b333489063b6f812a3b614fe173/angular.json#L141). 
 
