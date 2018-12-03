@@ -6,7 +6,6 @@ tags:
 - Angular
 - Angular7
 - Angular6
-- Angular5
 - Angular2
 - Universal
 - SSR
@@ -128,8 +127,8 @@ import { Meta, Title } from '@angular/platform-browser';
 export class AppComponent implements OnInit {
   constructor(private title: Title, private meta: Meta) {}
   ngOnInit() {
+    this.title.setTitle('My title');
     this.meta.addTag({ property: 'og:title', content: 'My title' }, true);
-    this.meta.updateTag({ property: 'og:title', content: 'My title' });
   }
 }
 ```

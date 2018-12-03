@@ -6,7 +6,6 @@ tags:
 - Angular
 - Angular7
 - Angular6
-- Angular5
 - Angular2
 - PWA
 - Tutorial
