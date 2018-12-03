@@ -2,86 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://academia-binaria.com/velocidad-y-seo-con-el-ssr-de-angular-universal/</loc>
-    
-    <lastmod>2018-10-31T10:52:40.142Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
-    
-    <lastmod>2018-10-26T10:24:39.547Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
-    
-    <lastmod>2018-10-18T09:59:59.189Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
-    
-    <lastmod>2018-10-17T16:40:52.003Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-    
-    <lastmod>2018-10-17T09:06:56.293Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
-    
-    <lastmod>2018-10-04T14:52:23.274Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
-    
-    <lastmod>2018-09-28T11:38:27.739Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
     
-    <lastmod>2018-09-20T12:32:44.400Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
-    
-    <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+    <lastmod>2018-12-03T16:41:52.266Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
     
-    <lastmod>2018-09-20T07:49:21.647Z</lastmod>
+    <lastmod>2018-12-03T16:41:52.265Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+    
+    <lastmod>2018-12-03T16:41:52.263Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
+    
+    <lastmod>2018-12-03T16:41:52.262Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
+    
+    <lastmod>2018-12-03T16:41:52.259Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
     
-    <lastmod>2018-09-19T10:34:51.416Z</lastmod>
+    <lastmod>2018-12-03T16:41:52.259Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
     
-    <lastmod>2018-09-06T16:35:23.466Z</lastmod>
+    <lastmod>2018-12-03T16:41:52.259Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
+    
+    <lastmod>2018-12-03T16:40:17.371Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
+    
+    <lastmod>2018-12-03T16:39:36.951Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
+    
+    <lastmod>2018-12-03T16:38:39.288Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/velocidad-y-seo-con-el-ssr-de-angular-universal/</loc>
+    
+    <lastmod>2018-12-03T16:37:55.771Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    
+    <lastmod>2018-12-03T16:35:12.938Z</lastmod>
     
   </url>
   
