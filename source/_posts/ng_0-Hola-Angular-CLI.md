@@ -9,7 +9,7 @@ tags:
 - Tutorial
 - Introducción
 - Angular6
-- Angular5
+- Angular7
 - Angular2
 categories:
 - [Tutorial, Angular] 
