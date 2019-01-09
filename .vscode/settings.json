@@ -1,27 +1,4 @@
 {
     "html.format.enable": false,
-    "cSpell.language": "es",
-    "cSpell.words": [
-        "Catch",
-        "Forms",
-        "Length",
-        "Lower",
-        "Operations",
-        "Unauthorized",
-        "Validators",
-        "categories",
-        "chequeos",
-        "common",
-        "driven",
-        "enrutador",
-        "escalabilidad",
-        "from",
-        "front",
-        "images",
-        "model",
-        "monitoriza",
-        "mínimamente",
-        "thumbnail"
-    ],
     "workbench.colorTheme": "Default Light+"
 }
