@@ -197,7 +197,6 @@ Estas colecciones de archivos los usa el *cli* a través de *webpack* para inclu
     content="Alberto Basalo">
 ```
 
-
 Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo *MiniCSS*. 
 
 # 6. Angular 7 y el CLI 7
