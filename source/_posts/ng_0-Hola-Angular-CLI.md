@@ -175,7 +175,7 @@ Se descargan e instalan de manera estándar.
 npm install mini.css --save
 ```
 
-Para que se incluyan en la distribución hay que ir a la configuración del *CLI*.Y se agrega a través del fichero `.angular.json` a la colección de *styles* o de *scripts* que corresponda.
+Para que se incluyan en la distribución hay que ir a la configuración del *CLI*. Entonces se agrega dentro del fichero `.angular.json` a la colección de *styles* o de *scripts* que corresponda.
 
 ```json
 {
@@ -184,7 +184,7 @@ Para que se incluyan en la distribución hay que ir a la configuración del *CLI
         "./node_modules/mini.css/dist/mini-default.min.css"
     ]
 }
-``` 
+```
 
 Estas colecciones de archivos los usa el *cli* a través de *webpack* para incluirlos **minificados y concatenados en un fichero *bundle* sustituyendo a las clásicas etiquetas html**.Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript.  De esta forma el fichero `index.html` apenas tendrás que tocarlo, salvo para algunas etiquetas de meta información.
 
@@ -227,7 +227,7 @@ Una vez instalados, configura nuevos *scripts* en el `package.json` para poder l
 ```
 
 
-Comprueba las ejecuciones de los distintos *scripts*. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/autobot` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta `./docs` listos para publicarse en las *git hub pages*. 
+Comprueba las ejecuciones de los distintos *scripts*. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/actibot` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta estándar `./docs` listos para publicarse en las *github pages*. 
 
 Para complementar tu conocimiento te recomiendo la [documentación de Angular/CLI](https://angular.io/cli) y este artículo que trata la configuración del CLI en profundidad [Angular CLI under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
