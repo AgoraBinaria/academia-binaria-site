@@ -221,7 +221,7 @@ Pero si la línea de comandos te suena muy antigua y lo tuyo son las interfaces 
 
 Una mejora digna de mención es la capacidad de presupuestar tamaños de los ficheros generados. De esa forma podemos controlar el peso y tiempo de descarga de la aplicación.
 
-Para garantizar la limpieza del código conviene usar herramientas como [prettier](https://prettier.io/) y configurarlas para su compatibilidad con Angular.
+Para garantizar la limpieza del código conviene usar herramientas como [Prettier](https://prettier.io/) y configurarlas para su compatibilidad con Angular.
 
 Los últimos toques antes de publicar pueden incluir el _script de analytics_ en el `index.html` y ajustes de retro-compatibilidad en el fichero `polyfills.ts`. Luego un comando y listo para publicar en _github pages_.
 
