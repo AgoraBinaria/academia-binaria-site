@@ -135,7 +135,7 @@ Esta es una lista no exhaustiva de lo que sucede.
 2. ng serve
 3. webpack server en http://localhost:4270
    1. vigilancia de cambios sobre la carpeta src/
-   2. livereload
+   2. live reload
    3. compilado de la aplicación
    4. recarga del navegador
 
