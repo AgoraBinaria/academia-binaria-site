@@ -47,7 +47,7 @@ Como novedad, en las últimas versiones, el CLI te preguntará por algunas opcio
 
 Lo más habitual es usar la configuración que viene por defecto, pero también se pueden crear soluciones a medida. Te muestro unos ejemplos para que pruebes y te familiarices con la herramienta. Para más información mira la documentación del comando [ng new](https://angular.io/cli/new).
 
-## 2.2 Normal
+## 2.1 Normal
 ```console
 ng new normal 
 cd normal
@@ -60,13 +60,13 @@ ng new minimalista -s -S -t
 cd minimalista
 npm start
 ```
-## 2.2 Profesional
+## 2.3 Profesional
 ```console
 ng new profesional --experimental-ivy true -p acme --routing true
 cd profesional
 npm start
 ```
-## 2.2 Empresarial
+## 2.4 Empresarial
 ```console
 ng new empresarial --create-application false
 cd empresarial
