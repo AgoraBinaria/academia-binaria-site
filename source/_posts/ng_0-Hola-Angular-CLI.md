@@ -34,7 +34,7 @@ Empieza con una **instalación global** que te permita usar la herramienta desde
 Instrucciones para instalar angular cli.
 
 ```console
-** $ npm i -g @angular/cli@latest
+$ npm i -g @angular/cli@latest
 $ ng version
 $ ng help
 $ ng new --help
@@ -103,15 +103,15 @@ Te recomiendo instalar un paquete de extensiones ya configurado y preparado para
 
 Volviendo a la **estructura de ficheros y carpetas** te encontrarás con muchos archivos de distintos tipos. Si eres completamente nuevo en Angular, te llamará la atención las extensiones `.ts`. Son para ficheros [_TypeScript_](https://www.typescriptlang.org/), una evolución del _JavaScript_ con facilidades para el programador. Por ahora sólo tienes que familiarizarte con estos:
 
-- angular.json _: configuración del propio CLI. La madre de todos los configuradores_
-- package.json _: dependencias de librerías y scripts_
-- src/ _: la carpeta donde están los archivos fuentes_
-  - index.html _: un fichero HTML índice estándar_
-  - main.ts _: fichero TypeScript de arranque de la aplicación_
-  - app/ _: la carpeta con el código específico de tu aplicación_
-    - app.module.ts _: las aplicaciones son árboles de módulos, y este es su raíz_
-    - app.component.ts _: las páginas son árboles de componentes, y este es su raíz_
-    - app.component.html _: los componentes tienen una parte visual, y esta es su plantilla_
+- **angular.json** _: configuración del propio CLI. La madre de todos los configuradores_
+- **package.json** _: dependencias de librerías y scripts_
+- **src/** _: la carpeta donde están los archivos fuentes_
+  - **index.html** _: un fichero HTML índice estándar_
+  - **main.ts** _: fichero TypeScript de arranque de la aplicación_
+  - **app/** _: la carpeta con el código específico de tu aplicación_
+    - **app.module.ts** _: las aplicaciones son árboles de módulos, y este es su raíz_
+    - **app.component.ts** _: las páginas son árboles de componentes, y este es su raíz_
+    - **app.component.html** _: los componentes tienen una parte visual, y esta es su plantilla_
 
 Echa un vistazo a estos ficheros, pronto los modificaremos para sentirnos programadores.
 
