@@ -205,6 +205,14 @@ Estas colecciones de archivos los usa el _cli_ a través de _webpack_ para inclu
 
 Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo _MiniCSS_.
 
+## 5.3 Environments
+
+La carpeta `environments/` contiene dos ficheros, y puede contener más, para cada entorno de distribución necesario. En código siempre importaremos el fichero base, pero durante la compilación el CLI lo sustituirá por el adecuado.
+
+```typescript
+title = environment.appName + "hello world ;-)";
+```
+
 # 6. Angular 7, el CLI 7 y su ecosistema
 
 Algunos consejos y herramientas útiles que rodean al mundo Angular.
