@@ -1,6 +1,6 @@
 {
     "html.format.enable": false,
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Solarized Light",
     "spellright.language": [
         "en",
         "es"

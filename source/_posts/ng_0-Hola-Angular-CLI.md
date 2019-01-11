@@ -23,7 +23,7 @@ thumbnail: /css/images/angular-0_cli.png
 
 El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 7** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/ActiBot/](https://github.com/AcademiaBinaria/actibot/)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/](https://github.com/AcademiaBinaria/angular-board/)
 
 # 1. Instalación de Angular CLI 7
 
@@ -67,7 +67,7 @@ npm start
 ## 2.3 Profesional
 
 ```console
-ng new profesional --experimental-ivy true -p acme --routing true
+ng new profesional -p acme --routing true
 cd profesional
 npm start
 ```
@@ -77,7 +77,7 @@ npm start
 ```console
 ng new empresarial --create-application false
 cd empresarial
-ng generate application compras --experimental-ivy true -p acme --routing true
+ng generate application compras -p acme --routing true
 npm start
 ```
 
@@ -86,7 +86,7 @@ Una vez finalizada la instalación de todas las librerías necesarias puedes baj
 > ejemplo: La aplicación que sirve de ejemplo a este tutorial fue creada con este comando:
 
 ```console
-ng new actibot --experimental-ivy true --routing true -s -S
+ng new angular-board --routing true -s -S
 ```
 
 # 3. Estructura de una aplicación Angular
@@ -198,7 +198,7 @@ Para que se incluyan en la distribución hay que ir a la configuración del _CLI
 Estas colecciones de archivos los usa el _cli_ a través de _webpack_ para incluirlos **minificados y concatenados en un fichero _bundle_ sustituyendo a las clásicas etiquetas html**.Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. De esta forma el fichero `index.html` apenas tendrás que tocarlo, salvo para algunas etiquetas de meta información.
 
 ```html
-<meta name="description" content="An sample project for learning Angular ;-)" />
+<meta name="description" content="A sample project for learning Angular ;-)" />
 <meta name="keywords" content="Angular Sample Tutorial Ejemplo" />
 <meta name="author" content="Alberto Basalo" />
 ```
@@ -211,6 +211,16 @@ La carpeta `environments/` contiene dos ficheros, y puede contener más, para ca
 
 ```typescript
 title = environment.appName + "hello world ;-)";
+```
+
+## 5.4 Assets
+
+Los ficheros de la carpeta `assets/` se copian tal cual al despliegue. Es un buen lugar para logos, imágenes y ficheros de datos estáticos.
+
+Por ejemplo, en el `app.component.html` he sustituido la imagen incrustada del Angular con un logo propio.
+
+```html
+<img width="100" src="./assets/logo.png" />
 ```
 
 # 6. Angular 7, el CLI 7 y su ecosistema
@@ -230,14 +240,17 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 ```json
 {
   "scripts": {
+    "build:doc": "cd ./documentation/ && bs e -o ../docs/readme",
     "build:prod": "ng build --prod",
-    "build:pub": "ng build --prod --output-path docs --base-href https://academiabinaria.github.io/ActiBot/",
+    "build:pub": "ng build --prod --output-path docs --base-href https://academiabinaria.github.io/angular-board/",
     "e2e": "ng e2e",
-    "http-server": "http-server ./dist/actibot/ -c-1 -p4271 -a localhost -o",
+    "http-server": "http-server ./dist/angular-board/ -c-1 -p4271 -a localhost -o",
     "lint": "ng lint",
     "ng": "ng",
-    "pub": "npm run build:pub && npm run push",
+    "pub:doc": "npm run build:doc && npm run push",
+    "pub": "npm run build:pub && npm run build:doc && npm run push",
     "push": "git add * && git commit -m 'pub' && git push",
+    "start:doc": "cd ./documentation/ && bs s",
     "start:prod": "npm run build:prod && npm run http-server",
     "start": "ng serve --aot -o --port 4270",
     "test": "ng test"
@@ -245,7 +258,7 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 }
 ```
 
-Comprueba las ejecuciones de los distintos _scripts_. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/actibot` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta estándar `./docs` listos para publicarse en las _github pages_.
+Comprueba las ejecuciones de los distintos _scripts_. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/angular-board` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta estándar `./docs` listos para publicarse en las _github pages_.
 
 Para complementar tu conocimiento te recomiendo la [documentación de Angular/CLI](https://angular.io/cli) y este artículo que trata la configuración del CLI en profundidad [Angular CLI under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
