@@ -29,9 +29,9 @@ Partimos de la aplicación tal cómo la dejamos en el [Hola Mundo en Angular](..
 
 Los módulos son **contenedores para almacenar los componentes y servicios** de una aplicación. En Angular cada programa se puede ver como un árbol de módulos jerárquico. A partir de un módulo raíz se enlazan otros módulos en un proceso llamado importación.
 
-## 1.1 Definición mediante decoradores
+## 1.1 Anatomía de un módulo
 
-Antes de importar cualquier módulo hay que definirlo. En Angular 6 **los módulos de declaran como clases de TypeScript**. Estas clases, habitualmente vacías, son decoradas con una función especial. Es la función `@NgModule()` que recibe un objeto como único argumento. En las propiedades de ese objeto es donde se configura el módulo.
+Antes de usar cualquier módulo hay que conocerlo. En Angular **los módulos de declaran como clases de TypeScript**. Estas clases, habitualmente vacías, son decoradas con una función especial. Es la función `@NgModule()` que recibe un objeto como único argumento. En las propiedades de ese objeto es donde se configura el módulo.
 
 Mira el módulo `AppModule` original que genera el CLI en el fichero `app.module.ts`.
 
@@ -51,22 +51,7 @@ El módulo `App` también se conoce como **módulo raíz** porque de él surgen 
 
 > En la situación original el módulo principal depende un módulo _custom_ pre-generado (el `AppRoutingModule` que usarás más adelante) y de otro _del framework_ para la presentación en el navegador (el `BrowserModule`).
 
-### 1.2.1 Dos mundos paralelos: imports de Angular e import de TypeScript
-
-Si es la primera vez que ves código TypeScript te llamarán la atención las primeras líneas de cada fichero. En el `app.module.ts` son algo así:
-
-```typescript
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-```
-
-Estas **sentencias de importación son propias del lenguaje** y nada tienen que ver con Angular. En ellas se indica que este fichero importa el contenido de otros ficheros _TypeScript_. La importación se realiza en base a convenios personalizables. Si empieza con `./` entonces se busca a través de la ruta física relativa al fichero actual. En otro caso se busca en el directorio `node_modules` y se trata como código de terceros.
-
-> En general no tendrás que preocuparte de estas importaciones físicas, pues el _VSCode_ y las extensiones esenciales se encargan de hacerlo automáticamente según lo uses en tu código.
-
-## 1.3 Generación de módulos
+## 1.2 Generación de módulos
 
 Hasta ahora los módulos involucrados son librerías de terceros o que se crearon mágicamente con la aplicación. Es hora de **crear tu primer módulo**. Para eso usaremos otro comando del _cli_, el `ng generate module`. En una ventana del terminal escribe:
 
@@ -89,7 +74,7 @@ Este módulo te servirá de **contenedor para guardar componentes** y otros serv
 export class CoreModule {}
 ```
 
-Por ahora hay que asegurar que **este módulo es importado por el raíz, el AppModule**. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
+Por ahora hay que asegurar que **este módulo será importado por el raíz, el AppModule**. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
 
 ```typescript
 @NgModule({
@@ -173,13 +158,13 @@ Casi **todas las páginas tienen una estructura** similar que de forma simplista
 Ejecuta en una terminal estos comandos para que generen los componentes y comprueba el resultado en el editor.
 
 ```shell
-ng g c core/shell --export
+ng g c core/shell
 ng g c core/shell/header
 ng g c core/shell/main
 ng g c core/shell/footer
 ```
 
-Fíjate en el componente del fichero `nav.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `app-shell` y `ShellComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con su selector `root`.
+Fíjate en el componente del fichero `shell.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `app-shell` y `ShellComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con su selector `root`.
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -202,23 +187,65 @@ Y esta es su vista asociada. La cual es de nuevo una composición de otros selec
 <app-footer></app-footer>
 ```
 
-## 2.3 Componentes públicos y privados
+# 3 Componentes públicos y privados
 
 La clave del código limpio es **exponer funcionalidad de manera expresiva pero ocultar la implementación**. Esto es sencillo con los lenguajes de POO, pero en HTML no era nada fácil. Con la **programación basada en componentes** podemos crear pantallas complejas, reutilizables y que a su vez contengan y oculten la complejidad interna a sus consumidores.
 
 Los componentes no deciden por sí mismos su **visibilidad**. Cuando un componente es generado se declara en un módulo contenedor en su propiedad `declares:[]`. Eso lo hace visible y utilizable por cualquier otro componente del mismo módulo. Pero **si quieres usarlo desde fuera tendrás que exportarlo**. Eso se hace en la propiedad `exports:[]` del módulo en el que se crea.
 
-> La exportación debe hacerse a mano incluyendo el componente en el array, o indicarse con el _flag_ `--export` para que lo haga el _cli_. Esto es lo que se ha hecho en el componente `shell` para poder usarlo en el componente `app`.
+La exportación debe hacerse a mano incluyendo el componente en el array, o indicarse con el _flag_ `--export` para que lo haga el _cli_. Esto es lo que se ha hecho en el módulo _Core_ para poder exportar el componente `shell`.
 
-**Los componentes privados suelen ser sencillos**. A veces son creados para ser específicamente consumidos dentro de otros componentes. En esas situaciones interesa que sean privados y que generen poco ruido. Incluso, en casos extremadamente simples, si usamos el modificador `--flat` ni siquiera generan carpeta propia.
+```typescript
+@NgModule({
+  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent],
+  imports: [CommonModule, RouterModule],
+  exports: [ShellComponent]
+})
+export class CoreModule {}
+```
 
-Como regla general, **cuando en una plantilla se incruste otro componente**, Angular lo buscará dentro del propio módulo en el que pretende usarse. Si no lo encuentra entonces lo buscará entre los componentes exportados por los módulos que hayan sido importados por el actual contenedor.
-
-> Ahora mismo en `AppComponente` sólo puedo usar a `ShellComponent`. En `ShellComponent` se pueden usar sus vecinos _Header, Main y Footer_. Es un práctica recomendada el mantener el `AppModule` y el `AppComponent` tan simples como sea posible. Para ello movemos todo lo que podemos al módulo de ayuda `CoreModule` distribuyendo el contenido de `app.component.html` en las plantillas de _Header, Main y Footer_ que corresponda.
+> **Los componentes privados suelen ser sencillos**. A veces son creados para ser específicamente consumidos dentro de otros componentes. En esas situaciones interesa que sean privados y que generen poco ruido. Incluso, en casos extremadamente simples, si usamos el modificador `--flat` ni siquiera generan carpeta propia.
 
 Por supuesto que `HeaderComponent` necesitará la propiedad `title` y también la moveremos desde `app.component.ts`. Dejando de esa manera el componente raíz en los huesos.
 
-## 2.4 Transitividad
+# 4 Importación, exportación y transitividad
+
+## 4.1 Importación y exportación
+
+Que un componente sea público es la primera condición para que se consuma fuera de su módulo. Ahora falta que quién lo quiera usar el selector `<app-shell>` importe su módulo `CoreModule`. Esto lo haremos en el `AppModule` para que lo use el `AppComponent`.
+
+```typescript
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+Como regla general, **cuando en una plantilla se incruste otro componente**, Angular lo buscará dentro del propio módulo en el que pretende usarse. Si no lo encuentra entonces lo buscará entre los componentes exportados por los módulos que hayan sido importados por el actual contenedor.
+
+> Ahora mismo en `AppComponente` sólo puedo usar a `ShellComponent`, que es el único componente accesible. En `ShellComponent` se pueden usar sus vecinos _Header, Main y Footer_. Es un práctica recomendada el mantener el `AppModule` y el `AppComponent` tan simples como sea posible. Para ello movemos todo lo que podemos al módulo de ayuda `CoreModule` distribuyendo el contenido de `app.component.html` en las plantillas de _Header, Main y Footer_ que corresponda.
+
+## 4.2 Dos mundos paralelos: imports de Angular e import de TypeScript
+
+Si es la primera vez que ves código TypeScript te llamarán la atención las primeras líneas de cada fichero. En el `app.module.ts` son algo así:
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+```
+
+Estas **sentencias de importación son propias del lenguaje** y nada tienen que ver con Angular. En ellas se indica que este fichero importa el contenido de otros ficheros _TypeScript_. La importación se realiza en base a convenios personalizables. Si empieza con `./` entonces se busca a través de la ruta física relativa al fichero actual. En otro caso se busca en el directorio `node_modules` y se trata como código de terceros.
+
+> En general no tendrás que preocuparte de estas importaciones físicas, pues el _VSCode_ y las extensiones esenciales se encargan de hacerlo automáticamente según lo uses en tu código
+
+# 5. Transitividad y Organización
+
+## 5.1 Transitividad
 
 Un problema que reforzará tu conocimiento sobre el sistema modular surgirá al mover la etiqueta `<router-outlet></router-outlet>` del `app.component.html` al componente _Main_. En su vista `main.component.html` tendrás algo así.
 
@@ -274,7 +301,7 @@ import { ShellComponent } from './shell/shell.component';
 export class CoreModule {}
 ```
 
-# 3. Organización
+## 5.2 Organización
 
 Todos los programas tiene partes repetitivas. Los principios de **organización y código limpio** nos permiten identificarlas y reutilizarlas. Con los componentes ocurre lo mismo. El módulo y los componentes recién creados suelen ser comunes a casi todas las aplicaciones. Estos y otros muchos surgirán de manera natural durante el desarrollo de una aplicación para ser utilizados en múltiples páginas.
 
