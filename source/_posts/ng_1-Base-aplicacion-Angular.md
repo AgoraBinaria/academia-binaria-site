@@ -210,7 +210,7 @@ export class CoreModule {}
 
 Por supuesto que `HeaderComponent` necesitará la propiedad `title` y también la moveremos desde `app.component.ts`. Dejando de esa manera el componente raíz en los huesos.
 
-## 3.2 Importación y exportación
+## 3.2 Importación y exportación entre módulos
 
 Que un componente sea público es la primera condición para que se consuma fuera de su módulo. Ahora falta que quién lo quiera usar el selector `<app-shell>` importe su módulo `CoreModule`. Esto lo haremos en el `AppModule` para que lo use el `AppComponent`.
 
@@ -245,7 +245,7 @@ Estas **sentencias de importación son propias del lenguaje** y nada tienen que 
 
 # 4. Transitividad y Organización
 
-## 4.1 Transitividad
+## 4.1 Transitividad en una cadena de módulos
 
 Un problema que reforzará tu conocimiento sobre el sistema modular surgirá al mover la etiqueta `<router-outlet></router-outlet>` del `app.component.html` al componente _Main_. En su vista `main.component.html` tendrás algo así.
 
@@ -301,7 +301,7 @@ import { ShellComponent } from './shell/shell.component';
 export class CoreModule {}
 ```
 
-## 4.2 Organización
+## 4.2 Organización de la aplicación en módulos
 
 Todos los programas tiene partes repetitivas. Los principios de **organización y código limpio** nos permiten identificarlas y reutilizarlas. Con los componentes ocurre lo mismo. El módulo y los componentes recién creados suelen ser comunes a casi todas las aplicaciones. Estos y otros muchos surgirán de manera natural durante el desarrollo de una aplicación para ser utilizados en múltiples páginas.
 
