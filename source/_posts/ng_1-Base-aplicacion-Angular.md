@@ -187,9 +187,11 @@ Y esta es su vista asociada. La cual es de nuevo una composición de otros selec
 <app-footer></app-footer>
 ```
 
-# 3 Componentes públicos y privados
+# 3 Público privado, importación y exportación
 
 La clave del código limpio es **exponer funcionalidad de manera expresiva pero ocultar la implementación**. Esto es sencillo con los lenguajes de POO, pero en HTML no era nada fácil. Con la **programación basada en componentes** podemos crear pantallas complejas, reutilizables y que a su vez contengan y oculten la complejidad interna a sus consumidores.
+
+## 3.1 Componentes públicos y privados
 
 Los componentes no deciden por sí mismos su **visibilidad**. Cuando un componente es generado se declara en un módulo contenedor en su propiedad `declares:[]`. Eso lo hace visible y utilizable por cualquier otro componente del mismo módulo. Pero **si quieres usarlo desde fuera tendrás que exportarlo**. Eso se hace en la propiedad `exports:[]` del módulo en el que se crea.
 
@@ -208,9 +210,7 @@ export class CoreModule {}
 
 Por supuesto que `HeaderComponent` necesitará la propiedad `title` y también la moveremos desde `app.component.ts`. Dejando de esa manera el componente raíz en los huesos.
 
-# 4 Importación, exportación y transitividad
-
-## 4.1 Importación y exportación
+## 3.2 Importación y exportación
 
 Que un componente sea público es la primera condición para que se consuma fuera de su módulo. Ahora falta que quién lo quiera usar el selector `<app-shell>` importe su módulo `CoreModule`. Esto lo haremos en el `AppModule` para que lo use el `AppComponent`.
 
@@ -228,7 +228,7 @@ Como regla general, **cuando en una plantilla se incruste otro componente**, Ang
 
 > Ahora mismo en `AppComponente` sólo puedo usar a `ShellComponent`, que es el único componente accesible. En `ShellComponent` se pueden usar sus vecinos _Header, Main y Footer_. Es un práctica recomendada el mantener el `AppModule` y el `AppComponent` tan simples como sea posible. Para ello movemos todo lo que podemos al módulo de ayuda `CoreModule` distribuyendo el contenido de `app.component.html` en las plantillas de _Header, Main y Footer_ que corresponda.
 
-## 4.2 Dos mundos paralelos: imports de Angular e import de TypeScript
+### 3.2.1 Dos mundos paralelos: imports de Angular e import de TypeScript
 
 Si es la primera vez que ves código TypeScript te llamarán la atención las primeras líneas de cada fichero. En el `app.module.ts` son algo así:
 
@@ -243,9 +243,9 @@ Estas **sentencias de importación son propias del lenguaje** y nada tienen que 
 
 > En general no tendrás que preocuparte de estas importaciones físicas, pues el _VSCode_ y las extensiones esenciales se encargan de hacerlo automáticamente según lo uses en tu código
 
-# 5. Transitividad y Organización
+# 4. Transitividad y Organización
 
-## 5.1 Transitividad
+## 4.1 Transitividad
 
 Un problema que reforzará tu conocimiento sobre el sistema modular surgirá al mover la etiqueta `<router-outlet></router-outlet>` del `app.component.html` al componente _Main_. En su vista `main.component.html` tendrás algo así.
 
@@ -301,7 +301,7 @@ import { ShellComponent } from './shell/shell.component';
 export class CoreModule {}
 ```
 
-## 5.2 Organización
+## 4.2 Organización
 
 Todos los programas tiene partes repetitivas. Los principios de **organización y código limpio** nos permiten identificarlas y reutilizarlas. Con los componentes ocurre lo mismo. El módulo y los componentes recién creados suelen ser comunes a casi todas las aplicaciones. Estos y otros muchos surgirán de manera natural durante el desarrollo de una aplicación para ser utilizados en múltiples páginas.
 
@@ -311,7 +311,7 @@ Son **componentes de infraestructura**. Conviene guardarlos en una carpeta espec
 ng g m shared
 ```
 
-Por ahora déjalo huérfano, no lo importaremos hasta que tengamos módulos funcionales.
+> Por ahora déjalo huérfano, no lo importaremos hasta que tengamos módulos funcionales. Sólo anticiparte que es un módulo dónde se hace mucho uso de la propiedad transitiva del sistema modular de Angular.
 
 El caso es **distinguir los componentes de infraestructura de los de negocio** o funcionalidad. Los módulos _core_ y _shared_ los trataremos como de infraestructura y todos los demás serán de negocio (aún no tenemos). El primero es para meter cosas de uso único esenciales para la aplicación. El segundo para meter bloques reutilizables durante la construcción de la aplicación. Recuerda que sólo son convenios de arquitectura de software; adáptalos a tus necesidades.
 
