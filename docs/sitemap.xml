@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
+    
+    <lastmod>2019-01-16T10:57:45.132Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/hola-angular-cli/</loc>
     
-    <lastmod>2019-01-09T12:19:00.000Z</lastmod>
+    <lastmod>2019-01-16T09:31:36.910Z</lastmod>
     
   </url>
   
@@ -37,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
-    
-    <lastmod>2018-12-03T16:41:52.259Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
     
     <lastmod>2018-12-03T16:41:52.259Z</lastmod>
@@ -51,7 +51,7 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
+    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
     
     <lastmod>2018-12-03T16:41:52.259Z</lastmod>
     

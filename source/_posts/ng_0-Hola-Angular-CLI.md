@@ -2,7 +2,6 @@
 title: Hola Angular CLI
 permalink: hola-angular-cli
 date: 2019-01-09 12:54:00
-updated: 2019-01-09 13:19:00
 tags:
   - Angular
   - CLI
@@ -27,11 +26,15 @@ El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ 
 
 # 1. Instalación de Angular CLI 7
 
-Para empezar, como en casi cualquier desarrollo **necesitarás _NodeJS_ y su manejador de de paquetes _npm_**. Tenerlos actualizados es un mandamiento básico para un desarrollador web.
+Angular es una plataforma de desarrollo dogmática y llave en mano. Para empezar, como en casi cualquier desarrollo **necesitarás [NodeJS](https://nodejs.org/en/) y su manejador de de paquetes _npm_**. Tenerlos actualizados es un mandamiento básico para un desarrollador web. Comprueba tu versión con el siguiente comando:
+
+```console
+node -v
+```
 
 Empieza con una **instalación global** que te permita usar la herramienta desde cualquier directorio. Comprueba la versión instalada y accede a la ayuda en línea. La ayuda está disponible tanto de modo general como para cada comando que vayas a usar.
 
-Instrucciones para instalar angular cli.
+Instrucciones para instalar Angular CLI.
 
 ```console
 $ npm i -g @angular/cli@latest
@@ -109,9 +112,9 @@ Volviendo a la **estructura de ficheros y carpetas** te encontrarás con muchos 
   - **index.html** _: un fichero HTML índice estándar_
   - **main.ts** _: fichero TypeScript de arranque de la aplicación_
   - **app/** _: la carpeta con el código específico de tu aplicación_
-    - **app.module.ts** _: las aplicaciones son árboles de módulos, y este es su raíz_
-    - **app.component.ts** _: las páginas son árboles de componentes, y este es su raíz_
-    - **app.component.html** _: los componentes tienen una parte visual, y esta es su plantilla_
+    - **app.module.ts** _: la aplicación es un árbol de módulos, y este es su raíz_
+    - **app.component.ts** _: la página es un árbol de componentes, y este es su raíz_
+    - **app.component.html** _: el componente tiene una parte visual, esta es su vista_
 
 Echa un vistazo a estos ficheros, pronto los modificaremos para sentirnos programadores.
 
@@ -188,10 +191,7 @@ Para que se incluyan en la distribución hay que ir a la configuración del _CLI
 
 ```json
 {
-  "styles": [
-    "src/styles.css",
-    "./node_modules/mini.css/dist/mini-default.min.css"
-  ]
+  "styles": ["src/styles.css", "./node_modules/mini.css/dist/mini-default.min.css"]
 }
 ```
 
@@ -210,7 +210,7 @@ Una cosa más, los cambios en los ficheros de configuración no se auto recargan
 La carpeta `environments/` contiene dos ficheros, y puede contener más, para cada entorno de distribución necesario. En código siempre importaremos el fichero base, pero durante la compilación el CLI lo sustituirá por el adecuado.
 
 ```typescript
-title = environment.appName + "hello world ;-)";
+title = environment.appName + 'hello world ;-)';
 ```
 
 ## 5.4 Assets
@@ -240,17 +240,14 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 ```json
 {
   "scripts": {
-    "build:doc": "cd ./documentation/ && bs e -o ../docs/readme",
     "build:prod": "ng build --prod",
     "build:pub": "ng build --prod --output-path docs --base-href https://academiabinaria.github.io/angular-board/",
     "e2e": "ng e2e",
     "http-server": "http-server ./dist/angular-board/ -c-1 -p4271 -a localhost -o",
     "lint": "ng lint",
     "ng": "ng",
-    "pub:doc": "npm run build:doc && npm run push",
-    "pub": "npm run build:pub && npm run build:doc && npm run push",
+    "pub": "npm run build:pub && npm run push",
     "push": "git add * && git commit -m 'pub' && git push",
-    "start:doc": "cd ./documentation/ && bs s",
     "start:prod": "npm run build:prod && npm run http-server",
     "start": "ng serve --aot -o --port 4270",
     "test": "ng test"
@@ -260,7 +257,19 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 
 Comprueba las ejecuciones de los distintos _scripts_. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/angular-board` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta estándar `./docs` listos para publicarse en las _github pages_.
 
-Para complementar tu conocimiento te recomiendo la [documentación de Angular/CLI](https://angular.io/cli) y este artículo que trata la configuración del CLI en profundidad [Angular CLI under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
+Otros enlaces de interés sobre el ecosistema Angular.
+
+- [Extensiones Esenciales](https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials)
+- [Prettier](https://prettier.io/)
+- [Angular Console](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console)
+- [Angular Material](https://material.angular.io/)
+- [Bootstrap](https://ng-bootstrap.github.io/#/home)
+- [Augury](https://augury.rangle.io/)
+- [Apollo GraphQL](https://www.apollographql.com/docs/)
+- [Ionic](https://ionicframework.com/)
+- [Angular Console](https://angularconsole.com/)
+
+Para complementar tu conocimiento te recomiendo la [documentación de Angular/CLI](https://angular.io/cli) y este artículo avanzado que trata la configuración del CLI en profundidad [Angular CLI under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
 Esto es sólo el principio, _Angular CLI 7_ puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 7. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/).
 
