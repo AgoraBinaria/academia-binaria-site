@@ -187,7 +187,7 @@ Y esta es su vista asociada. La cual es de nuevo una composición de otros selec
 <app-footer></app-footer>
 ```
 
-# 3 Público privado, importación y exportación
+# 3 Visibilidad entre componentes
 
 La clave del código limpio es **exponer funcionalidad de manera expresiva pero ocultar la implementación**. Esto es sencillo con los lenguajes de POO, pero en HTML no era nada fácil. Con la **programación basada en componentes** podemos crear pantallas complejas, reutilizables y que a su vez contengan y oculten la complejidad interna a sus consumidores.
 
