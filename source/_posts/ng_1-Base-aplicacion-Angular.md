@@ -45,17 +45,19 @@ Mira el módulo `AppModule` original que genera el CLI en el fichero `app.module
 export class AppModule {}
 ```
 
-## 1.2 Importación de otros módulos
+### 1.1.1 Importación de otros módulos
 
 El módulo `App` también se conoce como **módulo raíz** porque de él surgen las demás ramas que conforman una aplicación. La asignación de los nodos hijos se realiza en la propiedad `imports:[]`, que es un array de punteros a otros módulos.
 
 > En la situación original el módulo principal depende un módulo _custom_ pre-generado (el `AppRoutingModule` que usarás más adelante) y de otro _del framework_ para la presentación en el navegador (el `BrowserModule`).
 
+Veremos esto con más profuncidad en el punto 4.
+
 ## 1.2 Generación de módulos
 
 Hasta ahora los módulos involucrados son librerías de terceros o que se crearon mágicamente con la aplicación. Es hora de **crear tu primer módulo**. Para eso usaremos otro comando del _cli_, el `ng generate module`. En una ventana del terminal escribe:
 
-```shell
+```bash
 ng g m core
 ```
 
@@ -267,7 +269,7 @@ Un problema que reforzará tu conocimiento sobre el sistema modular surgirá al 
 
 Todo son etiquetas _html_ estándar salvo la última `<router-outlet></router-outlet>`. El propósito de este componte lo veremos en la próxima lección dedicada a enrutado. Pero por ahora más que una ayuda es un dolor de cabeza porque es un desconocido para el módulo `CoreModule`. Resulta que el `RouterOutletComponent` está declarado en un módulo del _framework_ llamado `RouterModule`. Dicho módulo fue importado de manera automática durante la generación del código inicial, pero ¿Dónde?.
 
-El tema del enrutado es un [capítulo aparte](../paginas-y-rutas-angular-spa/), pero las relaciones de los módulos debes conocerlas cuanto antes. Durante la generación inicial se crearon dos módulos: el `AppModule` ya estudiado y su asistente para enrutado `AppRoutingModule`. Este último aún no lo hemos visitado. Su contenido es:
+Como digo el tema del enrutado es un [capítulo aparte](../paginas-y-rutas-angular-spa/), pero las relaciones de los módulos debes conocerlas cuanto antes. Durante la generación inicial se crearon dos módulos: el `AppModule`, ya estudiado, y su asistente para enrutado `AppRoutingModule`. Este último aún no lo hemos visitado. Su contenido es:
 
 ```typescript
 import { NgModule } from '@angular/core';
@@ -315,7 +317,43 @@ ng g m shared
 
 El caso es **distinguir los componentes de infraestructura de los de negocio** o funcionalidad. Los módulos _core_ y _shared_ los trataremos como de infraestructura y todos los demás serán de negocio (aún no tenemos). El primero es para meter cosas de uso único esenciales para la aplicación. El segundo para meter bloques reutilizables durante la construcción de la aplicación. Recuerda que sólo son convenios de arquitectura de software; adáptalos a tus necesidades.
 
-> En esta aplicación hasta ahora no es nada funcional,!y ya tiene cuatro módulos y cinco componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
+> En esta aplicación hasta ahora no es nada funcional,!y ya tiene seis módulos y seis componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
+
+### El bosque de módulos a vista de pájaro
+
+```
+AppModule
+|
++--AppRoutingModule
+|  |
+|  +--RouterModule
+|
++--BrowseModule
+|
++--CoreModule
+   |
+   +--RouterModule
+
+SharedModule
+
+```
+
+### El bosque de componentes a vista de pájaro
+
+```
+AppComponent
+|
++--ShellComponent
+   |
+   +--HeaderComponent
+   |
+   +--MainComponent
+   |  |
+   |  +--RouterOutletComponent
+   |
+   +--FooterComponent
+
+```
 
 Con esto tendrás una base para una aplicación _Angular 7_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular7.
 
