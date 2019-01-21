@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
+    
+    <lastmod>2019-01-21T12:40:51.670Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
     
     <lastmod>2019-01-17T12:14:53.731Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
     
     <lastmod>2018-12-03T16:41:52.262Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
-    
-    <lastmod>2018-12-03T16:41:52.259Z</lastmod>
     
   </url>
   
