@@ -62,7 +62,7 @@ La primera es `path:` en la que se especifica **la dirección** que resuelve, en
 
 Empecemos casi por el final y de paso hagamos algo útil para no perdernos. Un detector de rutas no contempladas, y una ruta a dónde redirigir a los usuarios perdidos. Para ello estudiaremos la propiedad `component` que es fundamental pues indica **el componente** que se debe mostrar cuando esta ruta se active.
 
-Así es cómo funciona el enrutado. Un camino y un componente asociado. La tabal de enrutado se procesa de arriba a abajo y cuando un camino coincide con la ruta actual, se para y se carga el componente.
+Así es cómo funciona el enrutado. Un camino y un componente asociado. La tabla de enrutado se procesa de arriba a abajo y cuando un camino coincide con la ruta actual, se para y se carga el componente.
 
 Vamos a crear un componente con la intención de mostrarlo sólo cuando las demás ruta fallen. Se llamará _not found_
 
@@ -84,7 +84,7 @@ Pero ¿Cómo es eso de que se mostrará?, ¿Dónde se cargará?. Presentamos a `
 
 La idea general de **una SPA es tener una única página que cargue dinámicamente otras vistas**. Normalmente la página contenedora mantiene el menú de navegación, el pie de página y otras áreas comunes. Y deja un espacio para la carga dinámica. Para ello necesitamos saber **qué componente cargar y dónde mostrarlo**. De esto último se ocupa el _router outlet_ mediante la etiqueta `<router-outlet></router-outlet>`.
 
-En el `main.component.ts` había un contenido _hard-coded_. Vamos a mantenerlo hasta que encontremos un sitio. Pero comentado, para que no se vea. Para hacer que el contenido sea dinámico se sustituye por el elemento de Angular `<router-outlet></router-outlet>`. Este elemento del framework inyectará dinámicamente el componente que le corresponda según la ruta activa. El `MainComponent` queda así:
+En el `main.component.ts` había un contenido _hard-coded_. Para hacer que el contenido sea dinámico se sustituye por el elemento de Angular `<router-outlet></router-outlet>`. Este elemento del framework inyectará dinámicamente el componente que le corresponda según la ruta activa. El `MainComponent` queda así:
 
 ```html
 <main class="container">
@@ -111,7 +111,7 @@ Salgamos de este bucle creando más rutas y más componentes. Pero esta vez con 
 
 # 2 Lazy Loading
 
-La web clásica funcionaba con un navegador pidiendo una ruta al servidor. El servidor buscaba o montaba un documento html y se l devolvía al navegador para que lo renderizase. Una nueva ruta significaba repetir todo ese viaje. Hasta que aparecieron las [Single Page Applications](https://en.wikipedia.org/wiki/Single-page_application). En este caso el código cliente es el responsable del contenido asociado a cada ruta. Y eso es mucha responsabilidad.
+La web clásica funcionaba con un navegador pidiendo una ruta al servidor. El servidor buscaba o montaba un documento html y se lo devolvía al navegador para que lo renderizase. Una nueva ruta significaba repetir todo ese viaje. Hasta que aparecieron las [Single Page Applications](https://en.wikipedia.org/wiki/Single-page_application). En este caso el código cliente es el responsable del contenido asociado a cada ruta. Y eso es mucha responsabilidad.
 
 Las _webs SPA_ se crearon por una razón que casi acaba con ellas: **la velocidad**. Al realizar el enrutado en el cliente y querer evitar todos los viajes posibles hasta el servidor, se cargó a la única página web con todo el peso de la aplicación. Lo cual la hizo terriblemente lenta en la primera visita de cada usuario.
 
@@ -123,7 +123,7 @@ En Angular el _lazy loading_ es tan sencillo que ya se recomienda implementarlo 
 
 Hay que saber que el _Angular CLI_ usa internamente la herramienta de empaquetado _webpack_. La cual recorre el código _TypeScript_ buscando `imports` y empaquetando su contenido en sacos o _bundles_. Luego introduce las referencias a esos _bundles_ en la sección se _scripts_ del index.html, haciendo que se descarguen todos nada más arrancar la aplicación. Esto puede ser muy pesado en aplicaciones grandes. Así que hay que buscar una manera de diferir esa descarga, repartiendo el _bundle_ principal en otros más pequeños que se cargará bajo demanda.
 
-Objetivo: adelgazar el peso del _bundle_ principal, el `main.js`.Para conseguirlo hay que configurar las rutas de forma que no sea necesario importar los componentes a mostrar. Tal como se ha hecho con el `NotFoundComponent`, de hacerlo así con todos, _webpack_ empaquetaría esos componentes como algo necesario... y por tanto serían enviados al navegador en el _bundle_ principal sin que sea seguro su uso. Ese no es el camino, es una excepción para componente poco pesado y muy utilizados.
+Objetivo: adelgazar el peso del _bundle_ principal, el `main.js`.Para conseguirlo hay que configurar las rutas de forma que no sea necesario importar los componentes a mostrar. Tal como se ha hecho con el `NotFoundComponent`, de hacerlo así con todos, _webpack_ empaquetaría esos componentes como algo necesario... y por tanto serían enviados al navegador en el _bundle_ principal sin que sea seguro su uso. Ese no es el camino, es una excepción para componentes poco pesados y muy utilizados.
 
 La solución que ofrecen el _cli_ y _webpack_ consiste en **delegar la asignación del componente a otro módulo, pero sin importarlo** hasta que su ruta principal se active.
 
@@ -175,7 +175,7 @@ Con esta información _webpack_ va a generar un _bundle_ específico para cada m
 
 Ya sabemos que hasta que no se active la ruta `/` o la `/about` no hay que hacer nada. Pero si se activa, entonces se descarga un _bundle_ que contiene un módulo y los componentes necesarios. Sólo falta escoger dentro de ese módulo el componente que se asignará a la ruta.
 
-Para eso al crear el módulo de operaciones usé el _flag_ `routing true`. Esto hace que se genere un segundo módulo de enrutado. El `HomeRoutingModule` y el `AboutRoutingModule` son prácticamente idénticos al enrutador raíz.
+Para eso al crear los módulos Home y About use el _flag_ `routing true`. Esto hace que se genere un segundo módulo de enrutado. El `HomeRoutingModule` y el `AboutRoutingModule` son prácticamente idénticos al enrutador raíz.
 
 > Digamos que son **enrutadores subordinados** al primero. Sólo se llega aquí si en la ruta principal se ha navegado a una dirección concreta. Se hace notar esa distinción durante el proceso de importación del módulo de Angular `RouterModule`. En el caso principal se pone `imports: [RouterModule.forRoot(routes)]` y en todos los demás `imports: [RouterModule.forChild(routes)]`.
 
@@ -271,7 +271,7 @@ Las rutas vistas hasta ahora se consideran estáticas pues se han definido usand
 
 Ese tipo de direcciones se consideran paramétricas, tienen unos segmentos estáticos y otros dinámicos. Estos últimos se definen con parámetros, algo así como **variables dentro de la cadena de la ruta**. Su sintaxis obliga a precederlas de dos puntos. Por ejemplo `countries/:country/cities/:city` resolvería rutas como _countries/usa/cities/new-york_ o _countries/italy/cities/roma_. Rellenando los parámetros `:country` y `:city` con los valores necesarios.
 
-> Esta aplicación no tiene un propósito de negocio concreto. Iremos creando rutas según sea necesario por motivos pedagógicos. Empezaremos con unas páginas destinadas a gestionar proyectos.
+> Esta aplicación no tiene un propósito de negocio concreto. Iremos creando rutas según sea necesario por motivos pedagógicos. Empezaremos con unas páginas destinadas a mostrar los autores del proyecto.
 
 Vamos a crear rutas como _/authors/albertobasalo_ o _/authors/johndoe_. Para ello necesitamos el segmento principal _/authors_ y una par de componentes.
 
@@ -313,7 +313,7 @@ Para mostrar el uso de los nuevos enlaces he agregado el `authors/` al `AboutCom
 <a routerLink="jhondoe" class="button"> <span> Jhon Doe</span> </a>
 ```
 
-Aún más interesante es el componente que muestra cada proyecto de la lista, el `AuthorComponent`. En este caso fíjate cómo accede a la ruta, cómo obtiene el valor del parámetro y cómo lo usa para mostrarlo en la web.
+Aún más interesante es el componente que muestra cada autor de la lista, el `AuthorComponent`. En este caso fíjate cómo accede a la ruta, cómo obtiene el valor del parámetro y cómo lo usa para mostrarlo en la web.
 
 ## 4.2 ActivatedRoute
 
@@ -345,7 +345,7 @@ Obtenidos los datos desde la _URL_, ya se muestran en la vista de forma ya conoc
 <h3>{{ authorId }}</h3>
 ```
 
-Con esto tendrás una aplicación SPA en _Angular_. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular6.
+Con esto tendrás una aplicación SPA en _Angular_. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
