@@ -211,120 +211,15 @@ Ahora que ya tenemos un par de rutas reales, es buen momento para crear un mini 
 </header>
 ```
 
-# 3 Parámetros
-
-Las rutas vistas hasta ahora se consideran estáticas pues se han definido usando constantes. Es muy habitual tener **páginas con la misma estructura pero distintos contenidos**. Un blog con sus posts, una tienda con sus productos, o un proyecto con sus tareas... hay miles de ejemplos así.
-
-## 3.1 Variables en la ruta
-
-Ese tipo de direcciones se consideran paramétricas, tienen unos segmentos estáticos y otros dinámicos. Estos últimos se definen con parámetros, algo así como **variables dentro de la cadena de la ruta**. Su sintaxis obliga a precederlas de dos puntos. Por ejemplo `countries/:country/cities/:city` resolvería rutas como _countries/usa/cities/new-york_ o _countries/italy/cities/roma_. Rellenando los parámetros `:country` y `:city` con los valores necesarios.
-
-> Esta aplicación no tiene un propósito de negocio concreto. Iremos creando rutas según sea necesario por motivos pedagógicos. Empezaremos con unas páginas destinadas a gestionar proyectos.
-
-Vamos a crear rutas como _/projects/write-a-book_ o _/projects/develop-a-personal-web_. Para ello necesitamos el segmento principal _/projects_ y delegar su uso al `ProjectsModule`.
-
-Creamos el módulo y sus componentes principales como hasta ahora.
-
-```bash
-ng g m projects --routing true
-ng g c projects/projects
-ng g c projects/projects/new-project
-ng g c projects/projects/project
-```
-
-En las rutas del `app-routing.module.ts` agregamos un nuevo _path lazy_
-
-```typescript
-const routes: Routes = [
-...
-  {
-    path: 'projects',
-    loadChildren: './projects/projects.module#ProjectsModule'
-  },
-...
-];
-```
-
-Y en el recién creado `projects\projects-routing.module.ts` asignamos las rutas a los componentes.
-
-```typescript
-const routes: Routes = [
-  {
-    path: '',
-    component: ProjectsComponent
-  },
-  {
-    path: 'new',
-    component: NewProjectComponent
-  },
-  {
-    path: ':id',
-    component: ProjectComponent
-  }
-];
-```
-
-Esta configuración resuelve las rutas `projects/`, `projects/new` y `projects/cualquier-otra-cosa`. Y las carga con el componente adecuado. Lo novedoso en el camino `:id`. El prefijo dos puntos indica que es un parámetro. Algo así como una variable en el segundo segmento que se almacenará y será recogido con el arbitrario nombre `id`.
-
-Para mostrar el uso de los nuevos enlaces he agregado el `projects/` al `HeaderComponente` y he creado un listado en el `ProjectsComponent`. Familiarízate con las rutas relativas para componer la ruta completa. La parte interesante de su _html_ es:
-
-```html
-<header class="sticky">
-  <a routerLink="./" class="button"> <span> Projects</span> </a>
-  <a routerLink="new" class="button"> <span> New</span> </a>
-</header>
-<h2>List</h2>
-<ul>
-  <li>
-    <h4><a routerLink="write-a-book">Write a Book</a></h4>
-  </li>
-  <li>
-    <h4><a [routerLink]="['develop-a-personal-web']">Develop a personal web</a></h4>
-  </li>
-</ul>
-```
-
-Aún más interesante es el componente que muestra cada proyecto de la lista, el `ProjectComponent`. En este caso fíjate cómo accede a la ruta, cómo obtiene el valor del parámetro y cómo lo usa para mostrarlo en la web.
-
-## 3.2 ActivatedRoute
-
-El framework _Angular_ trae muchas librerías para facilitar la vida al programador. Sólo hay que saber dónde están y cómo pedirlas. Para ello volvemos a la tecnología escogida, _TypeScript_, que permite las **importaciones y la inyección de dependencias**. Hay un tema dedicado a conocer en profundidad [los servicios inyectables en Angular](https://academia-binaria.com/servicios-inyectables-en-Angular/). Por ahora una breve introducción.
-
-Contenido del fichero `project.component.ts` relacionado con la obtención del parámetro de la ruta activa:
-
-```typescript
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-export class ProjectComponent implements OnInit {
-  public projectId = '';
-  constructor(activateRoute: ActivatedRoute) {
-    this.projectId = activateRoute.snapshot.params['id'];
-  }
-  ngOnInit() {}
-}
-```
-
-La instrucción `import { ActivatedRoute } from "@angular/router";` pone a disposición del programador el código donde está definida la clase `ActivatedRoute`. Pero no se instancia directamente; en su lugar, se usa como un argumento del constructor de la clase del componente. Ese constructor es invocado por _Angular_, y dinámicamente el propio framework sabe cómo rellenar los argumentos que se pidan en los constructores. Es decir, sabe cómo inyectar instancias en las que dependencias declaradas.
-
-Una vez que han **inyectan las dependencias en el constructor** ya están listas para ser usadas. En concreto `activateRoute` da acceso a métodos y propiedades para trabajar con la ruta activa y poder leer sus parámetros.
-
-Obtenidos los datos desde la _URL_, ya se muestran en la vista de forma ya conocida. Fichero `projects/project.component.html`
-
-```html
-<h2>The project</h2>
-<h3>{{ projectId }}</h3>
-```
-
-# 4 Rutas anidadas
+# 3 Rutas anidadas
 
 Cuando las interfaces se complican, es habitual que las aplicaciones dispongan de menús de navegación a distintos niveles. Dentro de una misma página podemos querer ver distinto contenido y además reflejarlo en la _URL_. Para resolver esta situación en Angular disponemos de la técnica de las _nested routes_.
 
 > De una manera un tanto forzada la he incluido en la página `/about`. La cual disponen de su propio menú de navegación, y lo que es más importante, su propio `<router-outlet></router-outlet>`.
 
-Para empezar veamos como queda el _html_ del `projects.component.ts`. Vamos a dotarlo de dos rutas nuevas `/about/links` y `/about/info`. Cada una mostrará contenido en un componente adecuadamente insertado en el `<router-outlet></router-outlet>` local.
+Para empezar veamos como queda el _html_ del `about.component.ts`. Vamos a dotarlo de dos rutas nuevas `/about/links` y `/about/info`. Cada una mostrará contenido en un componente adecuadamente insertado en el `<router-outlet></router-outlet>` local.
 
-## 4.1 Children
+## 3.1 Children
 
 Para repasar conceptos de generación de componentes
 
@@ -354,7 +249,7 @@ const routes: Routes = [
 ];
 ```
 
-## 4.2 RouterOutlet anidado
+## 3.2 RouterOutlet anidado
 
 Los componentes de las rutas `children` se inyectarán en el `<router-outlet>` del componente contenedor `AboutComponent`. Es como si todo volviese a empezar desde aquí.
 
@@ -367,6 +262,88 @@ Los componentes de las rutas `children` se inyectarán en el `<router-outlet>` d
 ```
 
 Con estos conceptos y la combinación de `children, loadChild, component, redirectTo` ... asociadas a `path` podrás configurar tu aplicación y responder a cualquier _URL_ desde la misma y única página `index.html`.
+
+# 4 Parámetros
+
+Las rutas vistas hasta ahora se consideran estáticas pues se han definido usando constantes. Es muy habitual tener **páginas con la misma estructura pero distintos contenidos**. Un blog con sus posts, una tienda con sus productos, o un proyecto con sus tareas... hay miles de ejemplos así.
+
+## 4.1 Variables en la ruta
+
+Ese tipo de direcciones se consideran paramétricas, tienen unos segmentos estáticos y otros dinámicos. Estos últimos se definen con parámetros, algo así como **variables dentro de la cadena de la ruta**. Su sintaxis obliga a precederlas de dos puntos. Por ejemplo `countries/:country/cities/:city` resolvería rutas como _countries/usa/cities/new-york_ o _countries/italy/cities/roma_. Rellenando los parámetros `:country` y `:city` con los valores necesarios.
+
+> Esta aplicación no tiene un propósito de negocio concreto. Iremos creando rutas según sea necesario por motivos pedagógicos. Empezaremos con unas páginas destinadas a gestionar proyectos.
+
+Vamos a crear rutas como _/authors/albertobasalo_ o _/authors/johndoe_. Para ello necesitamos el segmento principal _/authors_ y una par de componentes.
+
+Vamos a agregar los componentes necesarios como hasta ahora.
+
+```bash
+ng g c about/about/authors
+ng g c about/about/authors/author
+```
+
+En las rutas del `about-routing.module.ts` agregamos un nuevos _children paths_
+
+```typescript
+{
+  path: '',  component: AboutComponent,
+  children: [
+    {
+      path: 'links', component: LinksComponent
+    },
+    {
+      path: 'info', component: InfoComponent
+    },
+    {
+      path: 'authors', component: AuthorsComponent
+    },
+    {
+      path: 'authors/:id', component: AuthorComponent
+    }
+  ]
+}
+```
+
+Esta configuración resuelve las rutas `about/links`, `about/info`, `about/authors` y `about/authors/cualquier-otra-cosa`. Y las carga con el componente adecuado. Lo novedoso en el camino `:id`. El prefijo dos puntos indica que es un parámetro. Algo así como una variable en el segundo segmento que se almacenará y será recogido con el arbitrario nombre `id`.
+
+Para mostrar el uso de los nuevos enlaces he agregado el `authors/` al `AboutComponent` y he creado un listado en el `AuthorsComponent`. Familiarízate con las rutas relativas para componer la ruta completa.
+
+```html
+<a routerLink="albertobasalo" class="button"> <span> Alberto Basalo</span> </a>
+<a routerLink="jhondoe" class="button"> <span> Jhon Doe</span> </a>
+```
+
+Aún más interesante es el componente que muestra cada proyecto de la lista, el `AuthorComponent`. En este caso fíjate cómo accede a la ruta, cómo obtiene el valor del parámetro y cómo lo usa para mostrarlo en la web.
+
+## 4.2 ActivatedRoute
+
+El framework _Angular_ trae muchas librerías para facilitar la vida al programador. Sólo hay que saber dónde están y cómo pedirlas. Para ello volvemos a la tecnología escogida, _TypeScript_, que permite las **importaciones y la inyección de dependencias**. Hay un tema dedicado a conocer en profundidad [los servicios inyectables en Angular](https://academia-binaria.com/servicios-inyectables-en-Angular/). Por ahora una breve introducción.
+
+Contenido del fichero `author.component.ts` relacionado con la obtención del parámetro de la ruta activa:
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+export class AuthorComponent implements OnInit {
+  public authorId = '';
+  constructor(activateRoute: ActivatedRoute) {
+    this.authorId = activateRoute.snapshot.params['id'];
+  }
+  ngOnInit() {}
+}
+```
+
+La instrucción `import { ActivatedRoute } from "@angular/router";` pone a disposición del programador el código donde está definida la clase `ActivatedRoute`. Pero no se instancia directamente; en su lugar, se usa como un argumento del constructor de la clase del componente. Ese constructor es invocado por _Angular_, y dinámicamente el propio framework sabe cómo rellenar los argumentos que se pidan en los constructores. Es decir, sabe cómo inyectar instancias en las que dependencias declaradas.
+
+Una vez que han **inyectan las dependencias en el constructor** ya están listas para ser usadas. En concreto `activateRoute` da acceso a métodos y propiedades para trabajar con la ruta activa y poder leer sus parámetros.
+
+Obtenidos los datos desde la _URL_, ya se muestran en la vista de forma ya conocida. Fichero `/about/authors/author/author.component.html`
+
+```html
+<h2>Author profile</h2>
+<h3>{{ authorId }}</h3>
+```
 
 Con esto tendrás una aplicación SPA en _Angular_. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular6.
 
