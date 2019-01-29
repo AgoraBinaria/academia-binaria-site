@@ -39,6 +39,10 @@ El _Angular Router_ necesita ser importado y configurado. El módulo `AppRouting
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
+    path: 'heroes',
+    component: HeroesComponent
+  },
+  {
     path: 'not-found',
     component: NotFoundComponent
   },
@@ -60,11 +64,30 @@ La primera es `path:` en la que se especifica **la dirección** que resuelve, en
 
 ### 1.1.1 Component
 
-Empecemos casi por el final y de paso hagamos algo útil para no perdernos. Un detector de rutas no contempladas, y una ruta a dónde redirigir a los usuarios perdidos. Para ello estudiaremos la propiedad `component` que es fundamental pues indica **el componente** que se debe mostrar cuando esta ruta se active.
+Vamos a crear un componente donde guardar el contenido que el CLI nos regala de inicio. Los enlaces a las páginas oficiales de Angular y al ejemplo del _Tour Of Heroes_. Para ello crearé el componente HeroesComponent.
+
+```bash
+ng g c heroes
+```
+
+Lo hago en la carpeta raíz; algo poco aconsejado si queremos tener una estructura escalable. Pero es un buen anti-ejemplo ;-)
+
+Ahora debo decidir qué ruta asociarle... por ejemplo `/heroes`. Eso es lo que se ve en el inicio de la configuración de rutas. Para no perderme lo ideal es tener un nuevo enlace de navegación en el `HeaderComponent`
+
+```html
+<header class="sticky">
+  <a routerLink="/" class="logo"> <span class="icon-home"></span> <span>{{ title }}</span> </a>
+  <a routerLink="heroes" routerLinkActive="router-link-active" class="button">
+    <span> Heroes</span>
+  </a>
+</header>
+```
+
+Vayamos casi al final y de paso hagamos algo útil para no volver a perdernos sin remedio. Un detector de rutas no contempladas, y una ruta a dónde redirigir a los usuarios perdidos. Para ello estudiaremos la propiedad `component` que es fundamental pues indica **el componente** que se debe mostrar cuando esta ruta se active.
 
 Así es cómo funciona el enrutado. Un camino y un componente asociado. La tabla de enrutado se procesa de arriba a abajo y cuando un camino coincide con la ruta actual, se para y se carga el componente.
 
-Vamos a crear un componente con la intención de mostrarlo sólo cuando las demás ruta fallen. Se llamará _not found_
+Vamos a crear un componente con la intención de mostrarlo sólo cuando las demás ruta fallen. Se llamará _not found_ Lo creo asociado al `CoreModule` lo cual ayuda a organizar los elementos de la aplicación.
 
 ```bash
 ng g c core/not-found
@@ -310,7 +333,7 @@ Para mostrar el uso de los nuevos enlaces he agregado el `authors/` al `AboutCom
 
 ```html
 <a routerLink="albertobasalo" class="button"> <span> Alberto Basalo</span> </a>
-<a routerLink="jhondoe" class="button"> <span> Jhon Doe</span> </a>
+<a routerLink="johndoe" class="button"> <span> John Doe</span> </a>
 ```
 
 Aún más interesante es el componente que muestra cada autor de la lista, el `AuthorComponent`. En este caso fíjate cómo accede a la ruta, cómo obtiene el valor del parámetro y cómo lo usa para mostrarlo en la web.
