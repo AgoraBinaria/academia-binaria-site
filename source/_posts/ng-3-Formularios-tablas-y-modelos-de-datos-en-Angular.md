@@ -136,7 +136,7 @@ Por ejemplo `[(ngModel)]="rechargedDistance"` enlaza doblemente la propiedad del
 
 Los anteriores modificadores actúan a nivel de contenido del HTML. Veremos ahora una para de directivas que afectan directamente a la estructura del árbol DOM. Son las llamadas directivas estructurales que comienzan por el signo `*`
 
-## 2.2 Condicionales \*ngIf
+## 2.1 Condicionales \*ngIf
 
 La directiva estructural más utilizada es la `*ngIf`, la cual consigue que un elemento se incluya o se elimine en el _DOM_ en función de los datos del modelo.
 
@@ -154,7 +154,7 @@ La directiva estructural más utilizada es la `*ngIf`, la cual consigue que un e
 </ng-template>
 ```
 
-### 2.2.1 Identificadores con hashtag
+### 2.1.1 Identificadores con hashtag
 
 En el código anterior apreciarás que aparece un elemento `<ng-template>` no estándar con el atributo llamado `#rechargingSection` precedido por un `#`. La directiva `#` genera un identificador único para el elemento al que se le aplica y permite referirse a él en otros lugares del código.
 
