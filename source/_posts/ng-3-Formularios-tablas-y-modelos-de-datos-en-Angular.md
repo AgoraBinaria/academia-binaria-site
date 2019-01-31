@@ -192,7 +192,7 @@ public contact = { name: '', isVIP: false, gender: '' };
 
 Le vendría muy bien un _check box_.
 
-### 2.2.1 CheckBox
+### CheckBox
 
 ```html
 <section>
@@ -203,7 +203,7 @@ Le vendría muy bien un _check box_.
 
 Y un para de _radio buttons_.
 
-### 2.2.2 Radio Buttons
+### Radio Buttons
 
 ```html
 <section>
@@ -282,7 +282,7 @@ public contact = {
 
 > if **condition** else **template**
 
-### 3.2.1 Identificadores con hashtag
+### Identificadores con hashtag
 
 En el código anterior apreciarás que aparece un elemento `<ng-template>` no estándar con el atributo llamado `#education` precedido por un `#`. La directiva `#` genera un identificador único para el elemento al que se le aplica y permite referirse a él en otros lugares del código.
 
@@ -292,7 +292,7 @@ Ese truco permite que `*ngIf` muestre otro elemento cuando la condición princip
 
 Los componentes los hemos definido como **bloques de construcción de páginas. Mediante una vista y un controlador** resuelven un problema de interacción o presentación de modelos. En los puntos anteriores te presenté la vista. Toca ahora estudiar el modelo y el controlador.
 
-## 3.1 El modelo y su interInterfaces y modelos
+## 4.1 El modelo y su interInterfaces y modelos
 
 Sin ir muy lejos en las capacidades que tendría un modelo de datos clásico, vamos al menos a beneficiarnos del **_TypeScript_ para definir la estructura de datos**. Esto facilitará la programación mediante el autocompletado del editor y reducirá los errores de tecleo mediante la comprobación estática de tipos.
 
@@ -355,7 +355,7 @@ Ahora se trata de invocar el método desde la vista. Es muy buena práctica llev
 
 Podemos decir que las propiedades públicas de la clase actuarán como _binding_ de datos con la vista. Mientras que los métodos públicos serán invocados desde los eventos de la misma vista.
 
-### 4.2.1 OnInit
+### OnInit
 
 Los componentes son clases con un **ciclo de vida** al que puedes enganchar tu código en algunos pasos. Por ejemplo al iniciarse el componente.
 
@@ -385,7 +385,7 @@ public ngOnInit() {
 }
 ```
 
-### 4.2.1 Un listado de repaso
+### Un listado de repaso
 
 Para mostrar lo que ahora estamos guardando en una lista, nada más sencillo que usar de nuevo a `*nFor` y a `*ngIf` para tratar listas vacías.
 
