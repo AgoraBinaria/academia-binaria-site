@@ -66,7 +66,7 @@ La clave para entender cómo funciona _Angular_ está en el concepto de **enlace
 
 Para realizar el _binding_ usaremos **directivas** en ambos sentidos.
 
-### 1.1.1 Enlace del modelo hacia la vista
+## 1.1 Enlace del modelo hacia la vista
 
 Vamos a crear un pequeño modelo de datos. Para empezar agregamos algunas propiedades. En `contacts.component.ts`:
 
@@ -77,8 +77,6 @@ public numContacts = 0;
 public counterClass = 'tag secondary';
 public formHidden = false;
 ```
-
-### 1.1.1 Enlace del modelo hacia la vista
 
 En `contacts.component.html` mostramos cabeceras con estilo
 
@@ -92,25 +90,25 @@ En `contacts.component.html` mostramos cabeceras con estilo
 </p>
 ```
 
-#### 1.1.1.1 La interpolación entre \{ \{ \} \}
+### La interpolación entre \{ \{ \} \}
 
 En el fichero `contacts.component.ts` tienes en su vista _html_ encontrarás elementos ajenos al lenguaje. Son las directivas. La primera que encuentras es `{{ header }}`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
 
 > La expresión interna hace referencia a variables que se obtienen de las propiedades de la clase controladora del componente. En este caso `ContactsComponent` y `header`, con su valor _Contacts_ en ejecución. Este enlace mantiene la vista permanentemente actualizada a través de un potente sistema de detección del cambio.
 
-#### 1.1.1.2 Las tuberías |
+### Las tuberías |
 
 Si queremos que la presentación del dato sea distinta a su valor real, podemos usar **funciones de transformación** especiales. Se llaman tuberías o _pipes_ y se indican mediante el carácter `|`.
 
 El _framework_ nos provee de casos básicos como `uppercase, lowercase, date, number...`. También dispones de un mecanismo para crear tus propios _pipes_.
 
-#### 1.1.1.3 Los atributos evaluados []
+### Los atributos evaluados []
 
 En _Html_ disponemos de atributos para asignar valores a propiedades de los elementos. Esos atributos reciben los valores como constantes. Pero, si se encierran entre corchetes se convierten en un **evaluador de expresiones** y puede recibir una variable o cualquier otra expresión.
 
 Como por ejemplo usando una _clase css_ cuyo valor cambia en tiempo de ejecución. O para deshabilitar un elemento dinámicamente.
 
-### 1.1.2 Enlace de la vista hacia el modelo
+## 1.2 Enlace de la vista hacia el modelo
 
 En `contacts.component.html` también actuamos sobre la vista, para manipular el modelo... y de vuelta a la vista. Por ejemplo con mecanismo simple de ocultación de un elemento.
 
@@ -122,7 +120,7 @@ En `contacts.component.html` también actuamos sobre la vista, para manipular el
 </form>
 ```
 
-#### 1.1.2.1 Las clases CSS como atributos especiales
+### Las clases CSS como atributos especiales
 
 Para el caso concreto de determinar las clases CSS aplicables a un elemento de manera dinámica, usaremos la directiva `ngClass`. La cual recibe un objeto cuyas propiedades son nombres de clases CSS y sus valores son expresiones booleanas. Si se cumplen se aplica la clase y si no, se quita la clase.
 
@@ -132,7 +130,7 @@ Para el caso concreto de determinar las clases CSS aplicables a un elemento de m
 
 En este caso se oculta el elemento dependiendo del valor de la expresión `formHidden`. Pero ¿cómo se manipula esa variable?
 
-### 1.1.2.2 Los eventos ()
+### Los eventos ()
 
 Cualquier evento asociado a un elemento puede ejecutar una instrucción sin más que incluirlo entre paréntesis. Idealmente dicha instrucción debe llamar a un método o función de la clase controladora. Aunque si es trivial puedes dejarla en el Html.
 
