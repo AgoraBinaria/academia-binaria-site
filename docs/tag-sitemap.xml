@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Bootstrap/</loc>
+        <lastmod>2015-11-12T15:55:15.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/AngularJS/</loc>
+        <lastmod>2016-01-14T10:17:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/FrontEnd/</loc>
+        <lastmod>2016-01-14T10:17:31.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/MongoDB/</loc>
+        <lastmod>2016-04-01T06:02:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/BackEnd/</loc>
+        <lastmod>2016-04-01T06:02:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/NodeJS/</loc>
+        <lastmod>2016-05-05T08:02:26.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/TypeScript/</loc>
+        <lastmod>2017-03-14T18:10:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/reactiveForms/</loc>
+        <lastmod>2018-12-03T16:35:12.938Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Universal/</loc>
+        <lastmod>2018-12-03T16:37:55.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/SSR/</loc>
+        <lastmod>2018-12-03T16:37:55.771Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/PWA/</loc>
+        <lastmod>2018-12-03T16:38:39.288Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/ChangeDetection/</loc>
+        <lastmod>2018-12-03T16:39:36.951Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Avanzado/</loc>
+        <lastmod>2018-12-03T16:40:17.371Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Redux/</loc>
+        <lastmod>2018-12-03T16:40:17.371Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/NgRx/</loc>
+        <lastmod>2018-12-03T16:40:17.371Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Components/</loc>
+        <lastmod>2018-12-03T16:41:52.262Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/RxJS/</loc>
+        <lastmod>2018-12-03T16:41:52.263Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/DI/</loc>
+        <lastmod>2018-12-03T16:41:52.265Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Servicios/</loc>
+        <lastmod>2018-12-03T16:41:52.265Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/http/</loc>
+        <lastmod>2018-12-03T16:41:52.266Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular6/</loc>
+        <lastmod>2018-12-03T16:41:52.266Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Observables/</loc>
+        <lastmod>2018-12-03T16:41:52.266Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/CLI/</loc>
+        <lastmod>2019-01-17T12:14:53.731Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/SPA/</loc>
+        <lastmod>2019-01-29T16:07:44.556Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Routing/</loc>
+        <lastmod>2019-01-29T16:07:44.556Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular2/</loc>
+        <lastmod>2019-01-31T18:48:32.357Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Tutorial/</loc>
+        <lastmod>2019-01-31T18:48:32.357Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Forms/</loc>
+        <lastmod>2019-01-31T18:48:32.357Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular/</loc>
+        <lastmod>2019-01-31T18:48:32.357Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Introduccion/</loc>
+        <lastmod>2019-01-31T18:48:32.357Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular7/</loc>
+        <lastmod>2019-01-31T18:48:32.357Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->

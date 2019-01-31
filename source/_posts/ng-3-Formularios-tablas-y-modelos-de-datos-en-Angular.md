@@ -1,7 +1,7 @@
 ---
 title: Formularios, tablas y modelos de datos en Angular
 permalink: formularios-tablas-y-modelos-de-datos-en-angular
-date: 2019-01-30 13:17:37
+date: 2019-01-31 19:17:37
 tags:
   - Angular
   - Forms
@@ -26,264 +26,391 @@ Partiendo de la aplicación tal cómo quedó en [Páginas y rutas Angular SPA](.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/](https://github.com/AcademiaBinaria/angular-board/)
 
-# 1. Formularios
+# 1. Binding
+
+## 1.0 Base
 
 **Los formularios son el punto de entrada** de información a nuestros sistemas. Llevan con nosotros desde el inicio de la propia informática y se han comido una buena parte del tiempo de programación. En _Angular_ han prestado una especial atención a ellos facilitando su desarrollo, **desde pantallas simples hasta complejos procesos**.
 
-## 1.1 El Binding
+Para empezar crearemos un proceso sencillo. algo que permita mantener una lista de contactos empresariales. Con lo aprendido en el tema de [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) creamos un par de ficheros.
+
+```bash
+ng g m contacts --routing true
+ng g c contacts/contacts
+```
+
+Y asignamos sus rutas delegadas en `app-routing` y en `contacts-routing`:
+
+```typescript
+  // app-routing
+  {
+    path: 'contacts',
+    loadChildren: './contacts/contacts.module#ContactsModule'
+  },
+  // contacts-routing
+  {
+    path: '',
+    component: ContactsComponent
+  }
+```
+
+Y finalizamos con un enlace en el `HeaderComponent`
+
+```html
+<a routerLink="contacts" class="button">
+  <span> Contacts</span>
+</a>
+```
 
 La clave para entender cómo funciona _Angular_ está en el concepto de **enlace entre elementos html de las vistas y propiedades de modelos** de datos, el llamado `binding`.
 
-### 1.1.1 La interpolación entre \{ \{ \} \}
+Para realizar el _binding_ usaremos **directivas** en ambos sentidos.
 
-> WIP
+### 1.1.1 Enlace del modelo hacia la vista
 
-En el fichero `car.component.ts` tienes en su vista _html_ encontrarás elementos ajenos al lenguaje. Son las directivas. La primera que encuentras es `{{ title }}`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
-
-Este es un ejemplo en su forma más simple posible.
+Vamos a crear un pequeño modelo de datos. Para empezar agregamos algunas propiedades. En `contacts.component.ts`:
 
 ```typescript
-@Component({
-  selector: 'app-root',
-  template: `
-    <p>{{ title }}</p>
-  `
-})
-export class AppComponent {
-  public title = 'Learning Angular';
-}
+public header = 'Contacts';
+public description = 'Manage your contact list';
+public numContacts = 0;
+public counterClass = 'tag secondary';
+public formHidden = false;
 ```
 
-> La expresión interna hace referencia a variables que se obtienen de las propiedades de la clase controladora del componente. En este caso `AppComponent` y `title`, con su valor _Learning Angular_ en ejecución. Este enlace mantiene la vista permanentemente actualizada a través de un potente sistema de detección del cambio.
+### 1.1.1 Enlace del modelo hacia la vista
 
-### 1.1.2 Las tuberías |
+En `contacts.component.html` mostramos cabeceras con estilo
+
+```html
+<h2>{{ header }}</h2>
+<p>{{ description | uppercase }}</p>
+<p>
+  You have
+  <mark [class]="counterClass">{{ numContacts }}</mark>
+  contacts right now.
+</p>
+```
+
+#### 1.1.1.1 La interpolación entre \{ \{ \} \}
+
+En el fichero `contacts.component.ts` tienes en su vista _html_ encontrarás elementos ajenos al lenguaje. Son las directivas. La primera que encuentras es `{{ header }}`. Esas dobles llaves encierran expresiones que se evaluarán en tiempo de ejecución. La llamamos **directiva de interpolación** y es la manera más cómoda y usual de mostrar contenido dinámico en Angular.
+
+> La expresión interna hace referencia a variables que se obtienen de las propiedades de la clase controladora del componente. En este caso `ContactsComponent` y `header`, con su valor _Contacts_ en ejecución. Este enlace mantiene la vista permanentemente actualizada a través de un potente sistema de detección del cambio.
+
+#### 1.1.1.2 Las tuberías |
 
 Si queremos que la presentación del dato sea distinta a su valor real, podemos usar **funciones de transformación** especiales. Se llaman tuberías o _pipes_ y se indican mediante el carácter `|`.
 
 El _framework_ nos provee de casos básicos como `uppercase, lowercase, date, number...`. También dispones de un mecanismo para crear tus propios _pipes_.
 
-Más ejemplos los encontrarás en el componente `car.component.ts`. Haciendo uso de los _pipes_ `currency` y `number` contra el objeto _car_.
-
-```html
-<div>
-  {{ car.model | uppercase }} <span>{{ car.cost | currency:'EUR' }}</span>
-  <span>{{ car.currentSpeed | number:'1.0-0' }}</span>
-</div>
-```
-
-### 1.1.3 Los atributos evaluados []
+#### 1.1.1.3 Los atributos evaluados []
 
 En _Html_ disponemos de atributos para asignar valores a propiedades de los elementos. Esos atributos reciben los valores como constantes. Pero, si se encierran entre corchetes se convierten en un **evaluador de expresiones** y puede recibir una variable o cualquier otra expresión.
 
-Como por ejemplo usando una _progress bar_ cuyo valor cambia en tiempo de ejecución. O para deshabilitar un elemento dinámicamente.
+Como por ejemplo usando una _clase css_ cuyo valor cambia en tiempo de ejecución. O para deshabilitar un elemento dinámicamente.
+
+### 1.1.2 Enlace de la vista hacia el modelo
+
+En `contacts.component.html` también actuamos sobre la vista, para manipular el modelo... y de vuelta a la vista. Por ejemplo con mecanismo simple de ocultación de un elemento.
 
 ```html
-<progress [value]="car.currentSpeed" [max]="car.topSpeed"></progress>
-<button [disabled]="this.car.currentSpeed <= 0">Brake</button>
-```
-
-### 1.1.4 Las clases CSS como atributos especiales
-
-Para el caso concreto de determinar las clases CSS aplicables a un elemento de manera dinámica, usaremos la directiva `ngClass`. La cual recibe un array de textos, o de variables de tipo _string_, que en ejecución montan la cadena multi-valuada de clases CSS a asignar.
-
-```html
-<progress [ngClass]="['progress', speedClass]"></progress>
-```
-
-Con su código relacionado:
-
-```typescript
-if (speedRate >= environment.dangerSpeedRate) {
-  this.speedClass = 'is-danger';
-} else if (speedRate >= environment.warningSpeedRate) {
-  this.speedClass = 'is-warning';
-} else {
-  this.speedClass = 'is-info';
-}
-```
-
-### 1.1.5 Los eventos ()
-
-Cualquier evento asociado a un elemento puede ejecutar una instrucción sin más que incluirlo entre paréntesis. Idealmente dicha instrucción debe llamar a un método o función de la clase controladora.
-
-```html
-<button (click)="car.speed = car.speed - 1">Brake</button>
-<button (click)="onThrottle()">Throttle</button>
-```
-
-## 1.2 Doble Binding: Recepción y validación
-
-La comunicación del modelo hacia la vista es sólo el principio. En _Angular_ también podrás **comunicar la vista hacia el modelo**, permitiéndole al usuario modificar los datos a través de formularios. Es lo que se conoce como _double binding_.
-
-### 1.2.1 El doble enlace al modelo [(ngModel)]
-
-La directiva `[(ngModel)]` se compone de un atributo _custom_ `ngModel` y lo rodea de los símbolos `[()]`. Esta técnica es conocida como _banana in a box_ porque su sintaxis requiere un `()` dentro de un `[]` y une las capacidades de las expresiones y los eventos facilitando la comunicación bidireccional.
-
-> Atención: La directiva `ngModel` viene dentro del módulo `FormsModule` que hay que importar explícitamente.
-
-Por ejemplo `[(ngModel)]="rechargedDistance"` enlaza doblemente la propiedad del modelo `rechargedDistance` con el elemento `<input>` de la vista. Cada tecleo del usuario se registra en la variable. Y el valor de la variable se muestra en el `<input>`.
-
-```html
-<form (ngSubmit)="onRecharge()">
-  <input [(ngModel)]="rechargedDistance" name="rechargedDistance" />
-  <button type="submit">Recharge</button>
+<input value="Show Form" type="button" (click)="formHidden = false" />
+<input value="Hide Form" type="button" (click)="formHidden = true" />
+<form [ngClass]="{ 'hidden' : formHidden }">
+  <fieldset><legend>Contact Form</legend></fieldset>
 </form>
 ```
 
-> La directiva `ngModel` es mucho más potente de lo visto aquí. Entre otras cosas permite decidir el criterio de actualización (a cada cambio o al salir del control). También se verá más adelante el asunto de la validación, que requiere un trato especial. Cuando empiezas con Angular Forms, **un input y su ngModel** asociado serán tus mejores amigos.
+#### 1.1.2.1 Las clases CSS como atributos especiales
 
-# 2 Estructuras
-
-Los anteriores modificadores actúan a nivel de contenido del HTML. Veremos ahora una para de directivas que afectan directamente a la estructura del árbol DOM. Son las llamadas directivas estructurales que comienzan por el signo `*`
-
-## 2.1 Condicionales \*ngIf
-
-La directiva estructural más utilizada es la `*ngIf`, la cual consigue que un elemento se incluya o se elimine en el _DOM_ en función de los datos del modelo.
-
-> En el ejemplo puedes ver que la uso para mostrar los mandos de aceleración y freno sólo cuando hay batería. En otro aparecerá el formulario de recarga.
+Para el caso concreto de determinar las clases CSS aplicables a un elemento de manera dinámica, usaremos la directiva `ngClass`. La cual recibe un objeto cuyas propiedades son nombres de clases CSS y sus valores son expresiones booleanas. Si se cumplen se aplica la clase y si no, se quita la clase.
 
 ```html
-<section *ngIf="hasBattery(); else rechargingSection">
-  <button (click)="onBrake()">Brake</button> <button (click)="onThrottle()">Throttle</button>
-</section>
-<ng-template #rechargingSection>
-  <form (ngSubmit)="onRecharge()">
-    <input [(ngModel)]="rechargedDistance" name="rechargedDistance" />
-    <button type="submit">Recharge</button>
-  </form>
-</ng-template>
+[ngClass]="{ 'hidden' : formHidden }"
 ```
 
-### 2.1.1 Identificadores con hashtag
+En este caso se oculta el elemento dependiendo del valor de la expresión `formHidden`. Pero ¿cómo se manipula esa variable?
 
-En el código anterior apreciarás que aparece un elemento `<ng-template>` no estándar con el atributo llamado `#rechargingSection` precedido por un `#`. La directiva `#` genera un identificador único para el elemento al que se le aplica y permite referirse a él en otros lugares del código.
+### 1.1.2.2 Los eventos ()
 
-Ese truco permite que `*ngIf` muestre otro elemento cuando la condición principal falle. El otro elemento tiene que ser el componente especial `<ng-template>` y para localizarlo se usa el identificador `#`.
+Cualquier evento asociado a un elemento puede ejecutar una instrucción sin más que incluirlo entre paréntesis. Idealmente dicha instrucción debe llamar a un método o función de la clase controladora. Aunque si es trivial puedes dejarla en el Html.
 
-## 2.2 Repetitivas
+```html
+(click)="formHidden = true"
+```
+
+# 2. Doble Binding
+
+La comunicación del modelo hacia la vista es sólo el principio. En _Angular_ también podrás **comunicar la vista hacia el modelo**, permitiéndole al usuario modificar los datos a través de formularios. Es lo que se conoce como _double binding_.
+
+## 2.1 El doble enlace al modelo [(ngModel)]
+
+La directiva `[(ngModel)]` se compone de un atributo _custom_ `ngModel` y lo rodea de los símbolos `[()]`. Esta técnica es conocida como _banana in a box_ porque su sintaxis requiere un `()` dentro de un `[]` y une las capacidades de las expresiones y los eventos facilitando la comunicación bidireccional.
+
+```html
+[(ngModel)]="model.property"
+```
+
+Usa la comunicación en ambos sentidos
+
+- **(banana)** : de la vista al modelo
+- **[box]** : del modelo a la vista
+
+> Atención: La directiva `ngModel` viene dentro del módulo `FormsModule` que hay que importar explícitamente.
+
+Por ejemplo `[(ngModel)]="contact.name"` enlaza doblemente la propiedad del modelo `contact.name` con el elemento `<input>` de la vista. Cada tecleo del usuario se registra en la variable. Y el valor de la variable se muestra en el `<input>`.
+
+Dada un modelo como este en `contacts.component.ts`:
+
+```typescript
+public contact = { name: '' };
+```
+
+Podemos enlazarlos en la plantilla
+
+```html
+<section>
+  <label for="name">Name</label>
+  <input name="name" type="text" [(ngModel)]="contact.name" placeholder="Contact name" />
+</section>
+```
+
+> Es muy útil mantener en desarrollo un espía visual de lo que está pasando con los datos. Algunas extensiones como [Augury](https://augury.rangle.io/) aportan muchas más prestaciones, pero al empezar el _pipe json_ te ayudará mucho.
+
+```html
+<pre>{{ contact | json }}</pre>
+```
+
+La directiva `ngModel` es mucho más potente de lo visto aquí. Entre otras cosas permite decidir el criterio de actualización (a cada cambio o al salir del control). También se verá más adelante el asunto de la validación, que requiere un trato especial. Cuando empiezas con Angular Forms, **un input y su ngModel** asociado serán tus mejores amigos.
+
+## 2.2 Form
+
+Hay más usos de las directivas en los formularios. Por ejemplo, dado el siguiente modelo:
+
+```typescript
+public contact = { name: '', isVIP: false, gender: '' };
+```
+
+Le vendría muy bien un _check box_.
+
+### 2.2.1 CheckBox
+
+```html
+<section>
+  <label for="isVIP">Is V.I.P.</label>
+  <input name="isVIP" type="checkbox" [(ngModel)]="contact.isVIP" />
+</section>
+```
+
+Y un para de _radio buttons_.
+
+### 2.2.2 Radio Buttons
+
+```html
+<section>
+  <label for="gender">Gender</label>
+  <input name="gender" value="male" type="radio" [(ngModel)]="contact.gender" />
+  <i>Male</i>
+  <input name="gender" value="female" type="radio" [(ngModel)]="contact.gender" />
+  <i>Female</i>
+</section>
+```
+
+# 3 Estructuras
+
+Los anteriores modificadores actúan a nivel de contenido del HTML. Veremos ahora una para de directivas que afectan directamente a **la estructura del árbol DOM**. Son las llamadas directivas estructurales que comienzan por el signo `*`
+
+## 3.1 Repetitivas \*ngFor
 
 Una situación que nos encontramos una y otra vez es la de las repeticiones. Listas de datos, tablas o grupos de opciones son ejemplos claros. Hay una directiva en _Angular_ para esa situación, la `*ngFor="let iterador of array"`. **La directiva `*ngFor` forma parte del grupo de directivas estructurales**, porque modifica la estructura del DOM, en este caso insertando múltiples nodos hijos a un elemento dado.
 
-> Puedes ver un ejemplo del uso la directiva `*ngFor` en el componente `HomeComponent`. Se emplea para recorrer un array y una lista de enlaces. Es el caso de uso _más repetido de las repeticiones_; mostrar tablas o listas de datos.
+> Puedes ver un ejemplo del uso la directiva `*ngFor` en el componente `ContactsComponent`. Se emplea para recorrer un array de tipos de estado laboral. Es el caso de uso _más repetido de las repeticiones_; mostrar listas de datos.
+
+Dado el siguiente modelo:
+
+```typescript
+public workStatuses = [
+  { id: 0, description: 'unknow' },
+  { id: 1, description: 'student' },
+  { id: 2, description: 'unemployed' },
+  { id: 3, description: 'employed' }
+];
+public contact = { name: '', isVIP: false, gender: '', workStatus: 0 };
+```
+
+Montamos las opciones de un _select_ html recorriendo el array y usando el iterador `wkSt` para acceder a sus datos.
 
 ```html
-<ul>
-  <li *ngFor="let car of cars">
-    <a [routerLink]="['/car', car.link.url]">
-      <strong> {{ car.link.caption }} </strong> <span> {{ car.cost | currency:'EUR' }} </span>
-    </a>
-  </li>
-</ul>
+<section>
+  <label for="workStatus">Work Status</label>
+  <select name="workStatus" [(ngModel)]="contact.workStatus">
+    <option *ngFor="let wkSt of workStatuses" [value]="wkSt.id">
+      <span>{{ wkSt.description }}</span>
+    </option>
+  </select>
+</section>
 ```
 
-# 3 Modelo y controlador
+## 3.2 Condicionales \*ngIf
 
-Los componentes los hemos definido como **bloques de construcción de páginas. Mediante una vista y un controlador** resuelven un problema de interacción o presentación de modelos. En los puntos anteriores te presenté la vista. Toca ahora estudiar el modelo y el controlador.
+La directiva estructural más utilizada es la `*ngIf`, la cual consigue que un elemento se incluya o se elimine en el _DOM_ en función de los datos del modelo.
 
-## 3.1 El modelo y su interfaz
+> En el ejemplo puedes ver que la uso para mostrar el campo empresa cuando el contacto está trabajando. En otro aparecerá el campo de estudios.
 
-Sin ir muy lejos en las capacidades que tendría un modelo de datos clásico, vamos al menos a beneficiarnos del **_TypeScript_ para definir la estructura de datos**. Esto facilitará la programación mediante el autocompletado del editor y reducirá los errores de tecleo mediante la comprobación estática de tipos.
-
-Para ello necesito una interfaz sencilla. Esto es puro _TypeScript_, no es ningún artificio registrable en Angular. Esos sí, en algún sitio tienen que estar. Yo suelo usar la ruta `core/store/models`, pero es algo completamente arbitrario.
+Dado el siguiente modelo:
 
 ```typescript
-export interface Car {
-  model: string;
-  cost: number;
-  topSpeed: number;
-  currentSpeed: number;
-  totalBattery: number;
-  remainingBattery: number;
-  distanceTraveled: number;
-  link: Link;
-}
-export interface Link {
-  url: string;
-  caption: string;
-}
-```
-
-> Te recomiendo que **no uses clases para definir modelos** a menos que necesites agregarle funcionalidad imprescindible. Las interfaces, ayudan al control de tipos en tiempo de desarrollo, igual que las clases, pero sin generar nada de código en tiempo de ejecución, al contrario que las clases.
-
-## 3.1.1 Constantes
-
-En ocasiones, habrá datos _hard-coded_ en tu aplicación. En ese caso se resuelve exportando constantes. Por ejemplo en el fichero `core/store/cars.ts` tenemos:
-
-```typescript
-import { Car } from './models/car.model';
-export const CARS: Car[] = [
-  {
-    ...
-  }
-];
-```
-
-## 3.1.2 Configuración
-
-Un tipo especial de constantes son aquellas consideradas de configuración. Incluso con valores distintos según el entorno de ejecución. En Angular 6 nos ofrecen la carpeta especial `environments`.
-
-En ella habrá al menos un fichero maestro usado en tiempo de desarrollo y llamado simplemente `environment.ts`. Dentro aparece una única constante exportada con el redundante nombre `environment`. En ese objeto sin esquema predefinido puedes incluir todos los datos de configuración que necesites en tu programa.
-
-```typescript
-export const environment = {
-  production: false,
-  title: 'autobot',
-  version: '3-data',
-  tag: '3.0.0',
-  refreshInterval: 2000,
-  dangerSpeedRate: 0.9,
-  warningSpeedRate: 0.7,
-  dangerKmsBattery: 100,
-  warningKmsBattery: 150
+public contact = {
+  name: '',
+  isVIP: false,
+  gender: '',
+  workStatus: '0',
+  company: '',
+  education: ''
 };
 ```
 
-> Además del _master_ tenemos al menos otro fichero para el entorno de producción. Pueden crearse más para más entornos, pero este siempre aparece; es el `environment.prod.ts`. Su estructura ha de ser igual a la del master pero al con al menos un cambio en su contenido; `production:true`. Por lo demás el CLI se encarga de compilar la aplicación con los valores tomados del fichero adecuado para el entorno.
+```html
+<section *ngIf="contact.workStatus=='3'; else education">
+  <label for="company">Company Name</label>
+  <input name="company" type="text" [(ngModel)]="contact.company" />
+</section>
+<ng-template #education>
+  <label for="education">Education</label>
+  <input name="education" type="text" [(ngModel)]="contact.education" />
+</ng-template>
+```
 
-## 3.2 El controlador
+> if **condition** else **template**
 
-La parte de **lógica del componente** va en la clase que se usa para su definición. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `CarComponent` viéndolo como la clase que es: en su inicialización, propiedades y métodos.
+### 3.2.1 Identificadores con hashtag
+
+En el código anterior apreciarás que aparece un elemento `<ng-template>` no estándar con el atributo llamado `#education` precedido por un `#`. La directiva `#` genera un identificador único para el elemento al que se le aplica y permite referirse a él en otros lugares del código.
+
+Ese truco permite que `*ngIf` muestre otro elemento cuando la condición principal falle. El otro elemento tiene que ser el componente especial `<ng-template>` que se usa para envolver una rama opcional del DOM. Para localizarlo se usa el identificador `#`.
+
+# 4 Modelo y controlador
+
+Los componentes los hemos definido como **bloques de construcción de páginas. Mediante una vista y un controlador** resuelven un problema de interacción o presentación de modelos. En los puntos anteriores te presenté la vista. Toca ahora estudiar el modelo y el controlador.
+
+## 3.1 El modelo y su interInterfaces y modelos
+
+Sin ir muy lejos en las capacidades que tendría un modelo de datos clásico, vamos al menos a beneficiarnos del **_TypeScript_ para definir la estructura de datos**. Esto facilitará la programación mediante el autocompletado del editor y reducirá los errores de tecleo mediante la comprobación estática de tipos.
+
+Para ello necesito una interfaz sencilla. Esto es puro _TypeScript_, no es ningún artificio registrable en Angular. Esos sí, en algún sitio tienen que estar. Yo suelo usar una ruta como `contacts/models`, pero es algo completamente arbitrario.
 
 ```typescript
-export class CarComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
-  ngOnInit() {
-    const carId = this.route.snapshot.params['carId'];
-    this.car = CARS.find(c => c.link.url === carId);
-    setInterval(() => this.timeGoesBy(), environment.refreshInterval);
-  }
+export interface Option {
+  id: number;
+  description: string;
+}
+
+export interface Contact {
+  name: string;
+  isVIP: boolean;
+  gender: string;
+  workStatus: number | string;
+  company: string;
+  education: string;
 }
 ```
 
-Ahora se trata de crear propiedades para aportar datos a la vista
+> Te recomiendo que **no uses clases para definir modelos** a menos que necesites agregarle funcionalidad imprescindible. Las interfaces, ayudan al control de tipos en tiempo de desarrollo, igual que las clases, pero sin generar nada de código en tiempo de ejecución, al contrario que las clases. Ojo al uso de tipos compuestos como `number | string`
+
+Se usan para tipificar las propiedades que conforman nuesto modelo para la vista.
 
 ```typescript
-export class CarComponent implements OnInit {
-  public car: Car;
-  public speedClass = 'is-info';
-  public batteryClass = 'is-success';
-  public rechargedDistance;
-  ...
+public workStatuses: Option[] = [
+    { id: 0, description: 'unknow' },
+    { id: 1, description: 'student' },
+    { id: 2, description: 'unemployed' },
+    { id: 3, description: 'employed' }
+  ];
+public contact: Contact = {
+    name: '',
+    isVIP: false,
+    gender: '',
+    workStatus: 0,
+    company: '',
+    education: ''
+  };
+public contacts: Contact[] = [];
+```
+
+## 4.2 ViewModel en el controlador
+
+La parte de **lógica del componente** va en la clase que se usa para su definición. Como ya has visto podemos usar su constructor para reclamar dependencias y usar los interfaces para responder a eventos de su ciclo de vida. Repasemos el `ContactsComponent` viéndolo como la clase que es: no solo propiedades, también **métodos**
+
+```typescript
+public saveContact() {
+  this.contacts.push({ ...this.contact });
+  this.numContacts = this.contacts.length;
 }
 ```
 
-Y los métodos a los que llamará la vista, según actúe el usuario.
+Ahora se trata de invocar el método desde la vista. Es muy buena práctica llevar la lógica al controlador y no escribirla en la vista.
 
-```typescript
-public onBrake() {
-  this.car.currentSpeed--;
-}
-public onThrottle() {
-  this.car.currentSpeed++;
-}
-public onRecharge() {
-  this.car.remainingBattery = this.rechargedDistance;
-}
+```html
+<input value="Save" type="submit" (click)="saveContact()" />
 ```
 
 Podemos decir que las propiedades públicas de la clase actuarán como _binding_ de datos con la vista. Mientras que los métodos públicos serán invocados desde los eventos de la misma vista.
 
-Mira el código completo de **la clase** `CarComponent`en el fichero `car.component.ts` para tener una visión completa del componente. Como ves, **las propiedades** `car, speedClass, batteryClass,rechargedDistance` se corresponden con las utilizadas en las directivas de enlace en la vista. **Los métodos** `onBrake(), onThrottle(), onRecharge()` son invocados desde eventos de elementos del _html_.
+### 4.2.1 OnInit
+
+Los componentes son clases con un **ciclo de vida** al que puedes enganchar tu código en algunos pasos. Por ejemplo al iniciarse el componente.
+
+El CLI hace que las clase del componente implemente la interfaz `OnInit` y eso permite al framework invocar al método `ngOnInit` en cuanto el componente esté listo para su uso. Que no suele ser justo durante la construcción, si no un poco después. Te recomiendo que lleves toda la lógica de inicialización a dicho método.
+
+```typescript
+public workStatuses: Option[];
+public contact: Contact;
+public contacts: Contact[];
+constructor() {}
+public ngOnInit() {
+  this.workStatuses = [
+    { id: 0, description: 'unknow' },
+    { id: 1, description: 'student' },
+    { id: 2, description: 'unemployed' },
+    { id: 3, description: 'employed' }
+  ];
+  this.contact = {
+    name: '',
+    isVIP: false,
+    gender: '',
+    workStatus: 0,
+    company: '',
+    education: ''
+  };
+  this.contacts = [];
+}
+```
+
+### 4.2.1 Un listado de repaso
+
+Para mostrar lo que ahora estamos guardando en una lista, nada más sencillo que usar de nuevo a `*nFor` y a `*ngIf` para tratar listas vacías.
+
+```html
+<ul *ngIf="contacts.length>0; else empty">
+  <li *ngFor="let contact of contacts">
+    <span>{{ contact.name }}</span>
+    <input value="Delete" type="button" (click)="deleteContact(contact)" />
+  </li>
+</ul>
+<ng-template #empty> <i>No data yet</i> </ng-template>
+```
+
+Y ya puestos incluso puedes animarte a borrar contactos. Es fácil, los métodos pueden recibir argumentos. Y la vista los puede enviar.
+
+```typescript
+public deleteContact(contact: Contact) {
+  this.contacts = this.contacts.filter(c => c.name !== contact.name);
+  this.numContacts = this.contacts.length;
+}
+```
+
+Mira el código completo de **la clase** `ContactsComponent`en el fichero `contacts.component.ts` para tener una visión completa del componente. Como ves, **las propiedades** `header, numContacas, formHidden, contacts ...` se corresponden con las utilizadas en las directivas de enlace en la vista. **Los métodos** `saveContact(), deleteContact()` son invocados desde eventos de elementos del _html_.
 
 Juntos, **la vista y su clase controladora**, resuelven un problema de interacción con el usuario **creando un componente**. Todas las páginas que diseñes serán variaciones y composiciones de estos componentes.
 
