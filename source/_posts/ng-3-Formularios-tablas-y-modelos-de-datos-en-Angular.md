@@ -128,7 +128,7 @@ Para el caso concreto de determinar las clases CSS aplicables a un elemento de m
 [ngClass]="{ 'hidden' : formHidden }"
 ```
 
-En este caso se oculta el elemento dependiendo del valor de la expresión `formHidden`. Pero ¿cómo se manipula esa variable?
+En este caso se oculta el elemento dependiendo del valor de la expresión `formHidden`. Pero ¿Cómo se manipula esa variable?
 
 ### Los eventos ()
 
@@ -316,7 +316,7 @@ export interface Contact {
 
 > Te recomiendo que **no uses clases para definir modelos** a menos que necesites agregarle funcionalidad imprescindible. Las interfaces, ayudan al control de tipos en tiempo de desarrollo, igual que las clases, pero sin generar nada de código en tiempo de ejecución, al contrario que las clases. Ojo al uso de tipos compuestos como `number | string`
 
-Se usan para tipificar las propiedades que conforman nuesto modelo para la vista.
+Se usan para tipificar las propiedades que conforman nuestro modelo para la vista.
 
 ```typescript
 public workStatuses: Option[] = [

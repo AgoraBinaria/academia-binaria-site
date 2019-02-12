@@ -112,7 +112,7 @@ Para el caso concreto de determinar las clases CSS aplicables a un elemento de m
 [ngClass]="{ 'hidden' : formHidden }"
 ```
 
-En este caso se oculta el elemento dependiendo del valor de la expresión `formHidden`. Pero ¿cómo se manipula esa variable?
+En este caso se oculta el elemento dependiendo del valor de la expresión `formHidden`. Pero ¿Cómo se manipula esa variable?
 
 ### Los eventos ()
 
@@ -300,7 +300,7 @@ export interface Contact {
 
 > Te recomiendo que **no uses clases para definir modelos** a menos que necesites agregarle funcionalidad imprescindible. Las interfaces, ayudan al control de tipos en tiempo de desarrollo, igual que las clases, pero sin generar nada de código en tiempo de ejecución, al contrario que las clases. Ojo al uso de tipos compuestos como `number | string`
 
-Se usan para tipificar las propiedades que conforman nuesto modelo para la vista.
+Se usan para tipificar las propiedades que conforman nuestro modelo para la vista.
 
 ```typescript
 public workStatuses: Option[] = [
@@ -397,8 +397,3 @@ Mira el código completo de **la clase** `ContactsComponent`en el fichero `conta
 Juntos, **la vista y su clase controladora**, resuelven un problema de interacción con el usuario **creando un componente**. Todas las páginas que diseñes serán variaciones y composiciones de estos componentes.
 
 > Y esto es sólo el comienzo. La idea de componente será fundamental en la web del mañana para la creación de páginas mediante `web components`. Pero eso ya se verá más adelante...
-
-Ahora tienes una aplicación en _Angular 7_ que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular7.
-
-> Aprender, programar, disfrutar, repetir.
-> -- <cite>Saludos, Alberto Basalo</cite>
