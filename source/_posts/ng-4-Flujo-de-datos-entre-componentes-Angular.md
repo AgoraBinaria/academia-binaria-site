@@ -32,7 +32,7 @@ Las aplicaciones web en las que destaca Angular suelen ser complejas y con mucha
 
 ## 1.1. Necesidad de comunicación
 
-El framework permite y recomienda repartir el trabajo en múltiples componentes de responsabilidad única. También es práctica común el crear páginas específicas para situaciones concretas aunque relacionadas. Por supuesto que estructuras como el menú de navegación o secciones de estado general necesitan conocer datos provenientes de las páginas. Nada está completamente asilado. Esto nos enfrenta la problema de **comunicar componentes**.
+El _framework_ permite y recomienda repartir el trabajo en múltiples componentes de responsabilidad única. También es práctica común el crear páginas específicas para situaciones concretas aunque relacionadas. Por supuesto que estructuras como el menú de navegación o secciones de estado general necesitan conocer datos provenientes de las páginas. Nada está completamente asilado. Esto nos enfrenta la problema de **comunicar componentes**.
 
 ## 1.2. Escenarios
 
@@ -50,15 +50,15 @@ La situación más compleja se da cuando queremos comunicar componentes o servic
 
 # 2. El patrón Contendor / Presentadores
 
-En arquitectura de software cuando encontramos una solución a un problema recurrente le ponemos un nombre y tratamos de utilizarlo siempre que podemos. Obviamente es una elección del programador y siempre tiene un coste que debe valorar. En este caso la ventaja es clara: **reparto de responsabilidades**.
+En **arquitectura de software** cuando encontramos una solución a un problema recurrente le ponemos un nombre y tratamos de utilizarlo siempre que podemos. Obviamente es una elección del programador y siempre tiene un coste que debe valorar. En este caso la ventaja es clara: **reparto de responsabilidades**.
 
 ## 2.1 El patrón
 
-En este caso el patrón contendor/presentadores estipula que haya un único componente responsable de obtener, mutar y guardar el estado. Será el componente contenedor. Los presentadores serán responsables de.. ejem, presentar la información y los elementos de interacción con el usuario. Las ventajas derivadas son: mayor facilidad para el testeo y mayores posibilidades de reutilización de presentadores.
+En este caso **el patrón contendor/presentadores** estipula que haya un único componente responsable de obtener, mutar y guardar el estado. Será el componente contenedor. Los presentadores serán responsables de.. ejem, presentar la información y los elementos de interacción con el usuario. Las ventajas derivadas son: mayor facilidad para el _testeo_ y mayores posibilidades de reutilización de presentadores.
 
 > A este patrón a veces se le conoce como parent/children por la jerarquía html que genera.
 
-Veamos una implementación sencilla. Haremos una interfaz mínima para simular el manejo de un coche. Habrá pedales de aceleración y freno, y un cuadro dónde se refleje la velocidad. Para todo ello vamos a usa el Angular CLI y crear un módulo y sus componentes base.
+Veamos una implementación sencilla. Haremos una interfaz mínima para simular el manejo de un coche. Habrá pedales de aceleración y freno, y un cuadro dónde se refleje la velocidad. Para todo ello vamos a usa el _Angular CLI_ y crear un módulo y sus componentes base.
 
 ```console
 ng g m 4-flow/car
@@ -84,7 +84,7 @@ Agregamos una ruta en el enrutador con su enlace en el menú.
 
 ## 2.2 El contendor
 
-En el componente contenedor tendremos una vista muy sencilla y un controlador más complejo. La vista será la composición de los componentes presentadores, pero el controlador tendrá que obtener datos, aplicarles lógica de negocio y guardarlos cuando corresponda.
+En el componente contenedor tendremos **una vista muy sencilla y un controlador más complejo**. La vista será la composición de los componentes presentadores, pero el controlador tendrá que obtener datos, aplicarles lógica de negocio y guardarlos cuando corresponda.
 
 > No es habitual asignarle un sufijo al nombre del componente para indicar que es el contendor. Suele ser suficiente el verlo en la raíz de la jerarquía de carpetas.
 
@@ -101,7 +101,7 @@ En el componente contenedor tendremos una vista muy sencilla y un controlador m�
 </app-pedals>
 ```
 
-Vemos que usa los componentes presentadores enviándoles información y suscribiéndose a sus eventos. Concretaremos esta funcionalidad al ver los presentadores.
+Vemos que usa los componentes presentadores `Display` y `Pedals` enviándoles información y suscribiéndose a sus eventos. Concretaremos esta funcionalidad más adelante.
 
 ```typescript
 public car: CarModel;
@@ -137,7 +137,7 @@ private getDelta = (drive: number) =>
   drive + (this.car.maxSpeed - this.car.currentSpeed) / 10;
 ```
 
-Lo dicho, _la clase controladora del componente controlador retiene el grueso de la funcionalidad_. En este caso inicializar una instancia de un coche y mantener sus velocidad en los límites lógicos respondiendo a las acciones del usuario conductor.
+Lo dicho, _la clase controladora del componente contendor retiene el grueso de la funcionalidad_. En este caso inicializar una instancia de un coche y mantener sus velocidad en los límites lógicos respondiendo a las acciones del usuario conductor.
 
 
 ## 2.3 Envío hacia el presentador con @Input()
@@ -147,7 +147,22 @@ Esta comunicación _hacia abajo_ envía la información **desde el contenedor ha
 
 ### @Input()
 
-Para que una vista muestre datos tiene que usar directivas como `{{ value }}` asociada a una propiedad pública de la clase componente. Se supone que dicha clase es la responsable de su valor. Pero también puede **recibirlo desde el exterior**. La novedad es hacer que lo reciba vía *html*.
+Para que una vista muestre datos tiene que usar directivas como `{{ model }}` asociada a una propiedad pública de la clase componente. Se supone que dicha clase es la responsable de su valor. Pero también puede **recibirlo desde el exterior**. La novedad es hacer que lo reciba vía *html*.
+
+```html
+<h2> {{ model }} </h2>
+<h3> Top speed: {{ topSpeed | number:'1.0-0' }}</h3>
+<div class="card">
+  <div class="section">
+    {{ currentSpeed | number:'1.2-2' }} {{ units }}
+  </div>
+  <progress [value]="currentSpeed"
+            [ngClass]="getSpeedClass()"
+            [max]="topSpeed">
+  </progress>
+</div>
+```
+
 
 Empieza por decorar con `@Input()` la propiedad que quieres usar desde fuera. Por ejemplo un código como este del archivo `display.component.ts`.
 
