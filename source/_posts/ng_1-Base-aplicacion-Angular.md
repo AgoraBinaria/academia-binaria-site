@@ -23,7 +23,7 @@ La idea de árbol se usa en muchas analogías informáticas. La emplearemos en d
 
 Partimos de la aplicación tal cómo la dejamos en el [Hola Mundo en Angular](../hola-angular-cli/). Al finalizar tendrás un esqueleto del que colgar módulos y componentes funcionales.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/](https://github.com/AcademiaBinaria/angular-board/)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/1-base](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app)
 
 # 1. Módulos
 
@@ -51,7 +51,7 @@ El módulo `App` también se conoce como **módulo raíz** porque de él surgen 
 
 > En la situación original el módulo principal depende un módulo _custom_ pre-generado (el `AppRoutingModule` que usarás más adelante) y de otro _del framework_ para la presentación en el navegador (el `BrowserModule`).
 
-Veremos esto con más profuncidad en el punto 4.
+Veremos esto con más profundidad en el punto 4.
 
 ## 1.2 Generación de módulos
 

@@ -22,7 +22,7 @@ thumbnail: /css/images/angular-0_cli.png
 
 El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 7** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/](https://github.com/AcademiaBinaria/angular-board/)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/0-hello](https://github.com/AcademiaBinaria/angular-board/)
 
 # 1. Instalación de Angular CLI 7
 
