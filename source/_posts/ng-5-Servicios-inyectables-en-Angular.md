@@ -17,7 +17,7 @@ thumbnail: /css/images/angular-5_inject.png
 
 ![servicios-inyectables-en-Angular](/images/tutorial-angular-5_inject.png)
 
-La presentación, la lógica y el manejo de datos son tres capas de abstracción que usamos los programadores para mantener organizado nuestro código. En Angular 7, la presentación es cosa de los componentes. **La lógica y los datos tienen su lugar en servicios compartidos**.
+La presentación, la lógica y el manejo de datos son tres capas de abstracción que usamos los programadores para mantener organizado nuestro código. En Angular, la presentación es cosa de los componentes. **La lógica y los datos tienen su lugar en servicios compartidos**.
 
 Para que los componentes consuman los servicios de forma controlada tenemos proveedores _inyectables_ en la librería `@angular/core` con los que realizar **la inyección de dependencias**.
 
@@ -25,7 +25,7 @@ Para que los componentes consuman los servicios de forma controlada tenemos prov
 
 Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/4-flow](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/5-inject/converter)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/5-inject](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/5-inject/converter)
 > > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
 
 # 1. Inyección de dependencias
