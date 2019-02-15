@@ -141,7 +141,7 @@ ng g component 5-inject/converter/culture-converter
 ```
 
 ```typeScript
-export interface CultureConverter {
+export interface CultureConverter implements CultureConverter {
   sourceCulture: string;
   targetCulture: string;
   convertDistance: (source: number) => number;
