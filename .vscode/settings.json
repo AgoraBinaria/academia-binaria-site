@@ -1,13 +1,3 @@
 {
-    "html.format.enable": false,
-    "workbench.colorTheme": "Solarized Light",
-    "spellright.language": [
-        "en",
-        "es"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext"
-    ]
+  "html.format.enable": true
 }

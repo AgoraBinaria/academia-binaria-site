@@ -3,15 +3,15 @@ title: Servicios inyectables en Angular
 permalink: servicios-inyectables-en-Angular
 date: 2019-02-15 9:54:58
 tags:
-- Angular
-- Servicios
-- DI
-- Tutorial
-- Introducción
-- Angular7
-- Angular2
+  - Angular
+  - Servicios
+  - DI
+  - Tutorial
+  - Introducción
+  - Angular7
+  - Angular2
 categories:
-- [Tutorial, Angular]
+  - [Tutorial, Angular]
 thumbnail: /css/images/angular-5_inject.png
 ---
 
@@ -26,6 +26,7 @@ Para que los componentes consuman los servicios de forma controlada tenemos prov
 Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/5-inject](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/5-inject/converter)
+>
 > > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
 
 # 1. Inyección de dependencias
@@ -43,24 +44,24 @@ ng g c 5-inject/converter/converter
 
 ## 1.1 Generación de servicios
 
-La particularidad de las clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e **indica que esta clase puede ser inyectada** dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios. Estos son ejemplos de instrucciones para crear un *service*.
+La particularidad de las clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e **indica que esta clase puede ser inyectada** dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios. Estos son ejemplos de instrucciones para crear un _service_.
 
 ```shell
 ng g s 5-inject/converter/converter
 ```
 
-El resultado es el fichero `converter.service.ts` con su decorador que toma una *class* normal y produce algo *injectable*. Veamos una implementación mínima:
+El resultado es el fichero `converter.service.ts` con su decorador que toma una _class_ normal y produce algo _injectable_. Veamos una implementación mínima:
 
 ```typescript
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConverterService {
   constructor() {}
 
-  public fromKilometersToMiles = (kilometers) => kilometers * 0.62137;
+  public fromKilometersToMiles = kilometers => kilometers * 0.62137;
 }
 ```
 
@@ -68,9 +69,9 @@ Ahora tienes centralizado en este servicio la lógica de datos que tenemos hasta
 
 ## 1.2 Consumo de dependencias
 
-Declarar y decorar la clase no es suficiente para poder reclamarla. Necesitas **registrarla como un proveedor en algún módulo**.  Desde Angular 6 los servicios se auto-proveen en el módulo raíz mediante la configuración `providedIn: 'root'` de su decorador.
+Declarar y decorar la clase no es suficiente para poder reclamarla. Necesitas **registrarla como un proveedor en algún módulo**. Desde Angular 6 los servicios se auto-proveen en el módulo raíz mediante la configuración `providedIn: 'root'` de su decorador.
 
-> Esto es útil y cómodo en una gran cantidad de casos. El módulo raíz es visible para toda la aplicación de forma que cualquier componente puede reclamar un servicio suyo sin problema. Excepto que el problema sea el tamaño. El módulo raíz se carga al arrancar y todas sus referencias van el *bundle* principal. Si queremos repartir el peso debemos llevar ciertos servicios al módulo funcional que los necesite.
+> Esto es útil y cómodo en una gran cantidad de casos. El módulo raíz es visible para toda la aplicación de forma que cualquier componente puede reclamar un servicio suyo sin problema. Excepto que el problema sea el tamaño. El módulo raíz se carga al arrancar y todas sus referencias van el _bundle_ principal. Si queremos repartir el peso debemos llevar ciertos servicios al módulo funcional que los necesite.
 
 Vamos a consumir este servicio en el `converter.component.ts`. Al consumo de los servicios inyectables se le conoce como _dependencia_. Cada componente o servicio puede **declarar en su constructor sus dependencias** hacia servicios inyectables. El convenio exige que se especifique el tipo esperado
 
@@ -81,29 +82,29 @@ export class ConverterComponent implements OnInit {
 
   constructor(private converterService: ConverterService) {}
 
-  public ngOnInit() { this.convert(); }
+  public ngOnInit() {
+    this.convert();
+  }
 
   public convert() {
     this.miles = this.converterService.fromKilometersToMiles(this.kilometers);
   }
 }
 ```
-> Agregar el modificador de alcance `private` o  `public` en la declaración de argumentos hace que *TypeScript* genere una propiedad inicializada con el valor recibido. Es azúcar sintáctico para no tener que declarar la propiedad y asignarle el valor del argumento manualmente. En resumen, los [constructores en TypeScrip](https://kendaleiv.com/typescript-constructor-assignment-public-and-private-keywords/) admiten argumentos que transforman en propiedades. Mantenemos privado el `converterService` para evitar su uso desde la vista.
+
+> Agregar el modificador de alcance `private` o `public` en la declaración de argumentos hace que _TypeScript_ genere una propiedad inicializada con el valor recibido. Es azúcar sintáctico para no tener que declarar la propiedad y asignarle el valor del argumento manualmente. En resumen, los [constructores en TypeScrip](https://kendaleiv.com/typescript-constructor-assignment-public-and-private-keywords/) admiten argumentos que transforman en propiedades. Mantenemos privado el `converterService` para evitar su uso desde la vista.
 
 ```html
-<h2> Distance Converter.</h2>
-<h3> From Europe to USA </h3>
+<h2>Distance Converter.</h2>
+<h3>From Europe to USA</h3>
 <form>
   <fieldset>
     <section>
       <label for="kilometers">Kilometers</label>
-      <input name="kilometers"
-             type="number"
-             [(ngModel)]="kilometers"
-             placeholder="0" />
+      <input name="kilometers" type="number" [(ngModel)]="kilometers" placeholder="0" />
     </section>
   </fieldset>
-  <input value="Convert" type="button" (click)="convert()">
+  <input value="Convert" type="button" (click)="convert()" />
 </form>
 <section>
   <h4>{{ miles | number:'1.2-2' }} miles</h4>
@@ -112,11 +113,11 @@ export class ConverterComponent implements OnInit {
 
 # 2. Inversión del control
 
-Un concepto íntimamente relacionado con la inyección de dependencias es el de [**Inversion of Control**](https://en.wikipedia.org/wiki/Inversion_of_control). El componente dependiente expresa sus necesidades, pero es el *framework* el que en última instancia decide lo que recibirá. Vemos entonces que **el invocado cede el control al invocador**.
+Un concepto íntimamente relacionado con la inyección de dependencias es el de [**Inversion of Control**](https://en.wikipedia.org/wiki/Inversion_of_control). El componente dependiente expresa sus necesidades, pero es el _framework_ el que en última instancia decide lo que recibirá. Vemos entonces que **el invocado cede el control al invocador**.
 
-Cuando proveemos un servicio en Angular, el comportamiento por defecto es el de proveer un *singleton* pero hay más opciones. Si se usa el objeto `provider` con `useClass` , `useValue` y `useFactory` podemos controlar el proceso de inyección.
+Cuando proveemos un servicio en Angular, el comportamiento por defecto es el de proveer un _singleton_ pero hay más opciones. Si se usa el objeto `provider` con `useClass` , `useValue` y `useFactory` podemos controlar el proceso de inyección.
 
-Se crea un [*singleton*](https://es.wikipedia.org/wiki/Singleton) por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional se provee en este y nada más. Si va a ser compartido gana la opción de auto proveerlo en el raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
+Se crea un [_singleton_](https://es.wikipedia.org/wiki/Singleton) por cada módulo en el que se provea un servicio. Normalmente si el servicio es para un sólo módulo funcional se provee en este y nada más. Si va a ser compartido gana la opción de auto proveerlo en el raíz, garantizando así su disponibilidad en cualquier otro módulo de la aplicación.
 
 En un módulo cualquiera, siempre podríamos agregar un servicio a su array de _providers_.
 
@@ -128,13 +129,13 @@ En un módulo cualquiera, siempre podríamos agregar un servicio a su array de _
 })
 ```
 
-Pero siempre será **una instancia única por módulo**. Si un *singleton* no es lo adecuado, entonces puedes proveer el mismo servicio en distintos módulos. De esa forma se creará una instancia distinta para cada uno. Si se provee la misma clase en dos o más módulos se genera una instancia en cada uno de ellos. Los componentes recibirán la instancia del módulo jerárquicamente más cercano.
+Pero siempre será **una instancia única por módulo**. Si un _singleton_ no es lo adecuado, entonces puedes proveer el mismo servicio en distintos módulos. De esa forma se creará una instancia distinta para cada uno. Si se provee la misma clase en dos o más módulos se genera una instancia en cada uno de ellos. Los componentes recibirán la instancia del módulo jerárquicamente más cercano.
 
 > Incluso es posible usar el array `providers:[]` en la decoración de un componente o de otro servicio. Haciendo así aún más granular la elección de instancia.
 
 Veamos un ejemplo extendiendo el problema del conversor de unidades de forma que se pueda escoger una **estrategia** de conversión en base a una cultura concreta. Para empezar necesitamos una interfaz, un servicio base que la implemente y un componente que lo consuma.
 
-```console
+```shell
 ng g interface 5-inject/converter/culture-converter
 ng g service 5-inject/converter/culture-converter
 ng g component 5-inject/converter/culture-converter
@@ -181,22 +182,19 @@ export class CultureConverterComponent implements OnInit {
 ```
 
 ```html
-<h2> Culture Converter.</h2>
-<h3> From {{ source }} to {{ target }} </h3>
+<h2>Culture Converter.</h2>
+<h3>From {{ source }} to {{ target }}</h3>
 <form>
   <fieldset>
     <section>
       <label for="sourceUnits">Distance</label>
-      <input name="sourceUnits"
-             type="number"
-             [(ngModel)]="sourceUnits"
-             placeholder="0" />
+      <input name="sourceUnits" type="number" [(ngModel)]="sourceUnits" placeholder="0" />
     </section>
   </fieldset>
-  <input value="Convert" type="button" (click)="convert()">
+  <input value="Convert" type="button" (click)="convert()" />
 </form>
 <section>
-  <h4>Distance {{ targetUnits | number:'1.2-2' }} </h4>
+  <h4>Distance {{ targetUnits | number:'1.2-2' }}</h4>
 </section>
 ```
 
@@ -208,13 +206,13 @@ El `CultureConverterComponent` depende de `CultureConverterService` el cual impl
 export class ConverterService {
   constructor() {}
 
-  public fromKilometersToMiles = (kilometers) =>kilometers * 0.62137;
+  public fromKilometersToMiles = kilometers => kilometers * 0.62137;
 
-  public fromMilesToKilometers = (miles) => miles * 1.609;
+  public fromMilesToKilometers = miles => miles * 1.609;
 
-  public fromCelsiusToFarenheit = (celsius) => celsius * (9 / 5) + 32;
+  public fromCelsiusToFarenheit = celsius => celsius * (9 / 5) + 32;
 
-  public fromFarenheitToCelsius = (farenheit) => (farenheit - 32) * (5 / 9);
+  public fromFarenheitToCelsius = farenheit => (farenheit - 32) * (5 / 9);
 }
 ```
 
@@ -242,7 +240,7 @@ export class UsaConverterService implements CultureConverter {
 }
 ```
 
-## 2.3  Provisión manual
+## 2.3 Provisión manual
 
 Por ejemplo si queremos utilizar la implementación concreta de USA lo indicamos en el módulo que lo consuma.
 
@@ -251,16 +249,15 @@ Por ejemplo si queremos utilizar la implementación concreta de USA lo indicamos
   providers: [
     {
       provide: CultureConverterService,
-      useClass: UsaConverterService
-    }
-  ]
+      useClass: UsaConverterService,
+    },
+  ];
 }
 ```
 
 El componente reclama una instancia de `CultureConverterService` y le damos otra con la misma interfaz. De esta forma podríamos tener módulos distintos, cada uno con su propia estrategia de conversión.
 
-
-## 2.4  Factoría
+## 2.4 Factoría
 
 Una situación muy común es poder elegir dinámicamente la implementación concreta. Para ello necesitamos una función factoría que con alguna lógica escoja la estrategia concreta.
 
@@ -277,14 +274,15 @@ const cultureFactory = (converterService: ConverterService) => {
     {
       provide: CultureConverterService,
       useFactory: cultureFactory,
-      deps: [ConverterService]
-    }
-  ]
+      deps: [ConverterService],
+    },
+  ];
 }
 ```
+
 De esta forma la aplicación se comportará distinto en función de una variable de entorno.
 
-Ya tenemos la aplicación mucho mejor estructurada, pero el almacén de datos es mejorable. Se mantienen los datos *hard-coded*, muy incómodo para actualizar; y en memoria, poco fiable y volátil. Lo más habitual es guardar y recuperar la información en un servidor *http*. Sigue esta serie para añadir [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular.
+Ya tenemos la aplicación mucho mejor estructurada, pero el almacén de datos es mejorable. Se mantienen los datos _hard-coded_, muy incómodo para actualizar; y en memoria, poco fiable y volátil. Lo más habitual es guardar y recuperar la información en un servidor _http_. Sigue esta serie para añadir [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/) mientras aprendes a programar con Angular.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
