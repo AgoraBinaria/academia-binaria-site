@@ -75,7 +75,7 @@ A partir de este momento sólo queda invocar los métodos REST en la propiedad `
 
 ## 1.2 Obtención de datos
 
-Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la *url* a la que invocar. Empecemos por el `get` que automáticamente solicita y devuelve objetos _JSON_ desde un API. Por ejemplo para obtener [las últimas cotizaciones de las principales decvisas](https://api.exchangeratesapi.io/latest?symbols=USD,GBP,CHF,JPY) lo haremos así:
+Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la *url* a la que invocar. Empecemos por el `get` que automáticamente solicita y devuelve objetos _JSON_ desde un API. Por ejemplo para obtener [las últimas cotizaciones de las principales divisas](https://api.exchangeratesapi.io/latest?symbols=USD,GBP,CHF,JPY) lo haremos así:
 
 
 ```typescript
@@ -94,7 +94,7 @@ export class RatesComponent implements OnInit {
     const url = `${this.urlapi}?symbols=${currencies}`;
     this.httpClient
       .get(url)
-      .subscribe(apiResult => (this.currentEuroRates = apiResult));
+      .subscribe(apiData => (this.currentEuroRates = apiData));
   }
 }
 ```
