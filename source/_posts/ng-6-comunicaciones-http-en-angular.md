@@ -118,7 +118,8 @@ Vamos a agregar una propiedad y un par de métodos al `rates-component.ts`. La i
 
 ```typescript
 export class RatesComponent implements OnInit {
-  private myRatesApi = 'https://api-base.herokuapp.com/api/pub/rates';
+  private myRatesApi
+    = 'https://api-base.herokuapp.com/api/pub/rates';
 
   public postRates() {
     const rates = this.transformData();
@@ -155,7 +156,8 @@ En este tutorial no se ha hecho y no quedamos con el `any`, pero al menos distin
 
 ```typescript
 export class RatesComponent implements OnInit {
- private myRatesApi = 'https://api-base.herokuapp.com/api/pub/rates';
+ private myRatesApi
+  = 'https://api-base.herokuapp.com/api/pub/rates';
  public myRates: any[] = null;
 
  public getMyRates() {
@@ -225,7 +227,8 @@ Y en su vista HTML usaré una función propia de Angular llamada `async`. Dicha 
 En este caso uso la propiedad `currentEuroRates$` finalizada en **$** por convenio. Esa propiedad se rellena en el controlador con el método `get`, no con los datos futuros, si no con el propio _observable_.
 
 ```typeScript
-private ratesApi = 'https://api.exchangeratesapi.io/latest';
+private ratesApi
+  = 'https://api.exchangeratesapi.io/latest';
 public currentEuroRates$: Observable<any> = null;
 
 constructor(private httpClient: HttpClient) {}
