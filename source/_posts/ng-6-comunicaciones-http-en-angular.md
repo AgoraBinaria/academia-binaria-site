@@ -308,7 +308,95 @@ const url = `${this.ratesApi}?symbols=USD,GBP,CHF,JPY`;
 
 Reconozco que en un primer vistazo este código pueda resultar complejo. Tómate tu tiempo. Fíjate en los datos de entrada y salida de cada función. Esto es solo el principio del trabajo con la librería *RxJS* y la manipulación de *streams de eventos observables*.
 
-Ya tenemos un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables y el _httpClient_ estamos cerca de resolverlo. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular6.
+# 3. Interceptores
+
+Los interceptores tienen un nombre intimidante pero un propósito sencillo y muy útil: **interceptar todas las comunicaciones http** y ejecutar código personalizado para cada uno. Por ejemplo un gestor centralizado de errores http o el control de los tokens de seguridad de la aplicación.
+
+Pero antes de eso habrá que aprender unos conceptos básicos. Vamos a ver un ejemplo sencillo que audite todas las llamadas http. Todo empieza con un servicio:
+
+```console
+ng g s rates/AuditInterceptor
+```
+
+## 3.1 La interfaz HttpInterceptor
+
+Al servicio genérico recién creado hay que hacerle cumplir una interfaz `HttpInterceptor` que viene con `HttpClientModule`. Esta interfaz solo necesita un método, el `intercept(req, next)` pero sus tipos e implementación mínima la hacen complicada de entender a la primera.
+
+```typescript
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest }
+  from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuditInterceptorService implements HttpInterceptor {
+  public intercept( req: HttpRequest<any>, next: HttpHandler )
+    : Observable<HttpEvent<any>> {
+    return next.handle(req);
+  }
+
+  constructor() { }
+}
+```
+
+Todo este código para nada. Porque eso es lo que hace, nada. Eso sí, tampoco rompe ni bloquea nada. Vayamos por partes, primero los parámetros, luego el tipo de la respuesta y por último la implementación
+
+- `req: HttpRequest<any>`  puntero a la petición en curso
+- `next: HttpHandler`  puntero a la siguiente función que maneje la petición
+- `: Observable<HttpEvent<any>>` retornamos un stream de eventos http para cada petición
+- `return next.handle(req);`  que el siguiente procese la petición, sin hacerle nada en absoluto
+
+> Para entenderlo mejor puede ser útil la siguiente analogía. Cuando usas httpClient.get() es como si pides algo a Amazon y te suscribes, es decir esperas el paquete. Pasado el tiempo el paquete llegará o no llegará, pero ya no lo gestionas tú. Con los interceptores es como si espiases cada proceso de tu pedido: stock, picking, packaging, shipping... Cada pedido es tratado en una sucesión de eventos. Con un interceptor observas !todos los eventos de todos los pedidos!
+
+## 3.2 Inversión del control vía token
+
+Tenemos un servicio que cumple una interfaz compleja. Pero dicho servicio debe ser proveído en algún módulo antes de ser reclamado como dependencias por alguien. Pero ¿por quién?
+
+Técnicamente lo necesita el propio `HttpClient` del framework. Pero, obviamente, no pueden reclamar por tipo una clase que acabo de inventarme yo. Adelante con la **inversión del control**.
+
+Realmente `HttpClient` depende de algo que por convenio llaman token de tipo `HTTP_INTERCEPTORS`. Nuestro trabajo consiste en que cuando reclame su dependencia, le demos la nuestra. El típico gato por liebre. Así en nuestro módulo pondremos la siguiente configuración.
+
+```TypeScript
+providers: [
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuditInterceptorService,
+    multi: true
+  }
+]
+```
+El parámetro `multi:true` en este caso le indica que puede haber más de un interceptor. Concretamente debe añadirlo a la lista y admitir más. Hecho esto, sobraría el `providedIn: 'root'` autogenerado en el decorador del servicio.
+
+## 3.3 Un auditor de llamadas
+
+Pues ya estamos listos para aportar algo de funcionalidad. Nuestro objetivo es escribir en el _log_ un texto para cada llamada terminada y el tiempo que le tomó. La idea es aprovechar que todo es un _stream_ observable y canalizarlo en una tubería con una serie de operadores.
+
+```Typescript
+export class AuditInterceptorService implements HttpInterceptor {
+  constructor() {}
+
+  public intercept(req: HttpRequest<any>, next: HttpHandler){
+    const started = Date.now();
+    return next.handle(req).pipe(
+      filter((event: HttpEvent<any>) => event instanceof HttpResponse),
+      tap((resp: HttpResponse<any>) => this.auditEvent(resp, started))
+    );
+  }
+
+  private auditEvent(resp: HttpResponse<any>, started: number) {
+    const elapsedMs = Date.now() - started;
+    const eventMessage = resp.statusText + ' on ' + resp.url;
+    const message = eventMessage + ' in ' + elapsedMs + 'ms';
+    console.log(message);
+  }
+}
+```
+
+El operador `filter(any=>bool)` se usa para descartar eventos que no cumplan unos criterios. En mi caso sólo me interesan los eventos de recepción de la petición, y no necesito los intermedios. Uso de nuevo el `tap(callback)` para hacer cosas con los datos sin modificarlos en absoluto. En este caso los envío al método `auditEvent` para que lo saque por consola. Listo: un auditor para todas las llamadas.
+
+Ya tenemos el programa comunicado por _http_ con un servidor; aunque por ahora de forma anónima y sin ninguna seguridad. Con el conocimiento actual de los observables, del _httpClient_ y de los interceptores ya estamos cerca de resolverlo. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
