@@ -1,3 +1,11 @@
 {
-  "html.format.enable": true
+  "html.format.enable": true,
+  "workbench.colorCustomizations": {
+    "editorError.foreground": "#ff9900",
+    "editorWarning.foreground": "#ffff99",
+    "titleBar.activeBackground": "#4682b4",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#4682b4",
+    "titleBar.inactiveForeground": "#e7e7e7"
+  }
 }
