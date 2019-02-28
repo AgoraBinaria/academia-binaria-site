@@ -56,7 +56,7 @@ export class RatesModule { }
 En tu componente tienes que reclamar la dependencia al servicio para poder usarla. Atención a la importación pues hay más clases con el nombre `HttpClient`. Debe quedar algo así:
 
 ```typescript
-*import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -175,11 +175,11 @@ Y en la vista, un nuevo botón y una nueva expresión.
 Por último, en plan repaso, un ejemplo de método para borrar.
 
 ```typescript
-  public deleteMyRates() {
-    this.httpClient
-      .delete(this.myRatesApi)
-      .subscribe();
-  }
+public deleteMyRates() {
+  this.httpClient
+    .delete(this.myRatesApi)
+    .subscribe();
+}
 ```
 Y su botón en en la vista.
 
@@ -225,20 +225,20 @@ Y en su vista HTML usaré una función propia de Angular llamada `async`. Dicha 
 En este caso uso la propiedad `currentEuroRates$` finalizada en **$** por convenio. Esa propiedad se rellena en el controlador con el método `get`, no con los datos futuros, si no con el propio _observable_.
 
 ```typeScript
-  private ratesApi = 'https://api.exchangeratesapi.io/latest';
-  public currentEuroRates$: Observable<any> = null;
+private ratesApi = 'https://api.exchangeratesapi.io/latest';
+public currentEuroRates$: Observable<any> = null;
 
-  constructor(private httpClient: HttpClient) {}
+constructor(private httpClient: HttpClient) {}
 
-  ngOnInit() {
-    this.getCurrentEuroRates();
-  }
+ngOnInit() {
+  this.getCurrentEuroRates();
+}
 
-  private getCurrentEuroRates() {
-    const currencies = 'USD,GBP,CHF,JPY';
-    const url = `${this.ratesApi}?symbols=${currencies}`;
-    this.currentEuroRates$ = this.httpClient.get(url);
-  }
+private getCurrentEuroRates() {
+  const currencies = 'USD,GBP,CHF,JPY';
+  const url = `${this.ratesApi}?symbols=${currencies}`;
+  this.currentEuroRates$ = this.httpClient.get(url);
+}
 ```
 > Al utilizar el _pipe async_ ya es necesaria la suscripción en código. La propia función del framework se ocupa de ello. Por tanto la llamada se realiza igualmente aunque no veamos la suscripción.
 
