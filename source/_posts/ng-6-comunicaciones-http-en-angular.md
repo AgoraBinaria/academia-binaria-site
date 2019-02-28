@@ -283,8 +283,6 @@ private transformData(currentRates) {
 ```
 Por lo demás el consumo se hace igual... pero... tendremos que ver más operadores para solucionar algunos inconvenientes.
 
---
-
 ## 2.3 Operators
 
 El código anterior funciona, pero resulta que al haber dos funciones async suscritas provoca que la llamada original se realice dos veces. esto es así porque el segundo observable `myRates$` es una canalización del primero `currentEuroRates$`.
