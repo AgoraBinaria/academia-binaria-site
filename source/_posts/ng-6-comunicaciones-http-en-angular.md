@@ -1,98 +1,193 @@
 ---
 title: Comunicaciones http en Angular
 permalink: comunicaciones-http-en-Angular
-date: 2018-09-14 11:06:00
-tags:  
+date: 2019-02-28 14:06:00
+tags:
 - Angular
 - http
 - RxJS
 - Observables
 - Tutorial
 - Introducción
-- Angular6
 - Angular7
 - Angular2
 categories:
-- [Tutorial, Angular] 
+- [Tutorial, Angular]
 thumbnail: /css/images/angular-6_http.png
 ---
 
 ![comunicaciones-http-en-Angular](/images/tutorial-angular-6_http.png)
 
-Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido fáciles y potentes. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas... y la librería *RxJs* y sus *streams* son intimidantes para los novatos. 
+Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido potentes y fáciles. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas... y además la librería *RxJS* y sus *streams* son intimidantes para los novatos.
 
-Pero con la versión Angular 6 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones http asíncronas en Angular 6**.
+Pero en la versión Angular 7 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones http asíncronas en Angular**.
 
 <!-- more -->
 
 Partiendo de la aplicación tal cómo quedó en [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/). Al finalizar tendrás una aplicación que almacena y recupera los datos consumiendo un servicio REST usando las tecnologías de Angular Http.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/6-http](https://github.com/AcademiaBinaria/autobot/tree/6-http)
-> > Tienes una versión desplegada operativa para probar [AutoBot](https://academiabinaria.github.io/autobot/) 
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/6-http](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/6-http/rates)
+>
+> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
 
 # 1. El servicio HttpClient
 
-La librería `@angular/common/http` trae el módulo `HttpClientModule` con el servicio inyectable `HttpClient` que debes declarar como dependencia en tus propios constructores.
+Como demostración vamos a consumir un API pública con datos de [cotización de monedas](https://exchangeratesapi.io/). Crearé un módulo y un componente en el que visualizar las divisas y después las transformaremos para guardarlas en un servicio propio.
 
-En tu código tienes que reclamar la dependencia para poder usarla. Atención a la importación pues hay más clases con el nombre `HttpClient`. Debe quedar algo así:
+```shell
+ng g m 6-http/rates --routing true
+ng g c 6-http/rates/rates
+```
+
+## 1.1 Importación y declaración de servicios
+
+La librería `@angular/common/http` trae el módulo `HttpClientModule` con el servicio inyectable `HttpClient`. Lo primero es importar dicho módulo.
 
 ```typescript
-import { HttpClient } from '@angular/common/http';
-export class CarsService {
-  constructor(private http: HttpClient) {}
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  declarations: [RatesComponent],
+  imports: [HttpClientModule]
+})
+export class RatesModule { }
+```
+
+En tu componente tienes que reclamar la dependencia al servicio para poder usarla. Atención a la importación pues hay más clases con el nombre `HttpClient`. Debe quedar algo así:
+
+```typescript
+*import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-rates',
+  templateUrl: './rates.component.html',
+  styles: []
+})
+export class RatesComponent implements OnInit {
+  constructor(private httpClient: HttpClient) {}
+
+  ngOnInit() {}
 }
 ```
 
 A partir de este momento sólo queda invocar los métodos REST en la propiedad `this.http`.
 
-## 1.1 Métodos REST
+## 1.2 Obtención de datos
 
-Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la *url* a la que invocar. Los métodos de envío reciben la carga en el segundo argumento, y la envían automáticamente como objetos _JSON_.
+Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer parámetro será la *url* a la que invocar. Empecemos por el `get` que automáticamente solicita y devuelve objetos _JSON_ desde un API. Por ejemplo para obtener [las últimas cotizaciones de las principales decvisas](https://api.exchangeratesapi.io/latest?symbols=USD,GBP,CHF,JPY) lo haremos así:
 
-Veamos un ejemplo sencillo para montar un *CRUD* de cualquier cosa, coches por ejemplo. He usado una notación similar al *SQL* para ilustrar lo que se espera de los comandos.
-
-```typescript
-private url = 'https://autobot.com/api/cars/';
- public selectCars$(): Observable<Car[]> {
-   return this.http.get<Car[]>(this.url);
- }
- public selectCar$(carId: string): Observable<Car> {
-   return this.http.get<Car>(this.url + carId);
- }
- public insertCar$(car: Car): Observable<car> {
-   return this.http.post<Car>(this.url, car);
- }
-public updateCar$(car: Car): Observable<car> {
-   return this.http.put<Car>(this.url + car._id, car);
- }
- public deleteCar$(operation: Operation): Observable<any> {
-   return this.http.delete(this.url + car._id);
- }
-```
-
-> Cada método de negocio, configura la llamada de infraestructura; parece poca cosa. Podría ser un buen sitio para validar la información antes de ser enviada, o quizás agrupar varias llamadas de red para una misma operación de negocio. El _dolar_ al final del nombre es un convenio para las funciones que devuelven observables.
-
-## 1.2 Subscribe
-
-Los observables http han de consumirse mediante el método subscribe para que realmente se lancen. Dicho método subscribe admite hasta tres callbacks: `susbcribe(data, err, end)` para que se ejecuten en respuesta a eventos. El consumo de este servicio en su versión más básica sería algo así:
 
 ```typescript
-export class CarsComponent {
-  constructor(private cars: CarsService) {}
+export class RatesComponent implements OnInit {
+  private urlapi = 'https://api.exchangeratesapi.io/latest';
+  public currentEuroRates: any = null;
 
-  public ngOnInit(){
-    this.cars.selectCars$()
-      .susbcribe(
-        cars => console.log('Cars: ' + cars.lenght),
-        err => console.error('Ops: ' + err.message)
-      )
+  constructor(private httpClient: HttpClient) {}
+
+  ngOnInit() {
+    this.getCurrentEuroRates();
+  }
+
+  private getCurrentEuroRates() {
+    const currencies = 'USD,GBP,CHF,JPY';
+    const url = `${this.urlapi}?symbols=${currencies}`;
+    this.httpClient
+      .get(url)
+      .subscribe(apiResult => (this.currentEuroRates = apiResult));
   }
 }
 ```
 
-El método de nuestro servicio nos devuelve **un observable de los datos de la respuesta *http***. Es un *stream* de un sólo suceso pero al que alguien debe subscribirse. En la susbcripción asignamos funciones *callback*. La primera se ejecutará al recibir los datos. La segunda en caso de que haya un error. El método *subscribe* 
+> El método _get_ retorna un objeto observable. Los observables _http_ han de consumirse mediante el método _subscribe_ para que realmente se lancen. Dicho método _subscribe_ admite hasta tres _callbacks_: `susbcribe(data, err, end)` para que se ejecuten en respuesta a eventos. En este ejemplo solo hemos usado el primero.
 
-Y hasta aquí lo básico de comunicaciones *http*. ¿Fácil verdad?. Pero la vida real raramente es tan sencilla. Si quieres enfrentarte a algo más duro debes prepararte y dominar los observables *RxJs*. 
+La presentación en la vista sólo tiene que acceder a la propiedad dónde se hayan cargado las respuestas tratadas en el _callback_ de la suscripción.
+
+```html
+<h2> Currency Rates. </h2>
+<h3> From Euro to the world </h3>
+<pre>{{ currentEuroRates | json }}</pre>
+```
+
+
+## 1.3 Envío de datos
+
+Supongamos que, una vez recibidas las cotizaciones, pretendemos transformarlas y almacenarlas en otro servicio. El envío en este caso será con el método _post_ al que se le pasará la ruta del _end point_ y el objeto _payload_ que se enviará al servidor.
+
+Vamos a agregar una propiedad y un par de métodos al `rates-component.ts`. La idea es obtener un array de cotizaciones aa partir del objeto previo, y guardarla una por una.
+
+```typescript
+export class RatesComponent implements OnInit {
+  private myRatesApi = 'https://api-base.herokuapp.com/api/pub/rates';
+
+  public postRates() {
+    const rates = this.transformData();
+    rates.forEach(rate =>
+      this.httpClient
+        .post(this.myRatesApi, rate)
+        .subscribe()
+    );
+  }
+
+  private transformData() {
+    const current = this.currentEuroRates.rates;
+    return Object.keys(current).map(key => ({
+      date: this.currentEuroRates.date,
+      currency: key,
+      euros: current[key]
+    }));
+  }
+}
+```
+> Atención a los métodos `subscribe()`. Aunque vayan vacíos son imprescindibles para que se ejecute la llamada.
+
+En la vista no hay gran cosa que hacer, salvo agregarle un botón para iniciar el proceso:
+
+```html
+<input value="Save Rates" type="button" (click)="postRates()" />
+```
+
+## 1.4 Actualización de datos
+
+Un par de ejemplo más para acabar de entender la mecánica básica de `HttpClient`. Podemos fijar el tipo de datos esperado en cualquier llamada. De hecho es recomendable que tengas un interfaz para cada respuesta esperada.
+
+En este tutorial no se ha hecho y no quedamos con el `any`, pero al menos distinguimos entre objetos y arrays. Esto es lo que añado al `RatesComponent` para que muestre los datos guardados en mi API.
+
+```typescript
+export class RatesComponent implements OnInit {
+ private myRatesApi = 'https://api-base.herokuapp.com/api/pub/rates';
+ public myRates: any[] = null;
+
+ public getMyRates() {
+    this.httpClient
+      .get<any[]>(this.myRatesApi)
+      .subscribe(apiResult => (this.myRates = apiResult));
+  }
+}
+```
+Y en la vista, un nuevo botón y una nueva expresión.
+
+```html
+<input value="Refresh" type="button" (click)="getMyRates()" />
+<pre>{{ myRates | json }}</pre>
+```
+
+Por último, en plan repaso, un ejemplo de método para borrar.
+
+```typescript
+  public deleteMyRates() {
+    this.httpClient
+      .delete(this.myRatesApi)
+      .subscribe();
+  }
+```
+Y su botón en en la vista.
+
+```html
+<input value="Delete Rates" type="button" (click)="deleteMyRates()" />
+```
+
+Y hasta aquí lo básico de comunicaciones *http*. ¿Fácil verdad?. Pero la vida real raramente es tan sencilla. Si quieres enfrentarte a algo más duro debes prepararte y dominar los observables *RxJS*.
 
 Lo que viene a partir de ahora requerirá tiempo y concentración. Si continúas adelante esto ya no será *your grandpa´s http anymore*.
 
@@ -104,139 +199,116 @@ Esta experiencia no siempre fue tan buena para el programador. Sobre todo con la
 
 > El patrón `Observable` fue implementado por Microsoft en la librería [_Reactive Extensions_](http://reactivex.io/intro.html) más conocida como `RxJs`. El equipo de Angular decidió utilizarla para el desarrollo de las comunicaciones asíncronas. Esta extensa librería puede resultar intimidante en un primer vistazo. Pero con muy poco conocimiento puedes programar casi todas las funcionalidades que se te ocurran.
 
-Lo primero es importar el código, de forma similar a cualquier otra clase o función. Para empezar basta con `import { Observable } from "rxjs/Observable";`. Tendremos la clase usada por angular para observar el respuesta *http*.
+Lo primero es importar el código, de forma similar a cualquier otra clase o función. Por ejemplo para empezar basta con `import { Observable } from "rxjs/Observable";`. Tendremos la clase usada por angular para observar el respuesta *http*.
 
-Pero esta es una clase genérica donde sus instancias admiten la manipulación interna de tipos más o menos concretos. Por eso ves en el ejemplo que algunas funciones retornan el tipo esperado `: Observable<Car>`, o si no saben que tipo esperar se conforman con `: Observable<any>`.
+Pero esta es una clase genérica donde sus instancias admiten la manipulación interna de tipos más o menos concretos. Por eso ves en el ejemplo que algunas funciones retornan el tipo esperado `: Observable<MyClass>`, o si no saben que tipo esperar se conforman con `: Observable<any>`.
 
-En cualquier caso, **toda operación asíncrona retornará una instancia observable** a la cual habrá que subscribirse para recibir los datos o los errores, cuando termine. Por limpieza eso debes hacerlo en los componentes que consuman el servicio, no en el propio servicio.
+En cualquier caso, **toda operación asíncrona retornará una instancia observable** a la cual habrá que subscribirse para recibir los datos o los errores, cuando termine.
+Aunque a veces no se verá el _subscribe_...
 
-> El servicio, definie y manipula la instancia observable de la comunicación http. El componente recibe dicho observable que monitoriza la respuesta, se subscribe a ella y consume sus datos o errores.
+## 2.1 Async
 
-## 2.1 Pipe
+Para probar otras formas de presentar datos recibidos desde un API, voy a crear un nuevo componente. El Obserates, mezcla de _observables_ y _rates_.
 
-En `HomeComponent` tenemos un ejemplo sencillo para empezar con el consumo de observables. En una llamada al servicio obtemos como resultado un Observable. Pero mira el código relevante y verás que las cosas cambian. Presta especial atención a los tipos de datos:
-
-```typescript
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-export class HomeComponent implements OnInit {
-  public carLinks$: Observable<Link[]>;
-
-  constructor(private cars: CarsService) {}
-
-  public ngOnInit() {
-    this.carLinks$ = 
-      this.cars.getCars$()
-      .pipe(
-        map(
-          (cars: Car[]): Link[] => 
-            cars.map(this.getLinkFromCar)
-        )
-      );
-  }
-  private getLinkFromCar(car: Car): Link {
-    return {
-      caption: car.link.caption,
-      routerLink: '/car/' + car.link.routerLink,
-      value: formatNumber(car.cost, 'en-US') + ' EUR'
-    };
-  }
-}
+```shell
+ng g c 6-http/rates/obserates
 ```
 
-## 2.1.1 El operador map
+Y en su vista HTML usaré una función propia de Angular llamada `async`. Dicha función actúa como un _pipe_ en una expresión. Igual que el `| json`. Pero a su izquierda espera que le den algo a lo que suscribirse; espera un observable.
+
+```html
+<h2> Currency Observable Rates. </h2>
+<h3> From Euro to the $ world </h3>
+<pre>{{ currentEuroRates$ | async | json }}</pre>}
+```
+
+En este caso uso la propiedad `currentEuroRates$` finalizada en **$** por convenio. Esa propiedad se rellena en el controlador con el método `get`, no con los datos futuros, si no con el propio _observable_.
+
+```typeScript
+  private ratesApi = 'https://api.exchangeratesapi.io/latest';
+  public currentEuroRates$: Observable<any> = null;
+
+  constructor(private httpClient: HttpClient) {}
+
+  ngOnInit() {
+    this.getCurrentEuroRates();
+  }
+
+  private getCurrentEuroRates() {
+    const currencies = 'USD,GBP,CHF,JPY';
+    const url = `${this.ratesApi}?symbols=${currencies}`;
+    this.currentEuroRates$ = this.httpClient.get(url);
+  }
+```
+> Al utilizar el _pipe async_ ya es necesaria la suscripción en código. La propia función del framework se ocupa de ello. Por tanto la llamada se realiza igualmente aunque no veamos la suscripción.
+
+Esta es la manera recomendada de consumir datos desde un API. Definir la llamada en el controlador y pasarle el observable a la vista para que lo muestre cuando obtenga los datos.
+
+
+## 2.2 Pipe
+
+### Tuberías en RxJS .pipe()
 
 Los datos devueltos raramente vienen en el formato preciso para usar en la vista. Con frecuencia hay que transformarlos al vuelo en cuanto se reciben. Recordemos que ***HttpClient* no devuelve los datos tal cual sino un *stream* de estados** de dichos datos. La manipulación será sobre el *stream* no directamente sobre los datos; y, claro, para manipular un torrente hay que encauzarlo en tuberías.
 
-Aquí es donde aparece el método `.pipe(operator1, operator2...)` aplicado a un observable, en lugar de, o antes de, `.susbcribe(okCallback, errCallback)`. Este método entuba una serie de operadores predefinidos que manipulan el chorro de estados observados.
+Aquí es donde aparece el método `.pipe(operator1, operator2...)` aplicado a un observable. Suele hacerse en lugar, o antes, del `.susbcribe(okCallback, errCallback)`. Este método canaliza una serie de operadores predefinidos que manipulan el chorro de estados observados.
 
 El operador más utilizado es `map(sourceStream => targetStream)`. Este operador recibe una función *callBack* que será invocada ante cada dato recibido. Esa función tienen que retornar un valor para sustituir al actual y así transformar el contenido del chorro.
 
-> En este caso partimos de un *array* de objetos de tipo `Car[]` y lo transformamos en otro array de tipo `Link[]`. Para ello, forzando un poco el ejercicio, he usado la función `.map(sourceElement => targetElement)` de los *arrays Javascript*. El conflicto es intencionado por mi parte para mostrar la coincidencia en nombre y propósito. Pero son artificios muy distintos; el operador `map` ha de importarse de `rxjs/operators` y aplicarse a un observable dentro de su método `.pipe()`, recibe y emite observables. Nada que ver con la sencilla función `array.map(callback)`, que recibe y devuelve datos estándar.
+```typescript
+public myRates$: Observable<any[]> = null;
+private getCurrentEuroRates() {
+  const url = `${this.ratesApi}?symbols=USD,GBP,CHF,JPY`;
+  this.currentEuroRates$ = this.httpClient.get(url);
+  this.myRates$ = this.currentEuroRates$.pipe(map(this.transformData));
+}
+private transformData(currentRates) {
+  const current = currentRates.rates;
+  return Object.keys(current).map(key => ({
+    date: currentRates.date,
+    currency: key,
+    euros: current[key]
+  }));
+}
+```
 
-## 2.1.2 El pipe async
-
-Siguiendo con las coincidencias en nombres que suelen causar confusión nos encontramos con el *pipe* `async`. En este caso es tecnología puramente Angular. En las vistas usamos `|` para trasnformar la representación de un dato mediante una función. En este caso, la función recibirá un observable y retornará su contenido... cuando llegue. 
+> En este ejemplo partimos de nuevo de un objeto recibido y lo queremos ver como un *array* de objetos. Para ello lo transformamos usado el operador `map`. Este operador ha de importarse de `rxjs/operators` y aplicarse a un observable dentro de su método `.pipe()`. Es el más sencillo y uno de los más utilizados: recibe y emite datos dentro de un stream de eventos observables. Nada que ver, salvo el nombre, con la sencilla función `array.map(callback)`, que recibe y devuelve datos estáticos.
 
 ```html
-  <app-menu-list caption="Cars in your garage:"
-    [links]="carLinks$ | async">
-  </app-menu-list>
+<pre>{{ myRates$ | async | json }}</pre>
 ```
+Por lo demás el consumo se hace igual... pero... tendremos que ver más operadores para solucionar algunos inconvenientes.
 
-Este es el modo recomendado de consumo de observables en la vista. Hacerlo mediante el *pipe* `observable<any> | async` aporta múltiples ventajas que se irán viendo en este tutorial. Este *pipe* de Angular es una función que se subscribe al torrente recibido y devuelve sus estados concretos. 
+--
 
-Se podría, pero **no se recomienda**, haber resuelto el tema de la siguiente manera:
+## 2.3 Operators
+
+El código anterior funciona, pero resulta que al haber dos funciones async suscritas provoca que la llamada original se realice dos veces. esto es así porque el segundo observable `myRates$` es una canalización del primero `currentEuroRates$`.
+
+Estos y oros problemas se solucionan usando operadores. Vamos a conocer un par de ellos más y veremos como `pipe(op1, op2,  opn)` los ejecuta a todos en orden.
+
+El operador `share()` permite compartir el resultado de una primera llamada con subsiguientes suscriptores. Evitando de ese modo la repetición de costosas peticiones http.
 
 ```typescript
-@Component({
-  selector: 'app-home',
-  template: `<app-menu-list caption="Cars in your garage:" 
-    [links]="carLinks"></app-menu-list> `
-})
-export class HomeComponent implements OnInit {
-  public carLinks: Link[];
-  constructor(private cars: CarsService) {}
-  public ngOnInit() {
-    this.carLinks$ = this.cars.getCars$()
-      .pipe(map(
-        (cars: Car[]): Link[] => cars.map(this.getLinkFromCar)
-      ))
-      .subscribe(
-        (links: Link[]): void => this.links= links;
+private getCurrentEuroRates() {
+const url = `${this.ratesApi}?symbols=USD,GBP,CHF,JPY`;
+  this.currentEuroRates$ = this.httpClient.get(url)
+      .pipe(share());
+  this.myRates$ = this.currentEuroRates$
+      .pipe(
+        tap(d=>console.log(d)),
+        map(this.transformData),
+        tap(t=>console.log(t))
       );
-  }
-  private getLinkFromCar(car: Car): Link {
-    return {
-      caption: car.link.caption,
-      routerLink: '/car/' + car.link.routerLink,
-      value: formatNumber(car.cost, 'en-US') + ' EUR'
-    };
-  }
 }
 ```
 
-> Recordatorio para novatos asíncronos: Es importante comprender la naturaleza asíncrona de estas operaciones. El código de las funciones *callbacks* subscritas se ejecutará en el futuro, no de una manera secuencial.
-
-## 2.2 Switch Map 
-
-Hemos visto como recuperar información asícrona y recibirla con un observable. Hemos aprendido a transformar los datos recibidos. Pero, ¿qué ocurre si lo que necesito para la transformación es otra llamada asíncrona?.
-
-El operador `map()` trabaja con el contenido de un *stream*. Pero si queremos derivar el curso hacia otro arroyo necesitamos un operador más poderoso: el `switchMap()`.
-
-Esta es una situación habitual cuando llamamos a un servicio y con su resultado futuro tenemos que llamar a otro. En realidad lo que queremos es el resultado del segundo observable, no el del primero. Para ello cambiamos al vuelo uno por otro; de ahí el *switch*.
-
-En el `car.component.ts` tienes un ejemplo completo y complejo del entubado encadenado de operadores. Se trata de que al aplicación almacene y recupere los datos de viaje de cada coche, de forma que al cogerlo podamos continuar el viaje. Además del mencionado `switchMap` te presento también al sencillo `tap()`. Este operador se usa cuando queremos ejecutar instrucciones que no manipulen los datos del *stream*, pero que se efectúen cuando los datos lleguen. Es decir, *tap* usa el dato pero no lo transforma.
-
-Analicemos el siguiente *snipet* linea a línea. Prestando una vez más especial atención a los tipos recibidos y devueltos por cada función.
-
-```typescript
-public ngOnInit() {
-  this.subscription: Subscription = this.route.params
-    .pipe(
-      map((params: Params): string => params['carId']),
-      switchMap((carId: string): Observable<Car> => this.cars.getCarByLinkId$(carId)),
-      tap(this.onCarGotten),
-      switchMap((car: Car): Observable<Car> => this.travels.getCarTravel$(car)),
-      switchMap((car: Car): Observable<number> => interval(environment.refreshInterval))
-    )
-    .subscribe(this.timeGoesBy);
-}
-```
-La narrativa de lo que sucede en esta función es la siguiente:
-
-- 1 - Partimos de  `this.route.params`, que es un *stream* observable de los estados de los parametros de la ruta activa, y que devuelve `Observable<Params>`.
-- 2 - Extraemos el parámetro `carId`, que es un `string`.
-- 3 - Realizamos una llamada asincrona para obtener el coche con es identificador. El resultado es un nuevo *stream* que retorna `Observable<Car>`.
-- 4 - Almacenamos el coche e inicializamos indicadores mediante `tap`. Sin cambiar nada en el curso del arroyo.
-- 5 - Para continuar el viaje hay que llamar de nuevo al servidor y de forma asíncrona completar o rellenar datos del coche. De nuevo una derivación en la corriente, auqne el tipo siga siendo el mismo: `Observable<Car>` .
-- 6 - Al tener los datos ya completos queremos ceder el control al usuario y refrescar los indicadores según su manejo. La repetición de funciones a intervalos encaja en la filosofía *Observable* y se incorpora en *RxJs* mediante la función `interval(period:number)` que retorna una secuencia de números a cada intervalo programado.
-- 7 - Por último podemos ejecutar una función *callback* ante cada suceso (emitido por el intervalo) usando la función `.subscribe(callback)`. 
+> El operador `tap(callback)` es similar en nombre al `map()`. Pero la gran diferencia es que está pensado para no manipular los datos que recibe. Los usa y puede causar otros efectos colaterales, pero nunca modifica el propio stream. Es muy utilizado para inspeccionar o auditar el flujo de otros operadores.
 
 
-Reconozco que en un primer vistazo este código pueda resultar complejo. Tómate tu tiempo. Fíjate en los tipos de entrada y salida de cada función. Revísa la aplicación [Autobot en el repositorio](https://github.com/AcademiaBinaria/autobot/tree/6-http). Especialmente en `cars.service.ts` y `travels.service.ts` encontrarás muchos más ejemplos del trabajo con la librería *RxJs* y la manipulación de *streams de eventos observables*.
+Reconozco que en un primer vistazo este código pueda resultar complejo. Tómate tu tiempo. Fíjate en los datos de entrada y salida de cada función. Esto es solo el principio del trabajo con la librería *RxJS* y la manipulación de *streams de eventos observables*.
 
-Ya tenemos un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables y el _httpClient_ estamos a un paso de darle seguridad a las comunicaciones. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular6.
+Ya tenemos un servidor con el que nos comunicamos por _http_; aunque por ahora de forma anónima. Con el conocimiento actual de los observables y el _httpClient_ estamos cerca de resolverlo. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular6.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
