@@ -80,7 +80,8 @@ Para cada verbo _http_ tenemos su método en el servicio `HttpClient`. Su primer
 
 ```typescript
 export class RatesComponent implements OnInit {
-  private urlapi = 'https://api.exchangeratesapi.io/latest';
+  private urlapi
+    = 'https://api.exchangeratesapi.io/latest';
   public currentEuroRates: any = null;
 
   constructor(private httpClient: HttpClient) {}
@@ -210,7 +211,7 @@ Aunque a veces no se verá el _subscribe_...
 
 ## 2.1 Async
 
-Para probar otras formas de presentar datos recibidos desde un API, voy a crear un nuevo componente. El Obserates, mezcla de _observables_ y _rates_.
+Para probar otras formas de presentar datos recibidos desde un API, voy a crear un nuevo componente. El `ObseratesComponent`, mezcla de _observables_ y _rates_.
 
 ```shell
 ng g c 6-http/rates/obserates
