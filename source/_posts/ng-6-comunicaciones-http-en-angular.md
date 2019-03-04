@@ -244,7 +244,7 @@ private getCurrentEuroRates() {
   this.currentEuroRates$ = this.httpClient.get(url);
 }
 ```
-> Al utilizar el _pipe async_ ya es necesaria la suscripción en código. La propia función del framework se ocupa de ello. Por tanto la llamada se realiza igualmente aunque no veamos la suscripción.
+> Al utilizar el _pipe async_ ya no es necesaria la suscripción en código. La propia función del framework se ocupa de ello. Por tanto la llamada se realiza igualmente aunque no veamos la suscripción.
 
 Esta es la manera recomendada de consumir datos desde un API. Definir la llamada en el controlador y pasarle el observable a la vista para que lo muestre cuando obtenga los datos.
 
