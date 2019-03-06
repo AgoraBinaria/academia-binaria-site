@@ -78,7 +78,7 @@ Pero antes un poco más de observables.
 
 La librería [RxJS](https://www.learnrxjs.io/) es enorme y Angular hace un uso extenso de ella. En este tutorial [se ha visto desde el punto de vista del consumidor](../comunicaciones-http-en-Angular). Es decir, nos hemos suscrito a fuentes observables. Para avanzar tendremos que poder emitir, o mejor dicho producir, información.
 
-### Of from interval
+### Of y from
 
 Los constructores más sencillos de la librería son **funciones que emiten valores estáticos** o secuencias a intervalos regulares. Para familiarizarte con ellos te propongo que juegues con código como este:
 
@@ -269,7 +269,7 @@ export class NotificationsModule {}
 
 ## 2.1 El operador catchError
 
-Volvemos a los observables y lo operadores canalizables en `.pipe()`. Durante su ejecución un _stream_ de observables puede emitir valores correctos, una señal de finalización... y cómo no, errores. El método `.subscribe(ok, err, end)` y operadores como `.map(ok, err, end)` admiten hasta tres _callbacks_ que se llamarán según los tipos de sucesos descritos. Pero para tratar el caso concreto de los errores vamos a ver el operador `catchError()`.
+Volvemos a los observables y los operadores canalizables en `.pipe()`. Durante su ejecución un _stream_ de observables puede emitir valores correctos, una señal de finalización... y cómo no, errores. El método `.subscribe(ok, err, end)` y operadores como `.map(ok, err, end)` admiten hasta tres _callbacks_ que se llamarán según los tipos de sucesos descritos. Pero para tratar el caso concreto de los errores vamos a ver el operador `catchError()`.
 
 Por ejemplo durante la intercepción de respuestas podemos realizar una función específica al recibir un código de error. Dadas estas tres alternativas, escogeremos según la intención o la tecnología que más nos guste.
 
@@ -335,7 +335,7 @@ private handleError(err) {
 
 ## 3.2 Recepción desacoplada del interceptor
 
-Y ahora ya sólo queda suscribirse a los eventos y mostrarlos al usuario. Por ejemplo desde el `ReceiverComponent`, podemos lanzar llamadas que sabemos que darán problemas y esperar pacientemente el fallo para mostrarlo al usuario.
+Y ahora ya sólo queda suscribirse a los eventos y mostrarlos al usuario. Por ejemplo, desde el `ReceiverComponent`, podemos lanzar llamadas que sabemos que darán problemas y esperar pacientemente el fallo para mostrarlo al usuario.
 
 ```html
 <button (click)="forceError()">Force http Error</button>
