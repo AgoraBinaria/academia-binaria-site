@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
+    
+    <lastmod>2019-03-06T18:23:24.216Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
     
     <lastmod>2019-03-04T08:09:43.972Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
     
     <lastmod>2019-02-12T16:21:20.818Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
-    
-    <lastmod>2018-12-03T16:41:52.266Z</lastmod>
     
   </url>
   
