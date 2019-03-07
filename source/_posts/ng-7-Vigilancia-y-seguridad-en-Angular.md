@@ -137,7 +137,7 @@ export class NotificationsStoreService {
 
   public select$ = () => this.notifications$.asObservable();
 
-  public dispatchNotification(notification) {
+  public dispatch(notification) {
     this.notifications.push(notification);
     this.notifications$.next([...this.notifications]);
   }
@@ -188,7 +188,7 @@ export class SenderComponent implements OnInit {
   ngOnInit() {}
 
   public send() {
-    this.notificationsStore.dispatchNotification(this.note);
+    this.notificationsStore.dispatch(this.note);
   }
 }
 ```
@@ -328,7 +328,7 @@ public intercept(req, next) {
 private handleError(err) {
   let userMessage = 'Fatal error';
   // emisión de la notificación
-  this.notificationsStore.dispatchNotification(userMessage);
+  this.notificationsStore.dispatch(userMessage);
 }
 ```
 
