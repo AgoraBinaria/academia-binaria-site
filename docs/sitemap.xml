@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    
+    <lastmod>2019-03-11T17:48:59.947Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
     
     <lastmod>2019-03-07T11:41:20.774Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>https://academia-binaria.com/velocidad-y-seo-con-el-ssr-de-angular-universal/</loc>
     
     <lastmod>2018-12-03T16:37:55.771Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
-    
-    <lastmod>2018-12-03T16:35:12.938Z</lastmod>
     
   </url>
   
