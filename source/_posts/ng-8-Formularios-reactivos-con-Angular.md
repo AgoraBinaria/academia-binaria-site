@@ -110,7 +110,7 @@ El formulario se define como un **grupo de controles**. Cada control tendrá un 
 
 ```typescript
 private buildForm() {
-  const dateLenght = 10;
+  const dateLength = 10;
   const today = new Date().toISOString().substring(0, dateLength);
   const name = 'JOHN DOE';
   this.formGroup = this.formBuilder.group({
