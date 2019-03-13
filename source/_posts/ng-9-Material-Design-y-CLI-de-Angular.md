@@ -58,7 +58,7 @@ Pero, es buena práctica crear scripts específicos en el `package.json` para in
 
 # 2. Instalación y configuración de Material
 
-Por muchas funcionalidades que aporte un framework como Angular, siempre necesitaremos echar mano de alguna librería de terceros. Normalmente eso implica instalarla con _npm_, importar sus módulos en Angular y en ocasiones alguna configuración extra.
+Por muchas funcionalidades que aporte un _framework_ como Angular, siempre necesitaremos echar mano de alguna **librería de terceros**. Normalmente eso implica instalarla con _npm_, importar sus módulos en Angular y en ocasiones alguna configuración extra.
 
 Pero algunos proyectos ha adoptado la librería _schematics_ para facilitar la adopción de sus librerías. Es el caso de **Angular Material**.
 
@@ -82,15 +82,22 @@ En el `index.html` se insertarán los enlaces a las hojas de estilos con fuentes
 
 # 3. Componentes básicos
 
+**Angular Material** es mucho más que un _css_. El proyecto te ofrece más de una docena de componentes visuales para crear páginas web de aspecto y comportamiento profesional.
+
+Por si fuera poco, ofrece sus propias plantillas de _schematics_, de forma que podemos crear pantallas con el CLI y luego trabajar sobre ellas.
+
 ## 3.1 Navegación y layout
 
+Para empezar vamos a crear el armazón de la aplicación, con su menú y su espacio para cargar contenido. Después pondremos la primera piedra con un dashboard en la raíz de la web.
+
 ### 3.1.1 Navegación
+
+Al control que hará de _shell_ le llaman `nav` por sus capacidades de navegación. Lo usaremos para generar un componente. La novedad será que la plantilla a partir de la cual se crea no viene por defecto y tenemos que especificarla más.
 
 ``` console
 ng g @angular/material:nav shell --project=schemat
 ```
-
-app.component.html
+EL resultado es un componente normal, muy adecuado para sustituir todo lo pre-generado por el cli en`app.component.html`
 
 ```html
 <app-shell></app-shell>
@@ -98,11 +105,13 @@ app.component.html
 
 ### 3.1.2 Dashboard
 
+Para la ruta raíz elegí un cuadro de mando. De nuevo es una generación a partir de una plantilla específica. En este caso le he llamado `Home`.
+
 ``` console
 ng g @angular/material:dashboard home --project=schemat
 ```
 
-app-routing
+Asociamos el componente a la ruta en `app-routing`
 
 ```typescript
 const routes: Routes = [
@@ -112,8 +121,8 @@ const routes: Routes = [
   }
 ];
 ```
+Y le buscamos un lugar tanto al enlace como al `RouterOutlet` en el previamente generado `shell.component.html`.
 
-shell.component.html
 ```html
 <a mat-list-item [routerLink]="['/']">Home</a>
 <!-- Add Content Here -->
@@ -122,51 +131,24 @@ shell.component.html
 
 ## 3.2 Componentes básicos
 
+Por supuesto que una librería de esta envergadura tienen soluciones para todo tipo de situaciones visuales. Para las más comunes incluso ofrecen una plantilla en sus _schematics_ que permite generar prototipos funcionales de formularios, tablas y hasta árboles.
+
 ### 3.2.1 Formularios
+
+Puedes generar un **formulario** para crear contactos y después modificarlo o usarlo como guía para crear cualquier otro.
 
 ``` console
 ng g @angular/material:address-form contact --project=schemat
 ```
 
-app-routing
-
-```typescript
-const routes: Routes = [
-  {
-    path: 'new-contact',
-    component: ContactComponent
-  }
-];
-```
-
-shell.component.html
-```html
-<a mat-list-item [routerLink]="['/new-contact']">New Contact</a>
-```
-
 ### 3.2.2 Tablas
+
+También nos muestran cómo hacer **listados**, con datos de ejemplo incluidos.
 
 ``` console
 ng g @angular/material:table elements --project=schemat
 ```
-
-app-routing
-
-```typescript
-const routes: Routes = [
-  {
-    path: 'elements-list',
-    component: ElementsComponent
-  }
-];
-```
-
-shell.component.html
-```html
-<a mat-list-item [routerLink]="['/elements-list']">Elements List</a>
-```
-
-elements.component.html
+El ejemplo permite además ver los datos en páginas y configurar su comportamiento.
 
 ```html
 <mat-paginator #paginator
@@ -176,31 +158,14 @@ elements.component.html
     [pageSizeOptions]="[5, 10, 15, 20]">
 </mat-paginator>
 ```
-
----
-
 ### 3.2.3 Árboles
+
+Termino con un ejemplo de algo reciente, **el árbol**. Este componente se resistió pero por petición popular acabaron integrándolo y ahora puedes mostrar datos jerárquicos como más les gusta a los usuarios: en forma de árboles.
 
 ``` console
 ng g @angular/material:tree source --project=schemat
 ```
-
-app-routing
-
-```typescript
-const routes: Routes = [
-  {
-    path: 'source-tree',
-    component: SourceComponent
-  }
-];
-```
-
-shell.component.html
-```html
-<a mat-list-item [routerLink]="['/source-tree']">Source Tree</a>
-```
-
+Por supuesto que hay más opciones, todas bien explicadas en la [documentación de Angular Material](https://material.angular.io/components/categories). Es una solución muy recomendable para aplicaciones de gestión, o simplemente para que se vean muy bien en Android y recuerden al _look and feel_ de todo lo que hace Google.
 
 Con este conocimiento finalizas tu [introducción a Angular](../tag/Introduccion/).  En el tutorial avanzado aprenderás más cosas para programar con Angular 7.
 
