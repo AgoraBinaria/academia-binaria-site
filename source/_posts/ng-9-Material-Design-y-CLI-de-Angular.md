@@ -1,20 +1,20 @@
 ---
-title: Formularios reactivos con Angular
-permalink: formularios-reactivos-con-Angular
-date: 2019-03-12 10:59:27
+title: Material Design y CLI de Angular
+permalink: Material-Design-y-CLI-de-Angular
+date: 2019-03-14 18:59:27
 tags:
 - Angular
 - Angular7
 - Angular2
-- reactiveForms
+- material
 - Tutorial
 - Introducción
 categories:
 - [Tutorial, Angular]
-thumbnail: /css/images/angular-8_reactive.png
+thumbnail: /css/images/angular-9_material.png
 ---
 
-![formularios-reactivos-con-Angular](/images/tutorial-angular-8_reactive.png)
+![Material-Design-y-CLI-de-Angular](/images/tutorial-angular-9_material.png)
 
 El **doble enlace automático** entre elementos *html* y propiedades de objetos fue el primer gran éxito de **Angular**. Ese _doble-binding_ facilita mucho el desarrollo de formularios. Pero esa magia tienen un coste en escalabilidad; impacta en el tiempo de ejecución y además dificulta la validación y el mantenimiento de formularios complejos.
 
@@ -22,9 +22,9 @@ La solución en Angular 7 pasa por desacoplar el modelo y la vista, introduciend
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/). Al finalizar tendrás una aplicación con formularios _model driven_ fáciles de mantener y validar.
+Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás una nueva aplicación con la apariencia y usabilidad de _Material design_.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/8-reactive](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/8-reactive/security)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/projects/schemat/](https://github.com/AcademiaBinaria/angular-board/tree/master/projects/schemat)
 >
 > > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
 
@@ -410,8 +410,7 @@ public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent
 }
 ```
 
-Ya sabes lo básico de Angular; pero puedes usar mucho más conociendo su ecosistema. Sigue esta serie para agregar librerías y usar los esquemas de  [Material Design y CLI de Angular](../Material-Design-y-CLI-de-Angular/) mientras aprendes a programar con Angular.
-
+Con este conocimiento ya casi finalizas tu [introducción a Angular](../tag/Introduccion/). Próximamente veremos una parte de su ecosistema como es _Material Design con Angular_ y aprenderás más cosas para programar con Angular 7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
