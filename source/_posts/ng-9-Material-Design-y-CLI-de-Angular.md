@@ -16,9 +16,9 @@ thumbnail: /css/images/angular-9_material.png
 
 ![Material-Design-y-CLI-de-Angular](/images/tutorial-angular-9_material.png)
 
-El _ecosistema_ de angular está repleto de librerías para desarrolladores profesionales. Algunas hacen uso de los **schematics**, entre las que destaca  *Material Design*. Esta implementación de la casa de la guía de diseño de Google usa las capacidades de estas plantillas del CLI que permiten agregar librerías y generar código.
+El _ecosistema_ de Angular está repleto de librerías para desarrolladores profesionales. Algunas hacen uso de los **schematics**, y entre ellas destaca [Angular Material](https://material.angular.io/). Esta implementación de la casa de la guía de diseño _Material Design_ de Google usa las capacidades de estas plantillas del CLI que permiten agregar librerías y generar código.
 
-Un programador Angular debe dominar el CLI y debe conocer los beneficios que aporta un repositorio de multi-proyecto. Hay escenarios más adecuados que otros para estos nono-repos. Pero con el CLI es muy sencillo crear y usar nuevas aplicaciones dentro de un repositorio.
+Un programador Angular debe **dominar el CLI** y debe conocer los beneficios que aporta un repositorio de multi-proyecto. Hay escenarios complejos muy adecuaos para estos _mono-repos_. Pero con el CLI es muy sencillo crear y usar nuevas aplicaciones dentro de un repositorio.
 
 <!-- more -->
 
@@ -30,23 +30,26 @@ Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angul
 
 # 1. Repositorio multi-proyecto
 
+El primer comando que se usa al empezar con angular es `ng new mi-aplicacion`. Desde ese momento tu mundo es la carpeta `/src` en la que se genera el código y en la que vas a desarrollar.
+
+Pero con el tiempo, ciertos proyectos crecen hay que dividirlos. O quizás surjan proyectos hermanos. Angular CLI permite disponer de más de un proyecto compartiendo repositorio y configuración.
+
 ## 1.1 Carpetas src y projects
 
-CLI
+Dado un repositorio inicial, para agregar una nueva aplicación usaremos el viejo comando _generate_. Por ejemplo voy a crear una aplicación en la que usar las capacidades de los **schematics** y de **material**; la llamaré _schemat_
 
 ```console
 ng g application schemat --routing
 ```
 
-angular.json
+Esta aplicación comparte la configuración básica de `angular.json` y las dependencias y scripts de `package.json`. Su código específico va en la carpeta `projects` destinada a los nuevos proyectos generados tras haber creado el repo inicial.
 
-```
-"es5BrowserSupport": true
-```
 
 ## 1.2 Compilación multi - proyecto
 
-package.json
+A partir de ahora cada comando del CLI debería ir asociado a un proyecto concreto. Digo debería porque an `angular.json` puedes establecer un proyecto por defecto, que si no dices lo contrario será el inicial.
+
+Pero, es buena práctica crear scripts específicos en el `package.json` para iniciar y compilar cada proyecto.
 
 ```
 "start:schemat": "ng serve schemat --aot -o --port 4271",
@@ -54,6 +57,8 @@ package.json
 ```
 
 # 2. Instalación y configuración de Material
+
+
 
 ## 2.1 Agregar dependencias con schematics
 
