@@ -32,7 +32,7 @@ Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angul
 
 El primer comando que se usa al empezar con angular es `ng new mi-aplicacion`. Desde ese momento tu mundo es la carpeta `/src` en la que se genera el código y en la que vas a desarrollar.
 
-Pero con el tiempo, ciertos proyectos crecen hay que dividirlos. O quizás surjan proyectos hermanos. Angular CLI permite disponer de más de un proyecto compartiendo repositorio y configuración.
+Pero con el tiempo, ciertos proyectos crecen y hay que dividirlos. O quizás surjan aplicaciones hermanas. Angular CLI permite disponer de más de un proyecto **compartiendo repositorio y configuración**.
 
 ## 1.1 Carpetas src y projects
 
@@ -92,7 +92,7 @@ Para empezar vamos a crear el armazón de la aplicación, con su menú y su espa
 
 ### 3.1.1 Navegación
 
-Al control que hará de _shell_ le llaman `nav` por sus capacidades de navegación. Lo usaremos para generar un componente. La novedad será que la plantilla a partir de la cual se crea no viene por defecto y tenemos que especificarla más.
+Al control que hará de _shell_ le llaman `nav` por sus capacidades de navegación. Lo usaremos para generar un componente. La novedad será que la plantilla a partir de la cual se crea no viene por defecto y tenemos que especificarla con más detalle.
 
 ``` console
 ng g @angular/material:nav shell --project=schemat
