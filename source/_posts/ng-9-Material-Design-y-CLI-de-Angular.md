@@ -58,23 +58,25 @@ Pero, es buena práctica crear scripts específicos en el `package.json` para in
 
 # 2. Instalación y configuración de Material
 
+Por muchas funcionalidades que aporte un framework como Angular, siempre necesitaremos echar mano de alguna librería de terceros. Normalmente eso implica instalarla con _npm_, importar sus módulos en Angular y en ocasiones alguna configuración extra.
 
+Pero algunos proyectos ha adoptado la librería _schematics_ para facilitar la adopción de sus librerías. Es el caso de **Angular Material**.
 
 ## 2.1 Agregar dependencias con schematics
+
+Para agregar _Material_ un proyecto basta con usar el comando `add` del CLI.
 
 ```console
 ng add @angular/material --project=schemat
 ```
 
+Esto instalará y anotará la dependencia de `@angular/material` y otros paquetes necesarios. Pero además los registrará en `AppModule` y lo configurará.
+
 ## 2.2 Estilos, iconos y temas básicos
 
-index.html
+En el `index.html` se insertarán los enlaces a las hojas de estilos con fuentes e iconos. En el `styles.css` podremos importar el tema de _Material_ que nos guste.
 
-app.module.ts
-
-styles.css
-
-```
+```css
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 ```
 
