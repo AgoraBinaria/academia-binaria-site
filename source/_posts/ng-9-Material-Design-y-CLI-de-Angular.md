@@ -16,13 +16,13 @@ thumbnail: /css/images/angular-9_material.png
 
 ![Material-Design-y-CLI-de-Angular](/images/tutorial-angular-9_material.png)
 
-El **doble enlace automático** entre elementos *html* y propiedades de objetos fue el primer gran éxito de **Angular**. Ese _doble-binding_ facilita mucho el desarrollo de formularios. Pero esa magia tienen un coste en escalabilidad; impacta en el tiempo de ejecución y además dificulta la validación y el mantenimiento de formularios complejos.
+El _ecosistema_ de angular está repleto de librerías para desarrolladores profesionales. Algunas hacen uso de los **schematics**, entre las que destaca  *Material Design*. Esta implementación de la casa de la guía de diseño de Google usa las capacidades de estas plantillas del CLI que permiten agregar librerías y generar código.
 
-La solución en Angular 7 pasa por desacoplar el modelo y la vista, introduciendo una capa que gestione ese doble enlace. Los servicios y directivas del módulo `ReactiveFormsModule` que viene en la librería `@angular/forms` permiten programar **formularios reactivos conducidos por el código**.
+Un programador Angular debe dominar el CLI y debe conocer los beneficios que aporta un repositorio de multi-proyecto. Hay escenarios más adecuados que otros para estos nono-repos. Pero con el CLI es muy sencillo crear y usar nuevas aplicaciones dentro de un repositorio.
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás una nueva aplicación con la apariencia y usabilidad de _Material design_.
+Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás, en el mismo repositorio, una nueva aplicación con la apariencia y usabilidad de _Material design_.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/projects/schemat/](https://github.com/AcademiaBinaria/angular-board/tree/master/projects/schemat)
 >
