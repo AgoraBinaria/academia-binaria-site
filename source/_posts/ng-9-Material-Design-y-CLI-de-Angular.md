@@ -26,7 +26,7 @@ Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angul
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/projects/schemat/](https://github.com/AcademiaBinaria/angular-board/tree/master/projects/schemat)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
+> > Tienes una versión desplegada operativa para probar [Scehmat](https://academiabinaria.github.io/angular-board/scehmat/)
 
 # 1. Repositorio multi-proyecto
 
