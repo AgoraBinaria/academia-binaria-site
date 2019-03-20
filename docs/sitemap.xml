@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/cursos.html</loc>
+    
+    <lastmod>2019-03-20T09:07:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
     
     <lastmod>2019-03-14T10:53:26.052Z</lastmod>
@@ -131,13 +138,6 @@
     <loc>https://academia-binaria.com/typescript-programa-en-el-front-igual-que-en-el-back/</loc>
     
     <lastmod>2017-03-14T18:10:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/cursos.html</loc>
-    
-    <lastmod>2017-02-23T16:07:39.000Z</lastmod>
     
   </url>
   
