@@ -6,6 +6,7 @@ date: 2019-03-20 10:07:39
 ---
 
 > Cursos con lecciones en video, chat de preguntas, tutorías y prácticas corregidas.
+> -- <cite>Te espero, Alberto Basalo</cite>
 
 # Angular Basic
 
@@ -33,6 +34,8 @@ date: 2019-03-20 10:07:39
 
 [Empieza ya!](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
 
+---
+
 # Angular Bravo
 
 [Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-alto-rendimiento/?promo=meetup10&af=abasalo/)
@@ -57,7 +60,12 @@ date: 2019-03-20 10:07:39
 
 #### 9 - Web Components
 
-[Mejora ya!](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+[Mejora ya!](https://www.trainingit.es/curso-angular-alto-rendimiento/?promo=meetup10&af=abasalo/)
 
 
-> Con diploma acreditativo y bonificables por Fundae.
+> Con diploma acreditativo, bolsa de trabajo y bonificables por Fundae.
+> -- <cite>Aprende online con Alberto Basalo</cite>
+
+[Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+
+[Angular Bravo: Curso de implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-alto-rendimiento/?promo=meetup10&af=abasalo/)
