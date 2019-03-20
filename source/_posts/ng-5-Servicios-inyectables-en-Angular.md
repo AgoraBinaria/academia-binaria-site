@@ -27,7 +27,7 @@ Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componente
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/5-inject](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/5-inject/converter)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-basic/)
+> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
 
 # 1. Inyección de dependencias
 

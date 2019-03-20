@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
+    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
     
-    <lastmod>2019-03-20T16:11:09.838Z</lastmod>
+    <lastmod>2019-03-20T17:22:54.594Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    
+    <lastmod>2019-03-20T17:22:54.590Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
+    
+    <lastmod>2019-03-20T17:22:54.588Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
+    
+    <lastmod>2019-03-20T17:22:54.586Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+    
+    <lastmod>2019-03-20T17:22:54.586Z</lastmod>
     
   </url>
   
@@ -16,16 +44,9 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
     
-    <lastmod>2019-03-20T16:11:09.813Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.812Z</lastmod>
+    <lastmod>2019-03-20T16:11:09.838Z</lastmod>
     
   </url>
   
@@ -33,27 +54,6 @@
     <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
     
     <lastmod>2019-03-20T16:11:09.812Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.810Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.807Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.806Z</lastmod>
     
   </url>
   

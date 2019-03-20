@@ -26,7 +26,7 @@ Partiendo de la aplicación tal cómo quedó en [Vigilancia y seguridad en Angul
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/8-reactive](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/8-reactive/security)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-basic/)
+> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
 
 
 # 1 Desacople entre vista y modelo

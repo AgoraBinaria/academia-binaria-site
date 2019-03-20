@@ -28,7 +28,7 @@ Partiendo de la aplicación tal cómo quedó en [Servicios inyectables en Angula
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/6-http](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/6-http/rates)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-basic/)
+> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
 
 # 1. El servicio HttpClient
 

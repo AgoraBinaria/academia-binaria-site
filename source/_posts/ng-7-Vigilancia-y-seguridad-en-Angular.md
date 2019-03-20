@@ -27,7 +27,7 @@ Partiendo de la aplicación tal cómo quedó en [Comunicaciones http en Angular]
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/7-watch](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/7-watch/notifications)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-basic/)
+> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
 
 # 1. Observables para monitorizar datos
 
