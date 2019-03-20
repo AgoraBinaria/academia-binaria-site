@@ -25,9 +25,9 @@ Para que los componentes consuman los servicios de forma controlada tenemos prov
 
 Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/5-inject](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/5-inject/converter)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/5-inject](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/5-inject/converter)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
+> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-basic/)
 
 # 1. Inyección de dependencias
 
