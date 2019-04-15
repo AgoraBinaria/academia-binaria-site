@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
+    
+    <lastmod>2019-04-15T17:16:31.551Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
     
     <lastmod>2019-03-20T17:22:54.594Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
     
     <lastmod>2019-03-20T17:22:54.590Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.588Z</lastmod>
     
   </url>
   

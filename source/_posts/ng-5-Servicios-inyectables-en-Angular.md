@@ -47,10 +47,10 @@ ng g c 5-inject/converter/converter
 La particularidad de las clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e **indica que esta clase puede ser inyectada** dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios. Estos son ejemplos de instrucciones para crear un _service_.
 
 ```shell
-ng g s 5-inject/converter/converter
+ng g s 5-inject/converter/calculator
 ```
 
-El resultado es el fichero `converter.service.ts` con su decorador que toma una _class_ normal y produce algo _injectable_. Veamos una implementación mínima:
+El resultado es el fichero `calculator.service.ts` con su decorador que toma una _class_ normal y produce algo _injectable_. Veamos una implementación mínima:
 
 ```typescript
 import { Injectable } from '@angular/core';
@@ -58,7 +58,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class ConverterService {
+export class CalculatorService {
   constructor() {}
 
   public fromKilometersToMiles = kilometers => kilometers * 0.62137;
@@ -80,14 +80,14 @@ export class ConverterComponent implements OnInit {
   public kilometers = 0;
   public miles: number;
 
-  constructor(private converterService: ConverterService) {}
+  constructor(private calculatorService: CalculatorService) {}
 
   public ngOnInit() {
     this.convert();
   }
 
   public convert() {
-    this.miles = this.converterService.fromKilometersToMiles(this.kilometers);
+    this.miles = this.calculatorService.fromKilometersToMiles(this.kilometers);
   }
 }
 ```
@@ -125,7 +125,7 @@ En un módulo cualquiera, siempre podríamos agregar un servicio a su array de _
 @NgModule({
   declarations: [...],
   imports: [...],
-  providers: [ ConverterService ]
+  providers: [ CalculatorService ]
 })
 ```
 
@@ -136,13 +136,13 @@ Pero siempre será **una instancia única por módulo**. Si un _singleton_ no es
 Veamos un ejemplo extendiendo el problema del conversor de unidades de forma que se pueda escoger una **estrategia** de conversión en base a una cultura concreta. Para empezar necesitamos una interfaz, un servicio base que la implemente y un componente que lo consuma.
 
 ```shell
-ng g interface 5-inject/converter/culture-converter
+ng g interface 5-inject/converter/i-culture-converter
 ng g service 5-inject/converter/culture-converter
 ng g component 5-inject/converter/culture-converter
 ```
 
 ```typeScript
-export interface CultureConverter implements CultureConverter {
+export interface ICultureConverter {
   sourceCulture: string;
   targetCulture: string;
   convertDistance: (source: number) => number;
@@ -151,7 +151,7 @@ export interface CultureConverter implements CultureConverter {
 ```
 
 ```typescript
-export class CultureConverterService implements CultureConverter {
+export abstract class CultureConverterService implements ICultureConverter {
   sourceCulture: string;
   targetCulture: string;
   convertDistance: (source: number) => number;
@@ -200,18 +200,15 @@ export class CultureConverterComponent implements OnInit {
 
 ## 2.2 Implementaciones
 
-El `CultureConverterComponent` depende de `CultureConverterService` el cual implementa de forma abstracta la interfaz `CultureConverter`. Pero eso no es para nada funcional. Vamos a crear dos implementaciones específicas para Europa y USA. Estas clases concretas se apoyarán en el anteriormente creado `ConverterService` que necesita algo más de código.
+El `CultureConverterComponent` depende de `CultureConverterService` el cual implementa de forma abstracta la interfaz `CultureConverter`. Pero eso no es para nada funcional. Vamos a crear dos implementaciones específicas para Europa y USA. Estas clases concretas se apoyarán en el anteriormente creado `CalculatorService` que necesita algo más de código.
 
 ```typescript
-export class ConverterService {
+export class CalculatorService {
   constructor() {}
 
   public fromKilometersToMiles = kilometers => kilometers * 0.62137;
-
   public fromMilesToKilometers = miles => miles * 1.609;
-
   public fromCelsiusToFarenheit = celsius => celsius * (9 / 5) + 32;
-
   public fromFarenheitToCelsius = farenheit => (farenheit - 32) * (5 / 9);
 }
 ```
@@ -220,23 +217,27 @@ Y aquí están las dos servicios concretos.
 
 ```typescript
 @Injectable()
-export class EuropeConverterService {
+export class EuropeConverterService implements ICultureConverter {
   sourceCulture = 'USA';
   targetCulture = 'Europe';
-  constructor(private converterService: ConverterService) {}
-  convertDistance = this.converterService.fromMilesToKilometers;
-  convertTemperature = this.converterService.fromFarenheitToCelsius;
+
+  constructor(private converterService: CalculatorService) {}
+
+  public convertDistance = this.converterService.fromMilesToKilometers;
+  public convertTemperature = this.converterService.fromFahrenheitToCelsius;
 }
 ```
 
 ```typescript
 @Injectable()
-export class UsaConverterService implements CultureConverter {
+export class UsaConverterService implements ICultureConverter {
   sourceCulture = 'Europe';
   targetCulture = 'USA';
-  constructor(private converterService: ConverterService) {}
-  convertDistance = this.converterService.fromKilometersToMiles;
-  convertTemperature = this.converterService.fromCelsiusToFarenheit;
+
+  constructor(private converterService: CalculatorService) {}
+
+  public convertDistance = this.converterService.fromKilometersToMiles;
+  public convertTemperature = this.converterService.fromCelsiusToFahrenheit;
 }
 ```
 
@@ -274,7 +275,7 @@ const cultureFactory = (converterService: ConverterService) => {
     {
       provide: CultureConverterService,
       useFactory: cultureFactory,
-      deps: [ConverterService],
+      deps: [CalculatorService],
     },
   ];
 }
