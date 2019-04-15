@@ -55,7 +55,7 @@ date: 2019-03-20 10:07:39
 #### 8 - Internacionalización y puesta en producción
 #### 9 - Web Components
 
-[Mejora ya!](https://www.trainingit.es/curso-angular-alto-rendimiento/?promo=meetup10&af=abasalo/)
+[Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
 
 
 > Con diploma acreditativo, bolsa de trabajo y bonificables por Fundae.
@@ -63,4 +63,4 @@ date: 2019-03-20 10:07:39
 
 [Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
 
-[Angular Bravo: Curso de implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-alto-rendimiento/?promo=meetup10&af=abasalo/)
+[Angular Business: Curso de implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
