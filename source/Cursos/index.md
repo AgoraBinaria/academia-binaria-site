@@ -36,28 +36,23 @@ date: 2019-03-20 10:07:39
 
 ---
 
-# Angular Bravo
+# Angular Business
 
-[Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-alto-rendimiento/?promo=meetup10&af=abasalo/)
+[Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo)
 
 #### 0 - Repositorios profesionales con Nx
-
 #### 1 - Testing de aplicaciones con Cypress y Jest
 
-#### 2 - Detección del cambio
+#### 2 - Detección del cambio en Angular
+#### 3 - Componentes dinámicos, directivas y pipes
 
-#### 3 - Redux con observables RxJs
+#### 4 - Redux con observables RxJs
+#### 5 - Redux con NgRx
 
-#### 4 - Redux con NgRx
+#### 6 - Deploy Progressive Web Apps
+#### 7 - Server Side Rendering
 
-#### 5 - Deploy Progressive Web Apps
-
-#### 6 - Server Side Rendering
-
-#### 7 - Internacionalización
-
-#### 8 - Librerías
-
+#### 8 - Internacionalización y puesta en producción
 #### 9 - Web Components
 
 [Mejora ya!](https://www.trainingit.es/curso-angular-alto-rendimiento/?promo=meetup10&af=abasalo/)
