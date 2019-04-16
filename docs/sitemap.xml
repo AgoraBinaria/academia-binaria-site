@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
+    
+    <lastmod>2019-04-16T12:00:57.544Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
     
     <lastmod>2019-04-15T17:16:31.551Z</lastmod>
@@ -23,14 +30,14 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
+    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
     
     <lastmod>2019-03-20T17:22:54.586Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
     
     <lastmod>2019-03-20T17:22:54.586Z</lastmod>
     
@@ -75,13 +82,6 @@
     <loc>https://academia-binaria.com/cursos.html</loc>
     
     <lastmod>2019-03-20T09:07:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
-    
-    <lastmod>2018-12-03T16:40:17.371Z</lastmod>
     
   </url>
   
