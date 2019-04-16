@@ -24,9 +24,9 @@ La solución en Angular 7 pasa por desacoplar el modelo y la vista, introduciend
 
 Partiendo de la aplicación tal cómo quedó en [Vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/). Al finalizar tendrás una aplicación con formularios _model driven_ fáciles de mantener y validar.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/8-reactive](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/8-reactive/security)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/8-reactive](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/8-reactive/security)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
+> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
 
 
 # 1 Desacople entre vista y modelo

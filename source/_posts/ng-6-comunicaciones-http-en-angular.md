@@ -26,9 +26,9 @@ Pero en la versión Angular 7 **consumir un servicio REST** puede ser cosa de ni
 
 Partiendo de la aplicación tal cómo quedó en [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/). Al finalizar tendrás una aplicación que almacena y recupera los datos consumiendo un servicio REST usando las tecnologías de Angular Http.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/6-http](https://github.com/AcademiaBinaria/angular-board/tree/master/src/app/6-http/rates)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/6-http](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/6-http/rates)
 >
-> > Tienes una versión desplegada operativa para probar [Angular Board](https://academiabinaria.github.io/angular-board/)
+> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
 
 # 1. El servicio HttpClient
 

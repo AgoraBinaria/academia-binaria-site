@@ -22,7 +22,7 @@ thumbnail: /css/images/angular-0_cli.png
 
 El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 7** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/0-hello](https://github.com/AcademiaBinaria/angular-board/)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/0-hello](https://github.com/AcademiaBinaria/angular-basic/)
 
 # 1. Instalación de Angular CLI 7
 
@@ -89,7 +89,7 @@ Una vez finalizada la instalación de todas las librerías necesarias puedes baj
 > ejemplo: La aplicación que sirve de ejemplo a este tutorial fue creada con este comando:
 
 ```console
-ng new angular-board --routing true -s -S
+ng new angular-basic --routing true -s -S
 ```
 
 # 3. Estructura de una aplicación Angular
@@ -241,9 +241,9 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 {
   "scripts": {
     "build:prod": "ng build --prod",
-    "build:pub": "ng build --prod --output-path docs --base-href https://academiabinaria.github.io/angular-board/",
+    "build:pub": "ng build --prod --output-path docs --base-href https://academiabinaria.github.io/angular-basic/",
     "e2e": "ng e2e",
-    "http-server": "http-server ./dist/angular-board/ -c-1 -p4271 -a localhost -o",
+    "http-server": "http-server ./dist/angular-basic/ -c-1 -p4271 -a localhost -o",
     "lint": "ng lint",
     "ng": "ng",
     "pub": "npm run build:pub && npm run push",
@@ -255,7 +255,7 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 }
 ```
 
-Comprueba las ejecuciones de los distintos _scripts_. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/angular-board` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta estándar `./docs` listos para publicarse en las _github pages_.
+Comprueba las ejecuciones de los distintos _scripts_. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/angular-basic` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta estándar `./docs` listos para publicarse en las _github pages_.
 
 Otros enlaces de interés sobre el ecosistema Angular.
 

@@ -24,9 +24,9 @@ Un programador Angular debe **dominar el CLI** y debe conocer los beneficios que
 
 Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás, en el mismo repositorio, una nueva aplicación con la apariencia y usabilidad de _Material design_.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-board/projects/schemat/](https://github.com/AcademiaBinaria/angular-board/tree/master/projects/schemat)
+> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/projects/schemat/](https://github.com/AcademiaBinaria/angular-basic/tree/master/projects/schemat)
 >
-> > Tienes una versión desplegada operativa para probar [Schemat](https://academiabinaria.github.io/angular-board/schemat/)
+> > Tienes una versión desplegada operativa para probar [Schemat](https://academiabinaria.github.io/angular-basic/schemat/)
 
 # 1. Repositorio multi-proyecto
 
