@@ -5,8 +5,8 @@ updated: '2019-03-20 10:07:39'
 date: 2019-03-20 10:07:39
 ---
 
-# [Contenido detallado Angular Basic](cursos/angular-basic)
-# [Contenido detallado Angular Business](cursos/angular-business)
+### [Contenido detallado Angular Basic](cursos/angular-basic)
+### [Contenido detallado Angular Business](cursos/angular-business)
 
 > Cursos con lecciones en video, chat de preguntas, tutorías y prácticas corregidas.
 > -- <cite>Te espero, Alberto Basalo</cite>

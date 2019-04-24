@@ -7,7 +7,7 @@ date: 2019-03-20 10:07:39
 
 [Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
 
-## 0 - [Hola Angular CLI](hola-angular-cli)
+## 0 - [Hola Angular CLI](../hola-angular-cli)
 
 ### 0.1 Angular y el CLI
 
@@ -31,7 +31,7 @@ date: 2019-03-20 10:07:39
 - Configurar Prettier
 - Ecosistema de terceros
 
-## 1 - [Base para una aplicación Angular]((base-aplicacion-angular))
+## 1 - [Base para una aplicación Angular](../base-aplicacion-angular))
 
 ### 1.1 - Módulos
 
