@@ -5,15 +5,18 @@ updated: '2019-03-20 10:07:39'
 date: 2019-03-20 10:07:39
 ---
 
+# [Contenido detallado Angular Basic](cursos/angular-basic)
+# [Contenido detallado Angular Business](cursos/angular-business)
+
 > Cursos con lecciones en video, chat de preguntas, tutorías y prácticas corregidas.
 > -- <cite>Te espero, Alberto Basalo</cite>
 
-# [Angular Basic](cursos/angular-basic)
+# Angular Basic
 
 [Introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
 
-#### 0 - Hola Angular CLI
-#### 1 - Base para una aplicación Angular
+#### 0 - [Hola Angular CLI](hola-angular-cli)
+#### 1 - [Base para una aplicación Angular](base-aplicacion-angular)
 
 #### 2 - Páginas y rutas SPA
 #### 3 - Formularios, tablas y modelos de datos
@@ -31,7 +34,7 @@ date: 2019-03-20 10:07:39
 
 ---
 
-# [Angular Business](cursos/angular-business)
+# Angular Business
 
 [Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo)
 

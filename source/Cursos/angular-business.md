@@ -31,7 +31,7 @@ date: 2019-03-20 10:07:39
 - 4.1 Librerías en TypeScript
 - 4.2 Librerías de Angular
 
-> ## 1 - Testing de aplicaciones
+## 1 - Testing de aplicaciones
 
 ### 1.1 Tipos de tests
 
@@ -130,3 +130,5 @@ date: 2019-03-20 10:07:39
 ### 9.2 Consumo en cualquier framework
 
 [Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
+
+# [Contenido detallado Angular Basic](cursos/angular-basic)
