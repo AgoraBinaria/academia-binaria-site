@@ -8,7 +8,7 @@ date: 2019-03-20 10:07:39
 > Cursos con lecciones en video, chat de preguntas, tutorías y prácticas corregidas.
 > -- <cite>Te espero, Alberto Basalo</cite>
 
-# [Angular Basic]('./angular-basic')
+# [Angular Basic](/angular-basic)
 
 [Introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
 
@@ -31,7 +31,7 @@ date: 2019-03-20 10:07:39
 
 ---
 
-# [Angular Business]('./angular-business')
+# [Angular Business](./angular-business)
 
 [Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo)
 
