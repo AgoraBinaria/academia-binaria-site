@@ -131,4 +131,4 @@ date: 2019-03-20 10:07:39
 
 [Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
 
-# [Contenido detallado Angular Basic](cursos/angular-basic)
+[Contenido detallado Angular Basic](../cursos/angular-basic)

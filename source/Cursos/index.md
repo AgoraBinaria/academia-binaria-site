@@ -15,8 +15,8 @@ date: 2019-03-20 10:07:39
 
 [Introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
 
-#### 0 - [Hola Angular CLI](hola-angular-cli)
-#### 1 - [Base para una aplicación Angular](base-aplicacion-angular)
+#### 0 - Hola Angular CLI
+#### 1 - Base para una aplicación Angular
 
 #### 2 - Páginas y rutas SPA
 #### 3 - Formularios, tablas y modelos de datos
@@ -31,7 +31,7 @@ date: 2019-03-20 10:07:39
 #### 9 - Material Design y CLI
 
 [Empieza ya!](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
-
+[Contenido detallado Angular Basic](cursos/angular-basic)
 ---
 
 # Angular Business
@@ -54,7 +54,7 @@ date: 2019-03-20 10:07:39
 #### 9 - Web Components
 
 [Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
-
+[Contenido detallado Angular Business](cursos/angular-business)
 
 > Con diploma acreditativo, bolsa de trabajo y bonificables por Fundae.
 > -- <cite>Aprende online con Alberto Basalo</cite>
