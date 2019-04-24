@@ -206,4 +206,4 @@ date: 2019-03-20 10:07:39
 - Navegación y layout
 - Componentes básicos
 
-[Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+[Empieza ya!](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)

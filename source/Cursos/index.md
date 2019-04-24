@@ -31,7 +31,7 @@ date: 2019-03-20 10:07:39
 
 ---
 
-# Angular Business
+# [Angular Business]('./angular-business')
 
 [Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo)
 

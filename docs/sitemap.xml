@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/cursos/angular-business.html</loc>
+    
+    <lastmod>2019-04-24T12:07:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/cursos/angular-basic.html</loc>
     
     <lastmod>2019-04-24T12:07:39.000Z</lastmod>
@@ -51,14 +58,14 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
+    <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
     
     <lastmod>2019-03-20T16:11:09.838Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
+    <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
     
     <lastmod>2019-03-20T16:11:09.838Z</lastmod>
     
