@@ -102,15 +102,58 @@ date: 2019-03-20 10:07:39
 ## 5 - Redux con NgRx
 
 ### 5.1 Instalación y configuración
+
+ - Instalación de NgRx
+ - Registro y configuración
+ - Router y DevTools
+
 ### 5.2 Actions
+
+ - Create
+ - Dispatch
+
 ### 5.3 State reducer
+
+ - State
+ - Create function
+ - Register in Store
+
 ### 5.4 Selectors
+
+ - Create selector
+ - Selecting data
+ - Fachadas
+
 ### 5.5 Effects
+
+ - Install
+ - Efecto básico
+ - Api async effects
+ - More Api async effects
 
 ## 6 - Deploy Progressive Web Apps
 
 ### 6.1 Angular Service Worker con el CLI
-### 6.2 Configuración de caché, notificaciones y actualizaciones
+
+ - Instalación
+ - Modificaciones automáticas
+ - Paquetes recomendados
+
+### 6.2 Configuración de caché
+
+ - Assets
+ - API
+
+### 6.3 Actualizaciones y notificaciones
+
+ - Actualización de versiones
+ - Notificaciones Push
+
+### 6.4 Shell
+
+ - Una animación para amenizar la carga
+
+> WIP
 
 ## 7 - Server Side Rendering
 
