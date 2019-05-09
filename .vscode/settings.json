@@ -1,5 +1,6 @@
 {
   "html.format.enable": true,
+  "workbench.iconTheme": "vs-seti",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#ff9900",
     "editorWarning.foreground": "#ffff99",
@@ -8,13 +9,6 @@
     "titleBar.inactiveBackground": "#4682b4",
     "titleBar.inactiveForeground": "#e7e7e7"
   },
-  "spellright.language": [
-    "en",
-    "es"
-  ],
-  "spellright.documentTypes": [
-    "markdown",
-    "latex",
-    "plaintext"
-  ]
+  "spellright.language": ["en", "es"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
 }

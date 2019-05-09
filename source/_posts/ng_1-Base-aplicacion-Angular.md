@@ -101,7 +101,7 @@ Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán co
 Los componentes, como el resto de artefactos en Angular, serán **clases TypeScript decoradas** con funciones específicas. En este caso la función es `@Component()` que recibe un objeto de definición de componente. Igual que en el caso de los módulos contiene las propiedades en las que configurar el componente.
 
 ```typescript
-import { Core } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -311,13 +311,40 @@ Son **componentes de infraestructura**. Conviene guardarlos en una carpeta espec
 
 ```bash
 ng g m shared
+ng g c shared/now --export=true
+```
+
+```html
+<time>
+  {{ now | date:'long' }}
+</time>
+```
+
+--
+
+```bash
+ng g m 1-base/temporal
+ng g c 1-base/temporal --export=true
+```
+
+```html
+<div>
+  <app-now></app-now>
+</div>
+```
+
+```html
+<main class="container ">
+  <router-outlet></router-outlet>
+* <app-temporal></app-temporal>
+</main>
 ```
 
 > Por ahora déjalo huérfano, no lo importaremos hasta que tengamos módulos funcionales. Sólo anticiparte que es un módulo dónde se hace mucho uso de la propiedad transitiva del sistema modular de Angular.
 
 El caso es **distinguir los componentes de infraestructura de los de negocio** o funcionalidad. Los módulos _core_ y _shared_ los trataremos como de infraestructura y todos los demás serán de negocio (aún no tenemos). El primero es para meter cosas de uso único esenciales para la aplicación. El segundo para meter bloques reutilizables durante la construcción de la aplicación. Recuerda que sólo son convenios de arquitectura de software; adáptalos a tus necesidades.
 
-> En esta aplicación hasta ahora no es nada funcional,!y ya tiene seis módulos y seis componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
+> En esta aplicación hasta ahora no es nada funcional,!y ya tiene seis módulos y siete componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
 
 ### El bosque de módulos a vista de pájaro
 
@@ -328,13 +355,17 @@ AppModule
 |  |
 |  +--RouterModule
 |
-+--BrowseModule
++--BrowserModule
 |
 +--CoreModule
    |
+   +--CommonModule
+   |
    +--RouterModule
-
-SharedModule
+   |
+   +--TemporalModule
+      |
+      +--SharedModule
 
 ```
 
@@ -350,6 +381,10 @@ AppComponent
    +--MainComponent
    |  |
    |  +--RouterOutletComponent
+   |  |
+   |  +--TemporalComponent
+   |     |
+   |     +--NowComponent
    |
    +--FooterComponent
 
