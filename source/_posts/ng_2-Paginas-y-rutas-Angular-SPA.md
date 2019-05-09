@@ -70,7 +70,7 @@ Vamos a crear un componente donde guardar el contenido que el CLI nos regala de 
 ng g c heroes
 ```
 
-Lo hago en la carpeta raíz; algo poco aconsejado si queremos tener una estructura escalable. Pero es un buen anti-ejemplo ;-) SU contenido es una copia de la pçagina original creada por Angular.
+Lo hago en la carpeta raíz; algo poco aconsejado si queremos tener una estructura escalable. Pero es un buen anti-ejemplo ;-) Su contenido es una copia de la pçagina original creada por Angular.
 
 ```html
 <h2>Initial Links to start: </h2>
