@@ -323,8 +323,8 @@ ng g c shared/now --export=true
 --
 
 ```bash
-ng g m 1-base/temporal
-ng g c 1-base/temporal --export=true
+ng g m temporal
+ng g c temporal --export=true
 ```
 
 ```html
