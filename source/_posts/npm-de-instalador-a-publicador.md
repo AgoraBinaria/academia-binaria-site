@@ -1,22 +1,21 @@
 ---
 title: 'npm: de instalador a publicador'
-tags: 
+tags:
 - NodeJS
-categories:
-- Avanzado 
+- Avanzado
 permalink: npm-de-instalador-a-publicador
 id: 10
 updated: '2016-04-19 07:01:25'
 date: 2016-04-18 16:07:46
 ---
 
-Seguro que estás harto de repetir la mítica instrucción `npm install paquete-x` Pero, ¿has pensado en **publicar tus propios módulos**?. Es muy recomendable crear soluciones distribuidas y muy fácil publicarlas en [*npm*](https://www.npmjs.com/). 
+Seguro que estás harto de repetir la mítica instrucción `npm install paquete-x` Pero, ¿has pensado en **publicar tus propios módulos**?. Es muy recomendable crear soluciones distribuidas y muy fácil publicarlas en [*npm*](https://www.npmjs.com/).
 
-Sigue este proceso y te convertirás en un creador de paquetes para *npm* : 
+Sigue este proceso y te convertirás en un creador de paquetes para *npm* :
 
 ## Programa
 
-Todo empieza por tener una necesidad y resolverla **encapsulando su código en un módulo.** Por supuesto que ese módulo puede requerir paquetes externos. Y por supuesto que tu código puede, y debe, escribirse en varios módulos. 
+Todo empieza por tener una necesidad y resolverla **encapsulando su código en un módulo.** Por supuesto que ese módulo puede requerir paquetes externos. Y por supuesto que tu código puede, y debe, escribirse en varios módulos.
 
 Antes de continuar vamos a fijar un par de conceptos:
 
@@ -26,11 +25,11 @@ Antes de continuar vamos a fijar un par de conceptos:
 
 Conocidos los ingredientes, la receta es sencilla:
 
-1. Debes crear un proyecto para el paquete que vas a publicar. 
-2. Has de subir el código a un repositorio público. 
+1. Debes crear un proyecto para el paquete que vas a publicar.
+2. Has de subir el código a un repositorio público.
 3. Y debes rellenar convenientemente el `package.json` de tu proyecto.
 
-Este es un ejemplo que he creado y [publicado en github](https://github.com/AgoraBinaria/ab-ftp) que te puede servir de base. 
+Este es un ejemplo que he creado y [publicado en github](https://github.com/AgoraBinaria/ab-ftp) que te puede servir de base.
 
 Presta especial atención al **nombrado** de tu proyecto porque ha de ser único en el repositorio de npm. Para reducir riesgos de colisiones de nombre te recomiendo que utilices un *prefijo* con tus iniciales o las de tu empresa.
 
@@ -38,7 +37,7 @@ No te olvides de incluir un juego de **pruebas y documentación** necesaria para
 
 ## Publica
 
-Puedes descargar librerías y herramienta desde el repositorio de *npm* de forma anónima. De hecho, eso es lo más corriente. Pero, como era de esperar, tienes que **registrarte para poder publicar** contenido. El [proceso de registro](https://www.npmjs.com/signup) vía web es sencillo y grátis. 
+Puedes descargar librerías y herramienta desde el repositorio de *npm* de forma anónima. De hecho, eso es lo más corriente. Pero, como era de esperar, tienes que **registrarte para poder publicar** contenido. El [proceso de registro](https://www.npmjs.com/signup) vía web es sencillo y grátis.
 
 Una vez verificado puedes hacer login en la web. Pero también en la terminal de tu ordenador: `npm login` te pedirá el nombre de usuario y contraseña. A partir de es momento estás identificado y puedes usar las herramientas de autor:
 
@@ -56,9 +55,9 @@ Comprueba en un directorio vacío que `npm install nombre-de-tu-paquete` descarg
 
 ## Actualiza
 
-Con el tiempo mejorarás y corregirás tu solución. Te recomiendo que sigas el patrón de [nombrado de versiones semántico](http://semver.org/): 
+Con el tiempo mejorarás y corregirás tu solución. Te recomiendo que sigas el patrón de [nombrado de versiones semántico](http://semver.org/):
 
-**x.y.z = 1.2.3 = ruptura.mejora.parche** 
+**x.y.z = 1.2.3 = ruptura.mejora.parche**
 
 Es bueno que etiquetes tu repositorio con estas mismas versiones para que, una vez desplegadas, se encuentre con facilidad en *github*.
 
