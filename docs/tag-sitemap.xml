@@ -3,6 +3,41 @@
 
 
     <url>
+        <loc>https://academia-binaria.com/tag/Nx/</loc>
+        <lastmod>2019-07-11T16:58:47.553Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular8/</loc>
+        <lastmod>2019-07-11T16:58:47.553Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Avanzado/</loc>
+        <lastmod>2019-07-11T16:58:47.553Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular/</loc>
+        <lastmod>2019-07-11T16:58:47.553Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Tutorial/</loc>
+        <lastmod>2019-07-11T16:58:47.553Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://academia-binaria.com/tag/SSR/</loc>
         <lastmod>2019-07-11T14:45:09.912Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,28 +59,7 @@
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/Avanzado/</loc>
-        <lastmod>2019-07-11T14:45:09.912Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://academia-binaria.com/tag/Angular6/</loc>
-        <lastmod>2019-07-11T14:45:09.912Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Angular/</loc>
-        <lastmod>2019-07-11T14:45:09.912Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Tutorial/</loc>
         <lastmod>2019-07-11T14:45:09.912Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
