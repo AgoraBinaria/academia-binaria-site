@@ -1,8 +1,7 @@
 ---
 title: 'TypeScript, programa en el front igual que en el back'
-tags: 
+tags:
 - TypeScript
-categories:
 - Opinión
 permalink: typescript-programa-en-el-front-igual-que-en-el-back
 id: 23

@@ -1,9 +1,8 @@
 ---
 title: Soluciones FrontEnd 2016
-tags: 
+tags:
 - FrontEnd
 - AngularJS
-categories:
 - Opinión
 permalink: soluciones-frontend-2016
 id: 7
@@ -21,7 +20,7 @@ Inicio el año proponiendo una selección de tecnologías que serán **tendencia
 
 * En la parte visual, el look & feel propuesto por Google con Material Design es un éxito de aceptación para el desarrollo de aplicaciones empresariales. La librería **[AngularMaterial](https://material.angularjs.org/latest/)** es una implementación para Angular de dicha especificación gráfica. Moderno y con enorme potencial.
 
-En [esta presentación](https://docs.google.com/presentation/d/1ah0w0oW-urVn3rQbX5su2ZydFSyxyw4TIaeq2fCdR1Y/edit?usp=sharing) tienes más información acerca de lo que llamo **frontEdge** : tecnología utilizable, de última generación y con enorme potencial. 
+En [esta presentación](https://docs.google.com/presentation/d/1ah0w0oW-urVn3rQbX5su2ZydFSyxyw4TIaeq2fCdR1Y/edit?usp=sharing) tienes más información acerca de lo que llamo **frontEdge** : tecnología utilizable, de última generación y con enorme potencial.
 
 [Presentación frontEdge](https://docs.google.com/presentation/d/1ah0w0oW-urVn3rQbX5su2ZydFSyxyw4TIaeq2fCdR1Y/edit?usp=sharing)
 
