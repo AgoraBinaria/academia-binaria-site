@@ -13,7 +13,7 @@ categories:
 thumbnail: /css/images/angular-10_monorepo.png
 ---
 
-![Nx-mono-repositorios-en-Angular](/images/tutorial-angular-10_monorepo.png)
+![nx-mono-repositorios-en-Angular](/images/tutorial-angular-10_monorepo.png)
 
 Empiezo este **tutorial de Angular Avanzado** con la frase con la que acabé un artículo de opinión sobre arquitectura de software acerca de [Angular para grandes aplicaciones.](https://medium.com/@albertobasalo71/angular-para-grandes-aplicaciones-b66786fd3032)
 
