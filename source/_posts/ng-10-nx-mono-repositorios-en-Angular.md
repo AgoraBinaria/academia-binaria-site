@@ -29,7 +29,8 @@ Partiendo de cero y usando las herramientas de [Nrwl.io/](https://nrwl.io/) crea
 >
 > > Tienes más información sobre este proyecto en [Angular.Builders](https://angular.builders/)
 
-**Tabla de Contenido: **
+
+## Tabla de Contenido:
 
 [1. Crear el repositorio.](./#1-Crear-el-repositorio)
 
