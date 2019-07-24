@@ -233,7 +233,7 @@ Ya que estamos en ambiente **Angular** podemos hacer uso de los productos su eco
 
 En esta caso empezaremos con un objeto con un mísero _Boolean_ para indicarnos si estamos o no en producción. Usaremos la consola para _tracear_ sólo en desarrollo. Por ahora no haremos nada en producción.
 
-`console-tracer-service.ts`
+`servicers/tracer-service.ts`
 
 ```typescript
 import { ConsoleTracerDriver, Trace, Tracer } from '@angular-blueprint/tracer-domain';
