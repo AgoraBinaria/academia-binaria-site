@@ -29,6 +29,30 @@ Partiendo de cero y usando las herramientas de [Nrwl.io/](https://nrwl.io/) crea
 >
 > > Tienes más información sobre este proyecto en [Angular.Builders](https://angular.builders/)
 
+Contenido
+
+[1. Crear el repositorio](./#1-Crear-el-repositorio)
+
+2. Generar una SPA con Angular
+
+3. Generar una web simple con Angular
+
+4. Tener una biblioteca Angular con componentes propios
+
+5. Tener una biblioteca TypeScript con lógica de instrumentación.
+
+6. Tener una biblioteca Angular con lógica de instrumentación.
+
+7. e2e: Dada una SPA en Angular.
+
+8. e2e: Dada una página web en Angular.
+
+9. e2e: Dada una librería en Angular con componentes de diseño.
+
+10. unit: Dada una librería TypeScript con servicios.
+
+11. unit: Dada una librería Angular con servicios de instrumentación.
+
 ---
 
 # 1. Crear el repositorio
