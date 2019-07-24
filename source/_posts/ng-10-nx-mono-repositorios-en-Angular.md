@@ -63,7 +63,7 @@ Los próximos comandos te sonarán a los mismo del **angular-cli**. Es normal, p
 
 ```bash
 # Generate an Angular application with nx power-ups
-ng g @nrwl/angular:application spa --routing=true --style=css --enableIvy=true --prefix=ab-spa --directory=
+ng g application spa --routing=true --style=css --enableIvy=true --prefix=ab-spa --directory=
 # Start !!!
 yarn start
 ```
@@ -80,7 +80,7 @@ También comparten la configuración del `angular.json` y las demás herramienta
 
 ```bash
 # Generate an Angular application with nx power-ups
-ng g @nrwl/angular:application web --routing=false --style=css --enableIvy=true --prefix=ab-web --directory=
+ng g application web --routing=false --style=css --enableIvy=true --prefix=ab-web --directory=
 # Start !!!
 yarn start
 ```
@@ -298,7 +298,7 @@ export class AppModule {
   }
 }
 ```
-Y ya tenemos un germen de arquitectura flexible (controlada por la inyección de dependencias) y reutilizable (entre aplicaciones Angular) con un dominio estable e independiente de frameworks.
+Y ya tenemos un germen de arquitectura flexible (controlada por la inyección de dependencias) y reutilizable (entre aplicaciones Angular) con un dominio estable e independiente de _frameworks_.
 
 Para más ejemplos mira [la implementación un _ErrorHandler_ en el repositorio](https://github.com/angularbuilders/angular-blueprint/blob/master/libs/tracer/src/lib/services/error-handler.service.ts). Es un servicio que una vez proveído hace uso del servicio de trazas.
 
@@ -309,7 +309,7 @@ Para más ejemplos mira [la implementación un _ErrorHandler_ en el repositorio]
 
 > Dada una SPA en Angular cuando se visita la página de inicio entonces debería mostrar un enlace con el nombre de la aplicación y luego debería mostrar el logotipo
 
-Las pruebas de software, todos las hacemos ¿no es cierto?. Pues se van acabando las excusas para algo que no puede faltar en ningún proyecto profesional. De nuevo la gente de *Nrwl* ha pensado en ello y el **Nx** instala y configura dos productos de última generación que facilitan la tarea. Usaremos [Jest](https://jestjs.io/) para los test unitarios y [Cypress](https://www.cypress.io/) para los de integración _End to End_. Vamos a empezar por el final.
+Las pruebas de software..., todos las hacemos ¿no es cierto?. Pues se van acabando las excusas para algo que no puede faltar en ningún proyecto profesional. De nuevo la gente de *Nrwl* ha pensado en ello y el **Nx** instala y configura dos productos de última generación que facilitan la tarea. Usaremos [Jest](https://jestjs.io/) para los test unitarios y [Cypress](https://www.cypress.io/) para los de integración _End to End_. Vamos a empezar por el final.
 
 Con cada aplicación generada se crea una hermana para sus pruebas _e2e_. Esa aplicación de pruebas está configurada y lista para compilar, servir y probar su aplicación objetivo. El comando `yarn e2e` lanzará el equivalente del cli `ng e2e`, el cual usará la configuración del `angular.json` para ejecutar **Cypress** con la configuración apropiada.
 
@@ -364,14 +364,12 @@ describe('GIVEN: an Angular web', () => {
   beforeEach(() => cy.visit('/'));
   context('WHEN: user visits home page', () => {
     it('should display welcome message', () => {
-      getGreeting().contains(
-        'Welcome to the Angular.Builders/blueprint for web!'
-      );
+      getGreeting().contains('Welcome to the Angular.Builders/blueprint for web!');
     });
     it('should display the logo', () => {
       getImage()
         .should('have.attr', 'src')
-        .should('include', 'logo.jpg');
+        .should('include', 'logo.png');
     });
   });
 });
@@ -424,30 +422,30 @@ export const getAbLayoutHeader = () =>
 
 Le toca el turno ahora a los tests unitarios. Estos los haremos con el sencillo y potente framework de pruebas **Jest**. En este caso también viene configurado por **Nx** y listo para ejecutar mediante el script `yarn test`. La sintaxis es similar a cualquier otra herramienta del mundillo y creo que cualquiera puede hacerse una idea viendo el siguiente ejemplo.
 
-`console-tracer.spec.ts`
+`services/console-tracer.driver.spec.ts`
 
 ```typescript
-import { ConsoleTracer } from './console-tracer';
+import { ConsoleTracerDriver } from './console-tracer.driver';
 
 describe('Given an TypeScript Library with services', () => {
-  describe('When I need a ConsoleLogger', () => {
-    it('Then should be created', () => {
-      const tracer: ConsoleTracer = new ConsoleTracer();
+  describe('When I need a ConsoleTracerDriver', () => {
+    it('then should be created', () => {
+      const tracer: ConsoleTracerDriver = new ConsoleTracerDriver();
       expect(tracer).toBeTruthy();
     });
   });
 });
 
-describe('Given a Console Logger', () => {
-  let tracer: ConsoleTracer;
+describe('Given a Console Tracer Driver', () => {
+  let tracer: ConsoleTracerDriver;
   beforeEach(() => {
-    tracer = new ConsoleTracer();
+    tracer = new ConsoleTracerDriver();
   });
   describe('When a devs wants to write a message', () => {
-    it('Then should be able to write dev friendly traces', () => {
+    it('then should be able to write dev friendly traces', () => {
       const consoleMessage = tracer.writeTrace({
         origin: 'test',
-        type: 'system',
+        level: 'system',
         message: 'test works'
       });
       expect(consoleMessage).toBe('[TEST]: test works');
@@ -463,41 +461,41 @@ describe('Given a Console Logger', () => {
 > Dada una biblioteca Angular con servicios de instrumentación cuando la biblioteca se compila entonces debe crearse el módulo AngularTracerModule
 > Dada una biblioteca Angular con servicios de instrumentación cuando necesito un servicio ConsoleTracer entonces debería ser creado
 
-Y por supuesto que podemos hacer pruebas unitarias sobre aplicaciones o librerías **Angular**. Probaremos tanto la creación del módulo como la del servicio.
+Y por supuesto que podemos hacer pruebas unitarias sobre aplicaciones o librerías **Angular**. Al menos probaremos con un _smoke test_ tanto la creación del módulo como la del servicio.
 
-`angular-tracer.module.spec.ts`
+`tracer.module.spec.ts`
 
 ```typescript
 import { async, TestBed } from '@angular/core/testing';
-import { AngularTracerModule } from './angular-tracer.module';
+import { TracerModule } from './tracer.module';
 
 describe('Given an Angular Library with instrumentation services ', () => {
   describe('When library compiles', () => {
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [AngularTracerModule]
+        imports: [TracerModule]
       }).compileComponents();
     }));
 
     it('Then AngularTracerModule should be created ', () => {
-      expect(AngularTracerModule).toBeDefined();
+      expect(TracerModule).toBeDefined();
     });
   });
 });
 ```
 
-`console-tracer.service.spec.ts`
+`tracer.service.spec.ts`
 
 ```typescript
 import { TestBed } from '@angular/core/testing';
-import { ConsoleTracerService } from './console-tracer.service';
+import { TracerService, TRACER_CONFIG } from './tracer.service';
 
 describe('Given an Angular Library with instrumentation services', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   describe('When I need a ConsoleTracer service', () => {
     it('Then should be created', () => {
-      const service: ConsoleTracerService = TestBed.get(ConsoleTracerService);
+      const service: TracerService = TestBed.get(TracerService);
       expect(service).toBeTruthy();
     });
   });
@@ -506,7 +504,7 @@ describe('Given an Angular Library with instrumentation services', () => {
 
 ---
 
-Para más información o indicaciones paso a paso consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/0-mono_repo) del proyecto eh GitHub.
+Para más información, o indicaciones paso a paso, consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/0-mono_repo) del proyecto en GitHub.
 
 ---
 
