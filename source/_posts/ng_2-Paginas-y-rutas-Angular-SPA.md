@@ -8,7 +8,7 @@ tags:
   - Routing
   - Tutorial
   - Introducción
-  - Angular7
+  - Angular8
   - Angular2
 categories:
   - [Tutorial, Angular]
@@ -17,7 +17,7 @@ thumbnail: /css/images/angular-2_spa.png
 
 ![paginas-y-rutas-angular-spa](/images/tutorial-angular-2_spa.png)
 
-Las **aplicaciones Angular 7 son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas _SPA, Single Page Applications_. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.
+Las **aplicaciones Angular 8 son conjuntos de páginas enrutadas** en el propio navegador. Son las conocidas _SPA, Single Page Applications_. Estas apps liberan al servidor de una parte del trabajo, reducen la cantidad de llamadas y mejoran la percepción de velocidad del usuario.
 
 En este tutorial aprenderás a crear una Angular SPA fácilmente usando `@angular/router`, **el enrutador de Angular**.
 
@@ -70,7 +70,7 @@ Vamos a crear un componente donde guardar el contenido que el CLI nos regala de 
 ng g c heroes
 ```
 
-Lo hago en la carpeta raíz; algo poco aconsejado si queremos tener una estructura escalable. Pero es un buen anti-ejemplo ;-) Su contenido es una copia de la pçagina original creada por Angular.
+Lo hago en la carpeta raíz; algo poco aconsejado si queremos tener una estructura escalable. Pero es un buen anti-ejemplo ;-) Su contenido es una copia de la página original creada por Angular.
 
 ```html
 <h2>Initial Links to start: </h2>
@@ -181,18 +181,18 @@ ng g m about --routing true
 ng g c about/about
 ```
 
-Estos módulos no deben ser importados por el `AppModule`; no queremos saber de su existencia. Simplemente debe usarse su ruta relativa en el módulo de enrutado `AppRoutingModule` como un valor especial. Vamos a agregarlo al `app-routing.module.ts` que quedará así.
+Estos módulos no deben ser importados por el `AppModule`; no queremos saber de su existencia. Para ello emplearemos una función que importe el módulo desde su ruta relativa, sin incluirlo en la sección de _imports_ que procesa _webpack_. Vamos a agregarlo al `app-routing.module.ts` que quedará así.
 
 ```typescript
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './home/home.module#HomeModule'
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'about',
-    loadChildren: './about/about.module#AboutModule'
+    loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
   {
     path: 'not-found',
@@ -210,11 +210,11 @@ const routes: Routes = [
 export class AppRoutingModule {}
 ```
 
-Fíjate que **la dirección del fichero es una cadena de texto** asignada a una nueva propiedad de objeto _route_, la propiedad `loadChildren:""`. No se está produciendo ninguna importación en _TypeScript_ como ocurre con el componente `NotFoundComponent`.
+> Ojo, esta es una novedad de **Angular 8**. Fíjate que **la dirección del fichero es una cadena de texto** asignada a una función dentro del objeto _route_, en la propiedad `loadChildren:""`.
 
-Con esta información _webpack_ va a generar un _bundle_ específico para cada módulo. Si durante la ejecución se activa la ruta `/` (muy probable porque es la ruta raíz) o la ruta `/about` entonces se descarga ese paquete concreto y se ejecuta su contenido. Mientras tanto, se queda almacenado en el servidor.
+ No se está produciendo ninguna importación en _TypeScript_ como ocurre con el componente `NotFoundComponent`. Con esta información _webpack_ va a generar un _bundle_ específico para cada módulo. Si durante la ejecución se activa la ruta `/` (muy probable porque es la ruta raíz) o la ruta `/about` entonces se descarga ese paquete concreto y se ejecuta su contenido. Mientras tanto, se queda almacenado en el servidor.
 
-> Esto hace que la aplicación de Angular pese menos y responda antes, mejorando el tiempo de pintado inicial. La combinación de estas y otras técnicas que veremos en este tutorial sacarán el mejor rendimiento posible a tu aplicación Angular.
+Esto hace que la aplicación de Angular pese menos y responda antes, mejorando el tiempo de pintado inicial. La combinación de estas y otras técnicas que veremos en este tutorial sacarán el mejor rendimiento posible a tu aplicación Angular.
 
 ## 2.2 El enrutador delegado
 
@@ -390,7 +390,7 @@ Obtenidos los datos desde la _URL_, ya se muestran en la vista de forma ya conoc
 <h3>{{ authorId }}</h3>
 ```
 
-Con esto tendrás una aplicación SPA en _Angular_. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular7.
+Con esto tendrás una aplicación SPA en _Angular_. Sigue esta serie para añadirle [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/) mientras aprendes a programar con Angular8.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
