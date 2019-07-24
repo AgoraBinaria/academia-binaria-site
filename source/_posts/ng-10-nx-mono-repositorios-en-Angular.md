@@ -95,19 +95,19 @@ Si eres una empresa consultora es posible que te encuentres repitiendo funciones
 
 Pues ahora crear librerías es igual de sencillo que crear aplicaciones. **Nx** las depositará en la carpeta `/libs` y se ocupará de apuntarlas en el `tsconfig.json` para que la importación desde el resto del proyecto use alias cortos y evidentes.
 
-Crear componentes en un entorno multi proyecto requiere especificar a qué proyecto se asociarán. PAra empezar vamos a crear los componentes más sencillos posible.
+Crear componentes en un entorno multi proyecto requiere especificar a qué proyecto se asociarán. Para empezar vamos a crear los componentes básicos para cualquier _layout_ lo más sencillos posible.
 
 ```bash
 # Generate an Angular library with nx power-ups
-ng g @nrwl/angular:library layout --routing=false --style=css --prefix=ab-layout --directory=
+ng g library layout --routing=false --style=css --prefix=ab-layout --directory=
 # Generate Header Component
-ng g @schematics/angular:component header --project=layout --export=true
+ng g c components/header --project=layout --export=true
 # Generate Nav Component
-ng g @schematics/angular:component nav --project=layout --export=true
+ng g c components/nav --project=layout --export=true
 # Generate Footer Component
-ng g @schematics/angular:component footer --project=layout --export=true
+ng g c components/footer --project=layout --export=true
 ```
-Puedes usarlos como cualquier otro importando el módulo en cualquier aplicación del repositorio.
+Puedes usarlos como cualquier otro componente y en cualquier aplicación del repositorio. Simplemente importando el módulo en el que se declaran: el `LayoutModule`. NX se encarga de referenciar cada proyecto en el fichero `tsconfig.json`. De esa forma se facilita su importación.
 
 ```TypeScript
 import { LayoutModule } from '@angular-blueprint/layout';
@@ -130,11 +130,11 @@ export class AppModule {}
 
 > Como arquitecto quiero tener una biblioteca en TypeScript con lógica de instrumentación de modo que pueda usarla con varios frameworks o incluso en puro JavaScript.
 
-Lo primero será crear la librería. Pero esta vez no usaremos los _schematics_ del **cli**, si no los propios de **nrwl**.
+Lo primero será crear la librería. Pero esta vez no usaremos los _schematics_ del **cli**, si no los propios de **nrwl**. La idea es usarla como la **capa de dominio de la arquitectura**. En ella pondremos los modelos y servicios de lógica de negocio con las menores dependencias posibles. En concreto no dependeremos de Angular, lo cual permitiría usarlo con otros _frameworks_ actuales o futuros.
 
 ```bash
 # Generate a Type Script library with nx power-ups
-ng g @nrwl/workspace:library tracer --directory=
+ng g @nrwl/workspace:library tracer-domain --directory=
 ```
 Por ahora no te preocupes de la implementación. La muestro para destacar las dos cosas que considero más importantes:
 
@@ -142,14 +142,17 @@ Por ahora no te preocupes de la implementación. La muestro para destacar las do
 
 - Lo que quieras exportar debe indicarse en el fichero `index.ts`.
 
-`model/trace.js`
+Por lo demás es puro _TypeScript_; en dos carpetas con intenciones bien claras: `models/` y `services/` creo de forma manual los siguientes ficheros:
+
+`models/trace.interface.js`
 
 ```typescript
-export type origins = 'api' | 'app' | 'auth' | 'net' | 'system' | 'test' | 'ui';
-export type traceTypes = 'business' | 'error' | 'system';
+import { traceLevels } from './trace-levels.type';
+import { traceOrigins } from './trace-origins.type';
+
 export interface Trace {
-  origin: origins;
-  type: traceTypes;
+  origin: traceOrigins;
+  level: traceLevels;
   message: string;
   error?: any;
   parameter?: {
@@ -159,33 +162,53 @@ export interface Trace {
 }
 ```
 
-`console-tracer.js`
+`services/console-tracer.driver.js`
 
 ```typescript
-export class ConsoleTracer implements Tracer {
+import { Trace } from '../models/trace.interface';
+import { Tracer } from '../models/tracer.interface';
+
+export class ConsoleTracerDriver implements Tracer {
   public writeTrace(trace: Trace) {
-    const origin = trace.origin.toLocaleUpperCase();
-    const consoleMessage = `[${origin}]: ${trace.message}`;
-    switch (trace.type) {
+    switch (trace.level) {
       case 'system':
-        console.log(consoleMessage);
-        break;
+        return this.writeSystem(trace);
       case 'error':
-        console.error(consoleMessage);
-        break;
+        return this.writeError(trace);
       default:
-        break;
+        return '';
     }
+  }
+  public writeSystem(trace: Trace) {
+    const origin = this.getOriginPart(trace);
+    const consoleMessage = `${origin}${trace.message}`;
+    console.log(consoleMessage);
     return consoleMessage;
   }
+  public writeError(trace: Trace) {
+    const origin = this.getOriginPart(trace);
+    const consoleMessage = `${origin}Error`;
+    console.group(consoleMessage);
+    console.log(trace.message);
+    if (trace.error) {
+      console.warn(trace.error.message);
+      console.log(trace.error.stack || 'no stack');
+    }
+    console.groupEnd();
+    return consoleMessage;
+  }
+
+  private getOriginPart = (trace: Trace): string =>
+    `[${trace.origin.toLocaleUpperCase()}]: `;
 }
 ```
 
 `index.ts`
 
 ```typescript
-export * from './lib/model/trace';
-export * from './lib/console-tracer';
+export * from './lib/models/trace.interface';
+export * from './lib/models/tracer.interface';
+export * from './lib/services/console-tracer.driver';
 ```
 
 ---
@@ -199,30 +222,51 @@ La anterior librería es directamente utilizable por cualquier aplicación web, 
 
 ```bash
 # Generate an Angular library with nx power-ups
-ng g @nrwl/angular:library angular-tracer --routing=false --style=css --prefix=ab-tracer --directory=
-# Generate LoggerService service
-ng g @schematics/angular:service consoleTracer --project=angular-tracer
+ng g library tracer --routing=false --style=css --prefix=ab-tracer --directory=
+# Generate a Tracer Service
+ng g s services/tracer --project=tracer
+# Generate an Error Handler Service
+ng g s services/error-handler --project=tracer
 ```
 
-Ya que estamos en ambiente **Angular** podemos hacer uso de los productos su ecosistema, como por ejemplo **RxJs**. De esta forma no comprometemos el uso de la librería básica en proyectos que no puedan o quieran usar _observables_.
+Ya que estamos en ambiente **Angular** podemos hacer uso de los productos su ecosistema, como por ejemplo _@Inject()_. De esta forma no comprometemos los servicios de la librería con su configuración; la cual vendrá desde la aplicación. Incluso queda preparado para que las clases de dominio o los drivers y repositorios puedan ser inyectados.
+
+En esta caso empezaremos con un objeto con un mísero _Boolean_ para indicarnos si estamos o no en producción. Usaremos la consola para _tracear_ sólo en desarrollo. Por ahora no haremos nada en producción.
 
 `console-tracer-service.ts`
 
 ```typescript
-export class ConsoleTracerService {
-  private tracer: ConsoleTracer = new ConsoleTracer();
+import { ConsoleTracerDriver, Trace, Tracer } from '@angular-blueprint/tracer-domain';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 
-  constructor() {}
+export interface TracerConfig {
+  production: boolean;
+}
 
-  public subscribe(source: Observable<Trace>) {
-    return source.pipe(filter(this.byType))
-      .subscribe(this.tracer.writeTrace);
+export const TRACER_CONFIG = new InjectionToken<TracerConfig>('tracer-config');
+
+class NoTrace implements Tracer {
+  writeTrace = (trace: Trace) => '';
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TracerService implements Tracer {
+  private tracer: Tracer;
+
+  constructor(@Inject(TRACER_CONFIG) tracerConfig?: TracerConfig) {
+    if (tracerConfig.production) this.tracer = new NoTrace();
+    else this.tracer = new ConsoleTracerDriver();
   }
-  private byType = (trace: Trace) => trace.type !== 'business';
+
+  public writeTrace(trace: Trace): string {
+    return this.tracer.writeTrace(trace);
+  }
 }
 ```
 
-Y por supuesto se pueden importar y declarar en cualquier aplicación. Como si fuesen servicios del sistema.
+Y por supuesto se pueden importar y declarar en cualquier aplicación. Como si fuesen servicios del sistema. La magia de la inversión del control se produce con `useValue` mediante el cual inyectamos un valor de configuración concreto.
 
 `spa/app.module.ts`
 
@@ -231,24 +275,32 @@ Y por supuesto se pueden importar y declarar en cualquier aplicación. Como si f
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabled' }),
     LayoutModule,
-    AngularTracerModule
+    TracerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: TRACER_CONFIG,
+      useValue: { production: environment.production }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(consoleTracerService: ConsoleTracerService) {
+  constructor(tracerService: TracerService) {
     const startMessage: Trace = {
       origin: 'system',
-      type: 'system',
-      message: 'App Module Started'
+      level: 'system',
+      message: 'App Module Started for SPA'
     };
-    consoleTracerService.subscribe(of(startMessage)).unsubscribe();
+    tracerService.writeTrace(startMessage);
   }
 }
 ```
+Y ya tenemos un germen de arquitectura flexible (controlada por la inyección de dependencias) y reutilizable (entre aplicaciones Angular) con un dominio estable e independiente de frameworks.
+
+Para más ejemplos mira [la implementación un _ErrorHandler_ en el repositorio](https://github.com/angularbuilders/angular-blueprint/blob/master/libs/tracer/src/lib/services/error-handler.service.ts). Es un servicio que una vez proveído hace uso del servicio de trazas.
 
 ---
 
