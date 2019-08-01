@@ -1,7 +1,7 @@
 ---
 title: Flujo reactivo unidireccional con Angular y RxJs
 permalink: flujo-reactivo-unidireccional-con-Angular-y-RxJs
-date: 2019-08-01 19:46:34
+date: 2019-08-05 13:46:34
 tags:
 - Angular
 - Angular8
@@ -47,139 +47,13 @@ Habiendo aceptación no se mostrará más el dialogo.
 
 ## Tabla de Contenido:
 
-[1. Un par de componentes contenedor/presentador con detección de cambio controlada.](./#1-Un-par-de-componentes-contenedor-presentador-con-deteccion-de-cambio-controlada)
-
-[2. Todo reactivo.](./#2-Todo-reactivo)
-
 [3. Un almacén genérico observable.](./#3-Un-almacen-generico-observable)
 
 [4. Un servicio para mostrar u ocultar detalles](./#4-Un-servicio-para-mostrar-u-ocultar-detalles)
 
 ---
 
-# 1. Un par de componentes contenedor/presentador con detección de cambio controlada.
 
-> Como desarrollador quiero disponer de un componente para informar sobre RGPD a los usuarios de mis aplicaciones
-
-Ya que este será un componente genérico y válido para muchas aplicaciones vamos a crearlo en una librería reutilizable a la que llamaré `policy`. En ella generamos los dos componentes. ¿Dos componentes?. Hemos dedicado un tema al [flujo de datos entre componentes](../lujo-de-datos-entre-componentes-angular) en el tutorial de introducción a Angular. Allí se recomendaba que la lógica de presentación y la de negocio estuviesen separadas.
-
-Emergía el patrón _container-presenter_ que separa la responsabilidad de tratar con los servicios de datos de la responsabilidad de presentarlos en pantalla. Al componente que manipula datos se le llama contenedor, y al que los presenta... presentador. Puedes usar cualquier esquema de organización o nombrado. Yo los agrupo en dos carpetas: `containers` y simples `components`.
-
-```bash
-# Generate the policy library project
-ng g library policy --tags=angular
-# Generate the dialog components
-# container
-ng g c containers/mandatory-dialog --project=policy --export --inlineStyle --inlineTemplate --changeDetection=OnPush
-# presenter
-ng g c components/dialog --project=policy --changeDetection=OnPush
-```
-
-Eso sí todos llevan una modificador especial: el `changeDetection=OnPush`. Esta es la primera recomendación para cumplir con el flujo unidireccional. En esencia lo que hacemos es decirle a Angular que no use la detección de cambios por defecto. Tenemos un artículo con una explicación completa de la [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular).
-
-
-El componente contenedor suele tener poco _html_ y ningún _css_, así que es un candidato a entrar en un único fichero: `containers/mandatory-dialog.component.ts`. Nada interesante por el momento en este componente obligatorio en toda web pública.
-
-```typescript
-@Component({
-  selector: 'ab-policy-mandatory-dialog',
-  template: `
-    <ab-policy-dialog>
-    </ab-policy-dialog>
-  `,
-  styles: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class MandatoryDialogComponent implements OnInit {
-  constructor() {}
-  public ngOnInit(): void {}
-}
-```
-
-Tampoco el presentador requiere de mucha atención, así que muestro su simple vista: `components/dialog.component.html`
-
-```html
-<dialog open>
-  <header>
-    <p>This site uses cookies to personalize content, to provide social media features and to analyze traffic.</p>
-  </header>
-</dialog>
-```
-
-# 2. Todo reactivo.
-
-> Como desarrollador quiero que las comunicaciones sean fluidas e independientes del tiempo para que los cambios en los datos cambien la presentación sin esfuerzo
-
-Otro de los pilares de la programación moderna de grandes aplicaciones es la **reactividad** (nada que ver con Chernóbil). Se trata de que los cambios se comuniquen cuando ocurran, sin necesidad de preguntar por ellos. De esta forma **los componentes reaccionarán al cambio** en lugar de buscarlo proactivamente mejorando mucho el rendimiento de las aplicaciones.
-
-Reducida a lo esencial, la lógica más básica que quiero implementar es un marcador que me indique si el usuario ha aceptado o no la política de cookies. Un mísero booleano. Pero claro, hacerlo reactivo requiere usar observables, y para eso emplearemos la librería [RxJs](https://www.learnrxjs.io/concepts/rxjs-primer.html).
-
-Hablando de cosas esenciales. Las arquitecturas de software centradas en el dominio proponen que toda la lógica básica de una gran aplicación debería ser independiente de _pequeños detalles sin importancia como los frameworks_. Aprovechando las capacidades de [Nx para tratar con mono repos](../nx-mono-repositorios-en-Angular/) no cuesta nada crear un librería en dónde establecer en los modelos de datos y las entidades con sus reglas de negocio. A esta librería de dominio la llamaré `policy-domain`.
-
-```bash
-# Generate a policy-domain Type Script library with nx power-ups
-ng g @nrwl/workspace:library policy-domain --directory=
-```
-
-Y en ella declaramos una clase que representa la entidad principal de este proyecto: la aceptación de las políticas. Esa clase informa a quien se suscriba de su estado de aceptación, inicialmente falso.
-
-`libs\policy-domain\src\lib\services\policy-acceptation.entity.ts`
-
-```typescript
-export class PolicyAcceptationEntity {
-  constructor() { }
-
-  public isPolicyAccepted$(): Observable<boolean> {
-    return of(false));
-  }
-}
-```
-
-En una capa superior, ya en un entorno Angular, haremos uso de la clase anterior en un servicio que a su vez expone un observable pero con su propia lógica adaptada de cara la vista.
-
-```bash
-# Generate a policy service
-ng g s services/policy --project=policy
-```
-
-`libs\policy\src\lib\services\policy.service.ts`
-
-```typescript
-@Injectable({
-  providedIn: 'root'
-})
-export class PolicyService {
-  private policyAcceptationEntity = new PolicyAcceptationEntity();
-
-  constructor( ) { }
-
-  public haveToShowAccpetationDialog$(): Observable<boolean> {
-    return this.policyAcceptationEntity
-      .isPolicyAccepted$()
-      .pipe(map(x => !x));
-  }
-}
-```
-
-Incorporamos el servicio en el componente principal para que nos indique si debemos mostrar el aviso al usuario o no.
-
-`app.component.ts`
-
-```typescript
-export class AppComponent {
-  public showPolicyDialog$: Observable<boolean>;
-
-  constructor(private policyService: PolicyService) {
-    this.showPolicyDialog$ = this.policyService.haveToShowAcceptationDialog$();
-  }
-}
-```
-Todo reactivo y todo asíncrono.
-
-`app.component.html`
-
-```html
-<ab-policy-mandatory-dialog *ngIf="showPolicyDialog$ | async "></ab-policy-mandatory-dialog>
 ```
 
 # 3. Un almacén genérico observable
