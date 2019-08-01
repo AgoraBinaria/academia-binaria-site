@@ -17,7 +17,7 @@ thumbnail: /css/images/angular-9_change.png
 
 ![deteccion-del-cambio-en-Angular](/images/tutorial-angular-9_change.png)
 
-La forma en que Angular realiza su renderizado y actualiza sus vistas es un factor clave para el rendimiento de las aplicaciones. ¿Cómo funciona la estrategia de detección de cambios de Angular? Pues tiene dos modos: `default` o *automágico* y `onPush` o *mindfullness*.
+La forma en que Angular realiza su renderizado y actualiza sus vistas es un factor clave para el rendimiento de las aplicaciones. ¿Cómo funciona la estrategia de detección de cambios de Angular? Pues tiene dos modos: `default` o *automágico* y `onPush` o *mindfulness*.
 
 Es importante tomar consciencia porque es costoso realizar la detección más veces de lo necesario y porque no hacerlo suficientemente implica no ver resultados reales. Con un mayor conocimiento del `changDetectionStrategy` y un poco de trabajo extra tendrás aplicaciones más eficientes y mantenibles.
 
@@ -43,9 +43,9 @@ Nomenclatura
 
 > Este reparto de responsabilidades es aconsejable independientemente de la estrategia de detección aplicada.
 
-# 2 Change detectionstrategies
+# 2 Change detection strategies
 
-Con la aplicación bien estructurada en componentes y con la comunicación estandarizada, habremos reducido el impacto de la detección del cambio y estaremos preparados para optimizarlo. Conozcamos en detalle las estratégias de detección del cambio.
+Con la aplicación bien estructurada en componentes y con la comunicación estandarizada, habremos reducido el impacto de la detección del cambio y estaremos preparados para optimizarlo. Conozcamos en detalle las estrategias de detección del cambio.
 
 El decorador `@Component()` admite en su configuración la poco conocida propiedad `changeDetection`. Que de forma explícita se usa así:
 
@@ -72,11 +72,11 @@ Por si fuera poco, además de dispararse mucho es **muy costoso**. Determinar qu
 
 > La comparación es valor a valor, en profundidad, para cada objeto de cada array, para cada propiedad de cada objeto.
 
-Contod, esta estrategia es cómoda para el programador y suficiente para casos básicos. Pero demasiada mágia dificulta el control en aplicaciones complejas. Y en pantallas de mucha información e interacción degrada el rendimiento percibido.
+Con todo, esta estrategia es cómoda para el programador y suficiente para casos básicos. Pero demasiada magia dificulta el control en aplicaciones complejas. Y en pantallas de mucha información e interacción degrada el rendimiento percibido.
 
 # 2.2 Detección manual, *onPush*
 
-Como se puede preveer, la detección del cambio manual es lanzada por el programador. No siempre va a ser laborioso, pero será más consciente pues para que ocurra han de darse alguna de estas circunstancias:
+Como se puede prever, la detección del cambio manual es lanzada por el programador. No siempre va a ser laborioso, pero será más consciente pues para que ocurra han de darse alguna de estas circunstancias:
 
 - **Explícitamente** el programador solicita la detección llamando a `ChangeDetectorRef.detectChanges();
 - **Implícitamente** al usar el `pipe Async` en la vista se llama a ese mismo método.
@@ -86,19 +86,19 @@ Como se puede preveer, la detección del cambio manual es lanzada por el program
 
 # 3 Inmutabilidad
 
-Como ya se ha dicho, para que Angular en la estrategia automática decida que algo ha cambiado necesita hacer una comparación por valor. Para evitar ese coste usamos la estrategia manual y el programador tienen que cambiar la referencia de algo cuando quiera que Angualar repinte la vista.
+Como ya se ha dicho, para que Angular en la estrategia automática decida que algo ha cambiado necesita hacer una comparación por valor. Para evitar ese coste usamos la estrategia manual y el programador tienen que cambiar la referencia de algo cuando quiera que Angular repinte la vista.
 
 ## 3.1 Por referencia y por valor
 
 Normalmente tendrá que crear un nuevo objeto y reasignarlo en lugar del anterior en un **ciclo de clonación, mutación y asignación**. Por costoso que parezca siempre compensa si evita muchas e innecesarias comparaciones por valor en estructuras profundas.
 
-La estrategia `onPush` trata a todos los `Inputs` en inmutables, es decir, algo que no espera que cambie. Similar al paso de parámetros por valor, que si cambia es porque és otro puntero.
+La estrategia `onPush` trata a todos los `Inputs` en inmutables, es decir, algo que no espera que cambie. Similar al paso de parámetros por valor, que si cambia es porque es otro puntero.
 
 ## 3.2 El clonado
 El potencialmente pesado trabajo de clonado lo podemos evitar en muchos casos usando alguna de estas técnicas:
 
 - **Tipos primitivos** que se pasan por valor en las propiedades `@Input()`
-- **Arrays**: muchos métodos como `.filter() .slice() .sort() .concat()` etc, devuelven nuevas referencias sin modificar el array original.
+- **Arrays**: muchos métodos como `.filter() .slice() .sort() .concat()` etc., devuelven nuevas referencias sin modificar el array original.
 - **Observables y el pipe Async**, pues en este caso se subscribe y lanza implícitamente la detección del cambio. Sin necesidad de clonar.
 
 Para los demás casos tenemos operadores *TypeScript* sencillos y optimizados para obtener nuevas referencias a partir de otros ya existentes.
@@ -115,8 +115,6 @@ const newList = list.filter(i => i.name=='first');
 
 
 Ya tienes los conocimientos para acelerar y reducir la incertidumbre sobre el actualización de vistas usando el patrón contenedor / presentador junto con la estrategia de detección de cambios OnPush.
-
-> Para un ejemplo más completo de estos conceptos explora los componentes [Home de Autobot](https://github.com/AcademiaBinaria/autobot/tree/9-change/src/app/home). En [Car](https://github.com/AcademiaBinaria/autobot/tree/9-change/src/app/car) tienes un ejemplo de notificación manual usando `ChangeDetectorRef`.
 
 Continúa tu formación avanzada aprendiendo a usar el [patrón Redux con NgRX en Angular](../el-patron-redux-con-ngrx-en-angular/) y verás como aprendes a programar con Angular 7.
 

@@ -43,7 +43,7 @@ Tenemos tres principios básicos que cumplir:
 - **Read Only State**: La información será de sólo lectura y sólo podrá modificarse a través de conductos oficiales.
 - **Changes By Pure Functions**: Los cambios tienen que poder ser replicados, cancelados y auditados; lo mejor, usar una función pura.
 
-## 1.1 Elementos de Redux
+## 1.2 Elementos de Redux
 
 Estos son los artificios fundamentales que incorporaremos a nuestro desarrollo:
 
