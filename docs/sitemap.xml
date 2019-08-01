@@ -1,235 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <url>
-    <loc>https://academia-binaria.com/tests-unitarios-con-jest-y-e2e-con-cypress-en-Angular/</loc>
-    
-    <lastmod>2019-08-01T10:38:56.108Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/nx-mono-repositorios-en-Angular/</loc>
-    
-    <lastmod>2019-08-01T10:38:07.682Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
-    
-    <lastmod>2019-07-30T16:51:38.931Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
-    
-    <lastmod>2019-07-30T16:13:43.398Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
-    
-    <lastmod>2019-07-24T11:16:40.301Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/velocidad-y-seo-con-el-ssr-de-angular-universal/</loc>
-    
-    <lastmod>2019-07-11T14:45:09.912Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
-    
-    <lastmod>2019-07-11T14:44:55.592Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
-    
-    <lastmod>2019-05-09T11:01:14.867Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/cursos/angular-business.html</loc>
-    
-    <lastmod>2019-04-24T12:07:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/cursos/angular-basic.html</loc>
-    
-    <lastmod>2019-04-24T12:07:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-    
-    <lastmod>2019-04-15T17:16:31.551Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.594Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.590Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.586Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.586Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.838Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.806Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/hola-angular-cli/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.805Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/cursos.html</loc>
-    
-    <lastmod>2019-03-20T09:07:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/scaffolds/page.html</loc>
-    
-    <lastmod>2018-05-03T08:56:05.871Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/scaffolds/post.html</loc>
-    
-    <lastmod>2018-05-03T08:56:05.871Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/scaffolds/draft.html</loc>
-    
-    <lastmod>2018-05-03T08:56:05.855Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com//404.html</loc>
-    
-    <lastmod>2018-05-03T08:56:05.754Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/typescript-programa-en-el-front-igual-que-en-el-back/</loc>
-    
-    <lastmod>2017-03-14T18:10:13.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/contacto.html</loc>
-    
-    <lastmod>2017-02-14T08:21:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/noticias-junio-16.html</loc>
-    
-    <lastmod>2016-06-06T12:28:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/promociones.html</loc>
-    
-    <lastmod>2016-05-27T06:46:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/node-6-0-0-actualizacion-con-nvm/</loc>
-    
-    <lastmod>2016-05-05T08:02:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/npm-de-instalador-a-publicador/</loc>
-    
-    <lastmod>2016-04-19T05:01:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/cookies.html</loc>
-    
-    <lastmod>2016-04-18T13:48:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/soluciones-backend-2016/</loc>
-    
-    <lastmod>2016-04-01T06:02:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/soluciones-frontend-2016/</loc>
-    
-    <lastmod>2016-01-14T10:17:31.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/para-que-puedo-usar-nodejs/</loc>
-    
-    <lastmod>2015-08-20T12:53:50.000Z</lastmod>
-    
-  </url>
-  
-</urlset>
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    <sitemap>
+        <loc>https://academia-binaria.com/post-sitemap.xml</loc>
+        <lastmod>2019-08-01T12:08:37.918Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://academia-binaria.com/page-sitemap.xml</loc>
+        <lastmod>2019-04-24T12:07:39.000Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://academia-binaria.com/category-sitemap.xml</loc>
+        <lastmod>2019-08-01T12:08:37.918Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>https://academia-binaria.com/tag-sitemap.xml</loc>
+        <lastmod>2019-08-01T12:08:37.918Z</lastmod>
+    </sitemap>
+
+</sitemapindex>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->

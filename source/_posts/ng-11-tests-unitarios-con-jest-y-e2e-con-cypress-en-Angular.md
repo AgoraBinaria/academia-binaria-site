@@ -31,8 +31,6 @@ De nuevo la gente de *Nrwl* ha pensado en ello y el **Nx** instala y configura d
 Partiendo del mono repositorio creado usando las herramientas de [Nrwl.io/](https://nrwl.io/) veremos que el **Nx** instala y configura dos productos de última generación que facilitan la tarea de las pruebas de software. Usaremos [Jest](https://jestjs.io/) para los test unitarios y [Cypress](https://www.cypress.io/) para los de integración _End to End_. Vamos a empezar por el final.
 
 > Código asociado a este tutorial en _GitHub_: [angular.builders/angular-blueprint/](https://github.com/angularbuilders/angular-blueprint)
->
-> > Tienes más información sobre este proyecto en [Angular.Builders](https://angular.builders/)
 
 
 ## Tabla de Contenido:
@@ -253,9 +251,9 @@ El siguiente diagrama nos muestra a vista de pájaro las aplicaciones de prueba 
 
 ---
 
-Para más información, o indicaciones paso a paso, consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/0-mono_repo) del proyecto en GitHub.
+Para más información, o indicaciones paso a paso, consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/1-test) del proyecto en GitHub.
 
-Las [tareas relativas](project:angularbuilders/angular-blueprint/4) a este tutorial resueltas en el [proyecto 1 - test](https://github.com/angularbuilders/angular-blueprint/projects/4)
+Las tareas relativas a este tutorial resueltas en el [proyecto 1 - test](https://github.com/angularbuilders/angular-blueprint/projects/4)
 
 ![Angular.Builders](/css/images/angular.builders.png)
 
@@ -265,9 +263,11 @@ Para más información sobre servicios de consultoría [ponte en contacto conmig
 
 ---
 
+## Resumen
+
 En definitiva, los grandes desarrollos demandados por bancos, multinacionales o administración pública requieren soluciones fiables y mantenibles. Y eso pasa inexcusablemente por hacer testing. **Angular** facilita las pruebas unitarias y de integración; especialmente con las herramientas _Jest_ y  _Cypress_ ya configuradas por **Nx**.
 
-Con este tutorial de formación [avanzada en Angular](../tag/Avanzado/) te preparas para poder afrontar retos de tamaño industrial. Continúa aprendiendo a implementar un [flujo de datos unidireccional](../flujo-reactivo-unidireccional-con-Angular-y-RxJs).
+Con este tutorial de formación [avanzada en Angular](../tag/Avanzado/) te preparas para poder afrontar retos de tamaño industrial. Continúa aprendiendo a mejorar el rendimiento usando la [detección del cambio en Angular](../deteccion-del-cambio-en-Angular).
 
 
 > Aprender, programar, disfrutar, repetir.

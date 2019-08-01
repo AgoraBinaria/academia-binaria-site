@@ -26,8 +26,6 @@ Las empresas de desarrollo y los clientes finales que escogen **Angular**, suele
 Partiendo de cero y usando las herramientas de [Nrwl.io/](https://nrwl.io/) crearemos un _blueprint_ para desarrollar grandes aplicaciones. Al finalizar tendrás, en el mismo repositorio, un par de aplicaciones y varias librerías reutilizables creadas con los _Nx power-ups_.
 
 > Código asociado a este tutorial en _GitHub_: [angular.builders/angular-blueprint/](https://github.com/angularbuilders/angular-blueprint)
->
-> > Tienes más información sobre este proyecto en [Angular.Builders](https://angular.builders/)
 
 
 ## Tabla de Contenido:
@@ -320,7 +318,7 @@ Tienes más ejemplos en el repositorio como [la implementación un _ErrorHandler
 
 Dispones de un _journal_ con indicaciones paso a paso de este tutorial. Consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/0-mono_repo) del proyecto en GitHub.
 
-Las [tareas relativas](project:angularbuilders/angular-blueprint/1) a este tutorial resueltas en el [proyecto 0 - monorepo](https://github.com/angularbuilders/angular-blueprint/projects/1)
+Las tareas relativas a este tutorial están resueltas en el [proyecto 0 - monorepo](https://github.com/angularbuilders/angular-blueprint/projects/1)
 
 ![Angular.Builders](/css/images/angular.builders.png)
 
@@ -329,6 +327,8 @@ La iniciativa [Angular.Builders](https://angular.builders) nace para ayudar a de
 Para más información sobre servicios de consultoría [ponte en contacto conmigo](https://www.linkedin.com/in/albertobasalo/).
 
 ---
+
+## Resumen
 
 En definitiva, los grandes desarrollos demandados por bancos, multinacionales o administración pública requieren soluciones avanzadas. **Angular** es una plataforma ideal para esos grandes proyectos, pero requiere conocimiento y bases sólidas para sacarle partido.
 
