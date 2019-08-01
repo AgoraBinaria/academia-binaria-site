@@ -81,7 +81,7 @@ Por si fuera poco, además de dispararse mucho es **muy costoso**. Determinar qu
 
 Con todo, esta estrategia es cómoda para el programador y suficiente para casos básicos. Pero demasiada magia dificulta el control en aplicaciones complejas. Y en pantallas de mucha información e interacción degrada el rendimiento percibido.
 
-# 2.2 Detección manual, *onPush*
+## 2.2 Detección manual, *onPush*
 
 Como se puede prever, la detección del cambio manual es lanzada por el programador. No siempre va a ser laborioso, pero será más consciente pues para que ocurra han de darse alguna de estas circunstancias:
 
@@ -285,9 +285,9 @@ Para más información sobre servicios de consultoría [ponte en contacto conmig
 
 ## Resumen
 
-La detección automática es cómoda pero costosa por dos razones: se lana muchas veces y necesita comprobar si hay cambios comparando valor por valor. La detección manual es más eficiente, se lanza menos veces y además le basta un cambio de referencia para saber que hay novedades. Para poder usarla sin grandes trabajos recomiendo usar el  _pipe_ `async`.
+La detección automática es cómoda pero costosa. Por dos razones: se dispara muchas veces y necesita comprobar si hay cambios comparando valor por valor. La detección manual es más eficiente. Se lanza menos veces y además le basta un cambio de referencia para saber que hay novedades. Para poder usarla sin grandes trabajos recomiendo usar el _pipe_ `async`, siempre con orígenes de datos observables.
 
-Para ello necesitamos que la aplicación sea observable. En este tutorial de formación [avanzada en Angular](../tag/Avanzado/) te muestra como mejorar el rendimiento usando el [Flujo reactivo unidireccional con Angular y RxJs](../flujo-reactivo-unidireccional-con-Angular-y-RxJs).
+Para ello necesitamos usar y conocer patrones que hagan uso de la librería observable _RxJs_. En este tutorial de formación [avanzada en Angular](../tag/Avanzado/) te muestra como mejorar el rendimiento usando el [Flujo reactivo unidireccional con Angular y RxJs](../flujo-reactivo-unidireccional-con-Angular-y-RxJs).
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
