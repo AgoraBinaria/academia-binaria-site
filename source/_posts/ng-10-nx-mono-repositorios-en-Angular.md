@@ -320,6 +320,8 @@ Tienes más ejemplos en el repositorio como [la implementación un _ErrorHandler
 
 Dispones de un _journal_ con indicaciones paso a paso de este tutorial. Consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/0-mono_repo) del proyecto en GitHub.
 
+Las [tareas relativas](project:angularbuilders/angular-blueprint/1) a este tutorial resueltas en el [proyecto 0 - monorepo](https://github.com/angularbuilders/angular-blueprint/projects/1)
+
 ![Angular.Builders](/css/images/angular.builders.png)
 
 La iniciativa [Angular.Builders](https://angular.builders) nace para ayudar a desarrolladores y arquitectos de software como tú. Ofrecemos formación y productos de ayuda y ejemplo como [angular.blueprint](https://angularbuilders.github.io/angular-blueprint/).

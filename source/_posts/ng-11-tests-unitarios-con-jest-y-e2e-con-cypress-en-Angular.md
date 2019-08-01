@@ -255,6 +255,8 @@ El siguiente diagrama nos muestra a vista de pájaro las aplicaciones de prueba 
 
 Para más información, o indicaciones paso a paso, consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/0-mono_repo) del proyecto en GitHub.
 
+Las [tareas relativas](project:angularbuilders/angular-blueprint/4) a este tutorial resueltas en el [proyecto 1 - test](https://github.com/angularbuilders/angular-blueprint/projects/4)
+
 ![Angular.Builders](/css/images/angular.builders.png)
 
 La iniciativa [Angular.Builders](https://angular.builders) nace para ayudar a desarrolladores y arquitectos de software como tú. Ofrecemos formación y productos de ayuda y ejemplo como [angular.blueprint](https://angularbuilders.github.io/angular-blueprint/).
