@@ -40,6 +40,10 @@ Partiendo de cero y usando las herramientas de [Nrwl.io/](https://nrwl.io/) crea
 
 [5. Tener una biblioteca Angular con lógica de instrumentación.](./#5-Tener-una-biblioteca-Angular-con-logica-de-instrumentacion)
 
+[Diagramas](./#Diagramas)
+
+[Resumen](./#Resumen)
+
 ---
 
 # 1. Crear el repositorio
@@ -307,6 +311,7 @@ export class AppModule {
 ```
 Y ya tenemos un germen de arquitectura flexible (controlada por la inyección de dependencias) y reutilizable (entre aplicaciones Angular) con un dominio estable e independiente de _frameworks_.
 
+## Diagramas
 
 El siguiente diagrama nos muestra a vista de pájaro las distintas librerías y aplicaciones que tenemos en este momento. Fíjate en la jerarquía de dependencias : Aplicaciones -> Librerías Angular -> Librerías del Dominio.
 

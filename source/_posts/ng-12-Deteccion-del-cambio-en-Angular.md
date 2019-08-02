@@ -37,15 +37,15 @@ Partiendo de la aplicación tal cómo quedó en [Tests unitarios con Jest y e2e 
 
 [3. Inmutabilidad](./#3-Inmutabilidad)
 
-[Ejemplo](./ejemplo)
+[Ejemplo](./#Ejemplo)
 
 [4. Un par de componentes con detección de cambio controlada.](./#4-Un-par-de-componentes-con-deteccion-de-cambio-controlada)
 
 [5. Todo reactivo.](./#5-Todo-reactivo)
 
-[Diagramas](./diagramas)
+[Diagramas](./#Diagramas)
 
-[Resumen](./resumen)
+[Resumen](./#Resumen)
 
 ---
 

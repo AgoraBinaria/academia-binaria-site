@@ -45,6 +45,10 @@ Partiendo del mono repositorio creado usando las herramientas de [Nrwl.io/](http
 
 [5. unit: Dada una librería Angular con servicios de instrumentación.](./#5-unit-Dada-una-libreria-Angular-con-servicios-de-instrumentacion)
 
+[Diagramas](./#Diagramas)
+
+[Resumen](./#Resumen)
+
 ---
 
 # 1. e2e: Dada una SPA en Angular.
@@ -244,6 +248,8 @@ describe('GIVEN an Angular Library with instrumentation services', () => {
 ```
 
 ---
+
+## Diagramas
 
 El siguiente diagrama nos muestra a vista de pájaro las aplicaciones de prueba _e2e_ y las aplicaciones reales.
 
