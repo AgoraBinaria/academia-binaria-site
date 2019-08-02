@@ -37,10 +37,15 @@ Partiendo de la aplicación tal cómo quedó en [Tests unitarios con Jest y e2e 
 
 [3. Inmutabilidad](./#3-Inmutabilidad)
 
+[Ejemplo](./ejemplo)
+
 [4. Un par de componentes con detección de cambio controlada.](./#4-Un-par-de-componentes-con-deteccion-de-cambio-controlada)
 
 [5. Todo reactivo.](./#5-Todo-reactivo)
 
+[Diagramas](./diagramas)
+
+[Resumen](./resumen)
 
 ---
 
@@ -128,7 +133,9 @@ const newList = list.filter(i => i.name=='first');
 
 Ya tienes los conocimientos para acelerar y reducir la incertidumbre sobre el actualización de vistas usando el patrón **contenedor / presentador** junto con la estrategia de detección de cambios `OnPush`. Ahora vamos a ver un ejemplo.
 
-## Funcionalidad esperada:
+## Ejemplo
+
+### Funcionalidad esperada:
 
 Cuando un usuario visita la aplicación por primera vez debe avisarse del uso de cookies para cumplir con las políticas legales.
 
@@ -262,6 +269,8 @@ Todo reactivo y todo asíncrono.
 Al utilizar observables, podemos usar el _pipe_ `async`, que ya sabemos que informa de los cambios al detector. Por tanto la detección `OnPush` es perfectamente válida.
 
 ---
+
+## Diagramas
 
 El siguiente diagrama nos muestra a vista de pájaro las librerías y aplicaciones implicadas hasta el momento.
 
