@@ -9,7 +9,7 @@ tags:
 - Observables
 - Tutorial
 - Introducción
-- Angular7
+- Angular8
 - Angular2
 categories:
 - [Tutorial, Angular]
@@ -20,7 +20,7 @@ thumbnail: /css/images/angular-6_http.png
 
 Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido potentes y fáciles. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas... y además la librería *RxJS* y sus *streams* son intimidantes para los novatos.
 
-Pero en la versión Angular 7 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones http asíncronas en Angular**.
+Pero en la versión Angular 8 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones http asíncronas en Angular**.
 
 <!-- more -->
 
@@ -113,31 +113,30 @@ La presentación en la vista sólo tiene que acceder a la propiedad dónde se ha
 
 ## 1.3 Envío de datos
 
-Supongamos que, una vez recibidas las cotizaciones, pretendemos transformarlas y almacenarlas en otro servicio. El envío en este caso será con el método _post_ al que se le pasará la ruta del _end point_ y el objeto _payload_ que se enviará al servidor.
+Supongamos que, una vez recibidas las cotizaciones, pretendemos transformarlas y almacenarlas en otro servicio. Por ejemplo un objeto para cada día y moneda. El envío en este caso será con el método _post_ al que se le pasará la ruta del _end point_ y el objeto _payload_ que se enviará al servidor.
 
 Vamos a agregar una propiedad y un par de métodos al `rates-component.ts`. La idea es obtener un array de cotizaciones aa partir del objeto previo, y guardarla una por una.
 
 ```typescript
 export class RatesComponent implements OnInit {
-  private myRatesApi
-    = 'https://api-base.herokuapp.com/api/pub/rates';
+  private ratesByDateApi = 'https://api-base.herokuapp.com/api/pub/rates';
 
-  public postRates() {
-    const rates = this.transformData();
-    rates.forEach(rate =>
-      this.httpClient
-        .post(this.myRatesApi, rate)
-        .subscribe()
+  public postRatesByDate() {
+    const ratesByDate: RateByDate[] = this.transformExchangeRates();
+    ratesByDate.forEach(rate =>
+      this.httpClient.post<RateByDate>(this.ratesByDateApi, rate).subscribe()
     );
   }
 
-  private transformData() {
-    const current = this.currentEuroRates.rates;
-    return Object.keys(current).map(key => ({
-      date: this.currentEuroRates.date,
-      currency: key,
-      euros: current[key]
+  private transformExchangeRates(): RateByDate[] {
+    const currentDate = this.currentEuroRates.date;
+    const currentRates = this.currentEuroRates.rates;
+    const ratesByDate = Object.keys(currentRates).map((keyRate: string) => ({
+      date: currentDate,
+      currency: keyRate,
+      euros: currentRates[keyRate]
     }));
+    return ratesByDate;
   }
 }
 ```
@@ -146,7 +145,7 @@ export class RatesComponent implements OnInit {
 En la vista no hay gran cosa que hacer, salvo agregarle un botón para iniciar el proceso:
 
 ```html
-<input value="Save Rates" type="button" (click)="postRates()" />
+<input value="Save Rates" type="button" (click)="postRatesByDate()" />
 ```
 
 ## 1.4 Actualización de datos
@@ -157,37 +156,35 @@ En este tutorial no se ha hecho y no quedamos con el `any`, pero al menos distin
 
 ```typescript
 export class RatesComponent implements OnInit {
- private myRatesApi
-  = 'https://api-base.herokuapp.com/api/pub/rates';
- public myRates: any[] = null;
+ private ratesByDateApi = 'https://api-base.herokuapp.com/api/pub/rates';
+ public ratesByDate: RateByDate[] = null;
 
- public getMyRates() {
+
+ public getRatesByDate() {
     this.httpClient
-      .get<any[]>(this.myRatesApi)
-      .subscribe(apiResult => (this.myRates = apiResult));
+      .get<RateByDate[]>(this.ratesByDateApi)
+      .subscribe(apiResult => (this.ratesByDate = apiResult));
   }
 }
 ```
 Y en la vista, un nuevo botón y una nueva expresión.
 
 ```html
-<input value="Refresh" type="button" (click)="getMyRates()" />
+<input value="Refresh" type="button" (click)="getRatesByDate()" />
 <pre>{{ myRates | json }}</pre>
 ```
 
 Por último, en plan repaso, un ejemplo de método para borrar.
 
 ```typescript
-public deleteMyRates() {
-  this.httpClient
-    .delete(this.myRatesApi)
-    .subscribe();
-}
+  public deleteRatesByDate() {
+    this.httpClient.delete(this.ratesByDateApi).subscribe();
+  }
 ```
 Y su botón en en la vista.
 
 ```html
-<input value="Delete Rates" type="button" (click)="deleteMyRates()" />
+<input value="Delete Rates" type="button" (click)="deleteRatesByDate()" />
 ```
 
 Y hasta aquí lo básico de comunicaciones *http*. ¿Fácil verdad?. Pero la vida real raramente es tan sencilla. Si quieres enfrentarte a algo más duro debes prepararte y dominar los observables *RxJS*.
@@ -260,32 +257,34 @@ Aquí es donde aparece el método `.pipe(operator1, operator2...)` aplicado a un
 El operador más utilizado es `map(sourceStream => targetStream)`. Este operador recibe una función *callBack* que será invocada ante cada dato recibido. Esa función tienen que retornar un valor para sustituir al actual y así transformar el contenido del chorro.
 
 ```typescript
-public myRates$: Observable<any[]> = null;
+public myRates$: Observable<MyRate[]> = null;
 private getCurrentEuroRates() {
   const url = `${this.ratesApi}?symbols=USD,GBP,CHF,JPY`;
-  this.currentEuroRates$ = this.httpClient.get(url);
-  this.myRates$ = this.currentEuroRates$.pipe(map(this.transformData));
+  this.currentEuroRates$ = this.httpClient.get<ExchangeRates>(url);
+  this.ratesByDate$ = this.currentEuroRates$.pipe(map(this.transformData));
 }
-private transformData(currentRates) {
-  const current = currentRates.rates;
-  return Object.keys(current).map(key => ({
-    date: currentRates.date,
-    currency: key,
-    euros: current[key]
+private transformData(exchangeRates: ExchangeRates): RateByDate[] {
+  const currentDate = exchangeRates.date;
+  const currentRates = exchangeRates.rates;
+  const ratesByDate = Object.keys(currentRates).map((keyRate: string) => ({
+    date: currentDate,
+    currency: keyRate,
+    euros: currentRates[keyRate]
   }));
+  return ratesByDate;
 }
 ```
 
 > En este ejemplo partimos de nuevo de un objeto recibido y lo queremos ver como un *array* de objetos. Para ello lo transformamos usado el operador `map`. Este operador ha de importarse de `rxjs/operators` y aplicarse a un observable dentro de su método `.pipe()`. Es el más sencillo y uno de los más utilizados: recibe y emite datos dentro de un stream de eventos observables. Nada que ver, salvo el nombre, con la sencilla función `array.map(callback)`, que recibe y devuelve datos estáticos.
 
 ```html
-<pre>{{ myRates$ | async | json }}</pre>
+<pre>{{ ratesByDate$ | async | json }}</pre>
 ```
 Por lo demás el consumo se hace igual... pero... tendremos que ver más operadores para solucionar algunos inconvenientes.
 
 ## 2.3 Operators
 
-El código anterior funciona, pero resulta que al haber dos funciones async suscritas provoca que la llamada original se realice dos veces. esto es así porque el segundo observable `myRates$` es una canalización del primero `currentEuroRates$`.
+El código anterior funciona, pero resulta que al haber dos funciones async suscritas provoca que la llamada original se realice dos veces. esto es así porque el segundo observable `ratesByDate$` es una canalización del primero `currentEuroRates$`.
 
 Estos y oros problemas se solucionan usando operadores. Vamos a conocer un par de ellos más y veremos como `pipe(op1, op2,  opn)` los ejecuta a todos en orden.
 
@@ -296,7 +295,7 @@ private getCurrentEuroRates() {
 const url = `${this.ratesApi}?symbols=USD,GBP,CHF,JPY`;
   this.currentEuroRates$ = this.httpClient.get(url)
       .pipe(share());
-  this.myRates$ = this.currentEuroRates$
+  this.ratesByDate$ = this.currentEuroRates$
       .pipe(
         tap(d=>console.log(d)),
         map(this.transformData),

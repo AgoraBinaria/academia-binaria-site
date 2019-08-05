@@ -7,7 +7,7 @@ tags:
   - CLI
   - Tutorial
   - Introducción
-  - Angular7
+  - Angular8
   - Angular2
 categories:
   - [Tutorial, Angular]
@@ -16,7 +16,7 @@ thumbnail: /css/images/angular-1_base.png
 
 ![base-aplicacion-angular](/images/tutorial-angular-1_base.png)
 
-Vamos a crear una **base sobre la que programar una aplicación Angular 7** profesional. Usaremos el _CLI_ para generar una estructura sobre la que crecer. Será como una semilla para un desarrollo controlado.
+Vamos a crear una **base sobre la que programar una aplicación Angular 8** profesional. Usaremos el _CLI_ para generar una estructura sobre la que crecer. Será como una semilla para un desarrollo controlado.
 La idea de árbol se usa en muchas analogías informáticas. La emplearemos en dos conceptos básicos en Angular: **los módulos y los componentes**.
 
 <!-- more -->
@@ -390,7 +390,7 @@ AppComponent
 
 ```
 
-Con esto tendrás una base para una aplicación _Angular 7_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular7.
+Con esto tendrás una base para una aplicación _Angular 8_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

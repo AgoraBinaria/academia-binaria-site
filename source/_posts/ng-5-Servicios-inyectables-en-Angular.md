@@ -8,7 +8,7 @@ tags:
   - DI
   - Tutorial
   - Introducción
-  - Angular7
+  - Angular8
   - Angular2
 categories:
   - [Tutorial, Angular]

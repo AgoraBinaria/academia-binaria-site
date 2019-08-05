@@ -7,7 +7,7 @@ tags:
   - Forms
   - Tutorial
   - Introducción
-  - Angular7
+  - Angular8
   - Angular2
 categories:
   - [Tutorial, Angular]
@@ -16,7 +16,7 @@ thumbnail: /css/images/angular-3_data.png
 
 ![formularios-tablas-y-modelos-de-datos-en-angular](/images/tutorial-angular-3_data.png)
 
-Las **aplicaciones Angular 7 son excelentes para el tratamiento de datos** en el navegador. Su razón de ser fue la recogida de información mediante formularios y la presentación de páginas dinámicas de forma sencilla.
+Las **aplicaciones Angular 8 son excelentes para el tratamiento de datos** en el navegador. Su razón de ser fue la recogida de información mediante formularios y la presentación de páginas dinámicas de forma sencilla.
 
 Vamos a ver cómo la librería `@angular/forms` enlaza **las vistas, los controladores y los modelos**; y cómo se hace la presentación de datos en **listas y tablas**.
 
@@ -45,7 +45,7 @@ Y asignamos sus rutas delegadas en `app-routing` y en `contacts-routing`:
   // app-routing
   {
     path: 'contacts',
-    loadChildren: './contacts/contacts.module#ContactsModule'
+    loadChildren: () => import('./3-data/contacts/contacts.module').then(m => m.ContactsModule)
   },
   // contacts-routing
   {
@@ -275,8 +275,10 @@ public contact = {
   <input name="company" type="text" [(ngModel)]="contact.company" />
 </section>
 <ng-template #education>
-  <label for="education">Education</label>
-  <input name="education" type="text" [(ngModel)]="contact.education" />
+  <section>
+    <label for="education">Education</label>
+    <input name="education" type="text" [(ngModel)]="contact.education"/>
+  </section>
 </ng-template>
 ```
 
@@ -343,7 +345,11 @@ La parte de **lógica del componente** va en la clase que se usa para su definic
 ```typescript
 public saveContact() {
   this.contacts.push({ ...this.contact });
+  this.updateCounter();
+}
+private updateCounter() {
   this.numContacts = this.contacts.length;
+  this.counterClass = this.numContacts === 0 ? 'tag secondary' : 'tag primary';
 }
 ```
 
@@ -404,7 +410,7 @@ Y ya puestos incluso puedes animarte a borrar contactos. Es fácil, los métodos
 ```typescript
 public deleteContact(contact: Contact) {
   this.contacts = this.contacts.filter(c => c.name !== contact.name);
-  this.numContacts = this.contacts.length;
+  this.updateCounter();
 }
 ```
 
@@ -414,7 +420,7 @@ Juntos, **la vista y su clase controladora**, resuelven un problema de interacci
 
 > Y esto es sólo el comienzo. La idea de componente será fundamental en la web del mañana para la creación de páginas mediante `web components`. Pero eso ya se verá más adelante...
 
-Ahora tienes una aplicación en _Angular 7_ que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular7.
+Ahora tienes una aplicación en _Angular 8_ que recoge y muestra datos. Sigue esta serie para añadirle [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/) mientras aprendes a programar con Angular7.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

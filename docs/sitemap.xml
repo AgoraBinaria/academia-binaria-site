@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+    
+    <lastmod>2019-08-05T11:37:44.362Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
+    
+    <lastmod>2019-08-05T11:16:26.274Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
+    
+    <lastmod>2019-08-05T11:09:15.435Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
+    
+    <lastmod>2019-08-05T10:56:21.071Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
+    
+    <lastmod>2019-08-05T10:49:04.805Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/flujo-reactivo-unidireccional-con-Angular-y-RxJs/</loc>
     
     <lastmod>2019-08-05T09:40:10.854Z</lastmod>
@@ -58,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
-    
-    <lastmod>2019-05-09T11:01:14.867Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://academia-binaria.com/cursos/angular-business.html</loc>
     
     <lastmod>2019-04-24T12:07:39.000Z</lastmod>
@@ -75,13 +103,6 @@
     <loc>https://academia-binaria.com/cursos/angular-basic.html</loc>
     
     <lastmod>2019-04-24T12:07:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-    
-    <lastmod>2019-04-15T17:16:31.551Z</lastmod>
     
   </url>
   
@@ -100,30 +121,9 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.586Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.586Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
     
     <lastmod>2019-03-20T16:11:09.838Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
-    
-    <lastmod>2019-03-20T16:11:09.806Z</lastmod>
     
   </url>
   

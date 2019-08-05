@@ -7,7 +7,7 @@ tags:
 - Components
 - Tutorial
 - Introducción
-- Angular7
+- Angular8
 - Angular2
 categories:
 - [Tutorial, Angular]
@@ -15,7 +15,7 @@ thumbnail: /css/images/angular-4_flow.png
 ---
 ![flujo-de-datos-entre-componentes-angular](/images/tutorial-angular-4_flow.png)
 
-Los desarrollos profesionales son complicados pero **con Angular tenemos soluciones de comunicación simples para pantallas complejas**. Mediante el desarrollo de componentes atómicos y reutilizables Angular 7 favorece la implementación de buenas prácticas.
+Los desarrollos profesionales son complicados pero **con Angular tenemos soluciones de comunicación simples para pantallas complejas**. Mediante el desarrollo de componentes atómicos y reutilizables Angular 8 favorece la implementación de buenas prácticas.
 
 Crear y comunicar muchos componentes puede llevarnos a código difícil de seguir. La librería `@angular/forms` ofrece *tuberías de comunicación* para **mantener el flujo de datos bajo control**.
 
@@ -73,7 +73,7 @@ Agregamos una ruta en el enrutador con su enlace en el menú.
 ```typescript
 {
   path: 'car',
-  loadChildren: './car/car.module#CarModule'
+  loadChildren: () => import('./4-flow/car/car.module').then(m => m.CarModule)
 }
 ```
 
@@ -281,7 +281,7 @@ Cuando las pantallas se hacen realmente complejas empiezan a surgir **árboles d
 
 La solución en ambos casos pasa por permitir que *algunos componentes presentadores tengan su propio control de datos*. Este tipo de comunicaciones técnicamente se resuelve mediante *Observables* y merece un capítulo especial que se verá más adelante en esta serie. Incluso en situaciones complejas habrá que optar por patrones avanzados de gestión de estado como pueda ser *Redux*.
 
-Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes de una misma página. Sigue el tutorial para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular 7.
+Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes de una misma página. Sigue el tutorial para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular 8.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
