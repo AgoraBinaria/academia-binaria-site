@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
+    
+    <lastmod>2019-08-05T11:44:58.161Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
     
     <lastmod>2019-08-05T11:37:44.362Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
     
     <lastmod>2019-08-05T11:09:15.435Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-    
-    <lastmod>2019-08-05T10:56:21.071Z</lastmod>
     
   </url>
   

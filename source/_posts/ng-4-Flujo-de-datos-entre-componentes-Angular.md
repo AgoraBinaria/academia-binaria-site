@@ -55,7 +55,7 @@ En **arquitectura de software** cuando encontramos una solución a un problema r
 
 ## 2.1 El patrón
 
-En este caso **el patrón contendor/presentadores** estipula que haya un único componente responsable de obtener, mutar y guardar el estado. Será el componente contenedor. Los presentadores serán responsables de.. ejem, presentar la información y los elementos de interacción con el usuario. Las ventajas derivadas son: mayor facilidad para el _testeo_ y mayores posibilidades de reutilización de presentadores.
+En este caso **el patrón contenedor/presentadores** estipula que haya un único componente responsable de obtener, mutar y guardar el estado. Será el componente contenedor. Los presentadores serán responsables de.. ejem, presentar la información y los elementos de interacción con el usuario. Las ventajas derivadas son: mayor facilidad para el _testeo_ y mayores posibilidades de reutilización de presentadores.
 
 > A este patrón a veces se le conoce como parent/children por la jerarquía html que genera.
 
@@ -83,11 +83,11 @@ Agregamos una ruta en el enrutador con su enlace en el menú.
 </a>
 ```
 
-## 2.2 El contendor
+## 2.2 El contenedor
 
 En el componente contenedor tendremos **una vista muy sencilla y un controlador más complejo**. La vista será la composición de los componentes presentadores, pero el controlador tendrá que obtener datos, aplicarles lógica de negocio y guardarlos cuando corresponda.
 
-> No es habitual asignarle un sufijo al nombre del componente para indicar que es el contendor. Suele ser suficiente el verlo en la raíz de la jerarquía de carpetas.
+> No es habitual asignarle un sufijo al nombre del componente para indicar que es el contenedor. Suele ser suficiente el verlo en la raíz de la jerarquía de carpetas.
 
 ```html
 <app-display [model]="car.name"
@@ -138,7 +138,7 @@ private getDelta = (drive: number) =>
   drive + (this.car.maxSpeed - this.car.currentSpeed) / 10;
 ```
 
-Lo dicho, _la clase controladora del componente contendor retiene el grueso de la funcionalidad_. En este caso inicializar una instancia de un coche y mantener sus velocidad en los límites lógicos respondiendo a las acciones del usuario conductor.
+Lo dicho, _la clase controladora del componente contenedor retiene el grueso de la funcionalidad_. En este caso inicializar una instancia de un coche y mantener sus velocidad en los límites lógicos respondiendo a las acciones del usuario conductor.
 
 
 ## 2.3 Envío hacia el presentador con @Input()
@@ -273,7 +273,7 @@ Estando en la misma ruta, no siempre se podrán conocer los componentes, y por t
 
 ### 2.2.1 El layout principal y los componentes por ruta páginas.
 
-Una situación habitual es **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar la velocidad máxima alcanzada en la barra del menú o un un mensaje emergente cada vez que se alcance la velocidad límite. En este caso, el `<router-outlet>` es una barrera que impide usar el patrón contendor-presentador pues no se puede predecir el contenido dinámico que carga el `RouterOutlet`.
+Una situación habitual es **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar la velocidad máxima alcanzada en la barra del menú o un un mensaje emergente cada vez que se alcance la velocidad límite. En este caso, el `<router-outlet>` es una barrera que impide usar el patrón contenedor-presentador pues no se puede predecir el contenido dinámico que carga el `RouterOutlet`.
 
 ### 2.2.2 Múltiples niveles de presentadores.
 
