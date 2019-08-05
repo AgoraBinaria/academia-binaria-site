@@ -52,6 +52,11 @@ Estos son los artificios fundamentales que incorporaremos a nuestro desarrollo:
 - **Actions**: Objetos identificados por un tipo y cargados con un *payload*. Transmiten una intención de mutación sobre el estado del *store*.
 - **Reducers** : Son funciones puras, que ostentan la exclusividad de poder mutar el estado. Reciben dos argumentos: el estado actual y una acción con su tipo y su carga. Clonan el estado, realizan los cambios oportunos y devuelven el estado mutado.
 
+
+- **Actions**: Objetos identificados por un tipo y cargados con un *payload*. Transmiten una intención de mutación sobre el estado del almacén. Tomados del patrón comando.
+- **Reducers** : Son funciones puras, que ostentan la exclusividad de poder mutar el estado. Reciben dos argumentos: el estado actual y una acción con su tipo y su carga. Toman el estado, realizan los cambios oportunos y devuelven el estado mutado.
+- **Effects** : Los reductores, como funciones puras, no pueden tener efectos secundarios. Es decir: depender o cambiar algo del entorno. Esto debería hacerse antes o después del cambio. En algo que aquí por ahora no usaremos: los efectos.
+
 > Los funciones reductoras, al ser puras, mezclan la programación funcional con la orientada a objetos. Un reto pero también una demostración de la coexistencia de paradigmas en un mismo desarrollo.
 
 

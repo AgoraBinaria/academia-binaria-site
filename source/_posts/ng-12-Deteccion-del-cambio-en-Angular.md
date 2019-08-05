@@ -276,6 +276,8 @@ El siguiente diagrama nos muestra a vista de pájaro las librerías y aplicacion
 
 ![Dependencias entre proyectos](/images/12-projects-dependency.png)
 
+En este otro tenemos las clases implicadas. El color denota la librería en la que se definen.
+
 ![Dependencias entre componentes y clases](/images/12-class-dependency.png)
 
 ---
