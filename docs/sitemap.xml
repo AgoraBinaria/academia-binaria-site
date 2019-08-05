@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    
+    <lastmod>2019-08-05T15:01:13.403Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
+    
+    <lastmod>2019-08-05T15:00:15.758Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
     
     <lastmod>2019-08-05T11:44:58.161Z</lastmod>
@@ -103,20 +117,6 @@
     <loc>https://academia-binaria.com/cursos/angular-basic.html</loc>
     
     <lastmod>2019-04-24T12:07:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.594Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
-    
-    <lastmod>2019-03-20T17:22:54.590Z</lastmod>
     
   </url>
   

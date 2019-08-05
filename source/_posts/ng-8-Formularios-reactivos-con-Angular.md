@@ -4,7 +4,7 @@ permalink: formularios-reactivos-con-Angular
 date: 2019-03-12 10:59:27
 tags:
 - Angular
-- Angular7
+- Angular8
 - Angular2
 - reactiveForms
 - Tutorial
@@ -18,7 +18,7 @@ thumbnail: /css/images/angular-8_reactive.png
 
 El **doble enlace automático** entre elementos *html* y propiedades de objetos fue el primer gran éxito de **Angular**. Ese _doble-binding_ facilita mucho el desarrollo de formularios. Pero esa magia tienen un coste en escalabilidad; impacta en el tiempo de ejecución y además dificulta la validación y el mantenimiento de formularios complejos.
 
-La solución en Angular 7 pasa por desacoplar el modelo y la vista, introduciendo una capa que gestione ese doble enlace. Los servicios y directivas del módulo `ReactiveFormsModule` que viene en la librería `@angular/forms` permiten programar **formularios reactivos conducidos por el código**.
+La solución en Angular 8 pasa por desacoplar el modelo y la vista, introduciendo una capa que gestione ese doble enlace. Los servicios y directivas del módulo `ReactiveFormsModule` que viene en la librería `@angular/forms` permiten programar **formularios reactivos conducidos por el código**.
 
 <!-- more -->
 
@@ -47,7 +47,7 @@ ng g c security/register
 ```typescript
 {
   path: 'security',
-  loadChildren: './security/security.module#SecurityModule'
+  loadChildren: () => import('./8-reactive/security/security.module').then(m => m.SecurityModule)
 },
 ```
 El componente de registro y su ruta asignada:

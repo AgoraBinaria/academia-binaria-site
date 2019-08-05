@@ -8,7 +8,7 @@ tags:
 - Observables
 - Tutorial
 - Introducción
-- Angular7
+- Angular8
 - Angular2
 categories:
 - [Tutorial, Angular]
@@ -46,7 +46,7 @@ Lo apuntamos al enrutador global `app-routing.module.ts` y asignamos las rutas l
 ```typescript
 {
   path: 'notifications',
-  loadChildren: './notifications/notifications.module#NotificationsModule'
+  loadChildren: () => import('./7-watch/notifications/notifications.module').then(m => m.NotificationsModule)
 },
 ```
 ```typescript
@@ -130,16 +130,16 @@ ng g s notifications/notificationsStore
 ```typescript
 export class NotificationsStoreService {
   private notifications = [];
-
   private notifications$ = new BehaviorSubject<any[]>([]);
 
   constructor() {}
 
+  public select = () => [...this.notifications];
   public select$ = () => this.notifications$.asObservable();
 
   public dispatch(notification) {
-    this.notifications.push(notification);
-    this.notifications$.next([...this.notifications]);
+    this.notifications.push({ ...notification });
+    this.notifications$.next(this.select());
   }
 }
 ```
@@ -169,7 +169,7 @@ Veamos un ejemplo, un tanto forzado,  consistente en dos componentes que se comu
     <section>
       <label for="note">Note</label>
       <input name="note"
-             [(ngModel)]="note" />
+             [(ngModel)]="notification.note" />
     </section>
   </fieldset>
   <button (click)="send()">Send</button>
@@ -181,14 +181,14 @@ La parte interesante está en el controlador. Dependencia y uso del servicio del
 
 ```typescript
 export class SenderComponent implements OnInit {
-  public note = '';
+  public notification = {note:''};
 
   constructor(private notificationsStore: NotificationsStoreService) {}
 
   ngOnInit() {}
 
   public send() {
-    this.notificationsStore.dispatch(this.note);
+    this.notificationsStore.dispatch(this.notification.note);
   }
 }
 ```
@@ -202,7 +202,7 @@ La recepción es igual de sencilla. En la vista pondremos un listado de notifica
   Notes receiver
 </h2>
 <ul>
-  <li *ngFor="let note of notes$ | async">{{ note | json }}</li>
+  <li *ngFor="let notification of notifications$ | async">{{ notification | json }}</li>
 </ul>
 <a [routerLink]="['../sender']">Go to sender</a>
 ```
@@ -211,12 +211,12 @@ Y en el controlador reclamamos la misma dependencia para el uso del servicio del
 
 ```typescript
 export class ReceiverComponent implements OnInit {
-  public notes$;
+  public notifications$;
 
   constructor(private notificationsStore: NotificationsStoreService) {}
 
   ngOnInit() {
-    this.notes$ = this.notificationsStore.select$();
+    this.notifications$ = this.notificationsStore.select$();
   }
 }
 ```
@@ -321,14 +321,15 @@ La idea es usar el `NotificationsStoreService` desde el interceptor para... en f
 constructor(private notificationsStore: NotificationsStoreService) {}
 
 public intercept(req, next) {
-  // Ojo al bind(this), necesario para no perder el contexto
+  // Ojo al .bind(this), necesario para no perder el contexto
   return next.handle(req).pipe(catchError(this.handleError.bind(this)));
 }
 
 private handleError(err) {
   let userMessage = 'Fatal error';
   // emisión de la notificación
-  this.notificationsStore.dispatch(userMessage);
+  this.notificationsStoreService.dispatch({ note: userMessage });
+  return throwError(err);
 }
 ```
 
