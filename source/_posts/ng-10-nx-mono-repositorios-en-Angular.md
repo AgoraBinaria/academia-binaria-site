@@ -146,7 +146,7 @@ Por supuesto que todos estos comando se pueden lanzar visualmente mediante la ex
 ---
 
 
-# Tener una biblioteca TypeScript con lógica de dominio.
+# 3. Tener una biblioteca TypeScript con lógica de dominio.
 
 ```yaml
  Como: arquitecto
@@ -302,8 +302,117 @@ export class AppComponent {
 
 ---
 
+# 5. Tener una biblioteca Angular con servicios de datos
 
-## Diagramas
+```yaml
+As a: customer,
+  I want: to be greeted by the API :-)
+  so that: I know I am not alone.
+
+As a: seller,
+  I want: to be greeted by the API :-)
+  so that: I know I am not alone.
+```
+
+Además de componentes visuales, podemos tener librerías con servicios de lógica o de acceso a datos. Por ejemplo un servicio para comunicarnos con el API podría ser utilizado en diversos proyectos (aplicaciones o librerías).
+
+Con lo ya sabido vamos a crear una librería compartida para acceso a datos.
+
+
+```bash
+ng g @nrwl/angular:library data --directory=shared --prefix=ab-data --simpleModuleName
+ng g service greetings --project=shared-data --no-flat
+```
+
+El servicio realiza la llamada http y devuelve un observable.
+
+`libs\shared\data\src\lib\greetings\greetings.service.ts`
+
+```typescript
+import { Greetings } from '@a-boss/domain';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+@Injectable({
+  providedIn: 'root'
+})
+export class GreetingsService {
+  private apiUrl = 'http://localhost:3333/api';
+  constructor(private httpClient: HttpClient) {}
+  public getGrettings$(): Observable<Greetings> {
+    return this.httpClient.get<Greetings>(this.apiUrl);
+  }
+}
+```
+
+Para consumir el servicio no hay que hacer nada más. Pero, para importarlo en TypeScript, necesitmaos que nos lo exporten adecuadamente.
+
+`libs\shared\data\src\index.ts`
+
+```typescript
+export * from './lib/data.module';
+export * from './lib/greetings/greetings.service';
+```
+
+`tsconfig.json`
+
+```json
+"paths": {
+  "@a-boss/domain": ["libs/shared/domain/src/index.ts"]
+}
+```
+
+Y ahora consumirlo ya no es un problema. Por ejemplo directamente en el componente.
+
+`libs\shared\ui\src\lib\greetings\greetings.component.ts`
+
+```typescript
+import { GreetingsService } from '@a-boss/data';
+import { Greetings } from '@a-boss/domain';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'ab-ui-greetings',
+  template: `
+    <p>
+      {{ theGreeting.message }}
+    </p>
+  `,
+  styles: []
+})
+export class GreetingsComponent implements OnInit {
+  public theGreeting: Greetings = { message: 'Hello world' };
+  constructor(private greetingsService: GreetingsService) {}
+  public ngOnInit() {
+    this.greetingsService.getGrettings$().subscribe(this.appendApiMessage);
+  }
+  private appendApiMessage = (apiGreetings: Greetings) =>
+    (this.theGreeting.message += ' and ' + apiGreetings.message);
+}
+```
+
+Ya que estamos accediendo al API, podemos aprovechar para adecuar sus tipos a la interfaz declarada en el dominio. Fíjate lo familiar que resulta este código **NodeJS** gracias al framework [nest](https://nestjs.com/).
+
+`apps\api\src\app\app.controller.ts`
+
+```typescript
+import { Greetings } from '@a-boss/domain';
+import { Controller, Get } from '@nestjs/common';
+import { AppService } from './app.service';
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get()
+  getData(): Greetings {
+    return this.appService.getData();
+  }
+}
+```
+
+
+<!-- ## Diagramas
 
 El siguiente diagrama nos muestra a vista de pájaro las distintas librerías y aplicaciones que tenemos en este momento. Fíjate en la jerarquía de dependencias : Aplicaciones -> Librerías Angular -> Librerías del Dominio.
 
@@ -322,6 +431,7 @@ Las tareas relativas a este tutorial están resueltas en el [proyecto 0 - monore
 La iniciativa [Angular.Builders](https://angular.builders) nace para ayudar a desarrolladores y arquitectos de software como tú. Ofrecemos formación y productos de ayuda y ejemplo como [angular.blueprint](https://angularbuilders.github.io/angular-blueprint/).
 
 Para más información sobre servicios de consultoría [ponte en contacto conmigo](https://www.linkedin.com/in/albertobasalo/).
+-->
 
 ---
 
