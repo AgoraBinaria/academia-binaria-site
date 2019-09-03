@@ -36,9 +36,9 @@ Partiendo de cero y usando las herramientas de [Nrwl.io/](https://nrwl.io/) crea
 
 [3. Tener una biblioteca TypeScript con lógica de dominio.](./#3-Tener-una-biblioteca-TypeScript-con-logica-de-dominio)
 
-[4. Tener una biblioteca Angular con componentes propios.](./#4-Tener-una-biblioteca-Angular-con-componentes-propios)
+[4. Tener una biblioteca Angular con componentes de interfaz.](./#4-Tener-una-biblioteca-Angular-con-componentes-de-interfaz)
 
-[5. Tener una biblioteca Angular con lógica de instrumentación.](./#5-Tener-una-biblioteca-Angular-con-servicios-de-datos)
+[5. Tener una biblioteca Angular con servicios de datos.](./#5-Tener-una-biblioteca-Angular-con-servicios-de-datos)
 
 [Diagramas](./#Diagramas)
 
@@ -199,7 +199,7 @@ Ya está listo para seer consumido desde distintos proyectos (Lo haré después 
 
 ---
 
-# 4. Tener una biblioteca Angular con componentes propios
+# 4. Tener una biblioteca Angular con componentes de interfaz
 
 ```yaml
 As a: customer,
