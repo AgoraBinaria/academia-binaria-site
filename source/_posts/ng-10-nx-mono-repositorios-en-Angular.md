@@ -36,9 +36,9 @@ Partiendo de cero y usando las herramientas de [Nrwl.io/](https://nrwl.io/) crea
 
 [3. Tener una biblioteca TypeScript con lógica de dominio.](./#3-Tener-una-biblioteca-TypeScript-con-logica-de-dominio)
 
-[4. Tener una biblioteca Angular con componentes propios.](./#3-Tener-una-biblioteca-Angular-con-componentes-propios)
+[4. Tener una biblioteca Angular con componentes propios.](./#4-Tener-una-biblioteca-Angular-con-componentes-propios)
 
-[5. Tener una biblioteca Angular con lógica de instrumentación.](./#5-Tener-una-biblioteca-Angular-con-logica-de-instrumentacion)
+[5. Tener una biblioteca Angular con lógica de instrumentación.](./#5-Tener-una-biblioteca-Angular-con-servicios-de-datos)
 
 [Diagramas](./#Diagramas)
 
@@ -223,8 +223,9 @@ ng g @nrwl/angular:library ui --directory=shared --prefix=ab-ui --simpleModuleNa
 # Generate Greetings Component
 ng g component greetings --project=shared-ui --module=ui.module.ts --export --inlineStyle --inlineTemplate
 ```
+
 Y le damos contenido al componente. Fíjate en la importación de la interfaz `Greetings`.
----
+
 
 `libs\shared\ui\src\lib\greetings\greetings.component.ts`
 
