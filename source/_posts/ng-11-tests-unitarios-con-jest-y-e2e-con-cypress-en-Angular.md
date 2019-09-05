@@ -59,11 +59,13 @@ Son pruebas de caja negra que interactúan con el sistema en ejecución. Todo el
 
 [Cypress](https://www.cypress.io/) es el equivalente a Protractor, el producto propio de Angular. La ventaja principal es que no está atado a ningún framework y por tanto lo que hagas valdrá para probar cualquier web en cualquier tecnología.
 
-Con cada aplicación generada se crea una hermana para sus pruebas _e2e_. Esa aplicación de pruebas está configurada y lista para compilar, servir y probar su aplicación objetivo. Con Nx tenemos todo instalado, configurado y listo para ejecutarse con comandos como los siguientes que yo coloco en el `packcage.json`:
+Con cada aplicación generada se crea una hermana para sus pruebas _e2e_. Esa aplicación de pruebas está configurada y lista para compilar, servir y probar su aplicación objetivo. Con [Nx](https://twitter.com/NxDevTools) tenemos todo instalado, configurado y listo para ejecutarse con comandos como los siguientes que yo coloco en el `packcage.json`:
 
 ```json
+{
   "e2e:shop": "ng e2e shop-e2e --watch",
-  "e2e:warehouse": "ng e2e warehouse-e2e --watch",
+  "e2e:warehouse": "ng e2e warehouse-e2e --watch"
+}
 ```
 
 Luego se pueden lanzar desde la terminal muy cómodamente.
@@ -104,7 +106,7 @@ describe('GIVEN: the shop web app', () => {
 });
 ```
 
-La parte más técnica y tediosa es la que accede al _DOM_ y lo mejor es tener eso a parte. En la carpeta `/support` nos sugieren que creemos utilidades para tratar con el _DOM_ y de esa forma mantener los test lo más cercanos posible a un lenguaje natural de negocio. Como se ve en mi caso una aproximación libre al [BDD con gherkin](https://www.genbeta.com/desarrollo/bdd-cucumber-y-gherkin-desarrollo-dirigido-por-comportamiento) para mantener el espíritu de sencillez de un tutorial sobre tecnología Angular, no sobre testing.
+La parte más técnica y tediosa es la que accede al _DOM_ y lo mejor es tener eso a parte. En la carpeta `/support` nos sugieren que creemos utilidades para tratar con el _DOM_ y de esa forma mantener los test lo más cercanos posible a un lenguaje natural de negocio. En este caso uso una aproximación libre al [BDD con gherkin](https://www.genbeta.com/desarrollo/bdd-cucumber-y-gherkin-desarrollo-dirigido-por-comportamiento) para mantener el espíritu de sencillez de un tutorial sobre tecnología Angular, no sobre testing.
 
 `apps\shop-e2e\src\support\app.po.ts`
 
@@ -127,9 +129,11 @@ Las pruebas unitarias, muy asociadas al [TDD](https://hackernoon.com/introductio
 Mete los siguientes scripts en el `package.json` y así tendrás a mano siempre las pruebas. Te recomiendo que desarrolles con el test unitario lanzado; es la manera más rápida de probar el código que estés tocando. Idealmente incluso con el [test antes del código](https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80).
 
 ```json
+{
   "test:shop": "ng test shop --watch --verbose",
   "test:warehouse": "ng test warehouse --watch --verbose",
-  "test:api": "ng test api --watch --verbose",
+  "test:api": "ng test api --watch --verbose"
+}
 ```
 
 ```terminal
@@ -151,7 +155,9 @@ GIVEN: an AppComponent declared in AppModule
     THEN: should render 'Hello world' in a H1 tag
 ```
 
-En este caso queremos probar una librería de componentes. Claro que se podrán hacer pruebas unitarias y de integración parcial. Pero también puedes incluirlas como parte de la prueba de integración total de la aplicación que la consume. De esta forma te aseguras de que el módulo de la librería se importa y que sus componentes se exportan correctamente. Por ejemplo lo uso desde la aplicación _shop_, y puedo comprobar que su componente `AppComponent` funciona y que se renderiza también el componente `ab-ui-greetings` incrustando con los saludos.
+En este caso queremos probar una librería de componentes. Claro que se podrán hacer pruebas unitarias y de integración parcial. Pero también puedes incluirlas como parte de la prueba de integración total de la aplicación que la consume. De esta forma te aseguras de que el módulo de la librería se importa y que sus componentes se exportan correctamente.
+
+Por ejemplo lo uso desde la aplicación _shop_, y puedo comprobar que su componente `AppComponent` funciona y que se renderiza también el componente `ab-ui-greetings` incrustando con los saludos.
 
 
 `apps\shop\src\app\app.component.spec.ts`
@@ -263,7 +269,7 @@ A partir de aquí es siempre igual. Defines un respuesta esperada, le das una en
 
 ## Resumen
 
-En definitiva, los grandes desarrollos demandados por bancos, multinacionales o administración pública requieren soluciones fiables y mantenibles. Y eso pasa inexcusablemente por hacer testing. **Angular** facilita las pruebas unitarias y de integración; especialmente con las herramientas _Jest_ y  _Cypress_ ya configuradas por **Nx**.
+En definitiva, los grandes desarrollos demandados por bancos, multinacionales o administración pública requieren soluciones fiables y mantenibles. Y eso pasa inexcusablemente por hacer testing. **Angular** facilita las pruebas unitarias y de integración; especialmente con las herramientas _Jest_ y  _Cypress_ ya configuradas por **NxDevTools**.
 
 Con este tutorial de formación [avanzada en Angular](../tag/Avanzado/) te preparas para poder afrontar retos de tamaño industrial. Continúa aprendiendo a mejorar el rendimiento usando la [detección del cambio en Angular](../deteccion-del-cambio-en-Angular).
 
