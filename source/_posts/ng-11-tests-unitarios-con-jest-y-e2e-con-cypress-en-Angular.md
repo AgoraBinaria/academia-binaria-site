@@ -155,9 +155,9 @@ GIVEN: an AppComponent declared in AppModule
     THEN: should render 'Hello world' in a H1 tag
 ```
 
-En este caso queremos probar una librería de componentes. Claro que se podrán hacer pruebas unitarias y de integración parcial. Pero también puedes incluirlas como parte de la prueba de integración total de la aplicación que la consume. De esta forma te aseguras de que el módulo de la librería se importa y que sus componentes se exportan correctamente.
+En este caso queremos probar una librería de componentes. Y empezamos por el componente raíz. Esta es una prueba unitarias pero con un toque de integración parcial pues necesita de otros componentes para ejecutarse. Cuanto más arriba en la jerarquía esté el componente mayor será su necesidad de integrar a otros. Pero no pasa nada, de esta forma te aseguras de que el módulo de la librería se importa y que sus componentes se exportan correctamente.
 
-Por ejemplo lo uso desde la aplicación _shop_, y puedo comprobar que su componente `AppComponent` funciona y que se renderiza también el componente `ab-ui-greetings` incrustando con los saludos.
+Al grano, vamos a la aplicación _shop_ para  comprobar que su componente `AppComponent` funciona y (de paso) que se renderiza también el componente `ab-ui-greetings` incrustando los saludos.
 
 
 `apps\shop\src\app\app.component.spec.ts`
@@ -209,11 +209,9 @@ GIVEN: a GreetingsService
     THEN: should return 'Welcome to api!' when call 'getGrettings()'
 ```
 
-La prueba de servicios es más sencilla que la de componentes, pues no hay que tratar con la renderización del HTML. sólo funcionalidad en una clase TypeScript. pero, siempre hay un pero, muchos de estos servicios tratarán con llamadas asíncronas. Afortunadamente está todo pensado y se resuelve con dos conceptos: la función `async()` y inyección de réplicas (_mocks_) de las dependencias.
+La prueba de servicios es más sencilla que la de componentes pues no hay que tratar con la renderización del HTML; sólo funcionalidad en una clase TypeScript. Pero, siempre hay un pero, muchos de estos servicios tratarán con llamadas asíncronas. Afortunadamente está todo pensado y se resuelve con dos conceptos: la función `async()` y inyección de réplicas (_mocks_) de las dependencias.
 
 `libs\shared\data\src\lib\greetings\greetings.service.spec.ts`
-
----
 
 ```typescript
 // importar réplicas para testing de las dependencias del servicio
@@ -264,6 +262,8 @@ describe('GIVEN: a GreetingsService', () => {
 ```
 
 A partir de aquí es siempre igual. Defines un respuesta esperada, le das una entrada conocida y si algo no cuadra, entonces el código no pasa la prueba y tienes una oportunidad para mejorarlo.
+
+En la prueba de servicios es fundamental que uses réplicas de sus dependencias. Es la forma de garantizar que pruebas únicamente el servicio, sin depender de nada. Esto era mucho más complejo con los componentes, pero un mandamiento con los servicios.
 
 ---
 
