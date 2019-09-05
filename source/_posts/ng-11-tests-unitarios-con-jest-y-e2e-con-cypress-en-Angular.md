@@ -82,7 +82,7 @@ GIVEN: the shop web app
     THEN: should display welcome message from the API
 ```
 
-Tu trabajo como _tester_ será definir las pruebas en la carpeta `/integration`. Por ejemplo para empezar nos ofrecen el fichero `app-spec.ts` en el que yo he especificado el comportamiento deseado por mi página. La sintaxis se enciende por si misma. He seguido el convenio **GIVEN, WHEN, THEN** para especificar pruebas que podrían considerarse casi de comportamiento o aceptación.
+Tu trabajo como _tester_ será definir las pruebas en la carpeta `/integration`. Por ejemplo para empezar nos ofrecen el fichero `app-spec.ts` en el que yo he especificado el comportamiento deseado por mi página. La sintaxis se entiende por si misma. He seguido el convenio **GIVEN, WHEN, THEN** para especificar pruebas que podrían considerarse casi de comportamiento o aceptación.
 
 `apps\shop-e2e\src\integration\app.spec.ts`
 
@@ -104,7 +104,7 @@ describe('GIVEN: the shop web app', () => {
 });
 ```
 
-La parte más técnica y tediosa es la que accede al DOM y lo mejor es tener eso a parte. En la carpeta `/support` nos sugieren que creemos utilidades para tratar con el _DOM_ y de esa forma mantener los test lo más cercanos posible a un lenguaje natural de negocio. Como se ve en mi caso una aproximación libre al [BDD con gherkin](https://www.genbeta.com/desarrollo/bdd-cucumber-y-gherkin-desarrollo-dirigido-por-comportamiento) para mantener el espíritu de sencillez de un tutorial sobre tecnología Angular, no sobre testing.
+La parte más técnica y tediosa es la que accede al _DOM_ y lo mejor es tener eso a parte. En la carpeta `/support` nos sugieren que creemos utilidades para tratar con el _DOM_ y de esa forma mantener los test lo más cercanos posible a un lenguaje natural de negocio. Como se ve en mi caso una aproximación libre al [BDD con gherkin](https://www.genbeta.com/desarrollo/bdd-cucumber-y-gherkin-desarrollo-dirigido-por-comportamiento) para mantener el espíritu de sencillez de un tutorial sobre tecnología Angular, no sobre testing.
 
 `apps\shop-e2e\src\support\app.po.ts`
 
@@ -117,14 +117,14 @@ export const getGreeting = () => cy.get('h1');
 
 # 2. Test Unitarios con Jest
 
-Las pruebas unitarias, muy asociadas al TDD, son las mejores amigas del desarrollador. Pero, también son las más engorrosas para empezar. así que aquí veremos una introducción sencilla para que nadie deje de hacerlas.
+Las pruebas unitarias, muy asociadas al [TDD](https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92), son las mejores amigas del desarrollador. Pero, también son las más engorrosas para empezar. Así que aquí veremos una introducción sencilla para que nadie deje de hacerlas.
 
 
 ## 2.1 Jest
 
-[Jest](https://jestjs.io/) es un framework de testing para JavaScript muy sencillo y rápido. Puedes usarlo con cualquier otro framework. Para el caso de angular ya viene preconfigurado si usas las extensiones Nx.
+[Jest](https://jestjs.io/) es un framework de testing para JavaScript muy sencillo y rápido. Puedes usarlo con cualquier otro framework. Para el caso de Angular ya viene preconfigurado si usas las extensiones Nx.
 
-Mete los siguientes scripts en el package.json y así tendrás a mano siempre las pruebas. Te recomiendo que desarrolles con el test unitario lanzado, es la manera más rápida de probar el código que estés tocando. Idealmente incluso con el test antes del código.
+Mete los siguientes scripts en el `package.json` y así tendrás a mano siempre las pruebas. Te recomiendo que desarrolles con el test unitario lanzado; es la manera más rápida de probar el código que estés tocando. Idealmente incluso con el [test antes del código](https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80).
 
 ```json
   "test:shop": "ng test shop --watch --verbose",
@@ -151,7 +151,7 @@ GIVEN: an AppComponent declared in AppModule
     THEN: should render 'Hello world' in a H1 tag
 ```
 
-En este caso queremos probar una librería de componentes. Claro que se podrán hacer pruebas unitarias y de integración parcial. Pero también puedes incluirlas como parte de la prueba de integración total de la aplicación que la consume. De esta forma te aseguras de que el módulo de la librería se importa y que sus componentes se exportan correctamente. Por ejemplo lo uso desde la aplicación shop puedo comprobar su componente `AppComponent` y que se renderiza también el componente con los saludos `ab-ui-greetings`.
+En este caso queremos probar una librería de componentes. Claro que se podrán hacer pruebas unitarias y de integración parcial. Pero también puedes incluirlas como parte de la prueba de integración total de la aplicación que la consume. De esta forma te aseguras de que el módulo de la librería se importa y que sus componentes se exportan correctamente. Por ejemplo lo uso desde la aplicación _shop_, y puedo comprobar que su componente `AppComponent` funciona y que se renderiza también el componente `ab-ui-greetings` incrustando con los saludos.
 
 
 `apps\shop\src\app\app.component.spec.ts`
@@ -203,11 +203,14 @@ GIVEN: a GreetingsService
     THEN: should return 'Welcome to api!' when call 'getGrettings()'
 ```
 
+La prueba de servicios es más sencilla que la de componentes, pues no hay que tratar con la renderización del HTML. sólo funcionalidad en una clase TypeScript. pero, siempre hay un pero, muchos de estos servicios tratarán con llamadas asíncronas. Afortunadamente está todo pensado y se resuelve con dos conceptos: la función `async()` y inyección de réplicas (_mocks_) de las dependencias.
+
 `libs\shared\data\src\lib\greetings\greetings.service.spec.ts`
 
 ---
 
 ```typescript
+// importar réplicas para testing de las dependencias del servicio
 import {
   HttpClientTestingModule,
   HttpTestingController
@@ -243,14 +246,18 @@ describe('GIVEN: a GreetingsService', () => {
         .subscribe(result =>
           expect(result).toEqual({ message: 'Welcome to api!' })
         );
-      const httpMock = TestBed.get(HttpTestingController); // mock del backend para no depender del servidor
-      const req = httpMock.expectOne('http://localhost:3333/api'); // esperar a que se llame a esta ruta
+      // mock del backend para no depender del servidor
+      const httpMock = TestBed.get(HttpTestingController);
+      // esperar a que se llame a esta ruta
+      const req = httpMock.expectOne('http://localhost:3333/api');
       req.flush({ message: 'Welcome to api!' }); // responder con esto
       httpMock.verify(); // comprobar que no hay más llmadas
     }));
   });
 });
 ```
+
+A partir de aquí es siempre igual. Defines un respuesta esperada, le das una entrada conocida y si algo no cuadra, entonces el código no pasa la prueba y tienes una oportunidad para mejorarlo.
 
 ---
 
