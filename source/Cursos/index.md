@@ -13,7 +13,7 @@ date: 2019-03-20 10:07:39
 
 # Angular Basic
 
-[Introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+[Introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders)
 
 #### 0 - Hola Angular CLI
 #### 1 - Base para una aplicación Angular
@@ -30,13 +30,13 @@ date: 2019-03-20 10:07:39
 #### 8 - Formularios reactivos
 #### 9 - Material Design y CLI
 
-[Empieza ya!](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+[Empieza ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders)
 [Contenido detallado Angular Basic](cursos/angular-basic)
 ---
 
 # Angular Business
 
-[Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo)
+[Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders)
 
 #### 0 - Repositorios profesionales con Nx
 #### 1 - Testing de aplicaciones con Cypress y Jest
@@ -53,12 +53,12 @@ date: 2019-03-20 10:07:39
 #### 8 - Internacionalización y puesta en producción
 #### 9 - Web Components
 
-[Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
+[Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders/)
 [Contenido detallado Angular Business](cursos/angular-business)
 
 > Con diploma acreditativo, bolsa de trabajo y bonificables por Fundae.
 > -- <cite>Aprende online con Alberto Basalo</cite>
 
-[Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+[Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders)
 
-[Angular Business: Curso de implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
+[Angular Business: Curso de implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders/)

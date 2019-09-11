@@ -5,7 +5,7 @@ updated: '2019-04-24 14:07:39'
 date: 2019-03-20 10:07:39
 ---
 
-[Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo)
+[Implantación de buenas prácticas en desarrollos empresariales con Angular.](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders)
 
 # Angular Business
 
@@ -172,6 +172,6 @@ date: 2019-03-20 10:07:39
 ### 9.1 Desarrollo en Angular
 ### 9.2 Consumo en cualquier framework
 
-[Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=meetup10&af=abasalo/)
+[Mejora ya!](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders/)
 
 [Contenido detallado Angular Basic](../cursos/angular-basic)

@@ -5,7 +5,7 @@ updated: '2019-04-24 14:07:39'
 date: 2019-03-20 10:07:39
 ---
 
-[Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+[Angular Basic: Curso de introducción desde cero al desarrollo con Angular.](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders)
 
 ## [0 - Hola Angular CLI](../hola-angular-cli)
 
@@ -206,6 +206,6 @@ date: 2019-03-20 10:07:39
 - Navegación y layout
 - Componentes básicos
 
-[Empieza ya!](https://www.trainingit.es/curso-angular-basico/?promo=meetup10&af=abasalo)
+[Empieza ya!](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders)
 
 [Contenido detallado Angular Business](../cursos/angular-business)
