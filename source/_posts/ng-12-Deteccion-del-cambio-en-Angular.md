@@ -1,7 +1,7 @@
 ---
 title: Detección del cambio en Angular
 permalink: deteccion-del-cambio-en-Angular
-date: 2019-08-01 18:09:27
+date: 2019-09-11 18:09:27
 tags:
 - Angular
 - Angular8
@@ -17,7 +17,7 @@ thumbnail: /css/images/angular-12_change.png
 
 La forma en que Angular realiza su renderizado y actualiza sus vistas es un factor clave para el rendimiento de las aplicaciones. ¿Cómo funciona la estrategia de detección de cambios de Angular? Pues tiene dos modos: `default` o *automágico* y `onPush` o *mindfulness*.
 
-> Es importante tomar consciencia sobre el proceso y las implicaciones. Es costoso realizar la detección más veces de lo necesario y porque no hacerlo suficientemente implica no ver resultados reales.
+> Es importante tomar consciencia sobre el proceso y las implicaciones. Es costoso realizar la detección más veces de lo necesario y  no hacerlo suficientemente implica no ver resultados reales.
 
 Afortunadamente el cambio del modo automático al manual no tiene por qué ser traumático. Con un mayor conocimiento del `changeDetectionStrategy` y un poco de trabajo extra tendrás aplicaciones más eficientes y mantenibles.
 
@@ -26,7 +26,8 @@ Afortunadamente el cambio del modo automático al manual no tiene por qué ser t
 
 Partiendo de la aplicación tal cómo quedó en [Tests unitarios con Jest y e2e con Cypress en Angular](../tests-unitarios-con-jest-y-e2e-con-cypress-en-Angular/). Al finalizar tendrás una aplicación que actualiza la vista sólo cuando es necesario, es decir: cuando los datos han cambiado.
 
-> Código asociado a este tutorial en _GitHub_: [angular.builders/angular-blueprint/](https://github.com/angularbuilders/angular-blueprint)
+> Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
+
 
 
 ## Tabla de Contenido:
@@ -37,12 +38,6 @@ Partiendo de la aplicación tal cómo quedó en [Tests unitarios con Jest y e2e 
 
 [3. Inmutabilidad](./#3-Inmutabilidad)
 
-[Ejemplo](./#Ejemplo)
-
-[4. Un par de componentes con detección de cambio controlada.](./#4-Un-par-de-componentes-con-deteccion-de-cambio-controlada)
-
-[5. Todo reactivo.](./#5-Todo-reactivo)
-
 [Diagramas](./#Diagramas)
 
 [Resumen](./#Resumen)
@@ -51,7 +46,43 @@ Partiendo de la aplicación tal cómo quedó en [Tests unitarios con Jest y e2e 
 
 # 1 Comunicación de datos entre componentes
 
-> Como desarrollador quiero disponer de un componente para informar sobre RGPD a los usuarios de mis aplicaciones
+```yaml
+As a: customer,
+  I want: to see a shopping cart page
+  so that: i can browse the list of products in my basket
+
+As a: customer,
+  I want: to pick a product
+  so that: I can add units to my basket
+
+As a: customer,
+  I want: to remove a product from my basket
+  so that: I can take less units
+
+As a: customer,
+  I want: to see always counters of my basket
+  so that: I can know what I'm buying
+```
+
+Sigue la pista al código de ejemplo creado a partir de estos comandos:
+
+```terminal
+ng g m cart --project=shop --module=app.module.ts --routing --route=cart
+```
+
+`apps\shop\src\app\app.component.html`
+
+```html
+<nav>
+  <a [routerLink]="['/cart']">Basket</a>
+</nav>
+```
+
+```terminal
+ng g c cart/item-picker --project=shop
+ng g c cart/basket-list --project=shop
+ng g s basket --project=shop
+```
 
 La detección de cambios se dispara ante eventos que le ocurren a los componentes. **La detección se realiza componente a componente**, así que compensa tener muchos componentes pequeños, para que cada uno por si sólo no genere demasiado ruido.
 
@@ -60,10 +91,10 @@ La detección de cambios se dispara ante eventos que le ocurren a los componente
 Al pasar de un único componente a varios mini-componentes, se propone usar **el patrón contenedor / presentadores**. Se mantiene un componente padre que contiene múltiples componentes presentadores hijos. El contendor es el único con acceso a los servicios de negocio y datos. Los presentadores reciben los datos y emiten eventos. Los presentadores no obtienen ni modifican datos por su cuenta.
 
 Nomenclatura
-- **Container**: aka *Parent, Smart*. Irán en una subcarpeta `containers`
-- **Presenter**: aka *Child, Dumb*. Irán en una subcarpeta... `components`
+- **Container**: aka *Parent, Smart*. `AppComponent` y `CartComponent`
+- **Presenter**: aka *Child, Dumb*. `ItemPickerComponent` y `BasketListComponent`
 
-> Este reparto de responsabilidades es aconsejable independientemente de la estrategia de detección aplicada. Tienes más información el artículo de introducción [flujo de datos entre componentes](../lujo-de-datos-entre-componentes-angular).
+> Este reparto de responsabilidades es aconsejable independientemente de la estrategia de detección aplicada. Tienes más información el artículo de introducción [flujo de datos entre componentes](../flujo-de-datos-entre-componentes-angular).
 
 # 2 Change detection strategies
 
@@ -111,11 +142,12 @@ El potencialmente pesado trabajo de clonado lo podemos evitar en muchos casos us
 
 - **Tipos primitivos** que se pasan por valor en las propiedades `@Input()`
 - **Arrays**: muchos métodos como `.filter() .slice() .sort() .concat()` etc., devuelven nuevas referencias sin modificar el array original.
-- **Observables y el pipe Async**, pues en este caso se subscribe y lanza implícitamente la detección del cambio. Sin necesidad de clonar.
+- **Observables y el pipe Async**, pues en este caso se subscribe y lanza implícitamente la detección del cambio. No hay necesidad de clonar todo lo que llega por _http_.
 
 Para los demás casos tenemos operadores *TypeScript* sencillos y optimizados para obtener nuevas referencias a partir de otros ya existentes.
 
 ```typescript
+// js cloning techniques
 const original = { name:'first', value:1 };
 const cloned = { ...original };
 // > { name:'first', value:1 }
@@ -133,168 +165,46 @@ const newList = list.filter(i => i.name=='first');
 
 Ya tienes los conocimientos para acelerar y reducir la incertidumbre sobre el actualización de vistas usando el patrón **contenedor / presentador** junto con la estrategia de detección de cambios `OnPush`. Ahora vamos a ver un ejemplo.
 
-## Ejemplo
 
-### Funcionalidad esperada:
 
-Cuando un usuario visita la aplicación por primera vez debe avisarse del uso de cookies para cumplir con las políticas legales.
+## 3.3 Todo reactivo.
 
-El aviso será mediante un dialogo flotante sobre la página.
-
-El usuario puede ver más detalles o quedarse con la información reducida.
-
-# 4. Un par de componentes con detección de cambio controlada.
-
-Ya que este será un componente genérico y válido para muchas aplicaciones vamos a crearlo en una librería reutilizable a la que llamaré `policy`. En ella generamos los dos componentes. ¿Dos componentes?. Hemos dedicado un tema al [flujo de datos entre componentes](../lujo-de-datos-entre-componentes-angular) en el tutorial de introducción a Angular. Allí se recomendaba que la lógica de presentación y la de negocio estuviesen separadas.
-
-Emergía el patrón _container-presenter_ que separa la responsabilidad de tratar con los servicios de datos de la responsabilidad de presentarlos en pantalla. Al componente que manipula datos se le llama contenedor, y al que los presenta... presentador. Puedes usar cualquier esquema de organización o nombrado. Yo los agrupo en dos carpetas: `containers` y simples `components`.
-
-```bash
-# Generate the policy library project
-ng g library policy --tags=angular
-# Generate the dialog components
-# container
-ng g c containers/mandatory-dialog --project=policy --export --inlineStyle --inlineTemplate --changeDetection=OnPush
-# presenter
-ng g c components/dialog --project=policy --changeDetection=OnPush
+```yaml
+ Como: desarrollador
+  quiero: que las comunicaciones sean fluidas e independientes del tiempo
+  para que: los cambios en los datos cambien la presentación sin esfuerzo
 ```
-
-Eso sí todos llevan una modificador especial: el `changeDetection=OnPush`. Esta es la primera recomendación para cumplir con el flujo unidireccional. En esencia lo que hacemos es decirle a Angular que no use la detección de cambios por defecto. Tenemos un artículo con una explicación completa de la [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular).
-
-
-El componente contenedor suele tener poco _html_ y ningún _css_, así que es un candidato a entrar en un único fichero: `containers/mandatory-dialog.component.ts`. Nada interesante por el momento en este componente obligatorio en toda web pública.
-
-```typescript
-@Component({
-  selector: 'ab-policy-mandatory-dialog',
-  template: `
-    <ab-policy-dialog>
-    </ab-policy-dialog>
-  `,
-  styles: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class MandatoryDialogComponent implements OnInit {
-  constructor() {}
-  public ngOnInit(): void {}
-}
-```
-
-Tampoco el presentador requiere de mucha atención, así que muestro su simple vista: `components/dialog.component.html`
-
-```html
-<dialog open>
-  <header>
-    <p>This site uses cookies to personalize content, to provide social media features and to analyze traffic.</p>
-  </header>
-</dialog>
-```
-
-# 5. Todo reactivo.
-
-> Como desarrollador quiero que las comunicaciones sean fluidas e independientes del tiempo para que los cambios en los datos cambien la presentación sin esfuerzo
 
 Otro de los pilares de la programación moderna de grandes aplicaciones es la **reactividad** (nada que ver con Chernóbil). Se trata de que los cambios se comuniquen cuando ocurran, sin necesidad de preguntar por ellos. De esta forma **los componentes reaccionarán al cambio** en lugar de buscarlo proactivamente mejorando mucho el rendimiento de las aplicaciones.
 
-Reducida a lo esencial, la lógica más básica que quiero implementar es un marcador que me indique si el usuario ha aceptado o no la política de cookies. Un mísero booleano. Pero claro, hacerlo reactivo requiere usar observables, y para eso emplearemos la librería [RxJs](https://www.learnrxjs.io/concepts/rxjs-primer.html).
-
-Hablando de cosas esenciales. Las arquitecturas de software centradas en el dominio proponen que toda la lógica básica de una gran aplicación debería ser independiente de _pequeños detalles sin importancia como los frameworks_. Aprovechando las capacidades de [Nx para tratar con mono repos](../nx-mono-repositorios-en-Angular/) no cuesta nada crear un librería en dónde establecer en los modelos de datos y las entidades con sus reglas de negocio. A esta librería de dominio la llamaré `policy-domain`.
-
-```bash
-# Generate a policy-domain Type Script library with nx power-ups
-ng g @nrwl/workspace:library policy-domain --directory=
-```
-
-Y en ella declaramos una clase que representa la entidad principal de este proyecto: la aceptación de las políticas. Esa entidad es una clase informa a quien se suscriba de su estado de aceptación, inicialmente falso.
-
-`libs\policy-domain\src\lib\services\policy-acceptation.entity.ts`
-
-```typescript
-export class PolicyAcceptationEntity {
-  constructor() { }
-
-  public isPolicyAccepted$(): Observable<boolean> {
-    return of(false));
-  }
-}
-```
-
-En una capa superior, ya en un entorno Angular, haremos uso de la entidad de dominio anterior. Será un servicio que a su vez va a exponer un observable, pero con su propia lógica adaptada, de cara la vista.
-
-```bash
-# Generate a policy service
-ng g s services/policy --project=policy
-```
-
-`libs\policy\src\lib\services\policy.service.ts`
-
-```typescript
-@Injectable({
-  providedIn: 'root'
-})
-export class PolicyService {
-  private policyAcceptationEntity = new PolicyAcceptationEntity();
-
-  constructor( ) { }
-
-  public haveToShowAccpetationDialog$(): Observable<boolean> {
-    return this.policyAcceptationEntity
-      .isPolicyAccepted$()
-      .pipe(map(x => !x));
-  }
-}
-```
-
-Incorporamos el servicio en el componente principal para que nos indique si debemos mostrar el aviso al usuario o no.
-
-`app.component.ts`
-
-```typescript
-export class AppComponent {
-  public showPolicyDialog$: Observable<boolean>;
-
-  constructor(private policyService: PolicyService) {
-    this.showPolicyDialog$ = this.policyService.haveToShowAcceptationDialog$();
-  }
-}
-```
-Todo reactivo y todo asíncrono.
-
-`app.component.html`
-
-```html
-<ab-policy-mandatory-dialog *ngIf="showPolicyDialog$ | async "></ab-policy-mandatory-dialog>
-```
-
-Al utilizar observables, podemos usar el _pipe_ `async`, que ya sabemos que informa de los cambios al detector. Por tanto la detección `OnPush` es perfectamente válida.
+Reducida a lo esencial, la lógica más básica que quiero comunicar es un contador de elementos y la propia cesta. Un mísero número y un array. Pero claro, hacerlo reactivo requiere usar observables, y para eso emplearemos la librería [RxJs](https://www.learnrxjs.io/concepts/rxjs-primer.html).
 
 ---
 
 ## Diagramas
 
-El siguiente diagrama nos muestra a vista de pájaro las librerías y aplicaciones implicadas hasta el momento.
+El siguiente diagrama nos muestra a vista de pájaro los procesos que sique Angular para la detección del cambio y sus dos estrategias.
 
-![Dependencias entre proyectos](/images/12-projects-dependency.png)
-
-En este otro tenemos las clases implicadas. El color denota la librería en la que se definen.
-
-![Dependencias entre componentes y clases](/images/12-class-dependency.png)
-
----
-
-Para más información, o indicaciones paso a paso, consulta directamente la [documentación](https://angularbuilders.github.io/angular-blueprint/2-change) del proyecto en GitHub.
-
-Las tareas relativas a este tutorial resueltas en el [proyecto 2 - change-detection](https://github.com/angularbuilders/angular-blueprint/projects/2)
-
-![Angular.Builders](/css/images/angular.builders.png)
-
-La iniciativa [Angular.Builders](https://angular.builders) nace para ayudar a desarrolladores y arquitectos de software como tú. Ofrecemos formación y productos de ayuda y ejemplo como [angular.blueprint](https://angularbuilders.github.io/angular-blueprint/).
-
-Para más información sobre servicios de consultoría [ponte en contacto conmigo](https://www.linkedin.com/in/albertobasalo/).
+![Detección del cambio](/images/change-detection.jpg)
 
 ---
 
 ## Resumen
+
+### OnPush es más ligero
+
+- Se lanza menos veces
+
+- Sólo comprueba referencias, no valores
+
+
+### Async, CDR y clone detectan los cambios
+
+- **`Async`:** para que las respuestas desde observables sean limpias
+
+- **_CDR_:** cuando el cambio venga de procesos asíncronos pero no observables
+
+- **_Clonado_:** para que los componentes presentadores detecten cambios en las referencias
 
 La detección automática es cómoda pero costosa. Por dos razones: se dispara muchas veces y necesita comprobar si hay cambios comparando valor por valor. La detección manual es más eficiente. Se lanza menos veces y además le basta un cambio de referencia para saber que hay novedades. Para poder usarla sin grandes trabajos recomiendo usar el _pipe_ `async`, siempre con orígenes de datos observables.
 

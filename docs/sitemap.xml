@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
+    
+    <lastmod>2019-09-11T16:17:23.096Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/tests-unitarios-con-jest-y-e2e-con-cypress-en-Angular/</loc>
     
     <lastmod>2019-09-05T15:53:59.932Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>https://academia-binaria.com/flujo-reactivo-unidireccional-con-Angular-y-RxJs/</loc>
     
     <lastmod>2019-08-05T09:40:10.854Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
-    
-    <lastmod>2019-08-02T15:43:45.289Z</lastmod>
     
   </url>
   
