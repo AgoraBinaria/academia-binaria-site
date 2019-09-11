@@ -204,7 +204,7 @@ El siguiente diagrama nos muestra a vista de pájaro los procesos que sique Angu
 
 - **_CDR_:** cuando el cambio venga de procesos asíncronos pero no observables
 
-- **_Clonado_:** para que los componentes presentadores detecten cambios en las referencias
+- **_Clonado_:** para que se detecten cambios simplemente usando las referencias
 
 La detección automática es cómoda pero costosa. Por dos razones: se dispara muchas veces y necesita comprobar si hay cambios comparando valor por valor. La detección manual es más eficiente. Se lanza menos veces y además le basta un cambio de referencia para saber que hay novedades. Para poder usarla sin grandes trabajos recomiendo usar el _pipe_ `async`, siempre con orígenes de datos observables.
 
