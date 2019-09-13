@@ -240,7 +240,7 @@ private getOnlineRates$(symbol: string) {
 
 ## 3.2 Consumo de pipes
 
-La parte del consumo es la más simple. Se trata de invocar a la transformación pasándole los atributos necesarios y volver a tranformar o utilizar directamente el resultado.
+La parte del consumo es la más simple. Se trata de invocar a la transformación pasándole los atributos necesarios y volver a transformar o utilizar directamente el resultado.
 
 `apps\shop\src\app\catalog\product\product.component.html`
 
