@@ -10,10 +10,10 @@ tags:
 - Avanzado
 categories:
 - [Tutorial, Angular]
-thumbnail: /css/images/angular-13_unidirectional.png
+thumbnail: /css/images/angular-14_unidirectional.png
 ---
 
-![flujo-reactivo-unidireccional-con-Angular-y-RxJs](/images/tutorial-angular-13_unidirectional.png)
+![flujo-reactivo-unidireccional-con-Angular-y-RxJs](/images/tutorial-angular-14_unidirectional.png)
 
 Continuando con el **tutorial de Angular Avanzado** nos centramos ahora en una arquitectura de comunicación de datos conocida como _Unidirectional Data Flow_ o flujo de datos en un mismo sentido. Esta técnica es una mejora sobre el modelo básico de Angular, el _double-binding_, que facilitaba mucho el desarrollo en pequeños proyectos.
 
@@ -23,7 +23,7 @@ Tomar las decisiones correctas en cuestiones de este calibre puede suponer la di
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular/). Al finalizar dotaremos a la aplicación de un sistema de avisos sobre el uso de cookies en cumplimiento de la [política RGPD](https://es.wikipedia.org/wiki/Reglamento_General_de_Protecci%C3%B3n_de_Datos)
+Partiendo de la aplicación tal cómo quedó en [componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular). Al finalizar dotaremos a la aplicación de un sistema de avisos sobre el uso de cookies en cumplimiento de la [política RGPD](https://es.wikipedia.org/wiki/Reglamento_General_de_Protecci%C3%B3n_de_Datos)
 
 > Código asociado a este tutorial en _GitHub_: [angular.builders/angular-blueprint/](https://github.com/angularbuilders/angular-blueprint)
 

@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/componentes-dinamicos-directivas-y-pipes-con-Angular/</loc>
+    
+    <lastmod>2019-09-13T10:55:22.161Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/flujo-reactivo-unidireccional-con-Angular-y-RxJs/</loc>
+    
+    <lastmod>2019-09-13T08:13:16.299Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
     
-    <lastmod>2019-09-11T16:42:30.522Z</lastmod>
+    <lastmod>2019-09-13T08:11:18.912Z</lastmod>
     
   </url>
   
@@ -68,13 +82,6 @@
     <loc>https://academia-binaria.com/base-aplicacion-angular/</loc>
     
     <lastmod>2019-08-05T10:49:04.805Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/flujo-reactivo-unidireccional-con-Angular-y-RxJs/</loc>
-    
-    <lastmod>2019-08-05T09:40:10.854Z</lastmod>
     
   </url>
   
