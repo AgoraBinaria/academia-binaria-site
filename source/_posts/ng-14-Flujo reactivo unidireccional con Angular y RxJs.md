@@ -33,14 +33,9 @@ Partiendo de la aplicación tal cómo quedó en [componentes dinámicos, directi
 
 [1. Arquitectura del patrón Redux.](./#1-Arquitectura-del-patron-Redux)
 
-[2. Un servicio para mostrar u ocultar detalles.](./#2-Un-servicio-para-mostrar-u-ocultar-detalles)
-
-[3. Ya solo quedan los detalles.](./#3-Ya-solo-quedan-los-detalles)
-
-[Diagramas](./#Diagramas)
+[2. Implementación de un Store con RxJs.](./#2-Implementacion-de-un-Store-con-RxJs)
 
 [Resumen](./#Resumen)
-
 
 ---
 
