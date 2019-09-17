@@ -1,19 +1,20 @@
 ---
-title: Flujo reactivo unidireccional con Angular y RxJs
+title: Redux, flujo reactivo unidireccional con Angular y RxJs
 permalink: flujo-reactivo-unidireccional-con-Angular-y-RxJs
 date: 2019-08-05 11:46:34
 tags:
 - Angular
 - Angular8
+- Redux
 - RxJs
 - Tutorial
 - Avanzado
 categories:
 - [Tutorial, Angular]
-thumbnail: /css/images/angular-14_unidirectional.png
+thumbnail: /css/images/angular-14_redux.png
 ---
 
-![flujo-reactivo-unidireccional-con-Angular-y-RxJs](/images/tutorial-angular-14_unidirectional.png)
+![flujo-reactivo-unidireccional-con-Angular-y-RxJs](/images/tutorial-angular-14_redux.png)
 
 Continuando con el **tutorial de Angular Avanzado** nos centramos ahora en una arquitectura de comunicación de datos conocida como _Unidirectional Data Flow_ o flujo de datos en un mismo sentido. Esta técnica es una mejora sobre el modelo básico de Angular, el _double-binding_, que facilitaba mucho el desarrollo en pequeños proyectos.
 
