@@ -1,7 +1,7 @@
 ---
 title: Redux, flujo reactivo unidireccional con Angular y RxJs
 permalink: flujo-reactivo-unidireccional-con-Angular-y-RxJs
-date: 2019-08-05 11:46:34
+date: 2019-09-17 12:47:58
 tags:
 - Angular
 - Angular8
@@ -187,9 +187,9 @@ describe('GIVEN: a basic mini-store of  product stocks', () => {
 
 ## 2.2 El envío de acciones
 
-En una situación más realista y aproximada al patrón Redux **no deberíamos asignar el valor de manera directa**, pues hay rastro de cómo se llegó ahí. Necesitamos los conceptos de acciones y función reductora. La idea es que el almacén reciba acciones, invoque al reductor y asigne el valor obtenido.
+En una situación más realista y aproximada al patrón Redux **no deberíamos asignar el valor de manera directa**, pues hay que dejar rastro de cómo se llegó ahí. Necesitamos entonces los conceptos de acciones y función reductora. La idea es que el almacén reciba acciones, invoque al reductor y asigne el valor obtenido. Vamos a verlo.
 
-Empezamos por crear otra clase similar `libs\rx-store\src\lib\rx-store.ts` y par de ayudas. Como mínimo el _interface_ que debe cumplir toda `Action`; es muy sencillo y siempre igual: una cadena para especificar el comando y cualquier cosa como argumento de carga. Aprovechando las potencia del TypeScript también creamos un _type_ para asegurar que la `reducerFunction` tiene la firma adecuada, recibiendo como argumentos el estado actual y la acción que se le aplica; teniendo que devolver el nuevo estado.
+Empezamos por crear otra clase similar `libs\rx-store\src\lib\rx-store.ts` y un par de ayudas. Como mínimo el _interface_ que debe cumplir toda `Action`; es muy sencillo y siempre igual: una cadena para especificar el comando y cualquier cosa como argumento de carga. Aprovechando las potencia del TypeScript también creamos un _type_ para asegurar que la `reducerFunction` tiene la firma adecuada. La obligamos a recibir como argumentos el estado actual y la acción que se le aplica; teniendo que devolver el nuevo estado.
 
 ```typescript
 import { BehaviorSubject, Observable } from 'rxjs';
