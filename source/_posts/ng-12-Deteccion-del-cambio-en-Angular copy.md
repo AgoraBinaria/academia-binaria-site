@@ -6,6 +6,7 @@ tags:
 - Angular
 - Angular8
 - ChangeDetection
+- Observables
 - Tutorial
 - Avanzado
 categories:

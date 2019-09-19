@@ -7,6 +7,7 @@ tags:
 - Angular8
 - Redux
 - RxJs
+- Observables
 - Tutorial
 - Avanzado
 categories:
