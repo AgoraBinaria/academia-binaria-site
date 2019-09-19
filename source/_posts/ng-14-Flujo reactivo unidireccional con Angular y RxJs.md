@@ -1,7 +1,7 @@
 ---
 title: Redux, flujo reactivo unidireccional con Angular y RxJs
 permalink: flujo-reactivo-unidireccional-con-Angular-y-RxJs
-date: 2019-08-05 11:46:34
+date: 2019-09-17 12:47:58
 tags:
 - Angular
 - Angular8
@@ -17,7 +17,7 @@ thumbnail: /css/images/angular-14_redux.png
 
 ![flujo-reactivo-unidireccional-con-Angular-y-RxJs](/images/tutorial-angular-14_redux.png)
 
-Continuando con el **tutorial de Angular Avanzado** nos centramos ahora en una arquitectura de comunicación de datos conocida como _Unidirectional Data Flow_ o flujo de datos en un mismo sentido. Esta técnica es una mejora sobre el modelo básico de Angular, el _double-binding_, que facilitaba mucho el desarrollo en pequeños proyectos.
+Continuando con el **tutorial de Angular Avanzado** nos centramos ahora en una arquitectura de comunicación de datos conocida como _Unidirectional Data Flow_ o flujo de datos en un mismo sentido. Esta técnica es una mejora sobre el modelo básico de Angular, el _double-binding_, el cual facilitaba mucho el desarrollo en pequeños proyectos.
 
 > Cuando hablamos de mejora debemos ser honestos con los costes y beneficios: aquí vamos a mejorar la eficiencia en ejecución y a facilitar la depuración a costa de una mayor complejidad estructural y sintáctica. Merece la pena cuanto más grande sea el proyecto. Este es un ejemplo simplificado pero realista. Tómate tu tiempo para estudiarlo con calma.
 
@@ -25,60 +25,56 @@ Tomar las decisiones correctas en cuestiones de este calibre puede suponer la di
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular). Al finalizar dotaremos a la aplicación de un sistema de avisos sobre el uso de cookies en cumplimiento de la [política RGPD](https://es.wikipedia.org/wiki/Reglamento_General_de_Protecci%C3%B3n_de_Datos)
+Partiendo de la aplicación tal cómo quedó en [componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular). Al finalizar dotaremos a la aplicación de un almacén de datos que notifica cambios reactivos.
 
-> Código asociado a este tutorial en _GitHub_: [angular.builders/angular-blueprint/](https://github.com/angularbuilders/angular-blueprint)
+> Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 
 
 ## Tabla de Contenido:
 
-[Ejemplo](./#Ejemplo)
+[1. Arquitectura del patrón Redux.](./#1-Arquitectura-del-patron-Redux)
 
-[1. Un almacén genérico observable.](./#1-Un-almacen-generico-observable)
-
-[2. Un servicio para mostrar u ocultar detalles.](./#2-Un-servicio-para-mostrar-u-ocultar-detalles)
-
-[3. Ya solo quedan los detalles.](./#3-Ya-solo-quedan-los-detalles)
-
-[Diagramas](./#Diagramas)
+[2. Implementación de un Store con RxJs.](./#2-Implementacion-de-un-Store-con-RxJs)
 
 [Resumen](./#Resumen)
 
-
 ---
-## Ejemplo
 
-### Funcionalidad esperada:
+# 1. Arquitectura del patrón Redux
 
-- Cuando un usuario visita la aplicación por primera vez debe avisarse del uso de cookies para cumplir con las políticas legales.
+```yaml
+Como: desarrollador,
+   Quiero: saber qué acciones se pueden hacer
+   para que: pueda controlar la funcionalidad
 
-- El aviso será mediante un diálogo flotante sobre la página.
-
-- El usuario puede ver más detalles o quedarse con la información reducida.
-
-- Según el tipo de aplicación, los detalles podrán verse en una página propia o en el mismo diálogo inicial.
-
-- El usuario podrá aceptar el uso de cookies.
-
-- Si lo hace, se almacenará la aceptación en el almacén local.
-
-- Habiendo aceptación no se mostrará más el diálogo.
-
-
-# 1. Un almacén genérico observable
-
-> Como desarrollador quiero que los cambios en el estado estén controlados y desacoplados para saber quién lo cambia y quién se interesa
-
-Hablar de _Unidirectional Data Flow_ sin presentar _Redux_ es poco menos que imposible. Y como tampoco es necesario liarse demasiado para sacarle partido vamos a verlo de manera práctica. Haciendo uso exclusivamente de la librería _RxJs_ y de las capacidades de _TypeScript_ vamos a crear un almacén (un _store_ en la jerga _Redux_) observable.
-
-De nuevo creamos una librería independiente de Angular que podamos usar en cualquier _framework_ o incluso en _VanillaJS_. En esta librería pienso meter cosas estratégicas así que le pondré un nombre imponente: la llamaré `core-domain`
-
-```bash
-# Generate a core-domain library
-ng g @nrwl/workspace:library core-domain --directory=
+Como: desarrollador,
+   Quiero: saber qué cambios se han realizado
+   para que: pueda depurar y predecir el comportamiento
 ```
 
-Y en ella una clase [genérica de TypeScript](https://www.typescriptlang.org/docs/handbook/generics.html) que tiene todos los atributos para cumplir con el principios _Redux_. Primero una intro teórica, luego el código y más adelante su consumo.
+Hablar de _Unidirectional Data Flow_ sin presentar **_Redux_** es poco menos que imposible. Vamos a ver en qué consiste este patrón tan usado, no sólo en Angular. Lo que aprendas te servirá también para _react_, _vue_ y otros.
+
+**Redux se ocupa de la gestión del estado**, es decir, del valor de las variables en un determinado momento. Centraliza sus cambios para saber qué ocurrió para llegar a este valor, y qué valor tendrá según lo que ocurra. Desacopla los emisores de acciones de los receptores de información, para ello combina otros dos patrones:
+
+- **Action:** Envío de comandos al almacén para actualizar el estado
+
+- **Observable:** Subscripción a cambios en el estado del almacén.
+
+Como incorpora cierta complejidad de serie conviene que nos hagamos esta pregunta ¿Cuándo usarlo?. Una pequeña lista de ideas sobre cuándo implementar Redux.
+
+- Aplicaciones complejas con **múltiples componentes**.
+    - El patrón contenedor / presentadores se hace complejo y tedioso a partir de tres niveles de profundidad del árbol.
+    - Los `router-outlets` inician una jerarquía propia. Comunicar componentes entre árboles no es factible con `@Input` y `@Output`
+- Uso de estrategias de **detección del cambio OnPush**.
+    - Consumo de datos mediante _pipes async_ suscritos a observables.
+- **Cambios concurrentes** por el usuario y los servicios.
+    - Peticiones mediante _pull_ a intervalos regulares
+    - Recepción de _sockets_
+    - Llamadas en paralelo
+- Gestión de datos local con _cachés_
+
+> Redux no hace rápido lo simple, sino mantenible lo complejo.
+
 
 ## 1.1 Principios de Redux
 
@@ -94,165 +90,191 @@ Los artificios fundamentales que incorporaremos a nuestro desarrollo van en dos 
 
 - **Store**: El sistema que mantiene el estado. Despacha acciones de mutado sobre el mismo y comunica cambios enviando copias de sólo lectura a los subscriptores.
 - **State**: Objeto que contiene la única copia válida de la información. Representa el valor del almacén en un momento determinado. Nunca expondremos un puntero a este dato privado.
+
+### Acceso al estado
+
 - **Setters** : Métodos que asignan y notifican un nuevo cambio. Clonan la información recibida para que el llamante no tenga un puntero al estado.
+
 - **Selectors** : Métodos para consulta del estado. Devuelven un observable al que suscribirse para obtener notificaciones de cambio o una instantánea. En cualquier caso siempre emitirá o devolverá un clon del estado.
 
-Para cumplir con el tercer principio se necesita algo más. Al menos acciones y reductores. A partir de aquí ya no conviene reinventar la rueda y es mejor usar soluciones estándar. En próximos artículos te mostraré como hacerlo con _NgRx_. usando _Actions_,  _Reducers_ y _Effects_. Por ahora nos quedamos con lo básico un estado privado con capacidad de notificar cambios.
+### Mutaciones del estado
+
+- **Actions**: Objetos identificados por un tipo y cargados con un *payload*. Transmiten una intención de mutación sobre el estado del *store*.
+
+- **Reducers** : Son funciones puras, que ostentan la exclusividad de poder mutar el estado. Reciben dos argumentos: el estado actual y una acción con su tipo y su carga. Clonan el estado, realizan los cambios oportunos y devuelven el estado mutado.
+
+![Redux](/images/Redux.png)
+
+Podemos verlo en un diagrama antes de pasar a verlo en código.
 
 
-`libs\core-domain\src\lib\services\store.ts`
+# 2. Implementación de un Store con RxJs
+
+```yaml
+As a: seller,
+  I want: to know how many products are out of stock
+  so that: I can refill them
+```
+
+Para que veas que **Redux es independiente de Angular**, vamos a montarlo en una librería sin dependencias del _framework_. **Sólo TypeScript y RxJs**. A día de hoy ambas tecnologías son transversales al ecosistema _frontend_.
+
+```
+ng g @nrwl/workspace:library rx-store
+```
+
+## 2.1 El Store observable mínimo
+
+Empezaremos por la implementación más inocente de un almacén reactivo. Una clase con [tipos genéricos](https://www.typescriptlang.org/docs/handbook/generics.html) que hace uso de la librería de observables RxJs. De esta, toma el `BehaviorSubject` que permite notificar cambios y valores iniciales.
+
+Aunque para evitar que otra clase consumidora también emita sin control, sólo exponemos su interfaz `asObservable()`. Relacionado con esto también es obligatorio evitar a toda costa punteros al estado. Para ell siempre trabajamos con clones. Los métodos `get() set()` usan el [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) de JS `{ ...this.state }` tanto al recibir como al devolver el valor del estado.
+
+`libs\rx-store\src\lib\mini-store.ts`
 
 ```typescript
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export class Store<T> {
-  private state$ = new BehaviorSubject<T>({ ...this.state });
+export class MiniStore<T> {
+  private state: T;
+  private subject$ = new BehaviorSubject(this.get());
 
-  constructor(private state: T) {}
-
-  public select(): T {
-    return { ...this.state };
+  constructor(initialState: T) {
+    this.set(initialState);
+  }
+  public set(newSate: T) {
+    this.state = { ...newSate };
+    this.subject$.next(this.get());
   }
   public select$(): Observable<T> {
-    return this.state$.asObservable();
+    return this.subject$.asObservable();
   }
-
-  public set(newState: T): void {
-    this.state = { ...newState };
-    this.state$.next(this.select());
+  private get(): T {
+    return { ...this.state };
   }
 }
 ```
-
-Esta es la implementación más sencilla posible de un almacén observable para empezar a trabajar con _Redux_. Usamos un `BehaviorSubject` para notificar cambios, aunque sólo exponemos su interfaz `asObservable()` . Por lo demás lo único obligatorio es usar clones `{ ...this.state }` tanto al recibir como al devolver el valor del estado.
-
-# 2. Un servicio para mostrar u ocultar detalles
-
-> Como usuario quiero ver y ocultar detalles sobre las cookies para saber qué se hace y decidir si acepto.
-
-Empezamos con una interfaz para los datos del propietario del sitio y otra para controlar si se muestran o no los detalles y después el servicio propiamente dicho. El servicio tienen instancia del almacén observable con el tipo concreto `PolicyDetails`. Será el lugar en el que guardaremos el estado y al que notificaremos los cambios. Para simplificarlo no uso por ahora ningún reductor y se asignará el nuevo valor sin más mediante el método set.
+Puedes ver su uso en los test unitarios que le acompañan en `libs\rx-store\src\lib\rx-store.spec.ts`.
 
 ```typescript
-export interface PolicyHolder {
-  companyName: string;
-  companyUrl: string;
-  supportEmail: string;
-  noticeUrl?: string;
-}
-
-export interface PolicyDetails {
-  showingDetails: boolean;
-  policyHolder: PolicyHolder;
-}
-
-export const POLICY_HOLDER_CONFIG = new InjectionToken<string>('policy-holder-config');
-
-@Injectable({
-  providedIn: 'root'
-})
-export class PolicyService {
-  private policyAcceptationEntity: PolicyAcceptationEntity = new PolicyAcceptationEntity();
-  private policyDetailsStore: Store<PolicyDetails>;
-
-  constructor(@Inject(POLICY_HOLDER_CONFIG) public readonly policyHolderConfig: PolicyHolder) {
-    this.policyDetailsStore = new Store<PolicyDetails>({
-      showingDetails: false,
-      policyHolder: policyHolderConfig
+import { MiniStore } from './mini-store';
+describe('GIVEN: a basic mini-store of  product stocks', () => {
+  interface ProductStock { stock: number; }
+  const initial: ProductStock = { stock: 25 };
+  describe('WHEN: I start one ', () => {
+    const stockMiniStore = new MiniStore<ProductStock>(initial);
+    it('THEN: it should have the inital value', done => {
+      stockMiniStore.select$().subscribe(res => {
+        expect(res).toEqual(initial);
+        done();
+      });
     });
-  }
-
-  public toggleMoreDetails() {
-    const currentState = this.policyDetailsStore.select();
-    currentState.showingDetails = !currentState.showingDetails;
-    this.policyDetailsStore.set(currentState);
-  }
-
-  public targetUrlToNavigateForDetails$(): Observable<string> {
-    return this.policyDetailsStore.select$().pipe(
-      filter(x => x.policyHolder.noticeUrl !== undefined),
-      map(x => (x.showingDetails ? x.policyHolder.noticeUrl : ''))
-    );
-  }
+  });
+  describe('WHEN: I start and set a new value ', () => {
+    const stockMiniStore = new MiniStore<ProductStock>(initial);
+    stockMiniStore.set({ stock: 40 });
+    it('THEN: it should emit the same value', done => {
+      stockMiniStore.select$().subscribe(res => {
+        expect(res).toEqual({ stock: 40 });
+        done();
+      });
+    });
+  });
+});
 ```
 
-Como ves el servicio no expone directamente nada que tenga que ver con el `store`. Sus métodos público son exclusivamente de negocio. Asigna cambio y filtra y transforma las notificaciones para ser consumidas directamente.
+## 2.2 El envío de acciones
 
-# 3. Ya solo quedan los detalles
+En una situación más realista y aproximada al patrón Redux **no deberíamos asignar el valor de manera directa**, pues hay que dejar rastro de cómo se llegó ahí. Necesitamos entonces los conceptos de acciones y función reductora. La idea es que el almacén reciba acciones, invoque al reductor y asigne el valor obtenido. Vamos a verlo.
 
-Permíteme el juego de palabras. Efectivamente queda mostrar u ocultar los detalles de la política de cookies. Con el pequeño detalle de hacerlo en el propio diálogo o en una url aparte. Y queda también el detalle de la  aceptación por parte del usuario; y claro, falta otro detalle más para tener un repositorio que lo almacene y recupere desde _local storage_. Me recuerda al chiste de cómo dibujar un caballo.
-
-![Cómo dibujar un caballo](/images/draw-horse.jpeg)
-
-Al menos si que quiero mostrarte cómo se consume el servicio desde el componente principal de la aplicación. Se suscribe a los cambios que le indican que debe navegar a otra url, pero no sabe qué los provocó.
+Empezamos por crear otra clase similar `libs\rx-store\src\lib\rx-store.ts` y un par de ayudas. Como mínimo el _interface_ que debe cumplir toda `Action`; es muy sencillo y siempre igual: una cadena para especificar el comando y cualquier cosa como argumento de carga. Aprovechando las potencia del TypeScript también creamos un _type_ para asegurar que la `reducerFunction` tiene la firma adecuada. La obligamos a recibir como argumentos el estado actual y la acción que se le aplica; teniendo que devolver el nuevo estado.
 
 ```typescript
-export class AppComponent {
-  public title = 'spa';
-  public showPolicyDialog$: Observable<boolean>;
+import { BehaviorSubject, Observable } from 'rxjs';
 
-  constructor(private router: Router, private policyService: PolicyService) {
-    this.showPolicyDialog$ = this.policyService.haveToShowAcceptationDialog$();
-    this.policyService
-      .targetUrlToNavigateForDetails$()
-      .subscribe({ next: this.navigateTo.bind(this) });
-  }
-  private navigateTo(targetUrl: string) {
-    this.router.navigate([targetUrl]);
-  }
+export interface Action {
+  type: string;
+  payload: any;
 }
-```
-Está completamente desacoplado del componente en el que el usuario indicó que quería ver más detalles. Sólo comparte la instancia `PolicyService` y se comunican mediante comandos y suscripción a cambios.
 
-```typescript
-@Component({
-  selector: 'ab-policy-mandatory-dialog',
-  template: `
-    <ab-policy-dialog
-      *ngIf="(policyDetails$ | async) as policyDetails"
-      [policyDetails]="policyDetails"
-      (toggleDetails)="onToggleDetails()"
-    >
-    </ab-policy-dialog>
-  `
-})
-export class MandatoryDialogComponent {
-  public policyDetails$: Observable<PolicyDetails> = this.policyService.policyDetails$();
+export type reducerFunction<T> = (state: T, action: Action) => T;
 
-  constructor(private policyService: PolicyService) {}
+export class RxStore<T> {
+  private state: T;
+  private subject$ = new BehaviorSubject<T>(this.get());
 
-  public onToggleDetails(): void {
-    this.policyService.toggleMoreDetails();
+  constructor(initialState: T, private reducer: reducerFunction<T>) {
+    this.set(initialState);
+  }
+  public select$(): Observable<T> {
+    return this.subject$.asObservable();
+  }
+  public dispatch(action: Action) {
+    const curretState = this.get();
+    const newState = this.reducer(curretState, action);
+    // instrumentation, cache, log...
+    this.set(newState);
+  }
+  private get(): T {
+    return { ...this.state };
+  }
+  private set(newSate: T) {
+    this.state = { ...newSate };
+    this.subject$.next(this.get());
   }
 }
 ```
 
-## Diagramas
-
-En los siguientes diagramas se muestra a vista de pájaro las librerías y clases implicadas hasta el momento para no perderte mientras sigues todo el código necesario.
-
-![Dependencias entre proyectos](/images/13-projects-dependency.png)
-
-![Dependencias entre componentes y clases](/images/13-class-dependency.png)
+Como puedes ver, los `get()` y `set()` son ahora privados. El mundo exterior nos envía acciones al método `public dispatch(action: Action)`.  Ese sería un buen momento para incluir lógica de infraestructura e instrumentación. Hay quien  crea un _log_ de lo ocurrido, un histórico de valores... las librerías profesionales nos dan todo eso y mas. Una vez recibida la acción empieza la fiesta de los _clones_ invocando en medio a una función reductora que ahora veremos.
 
 ---
 
-Todos esos detalles con indicaciones paso a paso los tienes en la [documentación del Angular-Blueprint](https://angularbuilders.github.io/angular-blueprint/3-unidirectional) en GitHub y también se tratan en el [curso avanzado online](../https://academia-binaria.com/cursos/angular-business) que imparto con TrainingIT o a medida para tu empresa.
+## 2.3 La función reductora de estado
 
-Las tareas relativas a este tutorial resueltas en el [proyecto 2 - change-detection](https://github.com/angularbuilders/angular-blueprint/projects/2)
+En el fichero de _test_ `libs\rx-store\src\lib\rx-store.spec.ts` tenemos un ejemplo clarificador :
 
-![Angular.Builders](/css/images/angular.builders.png)
+```typescript
+const stockReducer: reducerFunction<ProductStock> = function(
+    state: ProductStock,
+    action: Action
+  ): ProductStock {
+    const clonedState = { ...state };
+    switch (action.type) {
+      case 'set':
+        clonedState.stock = action.payload;
+        break;
+      case 'increment':
+        clonedState.stock += action.payload;
+        break;
+      default:
+        break;
+    }
+    return clonedState;
+  };
+```
+Definimos `stockReducer` como una [**función pura**](https://www.freecodecamp.org/news/what-is-a-pure-function-in-javascript-acb887375dfe/) que cumple con el tipo `reducerFunction`. Normalmente estas funciones tienen un _switch_ que evalúa el tipo de la acción. En cada caso se asigna un nuevo estado según la mínima lógica oportuna y al finalizar se devuelve el estado mutado.
 
-La iniciativa [Angular.Builders](https://angular.builders) nace para ayudar a desarrolladores y arquitectos de software como tú. Ofrecemos formación y productos de ayuda y ejemplo como [angular.blueprint](https://angularbuilders.github.io/angular-blueprint/).
+Veamos el resto del _test_ para tener una idea de cómo se utiliza.
 
-Para más información sobre servicios de consultoría [ponte en contacto conmigo](https://www.linkedin.com/in/albertobasalo/).
+```typescript
+describe('WHEN: I get an increment ', () => {
+  const stockRxStore = new RxStore<ProductStock>(initial, stockReducer);
+  const incrementAction: Action = { type: 'increment', payload: 5 };
+  stockRxStore.dispatch(incrementAction);
+  it('THEN: it should raise the stock', done => {
+    stockRxStore.select$().subscribe(res => {
+      expect(res).toEqual({ stock: 30 });
+      done();
+    });
+  });
+});
+```
 
----
+De esta forma ya tenemos un sistema sencillo pero del que podríamos decir que cumple con los principios básicos de Redux.
 
 ## Resumen
 
 Las aplicaciones reales no son sencillas. Este es un tutorial avanzado que te exige conocimiento previo y dedicación. A cambio espero que te resulte útil y que podáis incorporar las técnicas de detección del cambio y control de estado observable en vuestros proyectos.
 
-Con este tutorial continúas tu formación [avanzada en Angular](../tag/Avanzado/) para poder afrontar retos de tamaño industrial.
+Con este tutorial continúas tu formación [avanzada en Angular](../tag/Avanzado/) para poder afrontar retos de tamaño industrial. Todos esos detalles se tratan en el [curso avanzado online](../https://academia-binaria.com/cursos/angular-business) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
