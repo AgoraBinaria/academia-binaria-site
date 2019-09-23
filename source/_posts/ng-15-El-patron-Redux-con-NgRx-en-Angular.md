@@ -4,7 +4,7 @@ permalink: el-patron-redux-con-ngrx-en-angular
 date: 2018-10-08 12:50:27
 tags:
 - Angular
-- Angular7
+- Angular8
 - Angular2
 - Redux
 - NgRx
@@ -24,10 +24,12 @@ Le pasa a todas las aplicaciones. Crecen y crecen en funcionalidad y complejidad
 
 <!-- more -->
 
-Partiendo del código tal cómo quedó en [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular/). Al finalizar tendrás una aplicación que gestiona centralizadamente los cambios, que permite conocer qué ocurrió y predecir lo que ocurrirá.
+Partiendo del código tal cómo quedó en [Detección del cambio en Angular](../el-patron-redux-con-ngrx-en-angular/). Al finalizar tendrás una aplicación que gestiona centralizadamente los cambios, que permite conocer qué ocurrió y predecir lo que ocurrirá usando NgRx.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/AutoBot/a-redux](https://github.com/AcademiaBinaria/autobot/tree/a-redux)
+> Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 
+
+https://academiabinaria.github.io/angular-boss/5-ngrx.html#1
 
 # 1 El patrón Redux
 
@@ -237,7 +239,7 @@ Esencialmente es una nuevo *store* supeditado al principal pero que no se define
 
 Ya tienes los conocimientos para gestionar de manera centralizada, auditable y predecible el estado de tus programas. El patrón Redux lucirá más cuanto más grande y compleja sea tu aplicación.
 
-Continúa tu formación avanzada para crear aplicaciones [PWA, entre la web y las apps con Angular](../pwa-entre-la-web-y-las-apps-con-angular) y verás como aprendes a programar con Angular 7.
+Continúa tu formación avanzada para crear aplicaciones [PWA, entre la web y las apps con Angular](../pwa-entre-la-web-y-las-apps-con-angular) y verás como aprendes a programar con Angular 8.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

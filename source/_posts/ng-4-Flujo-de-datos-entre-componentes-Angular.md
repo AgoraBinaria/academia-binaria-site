@@ -281,7 +281,7 @@ Cuando las pantallas se hacen realmente complejas empiezan a surgir **árboles d
 
 La solución en ambos casos pasa por permitir que *algunos componentes presentadores tengan su propio control de datos*. Este tipo de comunicaciones técnicamente se resuelve mediante *Observables* y merece un capítulo especial que se verá más adelante en esta serie. Incluso en situaciones complejas habrá que optar por patrones avanzados de gestión de estado como pueda ser *Redux*.
 
-Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes de una misma página. Sigue el tutorial para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular 8.
+Por ahora tienes una aplicación en *Angular* que comunica datos y cambios entre componentes de una misma página. Sigue el tutorial para añadirle [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) mientras aprendes a programar con Angular 8. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

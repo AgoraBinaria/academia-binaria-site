@@ -397,7 +397,7 @@ export class AuditInterceptorService implements HttpInterceptor {
 
 El operador `filter(any=>bool)` se usa para descartar eventos que no cumplan unos criterios. En mi caso sólo me interesan los eventos de recepción de la petición, y no necesito los intermedios. Uso de nuevo el `tap(callback)` para hacer cosas con los datos sin modificarlos en absoluto. En este caso los envío al método `auditEvent` para que lo saque por consola. Listo: un auditor para todas las llamadas.
 
-Ya tenemos el programa comunicado por _http_ con un servidor; aunque por ahora de forma anónima y sin ninguna seguridad. Con el conocimiento actual de los observables, del _httpClient_ y de los interceptores ya estamos cerca de resolverlo. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular.
+Ya tenemos el programa comunicado por _http_ con un servidor; aunque por ahora de forma anónima y sin ninguna seguridad. Con el conocimiento actual de los observables, del _httpClient_ y de los interceptores ya estamos cerca de resolverlo. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

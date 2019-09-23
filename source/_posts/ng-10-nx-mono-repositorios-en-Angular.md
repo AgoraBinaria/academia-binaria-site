@@ -440,7 +440,7 @@ Para más información sobre servicios de consultoría [ponte en contacto conmig
 
 En definitiva, los grandes desarrollos demandados por bancos, multinacionales o administración pública requieren soluciones avanzadas. **Angular** es una plataforma ideal para esos grandes proyectos, pero requiere conocimiento y bases sólidas para sacarle partido.
 
-Con este tutorial empiezas tu formación [avanzada en Angular](../tag/Avanzado/) para poder afrontar retos de tamaño industrial. Continúa aprendiendo a crear y ejecutar pruebas automatizadas creando [tests unitarios con Jest y e2e con Cypress en Angular](../tests-unitarios-con-jest-y-e2e-con-cypress-en-Angular).
+Con este tutorial empiezas tu formación [avanzada en Angular](../tag/Avanzado/) para poder afrontar retos de tamaño industrial. Continúa aprendiendo a crear y ejecutar pruebas automatizadas creando [tests unitarios con Jest y e2e con Cypress en Angular](../tests-unitarios-con-jest-y-e2e-con-cypress-en-Angular). Todos esos detalles se tratan en el [curso avanzado online](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 
 > Aprender, programar, disfrutar, repetir.

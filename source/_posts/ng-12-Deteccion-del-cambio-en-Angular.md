@@ -209,7 +209,7 @@ El siguiente diagrama nos muestra a vista de pájaro los procesos que sique Angu
 
 La detección automática es cómoda pero costosa. Por dos razones: se dispara muchas veces y necesita comprobar si hay cambios comparando valor por valor. La detección manual es más eficiente. Se lanza menos veces y además le basta un cambio de referencia para saber que hay novedades. Para poder usarla sin grandes trabajos recomiendo usar el _pipe_ `async`, siempre con orígenes de datos observables. Para ello necesitamos usar y conocer patrones que hagan uso de la librería observable _RxJs_
 
-Pero vale ya de infraestructura, pasemos a algo visual. En este tutorial de formación [avanzada en Angular](../tag/Avanzado/) veremos ahora cómo crear [componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular).
+Pero vale ya de infraestructura, pasemos a algo visual. En este tutorial de formación [avanzada en Angular](../tag/Avanzado/) veremos ahora cómo crear [componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular). Todos esos detalles se tratan en el [curso avanzado online](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

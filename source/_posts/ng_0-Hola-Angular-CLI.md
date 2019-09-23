@@ -1,13 +1,13 @@
 ---
 title: Hola Angular CLI
 permalink: hola-angular-cli
-date: 2019-01-09 12:54:00
+date: 2019-09-23 12:54:00
 tags:
   - Angular
   - CLI
   - Tutorial
   - Introducción
-  - Angular7
+  - Angular8
   - Angular2
 categories:
   - [Tutorial, Angular]
@@ -16,15 +16,15 @@ thumbnail: /css/images/angular-0_cli.png
 
 ![hola-angular-cli](/images/tutorial-angular-0_cli.png)
 
-**Angular en su versión 7 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El Angular CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
+**Angular en su versión 8 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El Angular CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
 
 <!-- more -->
 
-El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 7** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
+El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 8** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/0-hello](https://github.com/AcademiaBinaria/angular-basic/)
 
-# 1. Instalación de Angular CLI 7
+# 1. Instalación de Angular CLI 8
 
 Angular es una plataforma de desarrollo dogmática y llave en mano. Para empezar, como en casi cualquier desarrollo **necesitarás [NodeJS](https://nodejs.org/en/) y su manejador de de paquetes _npm_**. Tenerlos actualizados es un mandamiento básico para un desarrollador web. Comprueba tu versión con el siguiente comando:
 
@@ -271,7 +271,7 @@ Otros enlaces de interés sobre el ecosistema Angular.
 
 Para complementar tu conocimiento te recomiendo la [documentación de Angular/CLI](https://angular.io/cli) y este artículo avanzado que trata la configuración del CLI en profundidad [Angular CLI under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
-Esto es sólo el principio, _Angular CLI 7_ puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 7. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/).
+Esto es sólo el principio, _Angular CLI 8_ puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 8. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/). Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

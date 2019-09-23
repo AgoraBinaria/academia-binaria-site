@@ -410,7 +410,7 @@ public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent
 }
 ```
 
-Ya sabes lo básico de Angular; pero puedes usar mucho más conociendo su ecosistema. Sigue esta serie para agregar librerías y usar los esquemas de  [Material Design y CLI de Angular](../Material-Design-y-CLI-de-Angular/) mientras aprendes a programar con Angular.
+Ya sabes lo básico de Angular; pero puedes usar mucho más conociendo su ecosistema. Sigue esta serie para agregar librerías y usar los esquemas de  [Material Design y CLI de Angular](../Material-Design-y-CLI-de-Angular/) mientras aprendes a programar con Angular. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 
 > Aprender, programar, disfrutar, repetir.

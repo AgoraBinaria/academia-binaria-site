@@ -353,7 +353,7 @@ public forceError() {
 
 Tenemos ahora a nuestro usuario puntualmente informado de todo lo que sucede. Hemos utilizado **patrones de arquitectura de software** como el observable y la inversión del control. El resultado es una serie de componentes y servicios poco acoplados que intercambian información en tiempo real.
 
-Pero hay temas más avanzados con los que continuar. Sigue esta serie para introducir más temas de seguridad y crear tus [formularios reactivos con Angular](../formularios-reactivos-con-Angular/) mientras aprendes a programar con Angular.
+Pero hay temas más avanzados con los que continuar. Sigue esta serie para introducir más temas de seguridad y crear tus [formularios reactivos con Angular](../formularios-reactivos-con-Angular/) mientras aprendes a programar con Angular. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

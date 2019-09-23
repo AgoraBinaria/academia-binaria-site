@@ -271,7 +271,7 @@ En la prueba de servicios es fundamental que uses réplicas de sus dependencias.
 
 En definitiva, los grandes desarrollos demandados por bancos, multinacionales o administración pública requieren soluciones fiables y mantenibles. Y eso pasa inexcusablemente por hacer testing. **Angular** facilita las pruebas unitarias y de integración; especialmente con las herramientas _Jest_ y  _Cypress_ ya configuradas por **NxDevTools**.
 
-Con este tutorial de formación [avanzada en Angular](../tag/Avanzado/) te preparas para poder afrontar retos de tamaño industrial. Continúa aprendiendo a mejorar el rendimiento usando la [detección del cambio en Angular](../deteccion-del-cambio-en-Angular).
+Con este tutorial de formación [avanzada en Angular](../tag/Avanzado/) te preparas para poder afrontar retos de tamaño industrial. Continúa aprendiendo a mejorar el rendimiento usando la [detección del cambio en Angular](../deteccion-del-cambio-en-Angular). Todos esos detalles se tratan en el [curso avanzado online](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 
 > Aprender, programar, disfrutar, repetir.

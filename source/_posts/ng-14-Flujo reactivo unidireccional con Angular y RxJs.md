@@ -25,7 +25,7 @@ Tomar las decisiones correctas en cuestiones de este calibre puede suponer la di
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular). Al finalizar dotaremos a la aplicación de un almacén de datos que notifica cambios reactivos.
+Partiendo de la aplicación tal cómo quedó en [Redux, flujo reactivo unidireccional con Angular y RxJs](../componentes-dinamicos-directivas-y-pipes-con-Angular). Al finalizar dotaremos a la aplicación de un almacén de datos que notifica cambios reactivos.
 
 > Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 
@@ -274,7 +274,7 @@ De esta forma ya tenemos un sistema sencillo pero del que podríamos decir que c
 
 Las aplicaciones reales no son sencillas. Este es un tutorial avanzado que te exige conocimiento previo y dedicación. A cambio espero que te resulte útil y que podáis incorporar las técnicas de detección del cambio y control de estado observable en vuestros proyectos.
 
-Con este tutorial continúas tu formación [avanzada en Angular](../tag/Avanzado/) para poder afrontar retos de tamaño industrial. Todos esos detalles se tratan en el [curso avanzado online](../https://academia-binaria.com/cursos/angular-business) que imparto con TrainingIT o a medida para tu empresa.
+Con este tutorial continúas tu formación [avanzada en Angular](../tag/Avanzado/); para poder afrontar retos de tamaño industrial usando te recomiendo que uses [El patrón Redux con NgRx en Angular](../el-patron-redux-con-ngrx-en-angular). Todos esos detalles se tratan en el [curso avanzado online](../https://academia-binaria.com/cursos/angular-business) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

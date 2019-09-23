@@ -1,7 +1,7 @@
 ---
 title: Base para una aplicación Angular
 permalink: base-aplicacion-angular
-date: 2019-01-16 11:57:00
+date: 2019-09-23 13:57:00
 tags:
   - Angular
   - CLI
@@ -92,7 +92,7 @@ export class AppModule {}
 
 # 2. Componentes
 
-Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. **Los componentes son los bloques básicos de construcción de las páginas web en Angular 7**. Contienen una parte visual en html (la Vista) y una funcional en Typescript (el Controlador).
+Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. **Los componentes son los bloques básicos de construcción de las páginas web en Angular 8**. Contienen una parte visual en html (la Vista) y una funcional en Typescript (el Controlador).
 
 > La aplicación original que crea el CLI nos regala un primer componente de ejemplo en el fichero `app.component.ts`. Según la configuración del CLI este componente puede haber sido creado en un sólo fichero o hasta cuatro: (el controlador, con la vista y los estilos en ficheros propios y fichero extra para pruebas unitarias).
 
@@ -390,7 +390,7 @@ AppComponent
 
 ```
 
-Con esto tendrás una base para una aplicación _Angular 8_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular7.
+Con esto tendrás una base para una aplicación _Angular 8_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular8. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

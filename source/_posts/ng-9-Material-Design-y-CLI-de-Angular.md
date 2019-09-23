@@ -167,7 +167,7 @@ ng g @angular/material:tree source --project=schemat
 ```
 Por supuesto que hay más opciones, todas bien explicadas en la [documentación de Angular Material](https://material.angular.io/components/categories). Es una solución muy recomendable para aplicaciones de gestión, o simplemente para que se vean muy bien en Android y recuerden al _look and feel_ de todo lo que hace Google.
 
-Con este conocimiento finalizas tu [introducción a Angular](../tag/Introduccion/).  En el tutorial avanzado aprenderás más cosas para programar con Angular 7.
+Con este conocimiento finalizas tu [introducción a Angular](../tag/Introduccion/).  En el tutorial avanzado aprenderás más cosas para programar con Angular 8.Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>

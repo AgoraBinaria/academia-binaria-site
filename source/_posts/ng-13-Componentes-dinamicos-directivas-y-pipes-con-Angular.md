@@ -251,7 +251,7 @@ La parte del consumo es la más simple. Se trata de invocar a la transformación
   </div>
 ```
 
-Y con esto ya tenemos tres nuevas maneras de reutilizar código y dar nuevas capacidades a la parte de presentación. Pero en este tutorial de formación [avanzada en Angular](../tag/Avanzado/) volvemos de nuevo a las profundidades del modelo y la gestión de datos empezando con el [Flujo reactivo unidireccional con Angular y RxJs](../flujo-reactivo-unidireccional-con-Angular-y-RxJs).
+Y con esto ya tenemos tres nuevas maneras de reutilizar código y dar nuevas capacidades a la parte de presentación. Pero en este tutorial de formación [avanzada en Angular](../tag/Avanzado/) volvemos de nuevo a las profundidades del modelo y la gestión de datos empezando con el [Flujo reactivo unidireccional con Angular y RxJs](../flujo-reactivo-unidireccional-con-Angular-y-RxJs). Todos esos detalles se tratan en el [curso avanzado online](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
