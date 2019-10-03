@@ -99,7 +99,7 @@ Una vez descargado el *index.html* con el contenido mínimo de Angular, diríamo
 
 Rutinariamente el servicio se ocupará de consultar novedades en el servidor para mantener los ficheros locales actualizados. Todo ello se configura en la sección `assetGroups` del  `ngsw-config.json`.
 
-### default Full App
+### Default: Full App
 
 Se descarga la aplicación completa. Tranquilidad, esto sucede en segundo plano y una vez arrancado angular y con el usuario contento viendo ya la página pedida. Al navegar por las páginas la respuesta es instantánea porque los módulos con el código ya están ahí.
 
@@ -131,7 +131,7 @@ Se descarga la aplicación completa. Tranquilidad, esto sucede en segundo plano 
 
 Eso sí, la descarga consume línea. En cierto casos, con usuarios móviles y grandes aplicaciones quizás no sea adecuado. Si prefieres que los módulos Lazy no se descarguen hasta que nose visiten, te propongo esta otra configuración.
 
-### proposed Lazy App
+### Proposed: Lazy App
 
 ```json
   "assetGroups":[
@@ -229,6 +229,19 @@ constructor(private swUpdate: SwUpdate) {
 Una característica de las *apps* nativas muy aprecia por los usuarios es la capacidad de mostrar **mensajes recibidos vía *push* por parte del servidor**. Pueden ser avisos, novedades o simple marketing. Pero lo importante es que lo recibe el sistema operativo, la aplicación no necesita estar en marcha y el mensaje se muestra de forma nativa.
 
 > Obviamente para ello hay que involucrar código de servidor y un servicio de mensajería de terceros. Pero la parte Angular del desarrollo es muy sencilla. Consiste en registrar al usuario, que voluntariamente decide ser notificado, y luego escuchar los mensajes provenientes en forma de eventos. Todo ello reclamando una dependencia al servicio de notificaciones `constructor(private swPush: SwPush)`.
+
+```typescript
+constructor(private swUpdate: SwUpdate) {
+  if (this.swPush.isEnabled) {
+      this.swPush
+        .requestSubscription({ serverPublicKey: 'VAPID_PUBLIC_KEY' })
+        .then(sub => {
+          console.log('send subscription to your server and wait form messages', sub.toJSON());
+          this.swPush.messages.subscribe(msg => console.log('Received: ', msg));
+        })
+    }
+}
+```
 
 Ya tienes una web que se comporta progresivamente como una App nativa, una *Progressive Web Application*. Las mejoras en rendimiento y experiencia de usuario son recompensa más que suficiente para que le des una oportunidad a las **Angular PWA**.
 
