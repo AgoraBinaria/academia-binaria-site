@@ -30,6 +30,8 @@ Partiendo del código tal como quedó en [PWA, Entre la web y las apps con Angul
 
 # 1 Angular Universal
 
+## 1.1 Vuelta al servidor
+
 > Tenemos: Angular nació para vivir en el navegador.
 
 - Para **quitarle carga al servidor** generando el contenido dinámico en el navegador en base a plantillas.
@@ -38,11 +40,9 @@ Partiendo del código tal como quedó en [PWA, Entre la web y las apps con Angul
 
 - Para mejorar la **experiencia del usuario** al no percibir recarga de página durante la navegación dentro de la aplicación.
 
-### Ideal en entornos de intranet o aplicaciones de gestión de uso intensivo.
+**Ideal en entornos de intranet o aplicaciones de gestión de uso intensivo.**
 
-### Problemático para uso esporádico o indexable públicamente.
-
-## 1.1 Vuelta al servidor
+**Problemático para uso esporádico o indexable públicamente.**
 
 > Queremos: Indexado SEO y velocidad en la primera visita y también en las sucesivas.
 
@@ -54,9 +54,9 @@ Partiendo del código tal como quedó en [PWA, Entre la web y las apps con Angul
 
 - Las **redes sociales** no encuentran cabeceras para mejorar la presentación de enlaces.
 
-### Hay que enviar el contenido ya generado.
+**Hay que enviar el contenido ya generado.**
 
-### Pero sin perder la experiencia de usuario durante la ejecución.
+**Pero sin perder la experiencia de usuario durante la ejecución.**
 
 ## 1.3 Para mejorar la experiencia en la primera visita
 
@@ -66,9 +66,9 @@ Partiendo del código tal como quedó en [PWA, Entre la web y las apps con Angul
 
 - El **peso de la descarga inicial** es desproporcionado a pesar de _lazy loading_.
 
-### Hay que enviar el contenido ya generado.
+**Hay que enviar el contenido ya generado.**
 
-### Descargar la aplicación en segundo plano.
+**Descargar la aplicación en segundo plano.**
 
 
 # 2 Despliegue con Node Express
