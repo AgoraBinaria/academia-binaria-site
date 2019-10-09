@@ -204,7 +204,7 @@ Con el comando `ng run shop:app-shell` podrás generar una versión especial de 
 > Adecuado para blogs y sitios que no puedan o no quieran tener un servidor web corriendo.
 
 
-[angular Prerender](https://github.com/chrisguttandin/angular-prerender)
+A falta de una solución oficial, podemos seguir la pista a iniciativas tipo [Angular Prerender](https://github.com/chrisguttandin/angular-prerender)
 
 # 4 SEO en la página, en el navegador y en el servidor
 
