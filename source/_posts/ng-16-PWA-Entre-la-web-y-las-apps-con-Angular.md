@@ -11,7 +11,7 @@ tags:
 - Avanzado
 categories:
 - [Tutorial, Angular]
-thumbnail: /css/images/angular-b_pwa.png
+thumbnail: /css/images/angular-16_pwa.png
 ---
 
 ![pwa-entre-la-web-y-las-apps-con-angular](/images/tutorial-angular-16_pwa.png)

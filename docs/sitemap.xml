@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://academia-binaria.com/velocidad-y-seo-con-el-ssr-de-angular-universal/</loc>
-    
-    <lastmod>2019-10-09T11:53:40.051Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
     
-    <lastmod>2019-10-09T11:52:51.074Z</lastmod>
+    <lastmod>2019-10-09T11:59:57.492Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
     
-    <lastmod>2019-10-09T11:40:42.891Z</lastmod>
+    <lastmod>2019-10-09T11:58:29.618Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/velocidad-y-seo-con-el-ssr-de-angular-universal/</loc>
+    
+    <lastmod>2019-10-09T11:53:40.051Z</lastmod>
     
   </url>
   

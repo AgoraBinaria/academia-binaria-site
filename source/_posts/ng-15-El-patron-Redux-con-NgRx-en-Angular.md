@@ -12,10 +12,10 @@ tags:
 - Avanzado
 categories:
 - [Tutorial, Angular]
-thumbnail: /css/images/angular-15_redux.png
+thumbnail: /css/images/angular-15_ngrx.png
 ---
 
-![el-patron-redux-con-ngrx-en-angular](/images/tutorial-angular-15_redux.png)
+![el-patron-redux-con-ngrx-en-angular](/images/tutorial-angular-15_ngrx.png)
 
 Le pasa a todas las aplicaciones, crecen y crecen en funcionalidad y complejidad. En Angular estamos preparados para modularizar, componentizar e inyectar servicios. Pero con grandes aplicaciones, o con grandes equipos, parece que nada es suficiente. Se necesita una **gestión del estado centralizada** como la del [patrón Redux]((../flujo-reactivo-unidireccional-con-Angular-y-RxJs/)).
 
