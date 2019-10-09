@@ -24,7 +24,7 @@ Y todo esto de una forma sencilla y familiar usando el CLI. No hay excusa para n
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular/). Al finalizar tendrás una aplicación que muestra información sobre productos de manera flexible y al gusto del programador.
+Partiendo de la aplicación tal como quedó en [Detección del cambio en Angular](../deteccion-del-cambio-en-Angular/). Al finalizar tendrás una aplicación que muestra información sobre productos de manera flexible y al gusto del programador.
 
 > Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 

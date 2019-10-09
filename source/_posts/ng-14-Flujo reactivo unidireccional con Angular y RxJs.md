@@ -25,7 +25,7 @@ Tomar las decisiones correctas en cuestiones de este calibre puede suponer la di
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular). Al finalizar dotaremos a la aplicación de un almacén de datos _Redux_ que notifica cambios reactivos.
+Partiendo de la aplicación tal como quedó en [Componentes dinámicos, directivas y pipes con Angular](../componentes-dinamicos-directivas-y-pipes-con-Angular). Al finalizar dotaremos a la aplicación de un almacén de datos _Redux_ que notifica cambios reactivos.
 
 > Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 

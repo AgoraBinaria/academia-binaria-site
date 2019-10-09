@@ -21,7 +21,7 @@ Crear y comunicar muchos componentes puede llevarnos a código difícil de segui
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/). Al finalizar tendrás una aplicación que reparte la responsabilidad de recoger y presentar datos en componentes.
+Partiendo de la aplicación tal como quedó en [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/). Al finalizar tendrás una aplicación que reparte la responsabilidad de recoger y presentar datos en componentes.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/4-flow](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/4-flow/car)
 > > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)

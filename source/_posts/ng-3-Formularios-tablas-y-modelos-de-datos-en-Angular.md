@@ -22,7 +22,7 @@ Vamos a ver cómo la librería `@angular/forms` enlaza **las vistas, los control
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/), al finalizar tendrás una aplicación que recoge y presenta datos.
+Partiendo de la aplicación tal como quedó en [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/), al finalizar tendrás una aplicación que recoge y presenta datos.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/3-data]https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/3-data/contacts)
 

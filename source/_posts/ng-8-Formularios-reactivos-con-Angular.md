@@ -22,7 +22,7 @@ La solución en Angular 8 pasa por desacoplar el modelo y la vista, introduciend
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/). Al finalizar tendrás una aplicación con formularios _model driven_ fáciles de mantener y validar.
+Partiendo de la aplicación tal como quedó en [Vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/). Al finalizar tendrás una aplicación con formularios _model driven_ fáciles de mantener y validar.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/8-reactive](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/8-reactive/security)
 >

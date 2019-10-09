@@ -22,7 +22,7 @@ Un programador Angular debe **dominar el CLI** y debe conocer los beneficios que
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás, en el mismo repositorio, una nueva aplicación con la apariencia y usabilidad de _Material design_.
+Partiendo de la aplicación tal como quedó en [Formularios reactivos con Angular](../formularios-reactivos-con-Angular/). Al finalizar tendrás, en el mismo repositorio, una nueva aplicación con la apariencia y usabilidad de _Material design_.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/projects/schemat/](https://github.com/AcademiaBinaria/angular-basic/tree/master/projects/schemat)
 >

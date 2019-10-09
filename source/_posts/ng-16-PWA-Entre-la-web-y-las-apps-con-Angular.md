@@ -23,7 +23,7 @@ Mediante la librería `@ngular/pwa` dispondremos de todo lo necesario para ofrec
 
 <!-- more -->
 
-Partiendo del código tal cómo quedó en [El patrón Redux con NgRx en Angular](../el-patron-redux-con-ngrx-en-angular/). Al finalizar tendrás una aplicación que se instala, actualiza y comporta como una aplicación nativa.
+Partiendo del código tal como quedó en [El patrón Redux con NgRx en Angular](../el-patron-redux-con-ngrx-en-angular/). Al finalizar tendrás una aplicación que se instala, actualiza y comporta como una aplicación nativa.
 
 > Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 

@@ -23,7 +23,7 @@ Para que los componentes consuman los servicios de forma controlada tenemos prov
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
+Partiendo de la aplicación tal como quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/5-inject](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/5-inject/converter)
 >

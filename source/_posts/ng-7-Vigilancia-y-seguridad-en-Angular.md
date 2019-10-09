@@ -23,7 +23,7 @@ Veremos ambos aspectos del desarrollo, pues están muy relacionados con la progr
 
 <!-- more -->
 
-Partiendo de la aplicación tal cómo quedó en [Comunicaciones http en Angular](../comunicaciones-http-en-Angular/). Al finalizar tendrás una aplicación que comunica a los usuarios cualquier información relevante y que gestiona de forma centralizada las respuestas de un servicio REST.
+Partiendo de la aplicación tal como quedó en [Comunicaciones http en Angular](../comunicaciones-http-en-Angular/). Al finalizar tendrás una aplicación que comunica a los usuarios cualquier información relevante y que gestiona de forma centralizada las respuestas de un servicio REST.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/7-watch](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/7-watch/notifications)
 >

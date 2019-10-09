@@ -24,7 +24,7 @@ Si decíamos que **Redux no hace rápido lo simple, sino mantenible lo complejo*
 
 <!-- more -->
 
-Partiendo del código tal cómo quedó en [Redux, flujo reactivo unidireccional con Angular y RxJs](../flujo-reactivo-unidireccional-con-Angular-y-RxJs/). Al finalizar tendrás una aplicación que gestiona centralizadamente los cambios, que permite conocer qué ocurrió y predecir lo que ocurrirá usando NgRx.
+Partiendo del código tal como quedó en [Redux, flujo reactivo unidireccional con Angular y RxJs](../flujo-reactivo-unidireccional-con-Angular-y-RxJs/). Al finalizar tendrás una aplicación que gestiona centralizadamente los cambios, que permite conocer qué ocurrió y predecir lo que ocurrirá usando NgRx.
 
 > Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 
