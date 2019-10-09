@@ -14,7 +14,7 @@ categories:
 thumbnail: /css/images/angular-b_pwa.png
 ---
 
-![pwa-entre-la-web-y-las-apps-con-angular](/images/tutorial-angular-b_pwa.png)
+![pwa-entre-la-web-y-las-apps-con-angular](/images/tutorial-angular-16_pwa.png)
 
 Las aplicaciones web han evolucionado desde el contenido estático al dinámico, luego al adaptable y ahora se acercan **progresivamente a la experiencia y rendimiento de aplicaciones nativas**. En Angular se incorporan esas capacidades desde el propio *framework*.
 

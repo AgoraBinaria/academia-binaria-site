@@ -12,10 +12,10 @@ tags:
 - Avanzado
 categories:
 - [Tutorial, Angular]
-thumbnail: /css/images/angular-c_universal.png
+thumbnail: /css/images/angular-17_ssr.png
 ---
 
-![velocidad-y-seo-con-el-ssr-de-angular-universal](/images/tutorial-angular-c_universal.png)
+![velocidad-y-seo-con-el-ssr-de-angular-universal](/images/tutorial-angular-17_ssr.png)
 
 Las *SPA JavaScript*, muy balanceadas hacia el navegador, nacieron para **crear con tecnología web aplicaciones de negocio**. Normalmente se desplegaban en *intranets*, o en internet para usuarios autorizados. Eran aplicaciones de uso intensivo, visita recurrente y alto rendimiento diario. El éxito tecnológico de *frameworks* como Angular las llevó a ser usadas para desarrollar webs clásicas de internet y ser utilizadas por visitantes ocasionales.
 
