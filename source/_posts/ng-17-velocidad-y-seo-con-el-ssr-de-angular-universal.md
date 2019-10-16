@@ -24,7 +24,7 @@ Pero en esta situación presentaron dos problemas para los que inicialmente no e
 
 <!-- more -->
 
-Partiendo del código tal como quedó en [PWA, Entre la web y las apps con Angular](../pwa-entre-la-web-y-las-apps-con-angular/). Al finalizar tendrás una aplicación que se instala, actualiza y comporta como una aplicación nativa.
+Partiendo del código tal como quedó en [PWA, Entre la web y las apps con Angular](../pwa-entre-la-web-y-las-apps-con-angular/). Al finalizar tendrás una aplicación que  ofrece lo que buscan tanto a personas como a robots.
 
 > Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-boss](https://github.com/AcademiaBinaria/angular-boss)
 
@@ -233,7 +233,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Ahora ya tienes una aplicación que satisface a usuarios y robots por igual. Continúa tu formación avanzada para crear aplicaciones Angular siguiendo la serie del [tutorial avanzado de desarrollo con Angular](../tag/Avanzado/) y verás como aprendes a programar con Angular 8.
+Ahora ya tienes una aplicación que satisface a usuarios y robots por igual. Continúa tu formación avanzada para crear aplicaciones Angular para el mundo globalizado con técnicas de [Internacionalización y puesta en producción](../internacionalizacion-y-puesta-en-produccion-con-Angular/) y verás como aprendes a programar con Angular 8.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
