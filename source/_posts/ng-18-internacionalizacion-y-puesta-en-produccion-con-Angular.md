@@ -205,7 +205,7 @@ Otra cosa pueden ser pequeños textos, lógica , iconos o clases css. A veces to
 }
 ```
 
-Ahora ya tienes una aplicación que se puede desplegar adaptada a las preferencias culturales de tus usuarios. Continúa tu formación avanzada para crear aplicaciones Angular siguiendo la serie del [tutorial avanzado de desarrollo con Angular](../tag/Avanzado/) y verás como aprendes a programar con Angular 8.
+Ahora ya tienes una aplicación que se puede desplegar adaptada a las preferencias culturales de tus usuarios. Continúa tu formación avanzada para crear aplicaciones más allá del framework con los [Elementos Angular para los Web Components](../elementos-Angular-para-los-Web-Components/) y verás como aprendes a programar con Angular 8.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
