@@ -1,7 +1,7 @@
 ---
 title: Elementos Angular para los Web Components
 permalink: elementos-Angular-para-los-Web-Components
-date: 2018-10-29 13:50:27
+date: 2019-10-29 09:19:39
 tags:
 - Angular
 - Angular8
