@@ -5,7 +5,7 @@
 # Site
 title: Academia Binaria
 subtitle: Formación en español para programadores
-description: Artículos y tutoriales sobre Angular, NodeJS, MongoDB y todo lo relacionado con JavaScript y TypeScript
+description: Artículos y tutoriales sobre Angular y todo lo relacionado con JavaScript y TypeScript
 author: Alberto Basalo
 language: es
 timezone: Europe/Madrid
@@ -42,7 +42,7 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -51,7 +51,7 @@ index_generator:
   path: ''
   per_page: 5
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -75,8 +75,8 @@ pagination_dir: page
 theme: icarus
 
 sitemap:
-    path: sitemap.xml
-    
+  path: sitemap.xml
+
 all_minifier: true
 
 # Deployment

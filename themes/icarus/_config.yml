@@ -92,7 +92,5 @@ miscellaneous:
     twitter_id:
     google_plus:
   links:
-    Intro: https://www.trainingit.es/curso-angular-basico/?promo=angular.builders
-    Avanzado: https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders
-    TypeScript: https://www.trainingit.es/curso-typescript/?promo=meetup10&af=abasalo
-    PluralSight: http://referral.pluralsight.com/mQe488E
+    Curso_Intro: https://www.trainingit.es/curso-angular-basico/?promo=angular.builders
+    Curso_Avanzado: https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders
