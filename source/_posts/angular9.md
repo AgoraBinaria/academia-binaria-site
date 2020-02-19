@@ -221,7 +221,7 @@ Además, la opción de Angular no establece la comprobación del tipo de plantil
 
 ### Verificación estricta del tipo de plantilla
 
-Hemos tenido la opción de habilitar la verificación del tipo de plantilla desde Angular versión 5 configurando `"fullTemplateTypeCheck": true` en el objeto` angularCompilerOptions`.
+Hemos tenido la opción de habilitar la verificación del tipo de plantilla desde Angular versión 5 configurando `"fullTemplateTypeCheck":true` en el objeto`angularCompilerOptions`.
 
 Ivy presenta una estricta comprobación del tipo de plantilla como se ve en el Listado 5. Cuando se establece esta nueva opción del compilador Angular, se ignora el valor de `fullTemplateTypeCheck`.
 
