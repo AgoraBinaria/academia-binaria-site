@@ -229,7 +229,7 @@ Ivy presenta una estricta comprobación del tipo de plantilla como se ve en el L
 // tsconfig.json
 {
   "angularCompilerOptions": {
-    "strictlyTemplates": true
+    "strictTemplates": true
   }
 }
 ```
@@ -246,7 +246,11 @@ Las clases base sin selector ahora son compatibles con directivas y componentes.
 
 ## Últimas versiones de TypeScript
 
-Las versiones de TypeScript 3.6 y 3.7 son compatibles con la versión angular 9. Las versiones anteriores de TypeScript ya no son compatibles. Consulta la Tabla 1 para comparar la compatibilidad de TypeScript entre todas las versiones Angular.
+Las versiones de TypeScript 3.6 y 3.7 son compatibles con la versión angular 9. Las versiones anteriores de TypeScript ya no son compatibles. Consulta la Tabla 1 para comparar la compatibilidad de TypeScript entre
+todas las versiones Angular.
+
+[vista bruta](https://gist.github.com/LayZeeDK/c822cc812f75bb07b7c55d07ba2719b3/raw/ad300b4d2bdbc51b4dd8092c059a68cb22d3774d/angular-cli-node-js-typescript-support.csv)
+[descargable angular-cli-node-js-typescript-support.csv](https://gist.github.com/LayZeeDK/c822cc812f75bb07b7c55d07ba2719b3#file-angular-cli-node-js-typescript-support-csv) hosted with ❤ by [GitHub](https://github.com/)
 
 *Tabla 1. Tabla de compatibilidad del Angular CLI, Angular, Node.js y TypeScript.* [*Abrir en una pestaña nueva*](https://gist.github.com/LayZeeDK/c822cc812f75bb07b7c55d07ba2719b3)*
 
@@ -301,7 +305,7 @@ Para habilitar Bazel, usa `ng add @angular/bazel` o la colección de esquemas `@
 
 Asegúrate de seguir [la guía de instalación de Bazel](https://docs.bazel.build/versions/2.0.0/install.html) para tu sistema operativo.
 
-## Componentes Angular
+## Angular Components
 
 La versión Angular 9 viene con componentes oficiales para YouTube y Google Maps. Se agregó una directiva y un servicio de portapapeles al Angular CDK.
 

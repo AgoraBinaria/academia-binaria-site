@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "start": "hexo server",
-    "pub": "hexo generate && git add * && git commit -m 'pub' && git push"
+    "deploy": "hexo generate && git add * && git commit -m 'pub' && git push"
   },
   "hexo": {
     "version": "3.9.0"
