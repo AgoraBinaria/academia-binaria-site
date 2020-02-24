@@ -4,7 +4,7 @@
   <url>
     <loc>https://academia-binaria.com/un-vistazo-a-las-caracter%C3%ADsticas-principales-en-el-lanzamiento-de-Angular-Ivy-versi%C3%B3n-9/</loc>
     
-    <lastmod>2020-02-19T18:44:02.849Z</lastmod>
+    <lastmod>2020-02-24T15:28:11.920Z</lastmod>
     
   </url>
   
@@ -32,7 +32,63 @@
   <url>
     <loc>https://academia-binaria.com/internacionalizacion-y-puesta-en-produccion-con-Angular/</loc>
     
-    <lastmod>2019-10-24T11:38:34.300Z</lastmod>
+    <lastmod>2019-10-28T10:09:34.693Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.039Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.038Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.036Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.035Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.034Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.033Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.031Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
+    
+    <lastmod>2019-10-16T14:23:01.030Z</lastmod>
     
   </url>
   
@@ -44,93 +100,37 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
-    
-    <lastmod>2019-10-09T11:59:57.492Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://academia-binaria.com/pwa-entre-la-web-y-las-apps-con-angular/</loc>
     
-    <lastmod>2019-10-09T11:58:29.618Z</lastmod>
+    <lastmod>2019-10-16T14:23:01.026Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/paginas-y-rutas-angular-spa/</loc>
+    <loc>https://academia-binaria.com/el-patron-redux-con-ngrx-en-angular/</loc>
     
-    <lastmod>2019-10-09T10:45:38.706Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/vigilancia-y-seguridad-en-Angular/</loc>
-    
-    <lastmod>2019-10-09T10:45:38.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/Material-Design-y-CLI-de-Angular/</loc>
-    
-    <lastmod>2019-10-09T10:45:38.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-    
-    <lastmod>2019-10-09T10:45:38.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-reactivos-con-Angular/</loc>
-    
-    <lastmod>2019-10-09T10:45:38.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
-    
-    <lastmod>2019-10-09T10:45:38.704Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/formularios-tablas-y-modelos-de-datos-en-angular/</loc>
-    
-    <lastmod>2019-10-09T10:45:38.703Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
-    
-    <lastmod>2019-10-09T10:45:38.703Z</lastmod>
+    <lastmod>2019-10-16T14:23:01.024Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/flujo-reactivo-unidireccional-con-Angular-y-RxJs/</loc>
     
-    <lastmod>2019-10-09T10:45:38.702Z</lastmod>
+    <lastmod>2019-10-16T14:23:01.023Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/componentes-dinamicos-directivas-y-pipes-con-Angular/</loc>
     
-    <lastmod>2019-10-09T10:45:38.700Z</lastmod>
+    <lastmod>2019-10-16T14:23:01.021Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://academia-binaria.com/deteccion-del-cambio-en-Angular/</loc>
     
-    <lastmod>2019-10-09T10:45:38.699Z</lastmod>
+    <lastmod>2019-10-16T14:23:01.020Z</lastmod>
     
   </url>
   
@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/cursos/angular-business.html</loc>
+    <loc>https://academia-binaria.com/cursos/angular-basic.html</loc>
     
     <lastmod>2019-04-24T12:07:39.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/cursos/angular-basic.html</loc>
+    <loc>https://academia-binaria.com/cursos/angular-business.html</loc>
     
     <lastmod>2019-04-24T12:07:39.000Z</lastmod>
     
@@ -184,14 +184,14 @@
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/scaffolds/page.html</loc>
+    <loc>https://academia-binaria.com/scaffolds/post.html</loc>
     
     <lastmod>2018-05-03T08:56:05.871Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://academia-binaria.com/scaffolds/post.html</loc>
+    <loc>https://academia-binaria.com/scaffolds/page.html</loc>
     
     <lastmod>2018-05-03T08:56:05.871Z</lastmod>
     
