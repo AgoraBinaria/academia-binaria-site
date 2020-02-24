@@ -1,5 +1,5 @@
 ---
-title: Un vistazo a las características principales en el lanzamiento de Angular _Ivy_ versión 9
+title: Un vistazo a las características principales de Angular Ivy 9
 permalink: un-vistazo-a-las-características-principales-en-el-lanzamiento-de-Angular-Ivy-versión-9
 date: 2020-02-19 17:19:39
 tags:
@@ -13,7 +13,7 @@ thumbnail: /css/images/angular.builders_cuadrado.png
 
 ![un-vistazo-a-las-características-principales-en-el-lanzamiento-de-Angular-Ivy-versión-9](/images/light-new-year-s-eve-fireworks-sylvester-40663.jpg)
 
-# Un vistazo a las características principales en el lanzamiento de Angular _Ivy_ versión 9
+# Un vistazo a las características principales de Angular Ivy 9
 
 Este artículo es una traducción aprobada por el autor y editor originales.
 
@@ -23,13 +23,13 @@ Autor original [Lars Gyrup Brink Nielsen](https://twitter.com/LayZeeDK)
 
 En resumen con Angular 9 tenemos cambios. MUCHOS y en todas partes: globalización dinámica, modo estricto, Bazel y mucho más.
 
-*(Y sí, ahora por fin se ha lanzado __Angular _Ivy_ versión 9__)*
+*(Y sí, ahora por fin se ha lanzado __Angular Ivy versión 9__)*
 
 <!-- more -->
 
 ## _Ivy_ está habilitado por defecto
 
-En versiones anteriores de Angular, tuvimos que optar por _Ivy_. En la versión 9, tenemos que optar por no participar en _Ivy_ si queremos recurrir a View Engine. Esto es posible en ambas versiones 9 y 10 para garantizar una transición más fluida de _View Engine_ a _Ivy_.
+En versiones anteriores de Angular, tuvimos que optar por _Ivy_. En la versión 9, tenemos que optar por no usar  _Ivy_ si queremos quedarnos con View Engine. Esto es posible en las versiones 9 y la futura 10 para garantizar una transición más fluida de _View Engine_ a _Ivy_.
 
 Las librerías *se pueden* compilar AOT, pero no es recomendable. El equipo de Angular tiene un plan de migración de _View Engine_ a _Ivy_ que recomienda publicar solo librerías compatibles con _View Engine_ compiladas con JIT para Angular versión 9. El compilador de compatibilidad Angular actualizará las librerías compatibles con _View Engine_ a _Ivy_ cuando se instalen en una aplicación Angular _Ivy_.
 
@@ -50,9 +50,9 @@ Obtén información sobre la compatibilidad de la biblioteca y el plan de transi
 // import '@angular/localize/init';
 ```
 
-*Listado 1. Optar por no usar _Ivy_ para recurrir a View Engine.*
+*Listado 1. Optar por no usar _Ivy_ para recurrir a _View Engine_.*
 
-Si tienes problemas con _Ivy_ en tu aplicación, o en cualquiera de las librerías de las que depende, puedes optar por salir de _Ivy_ y recurrir a _View Engine_. Hazlo desactivando la opción del compilador angular `enableIvy` y deshabilitando` @angular/localize` como se ve en Listado 1.
+Si tienes problemas con _Ivy_ en tu aplicación, o en cualquiera de las librerías de las que depende, puedes optar por salir de _Ivy_ y volver a _View Engine_. Hazlo desactivando la opción del compilador angular `enableIvy` y deshabilitando` @angular/localize` como se ve en Listado 1.
 
 Optar por evitar _Ivy_ en un entorno de servidor es un poco más complicado. [Sigue la guía oficial para darte de baja de _Ivy_ cuando uses la renderización del lado del servidor](https://angular.io/guide/ivy#using-ssr-without-ivy).
 
@@ -60,7 +60,7 @@ Optar por evitar _Ivy_ en un entorno de servidor es un poco más complicado. [Si
 
 Antes, para compilar un componente en _View Engine_, Angular necesitaba información sobre todas sus dependencias declaradas. Esto significa que las librerías Angular no se pueden compilar AOT usando _View Engine_.
 
-Ahora para compilar un componente en Ivy, Angular solo necesita información sobre el componente en sí. Pero, _Ivy_ no necesita metadatos de ninguna dependencia declarable para compilar un componente.
+Ahora para compilar un componente en _Ivy_, Angular solo necesita información sobre el componente en sí. Pero, _Ivy_ no necesita metadatos de ninguna dependencia declarable para compilar un componente.
 
 El principio de localidad significa que, en general, veremos tiempos de construcción más rápidos.
 

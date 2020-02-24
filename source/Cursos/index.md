@@ -5,6 +5,9 @@ updated: '2019-03-20 10:07:39'
 date: 2019-03-20 10:07:39
 ---
 
+[Angular Básico, descuento de 25 euros](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders)
+[Angular Avanzado, descuento de 30 euros](https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders)
+
 ### [Contenido detallado Angular Basic](cursos/angular-basic)
 ### [Contenido detallado Angular Business](cursos/angular-business)
 
