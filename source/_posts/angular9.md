@@ -13,15 +13,11 @@ thumbnail: /css/images/angular.builders_cuadrado.png
 
 ![un-vistazo-a-las-características-principales-en-el-lanzamiento-de-Angular-Ivy-versión-9](/images/light-new-year-s-eve-fireworks-sylvester-40663.jpg)
 
-# Un vistazo a las características principales de Angular Ivy 9
-
-Este artículo es una traducción aprobada por el autor y editor originales.
+Este artículo es una traducción aprobada por el autor, [Lars Gyrup Brink Nielsen](https://twitter.com/LayZeeDK), y editor originales.
 
 Enlace original en inglés [A look at major features in the Angular Ivy version 9 release](https://indepth.dev/a-look-at-major-features-in-the-angular-ivy-version-9-release/) del 6 de febrero de 2020
 
-Autor original [Lars Gyrup Brink Nielsen](https://twitter.com/LayZeeDK)
-
-En resumen con Angular 9 tenemos cambios. MUCHOS y en todas partes: globalización dinámica, modo estricto, Bazel y mucho más.
+En resumen con Angular 9 tenemos cambios. MUCHOS y en todas partes: globalización dinámica, modo estricto, _Bazel_ y mucho más.
 
 *(Y sí, ahora por fin se ha lanzado __Angular Ivy versión 9__)*
 
