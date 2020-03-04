@@ -1,13 +1,13 @@
 ---
 title: Hola Angular CLI
 permalink: hola-angular-cli
-date: 2019-09-23 12:54:00
+date: 2020-03-04 18:54:00
 tags:
   - Angular
   - CLI
   - Tutorial
   - Introducción
-  - Angular8
+  - Angular9
   - Angular2
 categories:
   - [Tutorial, Angular]
@@ -16,15 +16,15 @@ thumbnail: /css/images/angular-0_cli.png
 
 ![hola-angular-cli](/images/tutorial-angular-0_cli.png)
 
-**Angular en su versión 8 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El Angular CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
+**Angular en su versión 9 es la plataforma perfecta para el desarrollo** profesional de aplicaciones modernas. **El Angular CLI es la herramienta** adecuada para generar aplicaciones Angular. Juntos son imbatibles en cuanto a velocidad en desarrollo y a potencia en ejecución.
 
 <!-- more -->
 
-El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 8** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
+El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 9** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
 > Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/0-hello](https://github.com/AcademiaBinaria/angular-basic/)
 
-# 1. Instalación de Angular CLI 8
+# 1. Instalación de Angular CLI 9
 
 Angular es una plataforma de desarrollo dogmática y llave en mano. Para empezar, como en casi cualquier desarrollo **necesitarás [NodeJS](https://nodejs.org/en/) y su manejador de de paquetes _npm_**. Tenerlos actualizados es un mandamiento básico para un desarrollador web. Comprueba tu versión con el siguiente comando:
 
@@ -43,7 +43,7 @@ $ ng help
 $ ng new --help
 ```
 
-# 2. Crear y ejecutar una aplicación Angular 7
+# 2. Crear y ejecutar una aplicación Angular 9
 
 Una vez que hayas instalado el CLI de manera global ya puedes empezar a usarlo en tu directorio de trabajo. El primer comando será `ng new` que te va a **generar toda una aplicación funcional** y las configuraciones necesarias para su depuración, pruebas y ejecución.
 
@@ -51,11 +51,11 @@ Como novedad, en las últimas versiones, el CLI te preguntará por algunas opcio
 
 Lo más habitual es usar la configuración que viene por defecto, pero también se pueden crear soluciones a medida. Te muestro unos ejemplos para que pruebes y te familiarices con la herramienta. Para más información mira la documentación del comando [ng new](https://angular.io/cli/new).
 
-## 2.1 Normal
+## 2.1 Básica
 
 ```console
-ng new normal
-cd normal
+ng new unaAppMuyCorriente
+cd unaAppMuyCorriente
 npm start
 ```
 
@@ -89,7 +89,7 @@ Una vez finalizada la instalación de todas las librerías necesarias puedes baj
 > ejemplo: La aplicación que sirve de ejemplo a este tutorial fue creada con este comando:
 
 ```console
-ng new angular-basic --routing true -s -S
+ng new angular-basic -p ab --style css --routing
 ```
 
 # 3. Estructura de una aplicación Angular
@@ -114,19 +114,19 @@ Volviendo a la **estructura de ficheros y carpetas** te encontrarás con muchos 
   - **app/** _: la carpeta con el código específico de tu aplicación_
     - **app.module.ts** _: la aplicación es un árbol de módulos, y este es su raíz_
     - **app.component.ts** _: la página es un árbol de componentes, y este es su raíz_
-    - **app.component.html** _: el componente tiene una parte visual, esta es su vista_
+    - **app.component.html** _: tiene una parte visual, esta es su vista_
 
 Echa un vistazo a estos ficheros, pronto los modificaremos para sentirnos programadores.
 
 # 4. Edición
 
-Angular CLI instala y configura un conjunto de herramientas que te harán la vida más fácil. Entre otras, destaca la capacidad de **recargar la aplicación en caliente** en cuanto guardas tu trabajo como programador. En esta última versión, la 7, se ha mejorado el proceso y es realmente rápido.
+Angular CLI instala y configura un conjunto de herramientas que te harán la vida más fácil. Entre otras, destaca la capacidad de **recargar la aplicación en caliente** en cuanto guardas tu trabajo como programador. En esta última versión, la 9, se ha mejorado el proceso y es realmente rápido.
 
 Para probarlo sólo tienes que dejar arrancada la aplicación con el comando `npm start`; **cambiar un fichero de código y comprobar el resultado** en el navegador. Te propongo empezar como en cualquier otro lenguaje; por el famoso _hola mundo_.
 
 ## 4.1 Hola Mundo
 
-Abre el fichero `app.component.ts` y busca dentro de él una clase llamada `AppComponent`. Encontrarás que tiene una propiedad `title`. Asígnale el saludo de rigor: `title = 'actibot: hello world ;-)';`. Guarda y comprueba cómo tu navegador **se habrá actualizado automáticamente**.
+Abre el fichero `app.component.ts` y busca dentro de él una clase llamada `AppComponent`. Encontrarás que tiene una propiedad `title`. Asígnale el saludo de rigor: `title = 'angular - basic: hello world ;-)';`. Guarda y comprueba cómo tu navegador **se habrá actualizado automáticamente**.
 
 Toda **esta magia depende de una cadena de comandos** que lanzan distintas herramientas previamente instaladas y configuradas por el CLI. Entre ellas cabe mencionar a [_WebPack_](https://webpack.github.io/), un coloso que afortunadamente viene instalado y preparado para funcionar de manera transparente.
 
@@ -136,7 +136,7 @@ Esta es una lista no exhaustiva de lo que sucede.
 
 1. npm start
 2. ng serve
-3. webpack server en http://localhost:4270
+3. webpack server en http://localhost:4200
    1. vigilancia de cambios sobre la carpeta src/
    2. live reload
    3. compilado de la aplicación
@@ -146,19 +146,19 @@ Cambia a tu antojo el `app.component.ts` o su hermano `app.component.html` y com
 
 # 5. Configuración
 
-El CLI 7 viene con pilas incluidas, se puede usar desde el primer momento. Sólo quedan pequeñas mejoras que hacer. Por ejemplo ajustar el `package.json` y agregar librerías de terceros.
+El CLI 9 viene con pilas incluidas, se puede usar desde el primer momento. Sólo quedan pequeñas mejoras que hacer. Por ejemplo ajustar el `package.json` y agregar librerías de terceros.
 
 ## 5.1 Package.json
 
-El `package.json` es el fichero estándar de _npm_ donde se almacenan las **dependencias de terceros**. Contiene las librerías que necesita la aplicación para ejecutarse, por ejemplo todas las de _Angular 7_. Y también las herramientas que necesita el programador, por ejemplo el propio _AngularCLI_;
+El `package.json` es el fichero estándar de _npm_ donde se almacenan las **dependencias de terceros**. Contiene las librerías que necesita la aplicación para ejecutarse, por ejemplo todas las de _Angular 9_. Y también las herramientas que necesita el programador, por ejemplo el propio _AngularCLI_;
 
 ```json
 {
   "dependencies": {
-    "@angular/core": "^7.2.0"
+    "@angular/core": "~9.0.3"
   },
   "devDependencies": {
-    "@angular/cli": "7.2.0"
+    "@angular/cli": "~9.0.3"
   }
 }
 ```
@@ -171,7 +171,7 @@ Otras configuraciones en producción
 
 ```json
 {
-  "start": "ng serve --aot -o --port 4270"
+  "start": "ng serve -o --port 4290"
 }
 ```
 
@@ -179,7 +179,7 @@ Otras configuraciones en producción
 
 Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos **algún que otro producto de terceros**. Ya sean utilidades como _[date-fns](https://date-fns.org/)_, librerías gráficas como _[chart.js](http://www.chartjs.org/)_ o la aplicación de estilos y componentes visuales de _frameworks como Bootstrap o MaterialDesign_. Pero todos se instalan de igual forma. Descargándolos con _npm_ y adjuntándolos en el `angular.json`.
 
-> En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama _[MiniCSS](https://minicss.org/)_ y es apropiada para prototipos, pruebas o pequeños proyectos.
+<!-- > En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama _[MiniCSS](https://minicss.org/)_ y es apropiada para prototipos, pruebas o pequeños proyectos.
 
 Se descargan e instalan de manera estándar.
 
@@ -193,7 +193,7 @@ Para que se incluyan en la distribución hay que ir a la configuración del _CLI
 {
   "styles": ["src/styles.css", "./node_modules/mini.css/dist/mini-default.min.css"]
 }
-```
+``` -->
 
 Estas colecciones de archivos los usa el _cli_ a través de _webpack_ para incluirlos **minificados y concatenados en un fichero _bundle_ sustituyendo a las clásicas etiquetas html**.Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. De esta forma el fichero `index.html` apenas tendrás que tocarlo, salvo para algunas etiquetas de meta información.
 
@@ -203,7 +203,7 @@ Estas colecciones de archivos los usa el _cli_ a través de _webpack_ para inclu
 <meta name="author" content="Alberto Basalo" />
 ```
 
-Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo _MiniCSS_.
+<!-- Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo _MiniCSS_. -->
 
 ## 5.3 Environments
 
@@ -223,7 +223,7 @@ Por ejemplo, en el `app.component.html` he sustituido la imagen incrustada del A
 <img width="100" src="./assets/logo.png" />
 ```
 
-# 6. Angular 7, el CLI 7 y su ecosistema
+# 6. Angular 9, el CLI 9 y su ecosistema
 
 Algunos consejos y herramientas útiles que rodean al mundo Angular.
 
@@ -239,19 +239,16 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 
 ```json
 {
-  "scripts": {
-    "build:prod": "ng build --prod",
-    "build:pub": "ng build --prod --output-path docs --base-href https://academiabinaria.github.io/angular-basic/",
-    "e2e": "ng e2e",
-    "http-server": "http-server ./dist/angular-basic/ -c-1 -p4271 -a localhost -o",
-    "lint": "ng lint",
+   "scripts": {
     "ng": "ng",
-    "pub": "npm run build:pub && npm run push",
-    "push": "git add * && git commit -m 'pub' && git push",
+    "start": "ng serve -o --port 4290",
     "start:prod": "npm run build:prod && npm run http-server",
-    "start": "ng serve --aot -o --port 4270",
-    "test": "ng test"
-  }
+    "build": "ng build",
+    "build:prod": "ng build --prod",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
 }
 ```
 
@@ -271,7 +268,7 @@ Otros enlaces de interés sobre el ecosistema Angular.
 
 Para complementar tu conocimiento te recomiendo la [documentación de Angular/CLI](https://angular.io/cli) y este artículo avanzado que trata la configuración del CLI en profundidad [Angular CLI under the hood ](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
 
-Esto es sólo el principio, _Angular CLI 8_ puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 8. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/). Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
+Esto es sólo el principio, _Angular CLI 9_ puede hacer mucho más por ti; descúbrelo en esta serie tutorial para aprender a programar con Angular 9. En el próximo artículo crearemos una [Base para una aplicación Angular](../base-aplicacion-angular/). Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
