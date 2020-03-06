@@ -1,13 +1,13 @@
 ---
 title: Base para una aplicación Angular
 permalink: base-aplicacion-angular
-date: 2019-09-23 13:57:00
+date: 2020-03-06 17:57:00
 tags:
   - Angular
   - CLI
   - Tutorial
   - Introducción
-  - Angular8
+  - Angular9
   - Angular2
 categories:
   - [Tutorial, Angular]
@@ -16,7 +16,7 @@ thumbnail: /css/images/angular-1_base.png
 
 ![base-aplicacion-angular](/images/tutorial-angular-1_base.png)
 
-Vamos a crear una **base sobre la que programar una aplicación Angular 8** profesional. Usaremos el _CLI_ para generar una estructura sobre la que crecer. Será como una semilla para un desarrollo controlado.
+Vamos a crear una **base sobre la que programar una aplicación Angular 9** profesional. Usaremos el _CLI_ para generar una estructura sobre la que crecer. Será como una semilla para un desarrollo controlado.
 La idea de árbol se usa en muchas analogías informáticas. La emplearemos en dos conceptos básicos en Angular: **los módulos y los componentes**.
 
 <!-- more -->
@@ -58,14 +58,14 @@ Veremos esto con más profundidad en el punto 4.
 Hasta ahora los módulos involucrados son librerías de terceros o que se crearon mágicamente con la aplicación. Es hora de **crear tu primer módulo**. Para eso usaremos otro comando del _cli_, el `ng generate module`. En una ventana del terminal escribe:
 
 ```bash
-ng g m core
+ng g m layout
 ```
 
-Esta es la sintaxis abreviada del comando [`ng generate`](https://angular.io/cli/generate) el cual dispone de varios planos de construcción o _blueprints_. El que he usado aquí es el de [`module`](https://angular.io/cli/generate#module-command) para la construcción de módulos.
+Esta es la sintaxis abreviada del comando [`ng generate`](https://angular.io/cli/generate) el cual dispone de varios planos de construcción o _schematics_. El que he usado aquí es el de [`module`](https://angular.io/cli/generate#module-command) para la construcción de módulos.
 
-> Si no te gusta teclear en la terminal, también puedes lanzar estos comandos desde [Angular Console](https://angularconsole.com/)
+> Si no te gusta teclear en la terminal, también puedes lanzar estos comandos desde [Nx Angular Console](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console)
 
-El resultado es la creación del fichero `core/core.module.ts` con la declaración y decoración del módulo `CoreModule`.
+El resultado es la creación del fichero `layout/layout.module.ts` con la declaración y decoración del módulo `LayoutModule`.
 Este módulo te servirá de **contenedor para guardar componentes** y otros servicios esenciales para nuestra aplicación. Pero eso lo veremos más adelante.
 
 ```typescript
@@ -73,7 +73,7 @@ Este módulo te servirá de **contenedor para guardar componentes** y otros serv
   imports: [],
   declarations: []
 })
-export class CoreModule {}
+export class LayoutModule {}
 ```
 
 Por ahora hay que asegurar que **este módulo será importado por el raíz, el AppModule**. Para ello comprobaremos que la línea de importación del módulo principal esté parecida a esto:
@@ -81,7 +81,7 @@ Por ahora hay que asegurar que **este módulo será importado por el raíz, el A
 ```typescript
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  imports: [BrowserModule, AppRoutingModule, LayoutModule],
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -111,14 +111,16 @@ import { Component } from '@angular/core';
 export class AppComponent {}
 ```
 
-**Los componentes definen nuevas etiquetas HTML** para ser usados dentro de otros componentes. Excepcionalmente en este caso por ser el componente raíz se consume en el página `index.html`. El nombre de la nueva etiqueta se conoce como _selector_. En este caso la propiedad `selector: "app-root"` permite el uso de este componente dentro de otro con esta invocación `<app-root></app-root>`. En este caso el componente raíz.
+**Los componentes definen nuevas etiquetas HTML** para ser usados dentro de otros componentes. Excepcionalmente en este caso por ser el componente raíz se consume en el página `index.html`. El nombre de la nueva etiqueta se conoce como _selector_. En este caso la propiedad `selector: "ab-root"` permite el uso de este componente dentro de otro con esta invocación `<ab-root></ab-root>`. En este caso el componente raíz.
 
-> Particularidades del componente raíz. Su nombre oficial es `AppComponent`, y su selector debería llamarse `app-app`. Pero su _selector real_ es `app-root`, formado a partir del prefijo de la aplicación y su supuesto nombre oficioso. Observa el prefijo `app` que se usará en todos los componentes propios, fue asignado por defecto durante la generación de la aplicación. Puede personalizarse usando el modificador `--prefix` de `ng new` y en distintos ficheros de configuración. Volviendo al componente raíz; está destinado a ser usado en la página principal, en el `index.html`. Eso obliga a registrarlo de una manera especial en el módulo raíz. Hay que incluirlo en el array `bootstrap: [AppComponent]`, es ahí donde se incluyen los componentes con la capacidad de lanzar _bootstrap_ la aplicación.
+> Particularidades del componente raíz. Su nombre oficial es `AppComponent`, y su selector debería llamarse `ab-app`. Está formado a partir del prefijo de la aplicación `ab` y su nombre oficioso `root`. Si no se dice lo contrario el prefijo `app` se usará en todos los componentes propios, pue es asignado por defecto durante la generación de la aplicación. Yo prefiero personalizarlo usando el modificador `--prefix` o `-p` durante el inicio `ng new`.
+
+Volviendo al componente raíz; está destinado a ser usado en la página principal, en el `index.html`. Eso obliga a registrarlo de una manera especial en el módulo raíz. Hay que incluirlo en el array `bootstrap: [AppComponent]`, es ahí donde se incluyen los componentes con la capacidad de lanzar _bootstrap_ la aplicación.
 
 ```typescript
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  imports: [BrowserModule, AppRoutingModule, LayoutModule],
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -129,7 +131,7 @@ Y en el `index.html`
 
 ```html
 <body>
-  <app-root></app-root>
+  <ab-root></ab-root>
 </body>
 ```
 
@@ -160,10 +162,10 @@ Casi **todas las páginas tienen una estructura** similar que de forma simplista
 Ejecuta en una terminal estos comandos para que generen los componentes y comprueba el resultado en el editor.
 
 ```shell
-ng g c core/shell
-ng g c core/shell/header
-ng g c core/shell/main
-ng g c core/shell/footer
+ng g c layout/shell
+ng g c layout/shell/header
+ng g c layout/shell/main
+ng g c layout/shell/footer
 ```
 
 Fíjate en el componente del fichero `shell.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `app-shell` y `ShellComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con su selector `root`.
@@ -171,7 +173,7 @@ Fíjate en el componente del fichero `shell.component.ts`. Su estructura es igua
 ```typescript
 import { Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'app-shell',
+  selector: 'ab-shell',
   templateUrl: './shell.component.html',
   styles: []
 })
@@ -184,9 +186,9 @@ export class ShellComponent implements OnInit {
 Y esta es su vista asociada. La cual es de nuevo una composición de otros selectores. Estamos creando un frondoso árbol de componentes.
 
 ```html
-<app-header></app-header>
-<app-main></app-main>
-<app-footer></app-footer>
+<ab-header></ab-header>
+<ab-main></ab-main>
+<ab-footer></ab-footer>
 ```
 
 # 3 Visibilidad entre componentes
@@ -205,7 +207,7 @@ La exportación debe hacerse a mano incluyendo el componente en el array, o indi
   imports: [CommonModule, RouterModule],
   exports: [ShellComponent]
 })
-export class CoreModule {}
+export class LayoutModule {}
 ```
 
 > **Los componentes privados suelen ser sencillos**. A veces son creados para ser específicamente consumidos dentro de otros componentes. En esas situaciones interesa que sean privados y que generen poco ruido. Incluso, en casos extremadamente simples, si usamos el modificador `--flat` ni siquiera generan carpeta propia.
@@ -219,7 +221,7 @@ Que un componente sea público es la primera condición para que se consuma fuer
 ```typescript
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  imports: [BrowserModule, AppRoutingModule, LayoutModule],
   providers: [],
   bootstrap: [AppComponent]
 })
@@ -267,7 +269,7 @@ Un problema que reforzará tu conocimiento sobre el sistema modular surgirá al 
 <router-outlet></router-outlet>
 ```
 
-Todo son etiquetas _html_ estándar salvo la última `<router-outlet></router-outlet>`. El propósito de este componte lo veremos en la próxima lección dedicada a enrutado. Pero por ahora más que una ayuda es un dolor de cabeza porque es un desconocido para el módulo `CoreModule`. Resulta que el `RouterOutletComponent` está declarado en un módulo del _framework_ llamado `RouterModule`. Dicho módulo fue importado de manera automática durante la generación del código inicial, pero ¿Dónde?.
+Todo son etiquetas _html_ estándar salvo la última `<router-outlet></router-outlet>`. El propósito de este componte lo veremos en la próxima lección dedicada a enrutado. Pero por ahora más que una ayuda es un dolor de cabeza porque es un desconocido para el módulo `LayoutModule`. Resulta que el `RouterOutletComponent` está declarado en un módulo del _framework_ llamado `RouterModule`. Dicho módulo fue importado de manera automática durante la generación del código inicial, pero ¿Dónde?.
 
 Como digo el tema del enrutado es un [capítulo aparte](../paginas-y-rutas-angular-spa/), pero las relaciones de los módulos debes conocerlas cuanto antes. Durante la generación inicial se crearon dos módulos: el `AppModule`, ya estudiado, y su asistente para enrutado `AppRoutingModule`. Este último aún no lo hemos visitado. Su contenido es:
 
@@ -284,7 +286,7 @@ export class AppRoutingModule {}
 
 Obviando la por ahora inútil instrucción `.forRoutes(routes)`, llama la atención que este módulo es dependiente del famoso `RouterModule`, es decir lo importa en su array `imports:[]`. Pero además va y lo exporta haciendo uso de la interesante **propiedad transitiva de los módulos**. Cada módulo puede exportar sus propios componentes o los de terceros. Incluso puede exportar todo un módulo al completo. Al hacerlo así, el `AppRoutingModule` estaba poniendo a disposición del `AppModule` todo el contenido de `RouterModule`, incluido el por ahora fastidioso `RouterOutletComponent`.
 
-Pero el módulo _Core_ no importa al _AppRouting_, así que nada sabe de un selector llamado _router-outlet_. Para solucionarlo sólo puedes hacer una cosa: importar al `RouterModule` en el `CoreModule`, que quedará así:
+Pero el módulo _Layout_ no importa al _AppRouting_, así que nada sabe de un selector llamado _router-outlet_. Para solucionarlo sólo puedes hacer una cosa: importar al `RouterModule` en el `LayoutModule`, que quedará así:
 
 ```typescript
 import { CommonModule } from '@angular/common';
@@ -300,51 +302,33 @@ import { ShellComponent } from './shell/shell.component';
   imports: [CommonModule, RouterModule],
   exports: [ShellComponent]
 })
-export class CoreModule {}
+export class LayoutModule {}
 ```
 
 ## 4.2 Organización de la aplicación en módulos
 
 Todos los programas tiene partes repetitivas. Los principios de **organización y código limpio** nos permiten identificarlas y reutilizarlas. Con los componentes ocurre lo mismo. El módulo y los componentes recién creados suelen ser comunes a casi todas las aplicaciones. Estos y otros muchos surgirán de manera natural durante el desarrollo de una aplicación para ser utilizados en múltiples páginas.
 
-Son **componentes de infraestructura**. Conviene guardarlos en una carpeta especial. Aquí la he llamado _shared_, pero _tools_, _common_, o _lib_ suelen ser otros nombres habituales. Para reforzar el uso del CLI escribe el siguiente comando que aprovecharemos en el futuro.
+Son **componentes de infraestructura**. Conviene guardarlos en una carpeta especial. Aquí la he llamado _shared_, pero _tools_, _common_, o _lib_ suelen ser otros nombres habituales. Para reforzar tu práctica con el CLI escribe el siguiente comando que aprovecharemos en el futuro.
 
 ```bash
 ng g m shared
-ng g c shared/now --export=true
+ng g c shared/go-home --export=true
 ```
+
 
 ```html
-<time>
-  {{ now | date:'long' }}
-</time>
-```
-
---
-
-```bash
-ng g m temporal
-ng g c temporal --export=true
-```
-
-```html
-<div>
-  <app-now></app-now>
-</div>
+<a href=""> Go home 🏠</a>
 ```
 
 ```html
 <main class="container ">
   <router-outlet></router-outlet>
-* <app-temporal></app-temporal>
+  <ab-go-gome></ab-go-gome>
 </main>
 ```
 
-> Por ahora déjalo huérfano, no lo importaremos hasta que tengamos módulos funcionales. Sólo anticiparte que es un módulo dónde se hace mucho uso de la propiedad transitiva del sistema modular de Angular.
-
-El caso es **distinguir los componentes de infraestructura de los de negocio** o funcionalidad. Los módulos _core_ y _shared_ los trataremos como de infraestructura y todos los demás serán de negocio (aún no tenemos). El primero es para meter cosas de uso único esenciales para la aplicación. El segundo para meter bloques reutilizables durante la construcción de la aplicación. Recuerda que sólo son convenios de arquitectura de software; adáptalos a tus necesidades.
-
-> En esta aplicación hasta ahora no es nada funcional,!y ya tiene seis módulos y siete componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
+> En esta aplicación hasta ahora no es nada funcional,!y ya tiene una docena de cosas entre módulos y componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
 
 ### El bosque de módulos a vista de pájaro
 
@@ -357,16 +341,13 @@ AppModule
 |
 +--BrowserModule
 |
-+--CoreModule
++--LayoutModule
    |
    +--CommonModule
    |
    +--RouterModule
    |
-   +--TemporalModule
-      |
-      +--SharedModule
-
+   +--SharedModule
 ```
 
 ### El bosque de componentes a vista de pájaro
@@ -382,15 +363,13 @@ AppComponent
    |  |
    |  +--RouterOutletComponent
    |  |
-   |  +--TemporalComponent
-   |     |
-   |     +--NowComponent
+   |  +--GoHomeComponent
    |
    +--FooterComponent
 
 ```
 
-Con esto tendrás una base para una aplicación _Angular 8_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular8. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
+Con esto tendrás una base para una aplicación _Angular 9_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular9. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
