@@ -23,7 +23,7 @@ La idea de árbol se usa en muchas analogías informáticas. La emplearemos en d
 
 Partimos de la aplicación tal cómo la dejamos en el [Hola Mundo en Angular](../hola-angular-cli/). Al finalizar tendrás un esqueleto del que colgar módulos y componentes funcionales.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/1-base](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app)
+> Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-basic](https://github.com/AcademiaBinaria/angular-basic/)
 
 # 1. Módulos
 
