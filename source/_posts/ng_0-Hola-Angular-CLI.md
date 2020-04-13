@@ -20,7 +20,7 @@ thumbnail: /css/images/angular-0_cli.png
 
 <!-- more -->
 
-El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _ CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 9** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
+El comúnmente conocido como **AngularCLI** o _angular cli_ o _angular-cli_ o _CLI a secas_ es la herramienta de línea de comandos estándar para **crear, depurar y publicar aplicaciones Angular**. En su actual **versión 9** es más potente y versátil que nunca y es muy sencillo dominar los aspectos básicos.
 
 > Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-basic](https://github.com/AcademiaBinaria/angular-basic/)
 
@@ -155,10 +155,10 @@ El `package.json` es el fichero estándar de _npm_ donde se almacenan las **depe
 ```json
 {
   "dependencies": {
-    "@angular/core": "~9.0.3"
+    "@angular/core": "~9.1.1"
   },
   "devDependencies": {
-    "@angular/cli": "~9.0.3"
+    "@angular/cli": "~9.1.1"
   }
 }
 ```
@@ -179,22 +179,6 @@ Otras configuraciones en producción
 
 Las librerías que vienen de fábrica tienen todo lo necesario para crear aplicaciones. Pero raro es el caso en que no necesitemos **algún que otro producto de terceros**. Ya sean utilidades como _[date-fns](https://date-fns.org/)_, librerías gráficas como _[chart.js](http://www.chartjs.org/)_ o la aplicación de estilos y componentes visuales de _frameworks como Bootstrap o MaterialDesign_. Pero todos se instalan de igual forma. Descargándolos con _npm_ y adjuntándolos en el `angular.json`.
 
-<!-- > En este tutorial te propongo usar una hoja de estilos muy simple que mejora la apariencia de cualquier aplicación sin necesidad de usar clases propias. Se llama _[MiniCSS](https://minicss.org/)_ y es apropiada para prototipos, pruebas o pequeños proyectos.
-
-Se descargan e instalan de manera estándar.
-
-```console
-npm install mini.css --save
-```
-
-Para que se incluyan en la distribución hay que ir a la configuración del _CLI_. Entonces se agrega dentro del fichero `.angular.json` a la colección de _styles_ o de _scripts_ que corresponda.
-
-```json
-{
-  "styles": ["src/styles.css", "./node_modules/mini.css/dist/mini-default.min.css"]
-}
-``` -->
-
 Estas colecciones de archivos los usa el _cli_ a través de _webpack_ para incluirlos **minificados y concatenados en un fichero _bundle_ sustituyendo a las clásicas etiquetas html**.Todo, el html y sus estilos, se construirá en el cliente a partir de instrucciones JavaScript. De esta forma el fichero `index.html` apenas tendrás que tocarlo, salvo para algunas etiquetas de meta información.
 
 ```html
@@ -202,8 +186,6 @@ Estas colecciones de archivos los usa el _cli_ a través de _webpack_ para inclu
 <meta name="keywords" content="Angular Sample Tutorial Ejemplo" />
 <meta name="author" content="Alberto Basalo" />
 ```
-
-<!-- Una cosa más, los cambios en los ficheros de configuración no se auto recargan. Tienes que parar la servidor y volver a lanzarlo para apreciar el estilo _MiniCSS_. -->
 
 ## 5.3 Environments
 
@@ -233,7 +215,9 @@ Una mejora digna de mención es la capacidad de presupuestar tamaños de los fic
 
 Para garantizar la limpieza del código conviene usar herramientas como [Prettier](https://prettier.io/) y configurarlas para su compatibilidad con Angular.
 
-Los últimos toques antes de publicar pueden incluir el _script de analytics_ en el `index.html` y ajustes de retro-compatibilidad en el fichero `polyfills.ts`. Luego un comando y listo para publicar en _github pages_.
+Los últimos toques antes de publicar pueden incluir el _script de analytics_ en el `index.html` y ajustes de retro-compatibilidad en el fichero `polyfills.ts`.
+
+Luego un comando y listo para publicar en _github pages_. `ng add angular-cli-ghpages`.
 
 > Te recomiendo que te familiarices y uses mucho estos _scripts_ en el `package.json` para poder lanzarlos más tarde.
 
@@ -245,6 +229,7 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
     "start:prod": "npm run build:prod && npm run http-server",
     "build": "ng build",
     "build:prod": "ng build --prod",
+    "deploy": "ng deploy --baseHref=/angular-basic/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -252,12 +237,13 @@ Los últimos toques antes de publicar pueden incluir el _script de analytics_ en
 }
 ```
 
-Comprueba las ejecuciones de los distintos _scripts_. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/angular-basic` en la que dejará los archivos necesarios para ejecución. Por último `npm run pub` los prepara para enviar compilados a la carpeta estándar `./docs` listos para publicarse en las _github pages_.
+Comprueba las ejecuciones de los distintos _scripts_. Con `npm start` no se generan ficheros físicos. Todos es en memoria para mayor velocidad de re-compilación mientras desarrollas. En cambio `npm run build:prod` creará una carpeta `./dist/angular-basic` en la que dejará los archivos necesarios para ejecución. Por último `npm run deploy` los prepara para enviar compilados a un rama estándar de publicación listos para desplegarse en las [_github pages_](https://pages.github.com/).
 
 Otros enlaces de interés sobre el ecosistema Angular.
 
 - [Extensiones Esenciales](https://marketplace.visualstudio.com/items?itemName=johnpapa.angular-essentials)
 - [Prettier](https://prettier.io/)
+- [TsLint-Prettier](https://github.com/prettier/tslint-config-prettier)
 - [Angular Console](https://marketplace.visualstudio.com/items?itemName=nrwl.angular-console)
 - [Angular Material](https://material.angular.io/)
 - [Bootstrap](https://ng-bootstrap.github.io/#/home)

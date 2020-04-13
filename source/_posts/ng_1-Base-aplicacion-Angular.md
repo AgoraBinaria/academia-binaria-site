@@ -92,7 +92,7 @@ export class AppModule {}
 
 # 2. Componentes
 
-Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. **Los componentes son los bloques básicos de construcción de las páginas web en Angular 8**. Contienen una parte visual en html (la Vista) y una funcional en Typescript (el Controlador).
+Los módulos son contenedores. Lo primero que vamos a guardar en ellos serán componentes. **Los componentes son los bloques básicos de construcción de las páginas web en Angular**. Contienen una parte visual en `html` (la Vista) y una funcional en `Typescript` (el Controlador).
 
 > La aplicación original que crea el CLI nos regala un primer componente de ejemplo en el fichero `app.component.ts`. Según la configuración del CLI este componente puede haber sido creado en un sólo fichero o hasta cuatro: (el controlador, con la vista y los estilos en ficheros propios y fichero extra para pruebas unitarias).
 
@@ -104,7 +104,7 @@ Los componentes, como el resto de artefactos en Angular, serán **clases TypeScr
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ab-root',
   templateUrl: './app.component.html',
   styles: []
 })

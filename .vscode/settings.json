@@ -6,9 +6,26 @@
     "editorWarning.foreground": "#ffff99",
     "titleBar.activeBackground": "#4682b4",
     "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#4682b4",
-    "titleBar.inactiveForeground": "#e7e7e7"
+    "titleBar.inactiveBackground": "#4682b499",
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "activityBar.activeBackground": "#689bc4",
+    "activityBar.activeBorder": "#a03f75",
+    "activityBar.background": "#689bc4",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#a03f75",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#4682b4",
+    "statusBar.border": "#4682b4",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#689bc4",
+    "titleBar.border": "#4682b4"
   },
   "spellright.language": ["en", "es"],
-  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext"
+  ],
+  "peacock.color": "#4682b4"
 }
