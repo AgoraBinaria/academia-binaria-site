@@ -330,6 +330,36 @@ ng g c shared/go-home --export=true
 
 > En esta aplicación hasta ahora no es nada funcional,!y ya tiene una docena de cosas entre módulos y componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
 
+### Un ejemplo práctico recopilatorio para la página _home_.
+
+```bash
+ng g m home -m app.module.ts
+ng g c home/home --export --flat
+```
+
+### home.component.html
+```html
+<h2> Welcome 🏡 !</h2>
+<nav>
+  <p>
+    <a href="https://www.trainingit.es/curso-angular-basico/?promo=angular.builders">💻 Curso de Introducción</a>
+  </p>
+  <p>
+    <a href="https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders">💻 Curso Avanzado</a>
+  </p>
+</nav>
+```
+
+Y podemos incluir este componente en el contenido del layout principal.
+
+```html
+<main class="container ">
+  <router-outlet></router-outlet>
+  <ab-go-gome></ab-go-gome>
+  <ab-home></ab-home>
+</main>
+```
+
 ### El bosque de módulos a vista de pájaro
 
 ```
@@ -340,6 +370,8 @@ AppModule
 |  +--RouterModule
 |
 +--BrowserModule
+|
++--HomeModule
 |
 +--LayoutModule
    |
@@ -364,9 +396,10 @@ AppComponent
    |  +--RouterOutletComponent
    |  |
    |  +--GoHomeComponent
+   |  |
+   |  +--HomeComponent
    |
    +--FooterComponent
-
 ```
 
 Con esto tendrás una base para una aplicación _Angular 9_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular9. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
