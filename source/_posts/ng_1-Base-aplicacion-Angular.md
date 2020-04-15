@@ -162,22 +162,22 @@ Casi **todas las páginas tienen una estructura** similar que de forma simplista
 Ejecuta en una terminal estos comandos para que generen los componentes y comprueba el resultado en el editor.
 
 ```shell
-ng g c layout/shell
-ng g c layout/shell/header
-ng g c layout/shell/main
-ng g c layout/shell/footer
+ng g c layout/header --export
+ng g c layout/nav --export
+ng g c layout/aside --export
+ng g c layout/footer --export
 ```
 
-Fíjate en el componente del fichero `shell.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `app-shell` y `ShellComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con su selector `root`.
+Fíjate en un componente como el Header y en el fichero `header.component.ts`. Su estructura es igual a la del componente raíz. Destaca que el nombre del componente coincide con el nombre del selector: `app-header` y `HeaderComponent`. Esto será lo normal a partir de ahora. Sólo el componente raíz tiene la excepción de que su nombre `App` no coincide con su selector `root`.
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
 @Component({
-  selector: 'ab-shell',
-  templateUrl: './shell.component.html',
+  selector: 'ab-header',
+  templateUrl: './header.component.html',
   styles: []
 })
-export class ShellComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   constructor() {}
   ngOnInit() {}
 }
@@ -186,9 +186,42 @@ export class ShellComponent implements OnInit {
 Y esta es su vista asociada. La cual es de nuevo una composición de otros selectores. Estamos creando un frondoso árbol de componentes.
 
 ```html
-<ab-header></ab-header>
-<ab-main></ab-main>
-<ab-footer></ab-footer>
+<header>
+  <strong> {{ title }} </strong>
+</header>
+```
+
+## 2.3 Estilos en los componentes
+
+La aplicación de estilos y css en los componentes merecería un tema aparte. Para empezar quiero que seas consciente de que lo que programes es código fuente. Lo escribirás en TypeScript, algo muy parecido al Html y los estilos en Css, LASS, SCSS...
+
+Pero todo ese código fuente no es lo que ejecuta el navegador. Ni mucho menos. Antes tiene que compilarse y generar JavaScript, que al ejecutarse en el navegador crea de nuevo Html, JS y estilos...
+
+Estos estilos van ya incrustados entre los elementos. Y Angular los aplica componente a componente, sin herencia ni transmisión a los descendientes. Este es el comportamiento por defecto. Por supuesto, todo es customizable. Pero en este curso lo dejaremos tal cual viene de fábrica.
+
+Así que los estilos se definen en el fichero apropiado. Se puede usa los selectores de clase e identificador estándar de CSS. Pero también se puede usar el selector propio `:host` el cual apunta al elemento html que creará el componente cuando se ejecute.
+
+Por ejemplo en `app.component.css`
+
+```css
+:host {
+  min-height: 100vh;
+}
+:host > main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+:host > main > article {
+  flex: 1 1 auto;
+}
+
+@media (min-width: 768px) {
+  :host > main {
+    flex-direction: row;
+  }
+}
+
 ```
 
 # 3 Visibilidad entre componentes
@@ -199,13 +232,13 @@ La clave del código limpio es **exponer funcionalidad de manera expresiva pero 
 
 Los componentes no deciden por sí mismos su **visibilidad**. Cuando un componente es generado se declara en un módulo contenedor en su propiedad `declares:[]`. Eso lo hace visible y utilizable por cualquier otro componente del mismo módulo. Pero **si quieres usarlo desde fuera tendrás que exportarlo**. Eso se hace en la propiedad `exports:[]` del módulo en el que se crea.
 
-La exportación debe hacerse a mano incluyendo el componente en el array, o indicarse con el _flag_ `--export` para que lo haga el _cli_. Esto es lo que se ha hecho en el módulo _Core_ para poder exportar el componente `shell`.
+La exportación debe hacerse a mano incluyendo el componente en el array, o indicarse con el _flag_ `--export` para que lo haga el _cli_. Esto es lo que se ha hecho en el módulo _Layout_ para poder exportar el componente `header`.
 
 ```typescript
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent],
+  declarations: [HeaderComponent, FooterComponent, NavComponent, AsideComponent],
   imports: [CommonModule, RouterModule],
-  exports: [ShellComponent]
+  exports: [HeaderComponent, FooterComponent, NavComponent, AsideComponent],
 })
 export class LayoutModule {}
 ```
@@ -216,7 +249,7 @@ Por supuesto que `HeaderComponent` necesitará la propiedad `title` y también l
 
 ## 3.2 Importación y exportación entre módulos
 
-Que un componente sea público es la primera condición para que se consuma fuera de su módulo. Ahora falta que quién lo quiera usar el selector `<app-shell>` importe su módulo `CoreModule`. Esto lo haremos en el `AppModule` para que lo use el `AppComponent`.
+Que un componente sea público es la primera condición para que se consuma fuera de su módulo. Ahora falta que quién lo quiera usar, utilice el selector `<ab-header>` importe su módulo `LayoutModule`. Esto lo haremos en el `AppModule` para que lo use el `AppComponent`.
 
 ```typescript
 @NgModule({
@@ -229,8 +262,6 @@ export class AppModule {}
 ```
 
 Como regla general, **cuando en una plantilla se incruste otro componente**, Angular lo buscará dentro del propio módulo en el que pretende usarse. Si no lo encuentra entonces lo buscará entre los componentes exportados por los módulos que hayan sido importados por el actual contenedor.
-
-> Ahora mismo en `AppComponente` sólo puedo usar a `ShellComponent`, que es el único componente accesible. En `ShellComponent` se pueden usar sus vecinos _Header, Main y Footer_. Es un práctica recomendada el mantener el `AppModule` y el `AppComponent` tan simples como sea posible. Para ello movemos todo lo que podemos al módulo de ayuda `CoreModule` distribuyendo el contenido de `app.component.html` en las plantillas de _Header, Main y Footer_ que corresponda.
 
 ### 3.2.1 Dos mundos paralelos: imports de Angular e import de TypeScript
 
@@ -269,7 +300,7 @@ Un problema que reforzará tu conocimiento sobre el sistema modular surgirá al 
 <router-outlet></router-outlet>
 ```
 
-Todo son etiquetas _html_ estándar salvo la última `<router-outlet></router-outlet>`. El propósito de este componte lo veremos en la próxima lección dedicada a enrutado. Pero por ahora más que una ayuda es un dolor de cabeza porque es un desconocido para el módulo `LayoutModule`. Resulta que el `RouterOutletComponent` está declarado en un módulo del _framework_ llamado `RouterModule`. Dicho módulo fue importado de manera automática durante la generación del código inicial, pero ¿Dónde?.
+Todo son etiquetas _html_ estándar salvo la última `<router-outlet></router-outlet>`. El propósito de este componte lo veremos en la próxima lección dedicada a enrutado. Pero por ahora más que una ayuda es un dolor de cabeza. Resulta que el `RouterOutletComponent` está declarado en un módulo del _framework_ llamado `RouterModule`. Dicho módulo fue importado de manera automática durante la generación del código inicial, pero ¿Dónde?.
 
 Como digo el tema del enrutado es un [capítulo aparte](../paginas-y-rutas-angular-spa/), pero las relaciones de los módulos debes conocerlas cuanto antes. Durante la generación inicial se crearon dos módulos: el `AppModule`, ya estudiado, y su asistente para enrutado `AppRoutingModule`. Este último aún no lo hemos visitado. Su contenido es:
 
@@ -284,26 +315,7 @@ const routes: Routes = [];
 export class AppRoutingModule {}
 ```
 
-Obviando la por ahora inútil instrucción `.forRoutes(routes)`, llama la atención que este módulo es dependiente del famoso `RouterModule`, es decir lo importa en su array `imports:[]`. Pero además va y lo exporta haciendo uso de la interesante **propiedad transitiva de los módulos**. Cada módulo puede exportar sus propios componentes o los de terceros. Incluso puede exportar todo un módulo al completo. Al hacerlo así, el `AppRoutingModule` estaba poniendo a disposición del `AppModule` todo el contenido de `RouterModule`, incluido el por ahora fastidioso `RouterOutletComponent`.
-
-Pero el módulo _Layout_ no importa al _AppRouting_, así que nada sabe de un selector llamado _router-outlet_. Para solucionarlo sólo puedes hacer una cosa: importar al `RouterModule` en el `LayoutModule`, que quedará así:
-
-```typescript
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FooterComponent } from './shell/footer/footer.component';
-import { HeaderComponent } from './shell/header/header.component';
-import { MainComponent } from './shell/main/main.component';
-import { ShellComponent } from './shell/shell.component';
-
-@NgModule({
-  declarations: [ShellComponent, HeaderComponent, MainComponent, FooterComponent],
-  imports: [CommonModule, RouterModule],
-  exports: [ShellComponent]
-})
-export class LayoutModule {}
-```
+Obviando la por ahora inútil instrucción `.forRoutes(routes)`, llama la atención que este módulo es dependiente del famoso `RouterModule`, es decir lo importa en su array `imports:[]`. Pero además va y lo exporta haciendo uso de la interesante **propiedad transitiva de los módulos**. Cada módulo puede exportar sus propios componentes o los de terceros. Incluso puede exportar todo un módulo al completo. Al hacerlo así, el `AppRoutingModule` está poniendo a disposición del `AppModule` todo el contenido de `RouterModule`, incluido el por ahora fastidioso `RouterOutletComponent`.
 
 ## 4.2 Organización de la aplicación en módulos
 
@@ -316,16 +328,16 @@ ng g m shared
 ng g c shared/go-home --export=true
 ```
 
-
 ```html
 <a href=""> Go home 🏠</a>
 ```
 
+Y puedo usarlo por ejemplo en el Header
+
 ```html
-<main class="container ">
-  <router-outlet></router-outlet>
-  <ab-go-gome></ab-go-gome>
-</main>
+<header>
+  <ab-go-home></ab-go-home><strong> {{ title }} </strong>
+</header>
 ```
 
 > En esta aplicación hasta ahora no es nada funcional,!y ya tiene una docena de cosas entre módulos y componentes!. Puede parecer sobre-ingeniería, pero a la larga le verás sentido. Por ahora te permitirá practicar con la creación de módulos y componentes.
@@ -350,14 +362,19 @@ ng g c home/home --export --flat
 </nav>
 ```
 
-Y podemos incluir este componente en el contenido del layout principal.
+Y podemos incluir este componente en el contenido del layout del componente principal `AppComponent`.
 
 ```html
-<main class="container ">
-  <router-outlet></router-outlet>
-  <ab-go-gome></ab-go-gome>
-  <ab-home></ab-home>
+<ab-header></ab-header>
+<main>
+  <ab-nav></ab-nav>
+  <article>
+    <router-outlet></router-outlet>
+    <ab-home></ab-home>
+  </article>
+  <ab-aside></ab-aside>
 </main>
+<ab-footer></ab-footer>
 ```
 
 ### El bosque de módulos a vista de pájaro
@@ -386,20 +403,17 @@ AppModule
 
 ```
 AppComponent
-|
-+--ShellComponent
-   |
-   +--HeaderComponent
-   |
-   +--MainComponent
-   |  |
-   |  +--RouterOutletComponent
-   |  |
-   |  +--GoHomeComponent
-   |  |
-   |  +--HomeComponent
-   |
-   +--FooterComponent
+  |
+  +--HeaderComponent
+  |
+  +--NavComponent
+  |
+  +--RouterOutletComponent
+  |
+  +--HomeComponent
+  |
+  +--FooterComponent
+
 ```
 
 Con esto tendrás una base para una aplicación _Angular 9_. Sigue esta serie para añadirle funcionalidad mediante [Páginas y rutas Angular SPA](../paginas-y-rutas-angular-spa/) mientras aprendes a programar con Angular9. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
