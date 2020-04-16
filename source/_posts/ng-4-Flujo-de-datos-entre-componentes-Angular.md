@@ -1,13 +1,13 @@
 ---
 title: Flujo de datos entre componentes Angular
 permalink: flujo-de-datos-entre-componentes-angular
-date: 2019-02-12 16:10:44
+date: 2020-04-16 16:10:44
 tags:
 - Angular
 - Components
 - Tutorial
 - Introducción
-- Angular8
+- Angular9
 - Angular2
 categories:
 - [Tutorial, Angular]
@@ -15,7 +15,7 @@ thumbnail: /css/images/angular-4_flow.png
 ---
 ![flujo-de-datos-entre-componentes-angular](/images/tutorial-angular-4_flow.png)
 
-Los desarrollos profesionales son complicados pero **con Angular tenemos soluciones de comunicación simples para pantallas complejas**. Mediante el desarrollo de componentes atómicos y reutilizables Angular 8 favorece la implementación de buenas prácticas.
+Los desarrollos profesionales son complicados pero **con Angular tenemos soluciones de comunicación simples para pantallas complejas**. Mediante el desarrollo de componentes atómicos y reutilizables Angular 9 favorece la implementación de buenas prácticas.
 
 Crear y comunicar muchos componentes puede llevarnos a código difícil de seguir. La librería `@angular/forms` ofrece *tuberías de comunicación* para **mantener el flujo de datos bajo control**.
 
@@ -23,8 +23,7 @@ Crear y comunicar muchos componentes puede llevarnos a código difícil de segui
 
 Partiendo de la aplicación tal como quedó en [Formularios, tablas y modelos de datos en Angular](../formularios-tablas-y-modelos-de-datos-en-angular/). Al finalizar tendrás una aplicación que reparte la responsabilidad de recoger y presentar datos en componentes.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/4-flow](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/4-flow/car)
-> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
+> Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-basic](https://github.com/AcademiaBinaria/angular-basic/)
 
 
 # 1. Comunicación entre componentes
@@ -43,7 +42,7 @@ Las situaciones que te encontrarás caerán en alguna de estas tres categorías 
 Solemos empezar creando un componente por página. Pero es normal que esa página se complique y la solución a la complejidad es la **división en componentes y reparto de responsabilidades**. Dado que están en una misma página existe cierto acoplamiento entre ellos y eso nos facilitará la comunicación.
 
 ### Comunicar componentes en páginas distintas
-Cuando los componentes se carga en rutas distintas ya no hay forma de comunicarlos directamente. Pero lo resolveremos fácilmente **usando las capacidades del router.**
+Cuando los componentes se cargan en rutas distintas ya no hay forma de comunicarlos directamente. Pero lo resolveremos fácilmente **usando las capacidades del router.**
 
 ### Comunicar componentes entre estructuras dinámicas
 La situación más compleja se da cuando queremos comunicar componentes o servicios desacoplados pero sin cambio de página. En este caso hará falta un **mediador observable**.
@@ -51,91 +50,81 @@ La situación más compleja se da cuando queremos comunicar componentes o servic
 
 # 2. El patrón Contendor / Presentadores
 
-En **arquitectura de software** cuando encontramos una solución a un problema recurrente le ponemos un nombre y tratamos de utilizarlo siempre que podemos. Obviamente es una elección del programador y siempre tiene un coste que debe valorar. En este caso la ventaja es clara: **reparto de responsabilidades**.
+En **arquitectura de software** cuando encontramos una solución a un problema recurrente le ponemos un nombre y tratamos de utilizarlo siempre que podemos. Obviamente es una elección del programador y siempre tiene un coste que debe valorar. Aquí la ventaja buscada es claramente una: **el reparto de responsabilidades**.
 
 ## 2.1 El patrón
 
 En este caso **el patrón contenedor/presentadores** estipula que haya un único componente responsable de obtener, mutar y guardar el estado. Será el componente contenedor. Los presentadores serán responsables de.. ejem, presentar la información y los elementos de interacción con el usuario. Las ventajas derivadas son: mayor facilidad para el _testeo_ y mayores posibilidades de reutilización de presentadores.
 
-> A este patrón a veces se le conoce como parent/children por la jerarquía html que genera.
+> A este patrón a veces se le conoce como _parent/children_ por la jerarquía HTML que genera.
 
 Veamos una implementación sencilla. Haremos una interfaz mínima para simular el manejo de un coche. Habrá pedales de aceleración y freno, y un cuadro dónde se refleje la velocidad. Para todo ello vamos a usa el _Angular CLI_ y crear un módulo y sus componentes base.
 
 ```console
-ng g m 4-flow/car
-ng g c 4-flow/car/car
-ng g c 4-flow/car/car/display
-ng g c 4-flow/car/car/pedals
-```
-
-Agregamos una ruta en el enrutador con su enlace en el menú.
-
-```typescript
-{
-  path: 'car',
-  loadChildren: () => import('./4-flow/car/car.module').then(m => m.CarModule)
-}
-```
-
-```html
-<a routerLink="car" class="button">
-  <span> 4 - Car</span>
-</a>
+ng g m car --route car --module app-routing.module
+ng g c car/car/display-presenter
+ng g c car/car/pedals-presenter
 ```
 
 ## 2.2 El contenedor
 
-En el componente contenedor tendremos **una vista muy sencilla y un controlador más complejo**. La vista será la composición de los componentes presentadores, pero el controlador tendrá que obtener datos, aplicarles lógica de negocio y guardarlos cuando corresponda.
+En el componente contenedor tendremos **una vista muy sencilla y un controlador más complejo**. La vista solamente será la composición de los componentes presentadores, pero el controlador tendrá que obtener datos, aplicarles lógica de negocio y guardarlos cuando corresponda.
 
 > No es habitual asignarle un sufijo al nombre del componente para indicar que es el contenedor. Suele ser suficiente el verlo en la raíz de la jerarquía de carpetas.
 
 ```html
-<app-display [model]="car.name"
-             [currentSpeed]="car.currentSpeed"
-             [topSpeed]="car.maxSpeed"
-             [units]="'Km/h'">
-</app-display>
-<app-pedals (brake)="onBrake($event)"
-            [disableBrake]="disableBrake"
-            (throttle)="onThrottle($event)"
-            [disableThrottle]="disableThrottle">
-</app-pedals>
+<ab-display-presenter [model]="car.name"
+                      [currentSpeed]="car.currentSpeed"
+                      [topSpeed]="car.maxSpeed"
+                      [units]="'Km/h'">
+</ab-display-presenter>
+<ab-pedals-presenter (brake)="onBrake($event)"
+                     [brakeDisabled]="disableBrake"
+                     (throttle)="onThrottle($event)"
+                     [throttleDisabled]="disableThrottle">
+</ab-pedals-presenter>
 ```
 
-Vemos que usa los componentes presentadores `Display` y `Pedals` enviándoles información y suscribiéndose a sus eventos. Concretaremos esta funcionalidad más adelante.
+Obviamente este HTML visto así aún no será funcional. Por supuesto, los componentes presentadores existen, pero... ¿Qué son esos atributos tan raros?
+
+Vemos que usa los componentes presentadores `DisplayPresenter` y `PedalsPresenter` enviándoles información y suscribiéndose a sus eventos. Concretaremos esta funcionalidad más adelante.
+
+Ahora sigamos en la parte lógica de nuestro componente contenedor. Es la clase controlador y se ocupa de obtener y manipular los datos.
 
 ```typescript
-public car: CarModel;
-public disableBrake: boolean;
-public disableThrottle: boolean;
+export class CarComponent implements OnInit {
+  car: CarModel;
+  disableBrake: boolean;
+  disableThrottle: boolean;
 
-constructor() {}
+  constructor() {}
 
-public ngOnInit() {
-  this.car = { name: 'Roadster', maxSpeed: 120, currentSpeed: 0 };
-  this.checkLimits();
-}
-private checkLimits() {
-  this.disableBrake = false;
-  this.disableThrottle = false;
-  if (this.car.currentSpeed <= 0) {
-    this.car.currentSpeed = 0;
-    this.disableBrake = true;
-  } else if (this.car.currentSpeed >= this.car.maxSpeed) {
-    this.car.currentSpeed = this.car.maxSpeed;
-    this.disableThrottle = true;
+  ngOnInit(): void {
+    this.car = { name: 'Roadster', maxSpeed: 120, currentSpeed: 0 };
+    this.checkLimits();
+  }
+  onBrake(drive: number) {
+    this.car.currentSpeed -= this.getDelta(drive);
+    this.checkLimits();
+  }
+  onThrottle(drive: number) {
+    this.car.currentSpeed += this.getDelta(drive);
+    this.checkLimits();
+  }
+
+  private getDelta = (drive: number) => drive + (this.car.maxSpeed - this.car.currentSpeed) / 10;
+  private checkLimits() {
+    this.disableBrake = false;
+    this.disableThrottle = false;
+    if (this.car.currentSpeed <= 0) {
+      this.car.currentSpeed = 0;
+      this.disableBrake = true;
+    } else if (this.car.currentSpeed >= this.car.maxSpeed) {
+      this.car.currentSpeed = this.car.maxSpeed;
+      this.disableThrottle = true;
+    }
   }
 }
-public onBrake(drive: number) {
-  this.car.currentSpeed -= this.getDelta(drive);
-  this.checkLimits();
-}
-public onThrottle(drive: number) {
-  this.car.currentSpeed += this.getDelta(drive);
-  this.checkLimits();
-}
-private getDelta = (drive: number) =>
-  drive + (this.car.maxSpeed - this.car.currentSpeed) / 10;
 ```
 
 Lo dicho, _la clase controladora del componente contenedor retiene el grueso de la funcionalidad_. En este caso inicializar una instancia de un coche y mantener sus velocidad en los límites lógicos respondiendo a las acciones del usuario conductor.
@@ -151,14 +140,13 @@ Esta comunicación _hacia abajo_ envía la información **desde el contenedor ha
 Para que una vista muestre datos tiene que usar directivas como `{{ model }}` asociada a una propiedad pública de la clase componente. Se supone que dicha clase es la responsable de su valor. Pero también puede **recibirlo desde el exterior**. La novedad es hacer que lo reciba vía *html*.
 
 ```html
-<h2> {{ model }} </h2>
-<h3> Top speed: {{ topSpeed | number:'1.0-0' }}</h3>
-<div class="card">
-  <div class="section">
+<h3> {{ model }} </h3>
+<h4> Top speed: {{ topSpeed | number:'1.0-0' }}</h4>
+<div>
+  <div [ngClass]="getSpeedClass()">
     {{ currentSpeed | number:'1.2-2' }} {{ units }}
   </div>
   <progress [value]="currentSpeed"
-            [ngClass]="getSpeedClass()"
             [max]="topSpeed">
   </progress>
 </div>
@@ -168,15 +156,18 @@ Para que una vista muestre datos tiene que usar directivas como `{{ model }}` as
 Empieza por decorar con `@Input()` la propiedad que quieres usar desde fuera. Por ejemplo un código como este del archivo `display.component.ts`.
 
 ```typescript
-export class DisplayComponent implements OnInit {
-  @Input() public model: string;
-  @Input() public currentSpeed: number;
-  @Input() public topSpeed: number;
-  @Input() public units: string;
+export class DisplayPresenterComponent implements OnInit {
+  @Input() model: string;
+  @Input() currentSpeed: number;
+  @Input() topSpeed: number;
+  @Input() units: string;
+
   constructor() {}
-  ngOnInit() {}
-  public getSpeedClass = () =>
-    this.currentSpeed < this.getThreshold() ? 'primary' : 'secondary';
+
+  ngOnInit(): void {}
+
+  getSpeedClass = () => (this.currentSpeed < this.getThreshold() ? 'good' : 'warning');
+
   private getThreshold = () => this.topSpeed * 0.8;
 }
 ```
@@ -184,16 +175,16 @@ export class DisplayComponent implements OnInit {
 Ahora puedes enviarle datos a este componente desde el *html* de su consumidor. Por ejemplo desde `car.component.html` le puedo enviar una variable o cualquier expresión evaluable. Recordemos como usa `[propiedad]="expresion"` en el elemento presentador.
 
 ```html
-<app-display [model]="car.name"
-             [currentSpeed]="car.currentSpeed"
-             [topSpeed]="car.maxSpeed"
-             [units]="'Km/h'">
-</app-display>
+<ab-display-presenter [model]="car.name"
+                      [currentSpeed]="car.currentSpeed"
+                      [topSpeed]="car.maxSpeed"
+                      [units]="'Km/h'">
+</ab-display-presenter>
 ```
 
 En la clase controladora del presentador quedan responsabilidades reducidas a temas específicos como determinar las clases _css_ apropiadas o transformar los datos para su presentación.
 
-Estoy usando al componente de nivel inferior como un presentador; mientras que el contenedor superior actúa como controlador. Este mismo patrón puede y debe repetirse hasta **descomponer las vistas en estructuras simples** que nos eviten repeticiones absurdas en código.
+Estoy usando al componente de nivel inferior como un presentador; mientras que el contenedor superior actúa como controlador. Este mismo patrón puede y debe repetirse hasta **descomponer las vistas en estructuras ridículamente simples** que nos eviten repeticiones absurdas en código.
 
 De esta forma es fácil crear componentes reutilizables; y queda muy limpio el **envío de datos hacia abajo**. Pero, ¿y hacia arriba?.
 
@@ -207,18 +198,18 @@ Los componentes de nivel inferior no sólo se dedican a presentar datos, tambié
 Por ejemplo, el componente `PedalsComponent` permite acelerar y frenar. Bueno, realmente permite que el usuario diga que lo quiere hacer; los cambios se harán más arriba. Veamos lo básico del `pedals.component.html` antes de nada:
 
 ```html
-<h3> Pedals: </h3>
+<h4> Pedals: </h4>
 <form>
-  <input value="brake"
-    class="secondary"
-    type="button"
-    [disabled]="disableBrake"
-    (click)="brake.emit(1)"/>
-  <input value="throttle"
-    class="tertiary"
-    type="button"
-    [disabled]="disableThrottle"
-    (click)="throttle.emit(1)"/>
+  <input value="brake 🐌"
+         class="secondary"
+         type="button"
+         [disabled]="brakeDisabled"
+         (click)="brake.emit(1)" />
+  <input value="throttle 🐰"
+         class="tertiary"
+         type="button"
+         [disabled]="throttleDisabled"
+         (click)="throttle.emit(1)" />
 </form>
 ```
 
@@ -226,27 +217,29 @@ Claramente son un par de botones que con el evento `(click)` responden a accione
 
 > Si lo hiciera sería más difícil gestionar los cambios e imposibilitaría el uso de inmutables o técnicas más avanzadas de programación que se verán más adelante...
 
-En su lugar, lo que hace es **emitir un evento** confiando que alguien lo reciba y actúe en consecuencia. Por ejemplo la emisión de la instrucción de frenado se realiza mediante la propiedad `brake` decorada con `@Output() public brake new EventEmitter<number>();`. Dicha propiedad será una instancia de un emisor de eventos que mediante el método `.next()` que emite la señal hacia arriba.
+En su lugar, lo que hace es **emitir un evento** confiando que alguien lo reciba y actúe en consecuencia. Por ejemplo la emisión de la instrucción de frenado se realiza mediante la propiedad `brake` decorada con `@Output() brake = new EventEmitter<number>();`. Dicha propiedad será una instancia de un emisor de eventos que mediante el método `.next()` va a emitir la señal de frenado hacia arriba.
 
 ```typescript
-export class PedalsComponent implements OnInit {
-  @Input() public disableBrake: boolean;
-  @Input() public disableThrottle: boolean;
-  @Output() public brake = new EventEmitter<number>();
-  @Output() public throttle = new EventEmitter<number>();
+export class PedalsPresenterComponent implements OnInit {
+  @Input() brakeDisabled: boolean;
+  @Input() throttleDisabled: boolean;
+  @Output() brake = new EventEmitter<number>();
+  @Output() throttle = new EventEmitter<number>();
+
   constructor() {}
-  ngOnInit() {}
+
+  ngOnInit(): void {}
 }
 ```
 
 Mientras tanto, **en el contenedor la vista se subscribe al evento** `(brake)` como si este fuese un evento nativo y llama a los métodos que manipulan los datos de verdad.
 
 ```html
-<app-pedals (brake)="onBrake($event)"
-            [disableBrake]="disableBrake"
-            (throttle)="onThrottle($event)"
-            [disableThrottle]="disableThrottle">
-</app-pedals>
+<ab-pedals-presenter (brake)="onBrake($event)"
+                     [brakeDisabled]="disableBrake"
+                     (throttle)="onThrottle($event)"
+                     [throttleDisabled]="disableThrottle">
+</ab-pedals-presenter>
 ```
 
 Las propiedades *output* también pueden enviar argumentos que serán recibidos mediante el identificador `$event` propio del framework. Se declaran especificando el tipo del argumento en el genérico del constructor de `EventEmitter<any>`.
@@ -261,19 +254,19 @@ De esta manera se cierra el círculo. Los componentes de bajo nivel pueden **rec
 
 ## 3.1 Comunicación entre distintas páginas
 
-En las aplicaciones hay **comunicaciones de estado más allá de la página actual**. La comunicación entre páginas es responsabilidad del `@angular/router`. Una vez activada una ruta, el sistema carga un componente en el `<router-outlet>` correspondiente. No hay forma de comunicarse hacia *(arriba) o [abajo]* con algo desconocido. De una página a otra tampoco es problema pues la comunicación va mediante los parámetros de la *url*.
+En las aplicaciones hay **comunicaciones de estado más allá de la página actual**. La comunicación entre páginas es responsabilidad del `@angular/router`. Una vez activada una ruta, el sistema carga un componente en el `<router-outlet>` correspondiente. No hay forma de comunicarse hacia _(arriba) o [abajo]_ con algo desconocido. De una página a otra tampoco es problema pues la comunicación va mediante los parámetros de la *url*.
 
-Ya hemos usado esta comunicación anteriormente en el tema [2-spa](../paginas-y-rutas-angular-spa/) el componente `AuthorComponent` es capaz de recibir por parámetros una identificación de un autor. Esa información es el resultado de una acción del usuario en la pantalla `/about/authors` programada en el componente `AuthorsComponent`. Por tanto es una comunicación entre componentes, en la que ambos son *controladores hermanos*.
+Ya hemos usado esta comunicación anteriormente en el tema [2-spa](../paginas-y-rutas-angular-spa/) el componente `CoursesComponent` es capaz de recibir por parámetros una identificación de un autor. Esa información es el resultado de una acción del usuario en otra pantalla programada en el componente `HomeComponent`. Por tanto es una comunicación entre componentes que viven en páginas distintas, visto desde muy arriba es una situación en la que ambos son *controladores hermanos*.
 
 > Desde luego habrá que mejorar el acceso y control de los datos que por ahora es muy rudimentario. Lo haremos en próximos pasos. Primero mediante  [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/) y después usando [Comunicaciones HTTP en Angular](../comunicaciones-http-en-Angular/)
 
 ## 2.2 Comunicación entre estructuras desacopladas
 
-Estando en la misma ruta, no siempre se podrán conocer los componentes, y por tanto no se podrán usar sus `[propiedades] y (eventos)`
+Aún estando en la misma ruta, no siempre se podrán conocer los componentes, por ejemplo el `HeaderComponent` nunca podrá acceder al `PedalsPresenterComponent`; y por tanto no se podrán usar sus `[propiedades] y (eventos)`
 
-### 2.2.1 El layout principal y los componentes por ruta páginas.
+### 2.2.1 El layout principal y los componentes por rutas o páginas.
 
-Una situación habitual es **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar la velocidad máxima alcanzada en la barra del menú o un un mensaje emergente cada vez que se alcance la velocidad límite. En este caso, el `<router-outlet>` es una barrera que impide usar el patrón contenedor-presentador pues no se puede predecir el contenido dinámico que carga el `RouterOutlet`.
+Esta es una situación habitual, quieres **comunicar la vista de negocio activa con elementos generales** de la página. Por ejemplo podrías querer mostrar la velocidad máxima alcanzada en la barra del menú o un un mensaje emergente cada vez que se alcance la velocidad límite. En este caso, el `<router-outlet>` es una barrera que impide usar el patrón contenedor-presentador pues no se puede predecir el contenido dinámico que carga el `RouterOutlet`.
 
 ### 2.2.2 Múltiples niveles de presentadores.
 
