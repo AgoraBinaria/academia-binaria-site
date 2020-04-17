@@ -1,14 +1,14 @@
 ---
 title: Servicios inyectables en Angular
 permalink: servicios-inyectables-en-Angular
-date: 2019-02-15 9:54:58
+date: 2020-04-17 10:54:58
 tags:
   - Angular
   - Servicios
   - DI
   - Tutorial
   - Introducción
-  - Angular8
+  - Angular9
   - Angular2
 categories:
   - [Tutorial, Angular]
@@ -25,9 +25,7 @@ Para que los componentes consuman los servicios de forma controlada tenemos prov
 
 Partiendo de la aplicación tal como quedó en [Flujo de datos entre componentes Angular](../flujo-de-datos-entre-componentes-angular/). Al finalizar tendrás una aplicación que comunica componentes entre páginas, reparte responsabilidades y gestiona claramente sus dependencias.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/5-inject](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/5-inject/converter)
->
-> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
+> Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-basic](https://github.com/AcademiaBinaria/angular-basic/)
 
 # 1. Inyección de dependencias
 
@@ -38,8 +36,7 @@ Este sistema se basa en convenios y configuraciones que controlan la instancia c
 Como demostración vamos a trabajar con un par de utilidades para conversión de unidades. Crearé un módulo y un componente en el que visualizarlo.
 
 ```shell
-ng g m 5-inject/converter --routing true
-ng g c 5-inject/converter/converter
+ng g m converter --route converter --module app-routing.module
 ```
 
 ## 1.1 Generación de servicios
@@ -47,21 +44,23 @@ ng g c 5-inject/converter/converter
 La particularidad de las clases de servicios está en su decorador: `@Injectable()`. Esta función viene en el `@angular/core` e **indica que esta clase puede ser inyectada** dinámicamente a quien la demande. Aunque es muy sencillo crearlos a mano, el CLI nos ofrece su comando especializado para crear servicios. Estos son ejemplos de instrucciones para crear un _service_.
 
 ```shell
-ng g s 5-inject/converter/calculator
+ng g s converter/calculator
 ```
 
 El resultado es el fichero `calculator.service.ts` con su decorador que toma una _class_ normal y produce algo _injectable_. Veamos una implementación mínima:
 
 ```typescript
-import { Injectable } from '@angular/core';
-
 @Injectable({
   providedIn: 'root',
 })
 export class CalculatorService {
+  private milesPerKilometer = 0.62137;
+  private kilometersPerMile = 1.609;
+
   constructor() {}
 
-  public fromKilometersToMiles = kilometers => kilometers * 0.62137;
+  fromKilometersToMiles = (kilometers: number): number => kilometers * this.milesPerKilometer;
+  fromMilesToKilometers = (miles: number): number => miles * this.kilometersPerMile;
 }
 ```
 
@@ -82,11 +81,10 @@ export class ConverterComponent implements OnInit {
 
   constructor(private calculatorService: CalculatorService) {}
 
-  public ngOnInit() {
+  ngOnInit() {
     this.convert();
   }
-
-  public convert() {
+  convert() {
     this.miles = this.calculatorService.fromKilometersToMiles(this.kilometers);
   }
 }
@@ -101,14 +99,20 @@ export class ConverterComponent implements OnInit {
   <fieldset>
     <section>
       <label for="kilometers">Kilometers</label>
-      <input name="kilometers" type="number" [(ngModel)]="kilometers" placeholder="0" />
+      <input name="kilometers"
+             type="number"
+             [(ngModel)]="kilometers"
+             placeholder="0" />
     </section>
   </fieldset>
-  <input value="Convert" type="button" (click)="convert()" />
+  <input value="Convert"
+         type="button"
+         (click)="convert()" />
 </form>
 <section>
   <h4>{{ miles | number:'1.2-2' }} miles</h4>
 </section>
+<a [routerLink]="['dynamic']">Go to Abstract Culture Converter Sample</a>
 ```
 
 # 2. Inversión del control
@@ -136,26 +140,24 @@ Pero siempre será **una instancia única por módulo**. Si un _singleton_ no es
 Veamos un ejemplo extendiendo el problema del conversor de unidades de forma que se pueda escoger una **estrategia** de conversión en base a una cultura concreta. Para empezar necesitamos una interfaz, un servicio base que la implemente y un componente que lo consuma.
 
 ```shell
-ng g interface 5-inject/converter/i-culture-converter
-ng g service 5-inject/converter/culture-converter
-ng g component 5-inject/converter/culture-converter
+ng g interface converter/dynamic-converter/culture-converter
+ng g service converter/dynamic-converter/culture
+ng g component converter/dynamic-converter/dynamic-converter
 ```
 
 ```typeScript
-export interface ICultureConverter {
+export interface CultureConverter {
   sourceCulture: string;
   targetCulture: string;
   convertDistance: (source: number) => number;
-  convertTemperature: (source: number) => number;
 }
 ```
 
 ```typescript
-export abstract class CultureConverterService implements ICultureConverter {
+export abstract class CultureService implements CultureConverter {
   sourceCulture: string;
   targetCulture: string;
   convertDistance: (source: number) => number;
-  convertTemperature: (source: number) => number;
 
   constructor() {}
 }
@@ -168,15 +170,15 @@ export class CultureConverterComponent implements OnInit {
   public sourceUnits = 0;
   public targetUnits: number;
 
-  constructor(private cultureConverterService:CultureConverterService){ }
+  constructor(private cultureService:CultureService){ }
 
   public ngOnInit() {
-    this.source = this.cultureConverterService.sourceCulture;
-    this.target = this.cultureConverterService.targetCulture;
+    this.source = this.cultureService.sourceCulture;
+    this.target = this.cultureService.targetCulture;
     this.convert();
   }
   public convert() {
-    this.targetUnits = this.cultureConverterService.convertDistance(this.sourceUnits);
+    this.targetUnits = this.cultureService.convertDistance(this.sourceUnits);
   }
 }
 ```
@@ -200,44 +202,46 @@ export class CultureConverterComponent implements OnInit {
 
 ## 2.2 Implementaciones
 
-El `CultureConverterComponent` depende de `CultureConverterService` el cual implementa de forma abstracta la interfaz `CultureConverter`. Pero eso no es para nada funcional. Vamos a crear dos implementaciones específicas para Europa y USA. Estas clases concretas se apoyarán en el anteriormente creado `CalculatorService` que necesita algo más de código.
+El `CultureConverterComponent` depende de `CultureService` el cual implementa de forma abstracta la interfaz `CultureConverter`. Pero eso no es para nada funcional. Vamos a crear dos implementaciones específicas para Europa y USA. Estas clases concretas se apoyarán en el anteriormente creado `CalculatorService` que necesita algo más de código para hacer conversiones de distancia en ambos sentidos.
 
 ```typescript
 export class CalculatorService {
+  private milesPerKilometer = 0.62137;
+  private kilometersPerMile = 1.609;
+
   constructor() {}
 
-  public fromKilometersToMiles = kilometers => kilometers * 0.62137;
-  public fromMilesToKilometers = miles => miles * 1.609;
-  public fromCelsiusToFarenheit = celsius => celsius * (9 / 5) + 32;
-  public fromFarenheitToCelsius = farenheit => (farenheit - 32) * (5 / 9);
+  fromKilometersToMiles = (kilometers: number): number => kilometers * this.milesPerKilometer;
+  fromMilesToKilometers = (miles: number): number => miles * this.kilometersPerMile;
 }
 ```
 
-Y aquí están las dos servicios concretos.
+```console
+ng g s converter/dynamic-converter/european
+ng g s converter/dynamic-converter/american
+```
+
+Y aquí está el primero de los dos servicios concretos. Implementando una conversión de millas a kilómetros
 
 ```typescript
 @Injectable()
-export class EuropeConverterService implements ICultureConverter {
+export class EuropeanService extends CultureService {
   sourceCulture = 'USA';
   targetCulture = 'Europe';
-
-  constructor(private converterService: CalculatorService) {}
-
-  public convertDistance = this.converterService.fromMilesToKilometers;
-  public convertTemperature = this.converterService.fromFahrenheitToCelsius;
+  constructor(private calculatorService: CalculatorService) { super(); }
+  public convertDistance = this.calculatorService.fromMilesToKilometers;
 }
 ```
 
+Y aquí el segundo que extiende la clase abstracta pasando a millas
+
 ```typescript
 @Injectable()
-export class UsaConverterService implements ICultureConverter {
+export class AmericanService extends CultureService {
   sourceCulture = 'Europe';
   targetCulture = 'USA';
-
-  constructor(private converterService: CalculatorService) {}
-
-  public convertDistance = this.converterService.fromKilometersToMiles;
-  public convertTemperature = this.converterService.fromCelsiusToFahrenheit;
+  constructor(private calculatorService: CalculatorService) { super(); }
+  public convertDistance = this.calculatorService.fromKilometersToMiles;
 }
 ```
 
@@ -247,33 +251,33 @@ Por ejemplo si queremos utilizar la implementación concreta de USA lo indicamos
 
 ```typescript
 {
-  providers: [
+ providers: [
     {
-      provide: CultureConverterService,
-      useClass: UsaConverterService,
+      provide: CultureService,
+      useClass: AmericanService,
     },
-  ];
+  ],
 }
 ```
 
-El componente reclama una instancia de `CultureConverterService` y le damos otra con la misma interfaz. De esta forma podríamos tener módulos distintos, cada uno con su propia estrategia de conversión.
+El componente reclama una instancia de `CultureService` y le damos otra con la misma interfaz. De esta forma podríamos tener módulos distintos, cada uno con su propia estrategia de conversión.
 
 ## 2.4 Factoría
 
 Una situación muy común es poder elegir dinámicamente la implementación concreta. Para ello necesitamos una función factoría que con alguna lógica escoja la estrategia concreta.
 
 ```typescript
-const cultureFactory = (converterService: ConverterService) => {
+const cultureFactory = (calculatorService: CalculatorService) => {
   if (environment.unitsCulture === 'metric') {
-    return new EuropeConverterService(converterService);
+    return new EuropeanService(calculatorService);
   } else {
-    return new UsaConverterService(converterService);
+    return new AmericanService(calculatorService);
   }
 };
 {
   providers: [
     {
-      provide: CultureConverterService,
+      provide: CultureService,
       useFactory: cultureFactory,
       deps: [CalculatorService],
     },

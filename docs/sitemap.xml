@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
+    
+    <lastmod>2020-04-17T08:35:28.074Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://academia-binaria.com/flujo-de-datos-entre-componentes-angular/</loc>
     
     <lastmod>2020-04-16T12:06:06.435Z</lastmod>
@@ -96,13 +103,6 @@
     <loc>https://academia-binaria.com/comunicaciones-http-en-Angular/</loc>
     
     <lastmod>2019-10-16T14:23:01.034Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://academia-binaria.com/servicios-inyectables-en-Angular/</loc>
-    
-    <lastmod>2019-10-16T14:23:01.033Z</lastmod>
     
   </url>
   
