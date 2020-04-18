@@ -1,7 +1,7 @@
 ---
 title: Comunicaciones http en Angular
 permalink: comunicaciones-http-en-Angular
-date: 2019-02-28 14:06:00
+date: 2020-04-18 11:06:00
 tags:
 - Angular
 - http
@@ -9,7 +9,7 @@ tags:
 - Observables
 - Tutorial
 - Introducción
-- Angular8
+- Angular9
 - Angular2
 categories:
 - [Tutorial, Angular]
@@ -20,7 +20,7 @@ thumbnail: /css/images/angular-6_http.png
 
 Las comunicaciones _http_ son una pieza fundamental del desarrollo web, y en **Angular** siempre han sido potentes y fáciles. ¿Siempre?, bueno cuando apareció Angular 2 echábamos en falta algunas cosillas... y además la librería *RxJS* y sus *streams* son intimidantes para los novatos.
 
-Pero en la versión Angular 8 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones http asíncronas en Angular**.
+Pero en la versión Angular 9 **consumir un servicio REST** puede ser cosa de niños si aprendes a jugar con los _observables_ y los servicios de la librería `@angular/common/http`. Conseguirás realizar **comunicaciones http asíncronas en Angular**.
 
 <!-- more -->
 
@@ -35,8 +35,7 @@ Partiendo de la aplicación tal como quedó en [Servicios inyectables en Angular
 Como demostración vamos a consumir un API pública con datos de [cotización de monedas](https://exchangeratesapi.io/). Crearé un módulo y un componente en el que visualizar las divisas y después las transformaremos para guardarlas en un servicio propio.
 
 ```shell
-ng g m 6-http/rates --routing true
-ng g c 6-http/rates/rates
+ng g m money --route money --module app-routing.module
 ```
 
 ## 1.1 Importación y declaración de servicios
@@ -45,12 +44,11 @@ La librería `@angular/common/http` trae el módulo `HttpClientModule` con el se
 
 ```typescript
 import { HttpClientModule } from '@angular/common/http';
-
 @NgModule({
-  declarations: [RatesComponent],
-  imports: [HttpClientModule]
+  declarations: [MoneyComponent],
+  imports: [CommonModule, MoneyRoutingModule, HttpClientModule],
 })
-export class RatesModule { }
+export class MoneyModule {}
 ```
 
 En tu componente tienes que reclamar la dependencia al servicio para poder usarla. Atención a la importación pues hay más clases con el nombre `HttpClient`. Debe quedar algo así:
@@ -60,11 +58,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-rates',
-  templateUrl: './rates.component.html',
+  selector: 'ab-money',
+  templateUrl: './money.component.html',
   styles: []
 })
-export class RatesComponent implements OnInit {
+export class MoneyComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {}
@@ -100,8 +98,17 @@ export class RatesComponent implements OnInit {
 }
 ```
 
-> El método _get_ retorna un objeto observable. Los observables _http_ han de consumirse mediante el método _subscribe_ para que realmente se lancen. Dicho método _subscribe_ admite hasta tres _callbacks_: `susbcribe(data, err, end)` para que se ejecuten en respuesta a eventos. En este ejemplo solo hemos usado el primero.
+> El método _get_ retorna un objeto observable. Los observables _http_ han de consumirse mediante el método _subscribe_ para que realmente se lancen. Dicho método _subscribe_ admite hasta tres _callbacks_ para responder a tres sucesos posibles. Retorno de datos correcto, retorno de un error y señal de finalización. La sintaxis original ofrece tres argumentos opcionales para enviarles las funciones callback `susbcribe(data, err, end)`. En este ejemplo solo hemos usado el primero.
 
+Otra sintaxis más reciente sustituye los tres argumentos funcionales por un un único objeto. La ventaja es que puedes usar clases con lógica común, reutilizarlos en distintas suscripciones, o simplemente tener el código un poco más organizadito.
+
+```typescript
+observable$.susbcribe({
+  next: function(data){},
+  error: function(err){},
+  complete: function(){}
+  })
+```
 La presentación en la vista sólo tiene que acceder a la propiedad dónde se hayan cargado las respuestas tratadas en el _callback_ de la suscripción.
 
 ```html
@@ -118,80 +125,31 @@ Supongamos que, una vez recibidas las cotizaciones, pretendemos transformarlas y
 Vamos a agregar una propiedad y un par de métodos al `rates-component.ts`. La idea es obtener un array de cotizaciones aa partir del objeto previo, y guardarla una por una.
 
 ```typescript
-export class RatesComponent implements OnInit {
-  private ratesByDateApi = 'https://api-base.herokuapp.com/api/pub/rates';
-
-  public postRatesByDate() {
-    const ratesByDate: RateByDate[] = this.transformExchangeRates();
-    ratesByDate.forEach(rate =>
-      this.httpClient.post<RateByDate>(this.ratesByDateApi, rate).subscribe()
-    );
-  }
-
-  private transformExchangeRates(): RateByDate[] {
-    const currentDate = this.currentEuroRates.date;
-    const currentRates = this.currentEuroRates.rates;
-    const ratesByDate = Object.keys(currentRates).map((keyRate: string) => ({
-      date: currentDate,
-      currency: keyRate,
-      euros: currentRates[keyRate]
-    }));
-    return ratesByDate;
-  }
-}
+this.httpClient
+      .post(url, payloadObject)
+      .subscribe();
 ```
-> Atención a los métodos `subscribe()`. Aunque vayan vacíos son imprescindibles para que se ejecute la llamada.
+> Atención a los métodos `subscribe()`. Aunque vayan vacíos son imprescindibles para que se ejecute la llamada. Esto puede resultar contra intuitivo, pero la verdad es que los observables Http de Angular sólo trabajan si hay alguien mirando.
 
-En la vista no hay gran cosa que hacer, salvo agregarle un botón para iniciar el proceso:
-
-```html
-<input value="Save Rates" type="button" (click)="postRatesByDate()" />
-```
 
 ## 1.4 Actualización de datos
 
-Un par de ejemplo más para acabar de entender la mecánica básica de `HttpClient`. Podemos fijar el tipo de datos esperado en cualquier llamada. De hecho es recomendable que tengas un interfaz para cada respuesta esperada.
-
-En este tutorial no se ha hecho y no quedamos con el `any`, pero al menos distinguimos entre objetos y arrays. Esto es lo que añado al `RatesComponent` para que muestre los datos guardados en mi API.
+Un par de seudo ejemplos más para acabar de entender la mecánica básica de `HttpClient`. Podemos fijar el tipo de datos esperado en cualquier llamada. De hecho es recomendable que tengas un interfaz para cada respuesta esperada.
 
 ```typescript
-export class RatesComponent implements OnInit {
- private ratesByDateApi = 'https://api-base.herokuapp.com/api/pub/rates';
- public ratesByDate: RateByDate[] = null;
-
-
- public getRatesByDate() {
-    this.httpClient
-      .get<RateByDate[]>(this.ratesByDateApi)
-      .subscribe(apiResult => (this.ratesByDate = apiResult));
-  }
+public update() {
+  this.httpClient.delete(itemResourceUrl, newValue).subscribe();
 }
-```
-Y en la vista, un nuevo botón y una nueva expresión.
-
-```html
-<input value="Refresh" type="button" (click)="getRatesByDate()" />
-<pre>{{ myRates | json }}</pre>
-```
-
-Por último, en plan repaso, un ejemplo de método para borrar.
-
-```typescript
-  public deleteRatesByDate() {
-    this.httpClient.delete(this.ratesByDateApi).subscribe();
-  }
-```
-Y su botón en en la vista.
-
-```html
-<input value="Delete Rates" type="button" (click)="deleteRatesByDate()" />
+public delete() {
+  this.httpClient.delete(itemResourceUrl).subscribe();
+}
 ```
 
 Y hasta aquí lo básico de comunicaciones *http*. ¿Fácil verdad?. Pero la vida real raramente es tan sencilla. Si quieres enfrentarte a algo más duro debes prepararte y dominar los observables *RxJS*.
 
 Lo que viene a partir de ahora requerirá tiempo y concentración. Si continúas adelante esto ya no será *your grandpa´s http anymore*.
 
-# 2 Observables
+ # 2 Observables
 
 Las **comunicaciones** entre navegadores y servidores son varios órdenes de magnitud más lentas que las operaciones en memoria. Por tanto deben realizarse de manera asíncrona para garantizar una buena experiencia al usuario.
 
@@ -206,6 +164,7 @@ Pero esta es una clase genérica donde sus instancias admiten la manipulación i
 En cualquier caso, **toda operación asíncrona retornará una instancia observable** a la cual habrá que subscribirse para recibir los datos o los errores, cuando termine.
 Aunque a veces no se verá el _subscribe_...
 
+<!--
 ## 2.1 Async
 
 Para probar otras formas de presentar datos recibidos desde un API, voy a crear un nuevo componente. El `ObseratesComponent`, mezcla de _observables_ y _rates_.
@@ -395,9 +354,9 @@ export class AuditInterceptorService implements HttpInterceptor {
 }
 ```
 
-El operador `filter(any=>bool)` se usa para descartar eventos que no cumplan unos criterios. En mi caso sólo me interesan los eventos de recepción de la petición, y no necesito los intermedios. Uso de nuevo el `tap(callback)` para hacer cosas con los datos sin modificarlos en absoluto. En este caso los envío al método `auditEvent` para que lo saque por consola. Listo: un auditor para todas las llamadas.
+El operador `filter(any=>bool)` se usa para descartar eventos que no cumplan unos criterios. En mi caso sólo me interesan los eventos de recepción de la petición, y no necesito los intermedios. Uso de nuevo el `tap(callback)` para hacer cosas con los datos sin modificarlos en absoluto. En este caso los envío al método `auditEvent` para que lo saque por consola. Listo: un auditor para todas las llamadas. -->
 
-Ya tenemos el programa comunicado por _http_ con un servidor; aunque por ahora de forma anónima y sin ninguna seguridad. Con el conocimiento actual de los observables, del _httpClient_ y de los interceptores ya estamos cerca de resolverlo. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
+Ya tenemos el programa comunicado por _http_ con un servidor; aunque por ahora de forma anónima y sin ninguna seguridad. Necesitamos aumentar el conocimiento actual de los observables, del _httpClient_ con los interceptores y ya estaremos cerca de resolverlo. Sigue esta serie para añadirle [vigilancia y seguridad en Angular](../vigilancia-y-seguridad-en-Angular/) mientras aprendes a programar con Angular. Todos esos detalles se tratan en el [curso básico online](https://www.trainingit.es/curso-angular-basico/?promo=angular.builders) que imparto con TrainingIT o a medida para tu empresa.
 
 > Aprender, programar, disfrutar, repetir.
 > -- <cite>Saludos, Alberto Basalo</cite>
