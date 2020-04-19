@@ -26,9 +26,7 @@ Pero en la versión Angular 9 **consumir un servicio REST** puede ser cosa de ni
 
 Partiendo de la aplicación tal como quedó en [Servicios inyectables en Angular](../servicios-inyectables-en-Angular/). Al finalizar tendrás una aplicación que almacena y recupera los datos consumiendo un servicio REST usando las tecnologías de Angular Http.
 
-> Código asociado a este artículo en _GitHub_: [AcademiaBinaria/angular-basic/6-http](https://github.com/AcademiaBinaria/angular-basic/tree/master/src/app/6-http/rates)
->
-> > Tienes una versión desplegada operativa para probar [Angular Basic](https://academiabinaria.github.io/angular-basic/)
+> Código asociado a este tutorial en _GitHub_: [AcademiaBinaria/angular-basic](https://github.com/AcademiaBinaria/angular-basic/)
 
 # 1. El servicio HttpClient
 
