@@ -7,7 +7,7 @@
     "deploy": "hexo generate && git add * && git commit -m 'pub' && git push"
   },
   "hexo": {
-    "version": "4.2.0"
+    "version": "3.9.0"
   },
   "dependencies": {
     "hexo": "^4.2.0",
