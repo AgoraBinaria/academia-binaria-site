@@ -3,6 +3,62 @@
 
 
     <url>
+        <loc>https://academia-binaria.com/tag/Cypress/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Jest/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Test/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Avanzado/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Tutorial/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Nx/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular8/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://academia-binaria.com/tag/Angular/</loc>
+        <lastmod>2020-10-27T07:59:13.151Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://academia-binaria.com/tag/http/</loc>
         <lastmod>2020-04-19T09:36:30.387Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,21 +80,7 @@
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/Tutorial/</loc>
-        <lastmod>2020-04-19T09:36:30.387Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://academia-binaria.com/tag/Angular9/</loc>
-        <lastmod>2020-04-19T09:36:30.387Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Angular/</loc>
         <lastmod>2020-04-19T09:36:30.387Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -129,20 +171,6 @@
     </url>
 
     <url>
-        <loc>https://academia-binaria.com/tag/Avanzado/</loc>
-        <lastmod>2019-10-28T16:29:59.402Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Angular8/</loc>
-        <lastmod>2019-10-28T16:29:59.402Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://academia-binaria.com/tag/i18n/</loc>
         <lastmod>2019-10-28T10:09:34.693Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -222,34 +250,6 @@
     <url>
         <loc>https://academia-binaria.com/tag/ChangeDetection/</loc>
         <lastmod>2019-10-16T14:23:01.020Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Nx/</loc>
-        <lastmod>2019-09-23T11:20:34.965Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Cypress/</loc>
-        <lastmod>2019-09-23T11:19:50.724Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Jest/</loc>
-        <lastmod>2019-09-23T11:19:50.724Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://academia-binaria.com/tag/Test/</loc>
-        <lastmod>2019-09-23T11:19:50.724Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
