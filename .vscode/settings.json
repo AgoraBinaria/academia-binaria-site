@@ -1,6 +1,4 @@
 {
-  "html.format.enable": true,
-  "workbench.iconTheme": "vs-seti",
   "workbench.colorCustomizations": {
     "editorError.foreground": "#ff9900",
     "editorWarning.foreground": "#ffff99",
@@ -16,16 +14,10 @@
     "activityBarBadge.background": "#a03f75",
     "activityBarBadge.foreground": "#e7e7e7",
     "statusBar.background": "#4682b4",
-    "statusBar.border": "#4682b4",
     "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#689bc4",
-    "titleBar.border": "#4682b4"
+    "statusBarItem.hoverBackground": "#689bc4"
   },
   "spellright.language": ["en", "es"],
-  "spellright.documentTypes": [
-    "markdown",
-    "latex",
-    "plaintext"
-  ],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext"],
   "peacock.color": "#4682b4"
 }
