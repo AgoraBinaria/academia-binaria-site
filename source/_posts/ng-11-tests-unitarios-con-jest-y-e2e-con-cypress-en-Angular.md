@@ -126,7 +126,9 @@ Las pruebas unitarias, muy asociadas al [TDD](https://hackernoon.com/introductio
 
 [Jest](https://jestjs.io/) es un framework de testing para JavaScript muy sencillo y rápido. Puedes usarlo con cualquier otro framework. Para el caso de Angular ya viene preconfigurado si usas las extensiones Nx.
 
-Mete los siguientes scripts en el `package.json` y así tendrás a mano siempre las pruebas. Te recomiendo que desarrolles con el test unitario lanzado; es la manera más rápida de probar el código que estés tocando. Idealmente incluso con el [test antes del código](https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80).
+Mete los siguientes scripts en el `package.json` y así tendrás a mano siempre las pruebas. Te recomiendo que desarrolles con el test unitario lanzado; es la manera más rápida de probar el código que estés tocando. Idealmente incluso con **TDD** el [test antes del código](https://medium.com/javascript-scene/tdd-changed-my-life-5af0ce099f80).
+
+> Para más información acerca de lo útil y rentable que resulta practicar **TDD**, te recomiendo que leas este artículo: [Statistics & Studies: The Benefits Of Test Driven Development](https://theqalead.com/general/statistics-studies-benefits-test-driven-development/)
 
 ```json
 {
@@ -255,7 +257,7 @@ describe('GIVEN: a GreetingsService', () => {
       // esperar a que se llame a esta ruta
       const req = httpMock.expectOne('http://localhost:3333/api');
       req.flush({ message: 'Welcome to api!' }); // responder con esto
-      httpMock.verify(); // comprobar que no hay más llmadas
+      httpMock.verify(); // comprobar que no hay más llamadas
     }));
   });
 });
