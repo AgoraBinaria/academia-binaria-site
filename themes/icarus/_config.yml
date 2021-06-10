@@ -20,17 +20,16 @@ customize:
     gravatar: albertobasalo@agorabinaria.com
     author: Alberto Basalo
     author_title: Formador y Consultor
-    location: A Coruña, Spain
+    location: The Internet
     follow: https://twitter.com/albertobasalo
   highlight: ir-black
   sidebar: right # sidebar position, options: left, right or leave it empty
   thumbnail: true # enable posts thumbnail, options: true, false
   favicon: css/images/favicon.ico
   social_links:
-    github: https://github.com/AcademiaBinaria
+    github: https://github.com/albertobasalo
     twitter: https://twitter.com/albertobasalo
-    facebook: https://www.facebook.com/Agora.Binaria.SL/
-    rss: http://eepurl.com/b3p7fb
+    linkedin: https://www.linkedin.com/in/albertobasalo/
   social_link_tooltip: true # enable the social link tooltip, options: true, false
 
 # Widgets
@@ -77,12 +76,8 @@ share: default # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
-  lightgallery: false # options: true, false
-  justifiedgallery: false # options: true, false
-  google_analytics: UA-66674029-1
-  google_site_verification: # enter Google site verification code
-  baidu_analytics: # enter Baidu Analytics hash key
-  mathjax: false # options: true, false
+  google_analytics:
+    tracking_id: UA-66674029-1
 
 # Miscellaneous
 miscellaneous:
@@ -92,6 +87,5 @@ miscellaneous:
     twitter_id:
     google_plus:
   links:
-    Curso_Intro: https://www.trainingit.es/curso-angular-basico/?promo=angular.builders
-    Curso_Avanzado: https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders
-    Bootcamp: https://www.atlantic.dev/angular/
+    Curso_Avanzado: https://trainingit.es/curso-angular-escalable/?promo=angular.builders
+    AngularBuilders: https://angular.builders

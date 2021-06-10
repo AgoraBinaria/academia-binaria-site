@@ -4,8 +4,8 @@
 
 # Site
 title: Academia Binaria
-subtitle: Formación en español para programadores
-description: Artículos y tutoriales sobre Angular y todo lo relacionado con JavaScript y TypeScript
+subtitle: Formación en español para programadores de Angular
+description: Artículos y tutoriales sobre Angular
 author: Alberto Basalo
 language: es
 timezone: Europe/Madrid
@@ -31,7 +31,8 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
+external_link:
+  enable: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
@@ -48,7 +49,7 @@ highlight:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 5
   order_by: -date
 

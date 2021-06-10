@@ -4,74 +4,70 @@
          itemprop="blogPost">
     <div class="article-inner">
         <% if (post.banner) { %>
-        <%- partial('post/banner') %>
-        <% } %>
-        <% if (post.link || post.title) { %>
-        <header class="article-header">
-            <%- partial('post/title', { class_name: 'article-title' }) %>
-            <% if (post.layout != 'page') { %>
-            <div class="article-meta">
-                <%- partial('post/date', { class_name: 'article-date', date_format: null }) %>
-                <%- partial('post/category') %>
-                <%- partial('post/tag') %>
-            </div>
-            <% } %>
-        </header>
-        <% } %>
-        <%- partial('post/gallery') %>
-        <div class="article-entry"
-             itemprop="articleBody">
-            <% if (index && post.excerpt) { %>
-            <p><%- post.excerpt %></p>
-            <p class="article-more-link">
-                <a href="<%- url_for(post.path) %>#more"><%= __('article.more') %></a>
-            </p>
-            <% } else { %>
-            <% if (!index && post.toc) { %>
-            <div id="toc"
-                 class="toc-article">
-                <strong class="toc-title"><%= __('article.catalogue') %></strong>
-                <%- toc(post.content) %>
-            </div>
-            <% } %>
-            <p>
-                <a href="https://www.trainingit.es/curso-angular-basico/?promo=angular.builders">Curso online
-                    de introducción a
-                    Angular. Cupón descuento: 💸-25€</a>
-            </p>
-            <p>
-                <a href="https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders">Curso
-                    online avanzado con
-                    Angular. Cupón descuento: 💸-30€</a>
-            </p>
-            <%- post.content %>
-            <% } %>
-        </div>
-        <footer class="article-footer">
-            <%- partial('share/index', { post: post }) %>
-            <%- partial('comment/counter', { post: post }) %>
-        </footer>
+            <%- partial('post/banner') %>
+                <% } %>
+                    <% if (post.link || post.title) { %>
+                        <header class="article-header">
+                            <%- partial('post/title', { class_name: 'article-title' }) %>
+                                <% if (post.layout !='page' ) { %>
+                                    <div class="article-meta">
+                                        <%- partial('post/date', { class_name: 'article-date' ,
+                                            date_format: null }) %>
+                                            <%- partial('post/category') %>
+                                                <%- partial('post/tag') %>
+                                    </div>
+                                    <% } %>
+                        </header>
+                        <% } %>
+                            <%- partial('post/gallery') %>
+                                <div class="article-entry"
+                                     itemprop="articleBody">
+                                    <% if (index && post.excerpt) { %>
+                                        <p>
+                                            <%- post.excerpt %>
+                                        </p>
+                                        <p class="article-more-link">
+                                            <a href="<%- url_for(post.path) %>#more">
+                                                <%= __('article.more') %>
+                                            </a>
+                                        </p>
+                                        <% } else { %>
+                                            <% if (!index && post.toc) { %>
+                                                <div id="toc"
+                                                     class="toc-article">
+                                                    <strong class="toc-title">
+                                                        <%= __('article.catalogue') %>
+                                                    </strong>
+                                                    <%- toc(post.content) %>
+                                                </div>
+                                                <% } %>
+                                                    <p>
+                                                        <a
+                                                           href="https://trainingit.es//curso-angular-escalable/index.php?promo=angular.builders">Curso
+                                                            online avanzado con Angular. Cupón
+                                                            descuento: 💸-20€</a>
+                                                    </p>
+                                                    <%- post.content %>
+                                                        <% } %>
+                                </div>
+                                <footer class="article-footer">
+                                    <%- partial('share/index', { post: post }) %>
+                                        <%- partial('comment/counter', { post: post }) %>
+                                </footer>
     </div>
     <% if (!index) { %>
-    <%- partial('post/nav') %>
-
-    <p>
-        <a href="https://www.trainingit.es/curso-angular-basico/?promo=angular.builders">Código descuento: Curso online
-            de introducción a
-            Angular 💸-25€</a>
-    </p>
-    <hr>
-    <p>
-        <a href="https://www.trainingit.es/curso-angular-avanzado/?promo=angular.builders">Código descuento: Curso
-            online avanzado con
-            Angular 💸-30€</a>
-    </p>
-    <a href="https://angular.builders"><img src="/css/images/angular.builders.png"
-             alt="Angular.Builders"></a>
-    <hr>
-    <% } %>
+        <%- partial('post/nav') %>
+            <hr>
+            <p>
+                <a
+                   href="https://trainingit.es//curso-angular-escalable/index.php?promo=angular.builders">Código
+                    descuento: Curso online avanzado con Angular 💸-25€</a>
+            </p>
+            <a href="https://angular.builders"><img src="/css/images/angular.builders.png"
+                     alt="Angular.Builders"></a>
+            <hr>
+            <% } %>
 </article>
-
 <% if (!index) { %>
-<%- partial('comment/index') %>
-<% } %>
+    <%- partial('comment/index') %>
+        <% } %>
