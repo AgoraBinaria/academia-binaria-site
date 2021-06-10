@@ -7,11 +7,11 @@
     "deploy": "hexo generate && git add * && git commit -m 'pub' && git push"
   },
   "hexo": {
-    "version": "3.9.0"
+    "version": "4.2.0"
   },
   "dependencies": {
     "hexo": "^4.2.0",
-    "hexo-all-minifier": "^0.5.3",
+    "hexo-all-minifier": "^0.5.7",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^1.0.0",
