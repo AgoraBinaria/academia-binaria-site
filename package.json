@@ -4,24 +4,26 @@
   "private": false,
   "scripts": {
     "start": "hexo server",
-    "deploy": "hexo generate && git add * && git commit -m 'pub' && git push"
+    "deploy": "hexo generate && git add * && git commit -m 'pub' && git push",
+    "updates": "ncu -u"
   },
   "hexo": {
-    "version": "4.2.0"
+    "version": "5.4.0"
   },
   "dependencies": {
-    "hexo": "^4.2.0",
+    "hexo": "^5.4.0",
     "hexo-all-minifier": "^0.5.7",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
-    "hexo-generator-index": "^1.0.0",
+    "hexo-generator-index": "^2.0.0",
     "hexo-generator-json-content": "^4.2.3",
-    "hexo-generator-seo-friendly-sitemap": "0.0.25",
-    "hexo-generator-sitemap": "^2.0.0",
+    "hexo-generator-seo-friendly-sitemap": "0.2.1",
+    "hexo-generator-sitemap": "^2.1.0",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
-    "hexo-renderer-marked": "^2.0.0",
-    "hexo-renderer-stylus": "^1.1.0",
-    "hexo-server": "^1.0.0"
+    "hexo-renderer-marked": "^4.0.0",
+    "hexo-renderer-stylus": "^2.0.1",
+    "hexo-server": "^2.0.0",
+    "npm-check-updates": "^11.6.0"
   }
 }
