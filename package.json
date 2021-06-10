@@ -1,10 +1,11 @@
 {
   "name": "academia-binaria.com",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": false,
   "scripts": {
     "start": "hexo server",
-    "deploy": "hexo generate && git add * && git commit -m 'pub' && git push",
+    "predeploy": "standard-version ",
+    "deploy": "hexo generate && git add * && git commit -m 'pub' && git push --follow-tags origin master",
     "updates": "ncu -u"
   },
   "hexo": {
@@ -24,6 +25,7 @@
     "hexo-renderer-marked": "^4.0.0",
     "hexo-renderer-stylus": "^2.0.1",
     "hexo-server": "^2.0.0",
-    "npm-check-updates": "^11.6.0"
+    "npm-check-updates": "^11.6.0",
+    "standard-version": "^9.3.0"
   }
 }
