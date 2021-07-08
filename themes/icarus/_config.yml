@@ -76,8 +76,7 @@ share: default # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
-  google_analytics:
-    tracking_id: UA-66674029-1
+  google_analytics: UA-66674029-1
 
 # Miscellaneous
 miscellaneous:
