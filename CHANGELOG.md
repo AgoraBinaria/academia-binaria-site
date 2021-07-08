@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/AcademiaBinaria/academia-binaria-site/compare/v3.0.1...v3.1.0) (2021-07-08)
+
+
+### Features
+
+*  angularbuilders link on side bar and header ([b9539eb](https://github.com/AcademiaBinaria/academia-binaria-site/commit/b9539eb42abe2d7d390bf28a270c4d1aa760267e))
+
 ### [3.0.1](https://github.com/AcademiaBinaria/academia-binaria-site/compare/v3.0.0...v3.0.1) (2021-07-08)
 
 ## 3.0.0 (2021-06-10)
